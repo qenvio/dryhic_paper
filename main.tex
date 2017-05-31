@@ -36,9 +36,9 @@
 
 High throughput chromosomal conformation capture (HiC) experiments allow us to explore the spatial organization of chromatin in cells \citep{lieberman2009comprehensive}. Contrary to other 3C techniques, HiC is unbiased in the sense that all possible pairwise interactions between restriction fragments might be interrogated. However, this does not guarantee absence of bias. For instance, genome features as CG content, restriction enzyme site distribution and sequence uniqueness (related to mappability) have been described to modify the result in such experiments \citep{yaffe2011probabilistic}.
 
-Several strategies have been proposed to remove biases in HiC experiments \citep{schmitt2016genome}, either modeling explicitly a set of genomic features \citep{yaffe2011probabilistic,hu2012hicnorm} or using algorithms to implicitly correct for unknown biases \citep{imakaev2012iterative}, the latter often being preferred due to its fast implementation. These methods are suitable for normal cells but they were not designed for cells with abnormal karyotypes. Although there have been some proposals that consider aneuploidy \citep{wu2016computational}, to our knowledge, there is a lack of methodology dealing with aberrant karyotypes (common in cancer cell lines) that present abnormalities more complex than entire chromosome duplications.
+Several strategies have been proposed to remove biases in HiC experiments \citep{schmitt2016genome}, either modeling explicitly an a-priori set of known genomic features as potential sources of bias \citep{yaffe2011probabilistic,hu2012hicnorm} or using algorithms to implicitly correct for unknown biases \citep{imakaev2012iterative}. Notably, the latter has a broader usage due to its fast implementation. Both types of methods are suitable for normal cells but they were not designed for cells with abnormal karyotypes. Although there have been some proposals that consider aneuploidy \citep{wu2016computational}, to our knowledge, there is a lack of methodology dealing with aberrant karyotypes (common in cancer cell lines) that present abnormalities more complex than entire chromosome duplications.
 
-Here we propose \texttt{oned}, an alternative designed to model total number of contacts per genomic loci, thus taking into account possible chromosomal abnormalities. It explicitly models the contribution of known biases via a generalized additive model (GAM). The resulting data present better overall reproducibility between replicas and across different protocols. Besides, the implementation is fast and scales up to 1 Kbp resolution with reasonable computing resources.
+Here we propose \textit{oned}, an alternative designed to model total number of contacts per genomic loci, thus taking into account possible chromosomal abnormalities. It explicitly models the contribution of known biases via a generalized additive model (GAM). The resulting data present better overall reproducibility between replicas and across different protocols, specially, but not restricted to, in the presence of aberrant karyotypes. Besides, the implementation is fast and scales up to 1 Kbp resolution with reasonable computing resources.
 
 %\enlargethispage{12pt}
 
@@ -48,9 +48,9 @@ Here we propose \texttt{oned}, an alternative designed to model total number of 
 
 \subsection{Model}
 
-A common representation for the data yielded in a HiC experiment is a contact matrix, obtained slicing the genome in contiguous bins of fixed length (resolution) and computing the number of contacts between each pair of bins, corresponding to a cell in the contact matrix ($x_{ij}$).
+A common representation for the data yielded in a HiC experiment is a contact matrix, obtained slicing the genome in contiguous bins of fixed length (resolution) and computing the number of contacts between each pair of bins, corresponding to a cell in the contact matrix ($x_{ij}$), providing a quantification of the interaction between the tow loci.
 
-We assumed that the total number of contacts per bin ($t_{i}$) could be approximated by a negative binomial distribution with every known genomic feature contributing independently to its mean ($\lambda_i$). Given that this relationship might not be linear (Figure \ref{fig:totals}A), we allowed a smooth representation using thin plate penalized regression splines \citep{wood2003thin} in a generalized additive model \citep{wood2011fast}. The model can be parametrized as follows:
+Our proposal is based on the overall contacts registered for each bin, thus reducing the matrix to one dimension (hence the name). We assumed that the total number of contacts per bin ($t_{i}$) could be approximated by a negative binomial distribution with every potentially biasing genomic feature (known a priori) contributing independently to its mean ($\lambda_i$). Given that this relationship might not be linear (as can be seen in Figure \ref{fig:totals}A), we allowed a smooth representation using thin plate penalized regression splines \citep{wood2003thin} in a generalized additive model \citep{wood2011fast}. The model can be parametrized as follows:
 $$
 t_i = \sum_{i}{x_{ij}}
 $$
@@ -60,7 +60,7 @@ $$
 $$
 log(\lambda_i) \propto \sum_{K}{f_k(z_k)}
 $$
-where $x_{ij}$ are the number of contacts between bins $i$ and $j$, and there is an additive term for each $z_k$ genomic feature. The smooth functions $\{f_k(z_k)\}$ are estimated jointly with the negative binomial dispersion parameter $\theta$ using R \citep{coreteam2014r} \texttt{mgcv} package \citep{wood2011fast}.
+where $x_{ij}$ are the number of contacts between bins $i$ and $j$, and there is an additive term for each $z_k$ genomic feature. The smooth functions $\{f_k(z_k)\}$ are estimated jointly with the negative binomial dispersion parameter $\theta$ using R \citep{coreteam2014r} \texttt{mgcv} package \citep{wood2011fast}.%should we parametrize in terms of gamma-poisson instead negative binomial???
 
 Once the model of the total counts has been estimated, we can further rescale  $\{\lambda_i\}$ to obtain a correction vector $\{\lambda_i'\}$ that can be used to compute the corrected counts ($c_{ij}$) or, alternatively, it can be included in downstream analysis:
 $$
@@ -70,42 +70,44 @@ $$
 c_{ij} = \frac{x_{ij}}{\sqrt{\lambda_i'\lambda_j'}}
 $$
 
-Following  previous works \citep{yaffe2011probabilistic,hu2012hicnorm} we included mappability, CG content and number of restriction sites (comparable to effective length) as genomic features, but the model and implementation allow easy extension with different genomic features.
+Following  previous works \citep{yaffe2011probabilistic,hu2012hicnorm} we included mappability, CG content and number of restriction sites (comparable to effective length) as genomic features, but the model and implementation allow easy extension with any available genomic feature.
 
 \begin{figure}[!tpb]
 	\centerline{\includegraphics[width=.45\textwidth]{img/figure1.pdf}}
 	\caption{
-		A Non linear relationship between a genomic feature (number of restriction sites per bin) and the total number of contacts per bin for a T47D sample. B Total number of contacts per bin in chromosome 17 of a T47D sample for raw data (in brown, noisier) and corrected data (in blue, preciser).
+		A Non linear relationship between a genomic feature (number of restriction sites per bin) and the total number of contacts per bin for a T47D sample. B Total number of contacts per bin in chromosome 17 of a T47D sample. Raw (in brown, noisier) and corrected (in blue, more precise) data are depicted.
 	}\label{fig:totals}
 \end{figure}
 
 \subsection{Data sources}
 
-As an environment to test the bias correction, we gather a set of published \citep{ledily2014distinct,encode2012integrated,rao20143d,stadhouders2017transcription,lin2012global,dixon2012topological} and unpublished data from HiC experiments of different cell types and organisms. The details can be found in Table \ref{tab:samples}. Briefly, we used several experiments comprising T47D breast cancer cell lines (7 samples), K562 leukemia cell lines (4 samples), both with aberrant karyotypes and mouse primary B (6 samples )and ES (7 samples) cells, both with normal karyotypes. Experiments used different protocols (\textit{i.e.} original HiC \citep{lieberman2009comprehensive} and in-situ HiC \citep{rao20143d}), different restriction enzymes (DpnII, HindIII, MboI and NcoI) and produced in distinct laboratories.
+As an environment to test the bias correction, we gather a set of published \citep{ledily2014distinct,encode2012integrated,rao20143d,stadhouders2017transcription,lin2012global,dixon2012topological} and unpublished data from HiC experiments of different cell types and organisms. The details can be found in Table \ref{tab:samples}. Briefly, we used several experiments comprising T47D breast cancer cell lines (7 samples), K562 leukemia cell lines (4 samples), both with aberrant karyotypes, and mouse primary B (6 samples ) and ES (7 samples) cells, both with normal diploid karyotypes. The experiments used different protocols (\textit{i.e.} original HiC \citep{lieberman2009comprehensive} and in-situ HiC \citep{rao20143d}), different restriction enzymes (DpnII, HindIII, MboI and NcoI) and they were produced in distinct laboratories.
 
 We also make use of array-based copy-number segmentation of the two cell lines obtained from COSMIC database \citep{forbes2010cosmic}.
 
 \subsection{Data processing}
 
-All data were processed though a in-house pipeline based on TADBit \citep{serra2016structural}. For more details, see methods of \cite{stadhouders2017transcription}. The pipeline is available, with minor modifications, in \cite{quilez2017managing} material. Briefly, after fastq quality control, paired reads were mapped against the corresponding reference genome (hg38 and mm10) taking into account the restriction enzyme motifs. Non-informative contacts were removed applying the following TADBit \citep{serra2016structural} filters: Self-circle, dangling-ends, error, extra dangling-end, duplicated and random-breaks. Then, we developed the routines contained in the \texttt{dryhic} R package to efficiently create sparse representations of contact matrices (at 100 Kb resolution) and further apply \textit{vanilla}, \textit{ice} and \textit{oned} corrections. \texttt{HiTC} \citep{servant2012hitc} and \texttt{HiCapp} \citep{wu2016computational} were used to get \textit{lgf} and \textit{caib} corrections respectively.
+All data were processed though an in-house pipeline based on TADBit \citep{serra2016structural}. Briefly, after fastq quality control, paired reads were mapped against the corresponding reference genome (hg38 and mm10) taking into account the restriction enzyme motifs. Non-informative contacts were removed applying the following TADBit \citep{serra2016structural} filters: Self-circle, dangling-ends, error, extra dangling-end, duplicated and random-breaks. For more details, see methods of \cite{stadhouders2017transcription}. In addition, the pipeline is available, with minor modifications, in \cite{quilez2017managing} material.
+
+We developed the routines contained in the \texttt{dryhic} R package to efficiently create sparse representations of contact matrices and further apply \textit{vanilla}, \textit{ice} and \textit{oned} corrections. \texttt{HiTC} \citep{servant2012hitc} and \texttt{HiCapp} \citep{wu2016computational} were used to get \textit{lgf} and \textit{caib} corrections respectively. All results are based on 100 Kbp resolution, although no major differences were found using different ones (data not shown).
 
 
-\subsection{Total number of contacts}
+\subsection{Total number of contacts as copy number proxy}
 
-In non-diploid samples, we expect the coverage to be directly related to the number of copies (a duplicated region will show, on average, twice the number of contacts). Given that our model is based on total number of contacts, which in turn is directly related to the number of copies, we reasoned that a preliminary test would be to check if the corrected number of contacts per bin ($ct_i = \sum_{i}{c_{ij}}$) reflects the copy number (as measured by an independent technique such as array-based copy-number segmentation).
+In euploid samples, we expect the coverage of a HiC experiment to be directly related to the number of copies (a duplicated region will show, on average, twice the number of contacts). An ilustrative example can be seen in Figure \ref{fig:copy_number}B. Given that our model is based on total number of contacts, which in turn is directly related to the number of copies, we reasoned that a preliminary test would be to check if the corrected number of contacts per bin ($ct_i = \sum_{i}{c_{ij}}$) reflects the copy number (as measured by an independent technique such as array-based copy-number segmentation) better than the alternatives.
 
 
 \subsection{Sample comparison}
 
-In order to test performance, we relied on pair-wise comparisons of contact matrices. However, there is little consensus on how to compare two HiC matrices. The simplest metric is the Spearman correlation applied to cis (intra-chromosomal) contacts up to a given distance (\textit{i.e.} 5 Mb). Though, the decay in the number of contacts with increasing genomic distance is the main driver of contact abundance and it could mask real differences between samples. This distance decay can be taken into account, for instance, computing the expected number of interactions given the genomic distance between any pair of loci. Thus, we can compare matrices in terms of observed over expected contacts, via the Pearson correlation (again focusing on a given distance range). Alternatively, we can compute the correlation per distance stratum and then obtain a stratum-adjusted correlation coefficient (SCC) as defined in \cite{yang2017hicrep}. Additionally, \cite{yan2017hicspector} proposed a reproducibility score based on the correlation between a set of the Laplacian matrix's eigenvectors (corresponding to the smallest eigenvalues) for the two experiments.
+In order to test performance, we relied on pair-wise comparisons of contact matrices. However, there is little consensus on how to compare two HiC matrices. The simplest metric is the Spearman correlation applied to cis (intra-chromosomal) contacts up to a given distance (\textit{i.e.} 5 Mb). Though, the decay in the number of contacts with increasing genomic distance is the main driver of contact abundance and it could mask real differences between samples. This distance decay can be taken into account, for instance, computing the expected number of interactions given the genomic distance between any pair of loci. Thus, we can compare matrices in terms of observed over expected contacts, via the Pearson correlation (again focusing on a given distance range). Alternatively, we can compute the correlation per distance stratum and then obtain a stratum-adjusted correlation coefficient (SCC) as defined in \cite{yang2017hicrep}. Additionally, \cite{yan2017hicspector} proposed a reproducibility score based on the correlation between a set of the Laplacian matrix's eigenvectors (corresponding to the smallest eigenvalues) of the two experiments.
 
 We defined three sets of samples: One with all T47D experiments plus two K562 samples, another with all K562 experiments plus two T47D samples and a third one comprising all mm10 samples (see Table \ref{tab:samples} for details). Given a set of experiments and a metric, we first computed all pair-wise combinations between experiments and then classified the comparisons according to the characteristics of each pair (\textit{i.e.} same / different cell types, same / different protocols, etc ...). 
 
-To benchmark our method (\textbf{\textit{oned}}), we also test the performance of other alternatives. Three of them were based on the same implicit iterative correction \citep{imakaev2012iterative}: One computing one iteration (\textbf{\textit{vanilla}}), another iterating until convergence (\textbf{\textit{ice}}) and a third one using the chromosome adjusted iterative correction (\textbf{\textit{caib}}) \citep{wu2016computational}. The fourth one was inspired on the explicit bias correction originally presented by \cite{yaffe2011probabilistic}, but based on the local genomic features (\textbf{\textit{lgf}}) approach introduced by \cite{hu2012hicnorm} as implemented in \cite{servant2012hitc}.
+To benchmark our method (\textbf{\textit{oned}}), we also test the performance of other alternatives. Three of them were based on the same implicit iterative correction \citep{imakaev2012iterative}: A first alternative computing one iteration (\textbf{\textit{vanilla}}), a second one iterating until convergence (\textbf{\textit{ice}}) and a third one using the chromosome adjusted iterative correction (\textbf{\textit{caib}}) \citep{wu2016computational}. The fourth one was inspired on the explicit bias correction originally presented by \cite{yaffe2011probabilistic}, but based on the local genomic features (\textbf{\textit{lgf}}) approach introduced by \cite{hu2012hicnorm} as implemented in \cite{servant2012hitc}.
 
-Besides, we compared the raw matrices and used these comparisons as a baseline to present the gain / loss of correlation relative to the uncorrected data, thus allowing us to verify the effect of the bias correction procedure. The differences relative to the raw comparisons were estimated using a linear mixed model with the method as fixed effect and the chromosome as a random effect, and using the \texttt{lmer} function of the \texttt{lme4} package \citep{bates2015lme4}.
+Besides, we compared the raw matrices and used these comparisons as a baseline to present the gain / loss of correlation relative to the uncorrected data, thus allowing us to verify the effect of the bias correction procedure. The differences relative to the raw comparisons were estimated using a linear mixed model with the method as fixed effect and the chromosome as a random effect, and using the \texttt{lmer} function of the \texttt{lme4} R package \citep{bates2015lme4}.
 
-In an attempt to summarize the results, we reasoned that the correlation between unrelated samples (\textit{i.e} different cell types) should be lower than between related samples (\textit{i.e} same cell types), so we could re-interpret each correlation metric as a classifier score. Thus, we computed the receiver operating characteristic (ROC) curves and corresponding area under the curve (AUC) using the \texttt{ROCR} package \citep{sing2005rocr}.
+In an attempt to further summarize the results, we reasoned that the correlation between unrelated samples (\textit{i.e} different cell types) should be lower than the correlation between related samples (\textit{i.e} same cell types), so we could re-interpret each correlation metric as a classifier score. Thus, we computed the receiver operating characteristic (ROC) curves and corresponding area under the curve (AUC) using the R \texttt{ROCR} package \citep{sing2005rocr}.
 
 \end{methods}
 
@@ -125,47 +127,47 @@ Figure \ref{fig:totals}B shows the total number of corrected contacts along chro
 
 \subsection{Samples with aberrant karyotypes}
 
-Focusing on the Pearson correlation of observed over expected counts, methods based on the iterative correction (mainly \textit{ice} and \textit{caib} but also \textit{vanilla}) present the undesirable feature of higher correlations between unrelated samples than using raw data (top left panels of Figures \ref{fig:aberrant}A and \ref{fig:aberrant}C, Supplementary Figure 3). Among the comparisons on cells of the same type, \textit{oned} is the only method outperforming uncorrected data when comparing experiments using different protocols (top right panel of Figure \ref{fig:aberrant}A) and it is among the top performant when comparing experiments using the same protocol (rest of panels of Figures \ref{fig:aberrant}A and \ref{fig:aberrant}C). Consequently, our proposal is the one that better discriminates unrelated samples form similar ones (as it can be seen in the ROC curves and AUCs of Figures \ref{fig:aberrant}B and D). Complementary analysis using other metrics (Supplementary Figures 3, 4 and 5) yielded similar results. Notably, Spearman correlation of contacts presents the worst performance for all scenarios and seems to be a poor choice as a metric to compare HiC matrices.
+Focusing on the Pearson correlation of observed over expected counts, methods based on the iterative correction (mainly \textit{ice} and \textit{caib} but also \textit{vanilla}) present the undesirable feature of higher correlations between unrelated samples than using raw data (top left panels of Figures \ref{fig:aberrant}A and \ref{fig:aberrant}C, Supplementary Figure 3). Among the comparisons of cells with the same type, \textit{oned} is the only method outperforming uncorrected data when comparing experiments using different protocols (top right panel of Figure \ref{fig:aberrant}A) and it is among the top performant when comparing experiments using the same protocol (rest of the panels in Figures \ref{fig:aberrant}A and \ref{fig:aberrant}C). Consequently, our proposal is the one that better discriminates unrelated samples form similar ones (as it can be seen in the ROC curves and AUCs of Figures \ref{fig:aberrant}B and D).
+
+Complementary analysis using other metrics (Supplementary Figures 3, 4 and 5) yielded similar results. Notably, Spearman correlation of contacts presents the worst performance for all scenarios and seems to be a poor choice as a metric to compare HiC matrices.
 
 
 \begin{figure}
 	\centerline{\includegraphics[width=.50\textwidth]{img/correlation_aberrant_figure3.pdf}}
 	\caption{
-		Results of the comparison between samples with aberrant karyotype. Left panels: Average difference between each correction method (Y axis) and the raw data (brown dashed line) with 95\% CI for T47D (A) and K562 (C) sets. Right panels: Corresponding ROC curves and AUCs for T47D (B) and K562 (D) sets. All results in this figure are based on Pearson correlations between the observed over expected counts. Our method increases reproducibility of similar samples while being able to discriminate different ones.
+		Results of the comparison between samples with aberrant karyotype. Left panels: Average difference and 95\% CI between each correction method (Y axis) and the raw data (brown dashed line) for T47D (A) and K562 (C) sets. Right panels: Corresponding ROC curves and AUCs for T47D (B) and K562 (D) sets. All results in this figure are based on Pearson correlations between the observed over expected counts. Our method increases reproducibility of similar samples while being able to discriminate different ones.
 	}\label{fig:aberrant}
 \end{figure}
 
 
 \subsection{Samples with normal karyotypes}
 
-Regarding cells with diploid genomes, we confirmed that our bias correction strategy also achieves good results in terms separation between unrelated and similar samples (Figure \ref{fig:normal} and Supplementary Figures 6 and 7), increasing the reproducibility across different experimental protocols for similar primary B and ES mouse cell samples. Again, Spearman correlation of contacts revealed as the worst metric.
+Regarding cells with diploid genomes, we confirmed that our bias correction strategy also achieves good results in terms separation between unrelated and similar samples (Figure \ref{fig:normal} and Supplementary Figures 6 and 7), increasing the reproducibility across different experimental protocols for primary B and ES mouse cell samples. Again, Spearman correlation of contacts revealed as the worst metric.
 
 \begin{figure}
 	\centerline{\includegraphics[width=.50\textwidth]{img/correlation_normal_figure4.pdf}}
 	\caption{
-		Results of the comparison between samples with normal karyotype. A Average difference between each correction method (Y axis) and the raw data (brown dashed line) with 95\% CI for the mm10 sets. B Corresponding ROC curves and AUCs. The introduced strategy do not under perform compared to the alternatives.
+		Results of the comparison between samples with normal karyotype. A Average difference and 95\% CI between each correction method (Y axis) and the raw data (brown dashed line) for the mm10 sets. B Corresponding ROC curves and AUCs. The introduced strategy does not under perform compared to the alternatives.
 	}\label{fig:normal}
 \end{figure}
 
-
 \subsection{Computing resources}
 
-One of the main reasons for the broad usage of the iterative correction \citep{imakaev2012iterative} is the easy and fast implementation, moreover compared to existing explicit methods \citep{servant2012hitc}. Our proposal uses only the total number of contacts per bin instead the full matrix for the model estimation. Thus, it achieves similar computing times to the fastest approaches (Figure \ref{fig:times} A). Yet it scales with increasing resolutions (decreassing bin size) (Figure \ref{fig:times} B).
+One of the main reasons for the broad usage of the iterative correction \citep{imakaev2012iterative} is the easy and fast implementation, moreover compared to existing explicit methods \citep{servant2012hitc}. Our proposal uses only the total number of contacts per bin instead the full matrix for the model estimation. Thus, it achieves similar computing times that the fastest approaches (Figure \ref{fig:times} A). Yet it scales with increasing resolutions (decreasing bin size) (Figure \ref{fig:times} B).
 
 \begin{figure}
 	\centerline{\includegraphics[width=.35\textwidth]{img/times_sina_figure5.pdf}}
 	\caption{
-		Computing time (Y axis, log scale) of all the bias methods used. Each dot corresponds to one sample. The only method faster than ours under performs in all sample comparisons.
+		Computing time (Y axis, log scale) of all the bias correction methods used. Each dot corresponds to one sample. The only method faster than ours under performs in all sample comparisons.
 	}\label{fig:times}
 \end{figure}
 
-
-
-
 \section{Discussion and Conclusions}
+
 
 \section*{Acknowledgements}
 
+We would like to thank all members of the four labs involved in the 4DGenome Synergy project for the fruitful discussions during project meetings. EV wants to acknowledge specially the members of Miguel Beato's lab for their insights during lab meetings.
 
 \section*{Funding}
 
@@ -173,6 +175,5 @@ This work has been supported by the... Text Text  Text Text.\vspace*{-12pt}
 
 \bibliographystyle{natbib}
 \bibliography{references}
-
 
 \end{document}
