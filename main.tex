@@ -53,11 +53,58 @@ terms of computing resources for resolutions up to 1 kbp.\\
 
 \section{Introduction}
 
-High throughput chromosomal conformation capture (HiC) experiments allow us to explore the spatial organization of chromatin in cells \citep{lieberman2009comprehensive}. Contrary to other 3C techniques, HiC is unbiased in the sense that all possible pairwise interactions between restriction fragments might be interrogated. However, this does not guarantee absence of bias. For instance, genome features as CG content, restriction enzyme site distribution and sequence uniqueness (related to mappability) have been described to modify the result in such experiments \citep{yaffe2011probabilistic}.
+One of the crown achievements of modern biology was to realize that
+genomes have an underlying three-dimensional structure contributing to
+their activity (CITE). In mammals, this organization plays a key role in
+guiding enhancer-promoter contacts (CITE), in V(D)J recombination (CITE)
+and in X chromosome inactivation (CITE). One of the most significant
+breakthroughs towards this insight was the development of the high
+throughput chromosomal conformation capture (Hi-C) technology, assaying
+chromosomal contacts at a genome-wide scale
+\citep{lieberman2009comprehensive}. Exploring the spatial organization of
+chromatin inside the cell is now common and Hi-C is part of the standard
+molecular biology toolbox (CITE).
 
-Several strategies have been proposed to remove biases in HiC experiments \citep{schmitt2016genome}, either modeling explicitly an a-priori set of known genomic features as potential sources of bias \citep{yaffe2011probabilistic,hu2012hicnorm} or using algorithms to implicitly correct for unknown biases \citep{imakaev2012iterative}. Notably, the latter has a broader usage due to its fast implementation. Both types of methods are suitable for normal cells but they were not designed for cells with abnormal karyotypes. Although there have been some proposals that consider aneuploidy \citep{wu2016computational}, to our knowledge, there is a lack of methodology dealing with aberrant karyotypes (common in cancer cell lines) that present abnormalities more complex than entire chromosome duplications.
+Contrary to the precursor technologies 3C, 4C and 5C \citep{de2012decade},
+Hi-C interrogates all possible pairwise interactions between restriction
+fragments. However, this does not guarantee the absence of bias. For
+instance, local genome features such as the G+C content, the availability
+of restriction enzyme sites and the mappability of the sequencing reads
+have been shown to modify the results \citep{yaffe2011probabilistic}. In
+addition, the general experimental biases such as batch effects and
+protocol variation also apply. It is thus important to normalize
+Hi-C data in order to remove biases and artifacts, so that they are not
+confused with biological signal.
 
-Here we propose \textit{oned}, an alternative designed to model total number of contacts per genomic loci, thus taking into account possible chromosomal abnormalities. It explicitly models the contribution of known biases via a generalized additive model (GAM). The resulting data present better overall reproducibility between replicas and across different protocols, specially, but not restricted to, in the presence of aberrant karyotypes. Besides, the implementation is fast and scales up to 1 Kbp resolution with reasonable computing resources.
+Several methods have been proposed to remove biases in Hi-C experiments
+\citep{schmitt2016genome}. The first strategy is to model biases
+explicitly from a defined set of local genomic features, such as the G+C
+content and the availability of restriction sites. This approach is used
+in the method of \cite{yaffe2011probabilistic} and in Hicnorm by
+\cite{hu2012hicnorm}. The second strategy is to implicitly correct for
+unknown biases by enforcing some regularity on the data. This approach is
+used in the ICE method of \cite{imakaev2012iterative}, where the total
+amount of contacts is imposed to be equal for every bin. ICE is currently
+the most popular method, which is in part due to the speed of the
+available implementation.
+
+Both strategies are suitable for cells with a normal karyotype, but they
+were not designed for cell types with karyotypic aberrations.
+
+Although there have been some proposals that consider aneuploidy
+\citep{wu2016computational}, to our knowledge, there is a lack of
+methodology dealing with aberrant karyotypes (common in cancer cell lines)
+that present abnormalities more complex than entire chromosome
+duplications.
+
+Here we propose \textit{oned}, an alternative designed to model total
+number of contacts per genomic loci, thus taking into account possible
+chromosomal abnormalities. It explicitly models the contribution of known
+biases via a generalized additive model (GAM). The resulting data present
+better overall reproducibility between replicas and across different
+protocols, specially, but not restricted to, in the presence of aberrant
+karyotypes. Besides, the implementation is fast and scales up to 1 Kbp
+resolution with reasonable computing resources.
 
 %\enlargethispage{12pt}
 
