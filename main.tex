@@ -10,9 +10,9 @@
 
 \subtitle{Genome Analysis}
 
-\title[Dryhic]{Dryhic: Increasing Reproducibility of Hi-C Samples with Abnormal Karyotypes}
+\title[Dryhic]{OneD: increasing reproducibility of Hi-C Samples with abnormal karyotypes}
 
-\author[Vidal \textit{et~al}.]{Enrique Vidal\,$^{\text{\sfb 1,2}*}$, François le Dily\,$^{\text{\sfb 1,2}}$, Javier Quilez\,$^{\text{\sfb 1,2}}$, Ralph Stadhouders\,$^{\text{\sfb 1,2}}$, Yasmina Cuartero\,$^{\text{\sfb 1,2}}$ Guillaume Fillion\,$^{\text{\sfb 1,2}}$ and Miguel Beato\,$^{\text{\sfb 1,2}}$}
+\author[Vidal \textit{et~al}.]{Enrique Vidal\,$^{\text{\sfb 1,2}*}$, François le Dily\,$^{\text{\sfb 1,2}}$, Javier Quilez\,$^{\text{\sfb 1,2}}$, Ralph Stadhouders\,$^{\text{\sfb 1,2}}$, Yasmina Cuartero\,$^{\text{\sfb 1,2}}$,Miguel Beato\,$^{\text{\sfb 1,2}}$ and Guillaume Fillion\,$^{\text{\sfb 1,2}}$}
 
 \address{$^{\text{\sf 1}}$Gene Regulation, Stem Cells and Cancer Program, Centre for Genomic Regulation (CRG), The
 	Barcelona Institute of Science and Technology (BIST), Barcelona, Spain \\
@@ -25,9 +25,28 @@
 \editor{Associate Editor: XXXXXXX}
 
 \abstract{
-	\textbf{Motivation:} Several strategies have been proposed to remove biases from Hi-C experiments. However, samples with abnormal karyotypes (such as cancer cell lines) present challenges not completely addressed by existing methods. We introduce an alternative designed to model the total number of contacts per genomic loci, thus taking into account possible chromosomal abnormalities.\\
-	\textbf{Results:} The proposed method increases reproducibility among replicas of Hi-C samples with abnormal karyotype and obtained using different protocols. The implementation is fast and scales well in terms of computing resources for resolutions up to 1 Kbp.\\	
-	\textbf{Availability:} The strategy proposed is implemented as an R package available at \href{http://www.github.com/qenvio/dryhic}{http://www.github.com/qenvio/dryhic}.\\	
+  \textbf{Motivation:} The three-dimensional conformation of genomes is an
+essential component of their biological activity. The advent of the Hi-C
+technology enabled an unprecedented advance in our understanding of genome
+structures. However, Hi-C is subject to systematic biases that can
+compromise downstream analyses. Several strategies have been proposed to
+remove those biases, but none of them addresses the common issue of
+abnormal karyotypes. Many experiments are performed in cancer cell lines,
+which typically harbor large-scale copy number variations that create
+visible defects on the raw Hi-C maps. The consequences of these widespread
+artifacts on the normalized maps have not been investigated so far.\\
+	\textbf{Results:}
+We observed that current normalization methods perform badly in the
+presence of large-scale copy number variations, obscuring biological
+viarations and enhancing batch effects. To address this issue, we
+developed an alternative appoach designed to take into account chromosomal
+abnormalities. The method, called OneD, increases reproducibility among
+replicates of Hi-C samples with abnormal karyotype, thus significantly
+outperforming previous methods.  In the absence of chromosomal
+aberrantions, OneD fared equally well as state-of-the-art methods, making
+it a safe choice for Hi-C normalization. OneD is fast and scales well in
+terms of computing resources for resolutions up to 1 kbp.\\	
+	\textbf{Availability:} OneD is implemented as an R package available at \href{http://www.github.com/qenvio/dryhic}{http://www.github.com/qenvio/dryhic}.\\	
 	\textbf{Contact:} \href{enrique.vidal@crg.eu}{enrique.vidal@crg.eu}\\	
 	\textbf{Supplementary information:} Supplementary data are available at \textit{Bioinformatics}	online.}
 \maketitle
@@ -171,7 +190,10 @@ We would like to thank all members of the four labs involved in the 4DGenome Syn
 
 \section*{Funding}
 
-This work has been supported by the... Text Text  Text Text.\vspace*{-12pt}
+This work was supported by the Spanish Ministry of Economy and
+Competitiveness, ‘Centro de Excelencia Severo Ochoa 2013-2017’,
+SEV-2012-0208, ERC Synergy Grant 609989 (GF) and...
+\vspace*{-12pt}
 
 \bibliographystyle{natbib}
 \bibliography{references}
