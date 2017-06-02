@@ -10,13 +10,19 @@
 
 \subtitle{Genome Analysis}
 
-\title[Dryhic]{OneD: increasing reproducibility of Hi-C Samples with abnormal karyotypes}
+\title[OneD]{OneD: increasing reproducibility of Hi-C Samples with
+abnormal karyotypes}
 
-\author[Vidal \textit{et~al}.]{Enrique Vidal\,$^{\text{\sfb 1,2}*}$, François le Dily\,$^{\text{\sfb 1,2}}$, Javier Quilez\,$^{\text{\sfb 1,2}}$, Ralph Stadhouders\,$^{\text{\sfb 1,2}}$, Yasmina Cuartero\,$^{\text{\sfb 1,2}}$,Miguel Beato\,$^{\text{\sfb 1,2}}$ and Guillaume Fillion\,$^{\text{\sfb 1,2}}$}
+\author[Vidal \textit{et~al}.]{Enrique Vidal\,$^{\text{\sfb 1,2}*}$,
+François le Dily\,$^{\text{\sfb 1,2}}$, Javier Quilez\,$^{\text{\sfb
+1,2}}$, Ralph Stadhouders\,$^{\text{\sfb 1,2}}$, Yasmina
+Cuartero\,$^{\text{\sfb 1,2}}$,Miguel Beato\,$^{\text{\sfb 1,2}}$ and
+Guillaume Fillion\,$^{\text{\sfb 1,2}}$}
 
-\address{$^{\text{\sf 1}}$Gene Regulation, Stem Cells and Cancer Program, Centre for Genomic Regulation (CRG), The
-	Barcelona Institute of Science and Technology (BIST), Barcelona, Spain \\
-	$^{\text{\sf 2}}$Universitat Pompeu Fabra (UPF), Barcelona, Spain}
+\address{$^{\text{\sf 1}}$Gene Regulation, Stem Cells and Cancer Program,
+Centre for Genomic Regulation (CRG), The Barcelona Institute of Science
+and Technology (BIST), Barcelona, Spain \\
+$^{\text{\sf 2}}$Universitat Pompeu Fabra (UPF), Barcelona, Spain}
 
 \corresp{$^\ast$To whom correspondence should be addressed.}
 
@@ -46,10 +52,18 @@ outperforming previous methods.  In the absence of chromosomal
 aberrantions, OneD fared equally well as state-of-the-art methods, making
 it a safe choice for Hi-C normalization. OneD is fast and scales well in
 terms of computing resources for resolutions up to 1 kbp.\\	
-	\textbf{Availability:} OneD is implemented as an R package available at \href{http://www.github.com/qenvio/dryhic}{http://www.github.com/qenvio/dryhic}.\\	
-	\textbf{Contact:} \href{enrique.vidal@crg.eu}{enrique.vidal@crg.eu}\\	
-	\textbf{Supplementary information:} Supplementary data are available at \textit{Bioinformatics}	online.}
+\textbf{Availability:} OneD is implemented as an R package available at
+\href{http://www.github.com/qenvio/dryhic}
+{http://www.github.com/qenvio/dryhic}.\\	
+textbf{Contact:} \href{enrique.vidal@crg.eu}{enrique.vidal@crg.eu}\\	
+textbf{Supplementary information:} Supplementary data are available at
+\textit{Bioinformatics}	online.}
+
+
+
 \maketitle
+
+
 
 \section{Introduction}
 
@@ -113,6 +127,7 @@ computing resources.
 \section{Methods}
 
 \subsection{Model}
+\label{sec:model}
 
 The most common representation of Hi-C data is a contact matrix, obtained
 by slicing the genome in $n$ consecutive bins of fixed size (the
@@ -152,28 +167,18 @@ Once the parameters of the model are estimated, we rescale the estimated
 means $\{\lambda_i\}$ to obtain a correction vector $\{\lambda_i'\}$ that
 can be used to compute the corrected counts ($\hat{x}_{ij}$).
 
-\begin{align*}
+\begin{align}
+\notag
 \lambda_i' &= \frac{\lambda_i}{\sum_j^n{\lambda_j}/n} \\
+\label{eq:xhat}
 \hat{x}_{ij} &= \frac{x_{ij}}{\sqrt{\lambda_i'\lambda_j'}}.
-\end{align*}
+\end{align}
 
 In line with previous methods
 \citep{yaffe2011probabilistic,hu2012hicnorm}, the features
 used to fit the model are the local G+C content, read mappability and the 
 content and number of restriction sites. The model and the implementation
 can be easily extended with any user-provided genomic feature.
-
-\begin{figure}[!tpb]
-\centerline{\includegraphics[width=.45\textwidth]{img/figure1.pdf}}
-\caption{A. Non linear relationship between the number of restriction
-sites per bin and the total number of contacts per bin in T47D. B. Total
-number of contacts per bin in chromosome 17 of T47D. Raw (brown) and
-corrected (blue) signals are shown. The region that corresponds to the
-first 20 Mbp of the chromosome is present in single copy, explaining that
-the signal is approximately half compared to the rest of the chromosome.
-Also notice that the raw signal is noisier than the corrected one.}
-\label{fig:totals}
-\end{figure}
 
 \subsection{Data sources}
 
@@ -194,6 +199,67 @@ HindIII, MboI and NcoI).
 
 We also used array-based copy-number segmentation of the two cell
 lines obtained from COSMIC database \citep{forbes2010cosmic}.
+ 
+\begin{table*}
+\processtable{Hi-C data sets used in this study.
+\label{tab:samples}}
+{\begin{tabular}{ccccccc}
+  \toprule
+  \textbf{Sample ID} & \textbf{Cell type} & \textbf{Application} &
+  \textbf{RE} & \textbf{Sequencing core} & \textbf{Set} &
+  \textbf{Source} \\
+  \midrule
+dc3a1e069\_51720e9cf & T47D & \textit{in situ} Hi-C &
+  DpnII & CRG & T47D, K562 & NA \\
+b1913e6c1\_51720e9cf & T47D & \textit{in situ} Hi-C &
+  DpnII & CRG & T47D & NA \\
+dc3a1e069\_ec92aa0bb & T47D & \textit{in situ} Hi-C &
+  DpnII & CRG & T47D, K562 & NA \\
+HindIII\_T0 & T47D & dilution Hi-C &
+  HindIII & CRG & T47D & SRR1054341 \\
+NcoI\_T0    & T47D & dilution Hi-C &
+  NcoI      & CRG & T47D & SRR1054343 \\
+ENCLB758KFU & T47D & dilution Hi-C &
+  HindIII   & UMass & T47D & ENCLB758KFU \\
+ENCLB183QHG & T47D & dilution Hi-C &
+  HindIII   & UMass & T47D & ENCLB183QHG \\
+HIC069  & K562 & \textit{in situ} Hi-C &
+  MboI & Baylor & T47D, K562 &    SRR1658693 \\
+HIC070  & K562 & \textit{in situ} Hi-C &
+  MboI & Baylor & T47D, K562 &    SRR1658694 \\
+HIC071  & K562 & \textit{in situ} Hi-C &
+  MboI & Baylor & K562 & SRR1658695,SRR1658696 \\
+HIC074  & K562 & \textit{in situ} Hi-C &
+  MboI & Baylor & K562 & SRR1658701,SRR1658702 \\
+b7fa2d8db\_bfac48760 & B-cell  & \textit{in situ} Hi-C &
+  DpnII & CRG & mm10 & GSE96611 \\
+fc3e8b36a\_7bf1bf374 & ES-cell & \textit{in situ} Hi-C &
+  DpnII & CRG & mm10 & GSE96611 \\
+b7fa2d8db\_7284b867a & B-cell  & \textit{in situ} Hi-C &
+  DpnII & CRG & mm10 & GSE96611 \\
+fc3e8b36a\_38bfd1b33 & ES-cell & \textit{in situ} Hi-C &
+  DpnII & CRG & mm10 & GSE96611 \\
+b7fa2d8db\_58e812fc2 & B-cell  & \textit{in situ} Hi-C &
+  DpnII & CRG & mm10 & GSE96611 \\
+fc3e8b36a\_c990a254e & ES-cell & \textit{in situ} Hi-C &
+  DpnII & CRG & mm10 & GSE96611 \\
+b7fa2d8db\_73f11d923 & B-cell  & \textit{in situ} Hi-C &
+  DpnII & CRG & mm10 & GSE96611 \\
+fc3e8b36a\_4bf044f18 & ES-cell & \textit{in situ} Hi-C &
+  DpnII & CRG & mm10 & GSE96611 \\
+GSM987817 & B-cell  & dilution Hi-C &
+  HindIII & UCSC & mm10 & SRR543428-SRR543431 \\
+GSM987818 & B-cell  & dilution Hi-C &
+  HindIII & UCSC & mm10 & SRR543432-SRR543442 \\
+GSM862720 & ES-cell & dilution Hi-C &
+  HindIII & UCSC & mm10 & SRR443883-SRR443885 \\
+GSM862721 & ES-cell & dilution Hi-C &
+  HindIII & UCSC & mm10 & SRR400251-SRR400256 \\
+GSM862722 & ES-cell & dilution Hi-C &
+  NcoI    & UCSC & mm10 & SRR443886-SRR443888 \\
+  \botrule
+\end{tabular}}{}
+\end{table*}
 
 \subsection{Data processing}
 
@@ -223,18 +289,17 @@ values (not shown).
 
 There is no universally accepted standard to compare Hi-C matrices. The
 simplest metric is the Spearman correlation applied to intra-chromosomal
-contacts up to a given distance (5 Mb in what follows). The second is
-to compare the observed over expected contacts via the Pearson correlation
-up to a given distance range. Compared to the first, this metric gives
-more weight to changes occuring away from the diagonal. The third option
-is to compute a correlation per distance stratum and then obtain a
-stratum-adjusted correlation coefficient (SCC) as defined in
-\cite{yang2017hicrep}.  Finally, \cite{yan2017hicspector} proposed a
-reproducibility score based on the correlation between the eigenvectors of
-the Laplacian matrix associated with the smallest eigenvalues. This
-approach borrows the concepts of spectral clustering
-\citep{von2007tutorial} and amounts to comparing high level features of
-the matrix.
+contacts up to a given distance (5 Mb in what follows). The second option
+is to measure the similarity of observed over expected contacts via the
+Pearson correlation up to a given distance range. Compared to the first,
+this metric gives more weight to changes occuring away from the diagonal.
+The third option is to compute a correlation per distance stratum and then
+obtain a stratum-adjusted correlation coefficient (SCC) as defined in
+\cite{yang2017hicrep}. Finally, the last option, proposed by
+\cite{yan2017hicspector} is to measure the Pearson correlation between the
+last eigenvectors of the Laplacian of the Hi-C matrix. This approach
+borrows the concepts of spectral clustering \citep{von2007tutorial} and
+amounts to comparing high level features of the matrix.
 
 We defined three data sets to measure experimental reproducibility after
 normalization: The first contained the samples from T47D plus two samples
@@ -269,29 +334,57 @@ computed using \texttt{ROCR} package \citep{sing2005rocr}.
 
 \section{Results}
 
-\subsection{Copy number}
+\subsection{Bias correction}
 
-In aneuploid samples, the local coverage of the Hi-C experiment is
-proportional to the number of copies of the region (a duplicated region in
-a diploid genome will have on average a 50\% increase in the number of
-contacts). See Figure \ref{fig:copy_number}B for a typical example.
-Given that our model is based on the total number of contacts, which in
-turn is related to the number of copies, we reasoned that a
-preliminary test would be to check if the corrected number of contacts per
-bin ($\hat{t}_i = \sum_{i}{\hat{x}_{ij}}$) reflects the copy number (as
-measured by an independent technique such as array-based copy-number
-segmentation) better than the alternatives.
+The principle of OneD is to model explicit Hi-C biases onto a single
+variable: the total amount of contacts for each bin of the matrix (see
+section~\ref{sec:model}). The reason for this choice of that the total
+amount of contacts is approximately proportional to the local copy number.
+For instance, a duplicated region in a diploid genome will show on average
+a 50\% increase in the number of contacts.
 
+\begin{figure}[!tp]
+\centerline{\includegraphics[width=.45\textwidth]{img/figure1.pdf}}
+\caption{A. Non linear relationship between the number of restriction
+sites per bin and the total number of contacts per bin in T47D. B. Total
+number of contacts per bin in chromosome 17 of T47D. Raw (brown) and
+corrected (blue) signals are shown. The region that corresponds to the
+first 20 Mbp of the chromosome is present in single copy, explaining that
+the signal is approximately half compared to the rest of the chromosome.
+Also notice that the raw signal is noisier than the corrected one.}
+\label{fig:totals}
+\end{figure}
 
-Figure \ref{fig:totals}B shows the total number of corrected contacts
-along chromosme 17 of a T47D sample. Our correction approach presents a
-more stable and precise estimation of the copy number. Quantitatively
-(Figure \ref{fig:copy_number}), Pearson correlation with independent copy
-number data is high for both T47D and K562 cell lines (averages of 0.87
-and 0.78 respectively), not only compared with raw data (averages of 0.74
-and 0.63 respectively) but also with any of the alternative methods
-(averages ranging 0.39-0.68 and 0.30-0.53 respectively). Similar results
-were obtained using Spearman correlation (Supplementary Figure 2).
+Other biases will also affect the total amount of contacts, though not
+proportionately. Figure~\ref{fig:totals}A shows the relationship
+between the amount of contacts and the availability of retriction enzyme
+sites. Four clouds are visible. Each corresponds to a copy number
+between one and four. In all of them, the relationship flattens as the
+number of restriction sites increases. OneD thus fits a non-linear
+relationship between the total amount of contacts and the predictors of
+bias (by default the G+C content, the number of restriction sites and the
+mappability of the reads).
+
+The biases are estimated for each bin of the genome, and each cell of the
+matrix is corrected using equation (\ref{eq:xhat}). The corrected amount
+of contacts is still proportional to the copy number, but it is now less
+noisy. The correction thus represents a more stable and precise estimation
+of the copy number. Figure \ref{fig:totals}B shows the corrected number of
+contacts along chromosme 17 of a T47D sample. The corrected contacts have
+a narrower range than the raw contacts.
+
+We tested the validity of this approach against the Catalogue Of Somatic
+Mutations In Cancer \citep[COSMIC,][]{forbes2010cosmic}. Figure
+\ref{fig:copy_number} shows the Pearson correlation between the corrected
+number of contacts and the copy number estimation for both T47D and K562
+cell lines. OneD achieves the highest correlations in both cases.
+Actually, it is the only method that increases the agreement with the
+external data. The other methods, including caICB, only make the
+normalized data more divergent than the raw counts.  Similar results were
+obtained using Spearman correlation (Supplementary Figure 2).
+
+Taken together, these results indicate that OneD is an efficient way to
+estimate the local copy number in order to correct for it.
 
 
 \begin{figure}
