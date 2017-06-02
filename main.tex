@@ -34,7 +34,7 @@ remove those biases, but none of them addresses the common issue of
 abnormal karyotypes. Many experiments are performed in cancer cell lines,
 which typically harbor large-scale copy number variations that create
 visible defects on the raw Hi-C maps. The consequences of these widespread
-artifacts on the normalized maps have not been investigated so far.\\
+artifacts on the normalized maps are mostly unexplored.\\
 	\textbf{Results:}
 We observed that current normalization methods perform badly in the
 presence of large-scale copy number variations, obscuring biological
@@ -55,56 +55,56 @@ terms of computing resources for resolutions up to 1 kbp.\\
 
 One of the crown achievements of modern biology was to realize that
 genomes have an underlying three-dimensional structure contributing to
-their activity (CITE). In mammals, this organization plays a key role in
-guiding enhancer-promoter contacts (CITE), in V(D)J recombination (CITE)
-and in X chromosome inactivation (CITE). One of the most significant
-breakthroughs towards this insight was the development of the high
-throughput chromosomal conformation capture (Hi-C) technology, assaying
-chromosomal contacts at a genome-wide scale
-\citep{lieberman2009comprehensive}. Exploring the spatial organization of
-chromatin inside the cell is now common and Hi-C is part of the standard
-molecular biology toolbox (CITE).
+their activity \citep{rowley2016three}. In mammals, this organization
+plays a key role in guiding enhancer-promoter contacts (CITE), in V(D)J
+recombination (CITE) and in X chromosome inactivation (CITE). One of the
+most significant breakthroughs towards this insight was the development of
+the high throughput chromosomal conformation capture technology (Hi-C),
+assaying chromosomal contacts at a genome-wide scale
+\citep{lieberman2009comprehensive}. Nowadays, exploring the spatial
+organization of chromatin has become a priority in many fields and
+Hi-C has become part of the standard molecular biology toolbox (CITE).
 
 Contrary to the precursor technologies 3C, 4C and 5C \citep{de2012decade},
 Hi-C interrogates all possible pairwise interactions between restriction
-fragments. However, this does not guarantee the absence of bias. For
-instance, local genome features such as the G+C content, the availability
-of restriction enzyme sites and the mappability of the sequencing reads
-have been shown to modify the results \citep{yaffe2011probabilistic}. In
-addition, the general experimental biases such as batch effects and
-protocol variation also apply. It is thus important to normalize
-Hi-C data in order to remove biases and artifacts, so that they are not
-confused with biological signal.
+fragments. However, this does not guarantee that the method has no bias.
+On the contrary, local genome features such as the G+C content, the
+availability of restriction enzyme sites and the mappability of the
+sequencing reads have been shown to impact the results
+\citep{yaffe2011probabilistic}. In addition, the general experimental
+biases such as batch effects and protocol variation also apply. It is thus
+important to normalize Hi-C data in order to remove biases and artifacts,
+so that they are not confused with biological signal.
 
 Several methods have been proposed to remove biases in Hi-C experiments
 \citep{schmitt2016genome}. The first strategy is to model biases
 explicitly from a defined set of local genomic features, such as the G+C
 content and the availability of restriction sites. This approach is used
 in the method of \cite{yaffe2011probabilistic} and in Hicnorm by
-\cite{hu2012hicnorm}. The second strategy is to implicitly correct for
+\cite{hu2012hicnorm}. The second strategy is to implicitly correct
 unknown biases by enforcing some regularity on the data. This approach is
 used in the ICE method of \cite{imakaev2012iterative}, where the total
-amount of contacts is imposed to be equal for every bin. ICE is currently
-the most popular method, which is in part due to the speed of the
-available implementation.
+amount of contacts of every bin is imposed to be the same. ICE is
+currently the most popular method, due in part to its speed.
 
-Both strategies are suitable for cells with a normal karyotype, but they
-were not designed for cell types with karyotypic aberrations.
+Neither of these strategies were designed with regard for cell types with
+karyotypic aberrations, most common in cancer cells in culture.  Hi-C is
+very sensitive to aneuploidy, copy number variations and translocations.
+Actually, these aberrations have so much influence on the outcome that the
+artifacts can be used to re-assemble the target genome
+\citep{korbel2013genome}.  So far the only attempt to address the issue
+was the correction method caICB by \cite{wu2016computational}. However,
+caICB applies a chromosome-wide correction, effectively excluding the
+numerous cases of partial aneuploidy and regional copy number variations.
 
-Although there have been some proposals that consider aneuploidy
-\citep{wu2016computational}, to our knowledge, there is a lack of
-methodology dealing with aberrant karyotypes (common in cancer cell lines)
-that present abnormalities more complex than entire chromosome
-duplications.
-
-Here we propose \textit{oned}, an alternative designed to model total
-number of contacts per genomic loci, thus taking into account possible
-chromosomal abnormalities. It explicitly models the contribution of known
-biases via a generalized additive model (GAM). The resulting data present
-better overall reproducibility between replicas and across different
-protocols, specially, but not restricted to, in the presence of aberrant
-karyotypes. Besides, the implementation is fast and scales up to 1 Kbp
-resolution with reasonable computing resources.
+Here we propose \textit{OneD}, a method to correct local chromosomal
+abnormalities. OneD explicitly models the contribution of known biases via
+a generalized additive model. The normalized data is more reproducible
+between replicates and across different protocols. Importantly, OneD is
+also applicable when cells have a normal karyotype, where it performs as
+well as the best normalization methods. Finally, the implementation is
+faster than ICE and scales up to 1 kbp resolution with reasonable
+computing resources.
 
 %\enlargethispage{12pt}
 
