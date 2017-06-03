@@ -65,6 +65,10 @@ textbf{Supplementary information:} Supplementary data are available at
 
 
 
+
+
+%% --------------- Introduction --------------- %%
+
 \section{Introduction}
 
 One of the crown achievements of modern biology was to realize that
@@ -465,60 +469,173 @@ and reduces experimental noise on samples with an aberrant karyotype.
 \begin{figure}
 \centerline{\includegraphics[width=.50\textwidth]{img/correlation_aberrant_figure3.pdf}}
 \caption{
-Results of the comparison between samples with aberrant karyotype.  A and
-B. Average changes compared to raw on the T47D and K562 sets.  The bars
+Results of the comparison between samples with aberrant karyotype. A and
+B. Average changes compared to raw on the T47D and K562 sets. The bars
 represent 95\% confidence intervals centered on the mean difference of the
 correlation score between a given correction method and the raw data. The
 brown dashed line indicates the value of the average score on raw matrices
 (set to 0). C and D. ROC curves on the T47D and K562 sets. The areas under
 the curve are indicated in the bottom right corner. The color code is the
-same as panels A and B. The brown lines correspond to raw matrices.  All
+same as panels A and B. The brown lines correspond to raw matrices. All
 results in this figure are based on Pearson correlations between the
-observed over expected counts.  Our method increases reproducibility of
-similar samples while being able to discriminate different ones.}
+observed over expected counts.}
 \label{fig:aberrant}
 \end{figure}
 
 
+
 \subsection{Normal karyotypes}
 
-Regarding cells with diploid genomes, we confirmed that our bias
-correction strategy also achieves good results in terms separation between
-unrelated and similar samples (Figure \ref{fig:normal} and Supplementary
-Figures 6 and 7), increasing the reproducibility across different
-experimental protocols for primary B and ES mouse cell samples. Again,
-Spearman correlation of contacts revealed as the worst metric.
+Does the performance of OneD with aberrant karyotypes comes at the cost of
+decreased performance with normal karyotypes? To address this question, we
+assembled another data set comprised of normal mouse B cells and embryonic
+stem (ES) cells. The cell types were pooled in almost equal proportions
+(see Table~\ref{tab:samples}) and the same tests as above were performed.
+
+In these conditions, variations of the protocol had a strong effect on the
+impact of the differen normalization methods (Figure~\ref{fig:normal}A).
+For instance, \textit{caib} and \textit{ice} increased the similarity when
+the protocols were different, but decreased it when the protocols were the
+same. The effect was stronger when comparing identical cell types, but the
+same trend appeared when compaing different cell types, indicating that
+these methods may enhance or reduce biological variation, depending on the
+context. Once more, \textit{vanilla} followed the same trend as
+\textit{ice} to a lesser extent. The \textit{lgf} method increased the
+similarity when comparing the same cells with different experimental
+protocols, and had little to no effect in the other cases. This indicates
+that \textit{lgf} is a safe choice in this case.
+
+OneD decreased the similarity between different cell types when using the
+same protocol and increased it between identical cell types when using
+different protocols. In this other two cases, it had little effect. In
+summary, OneD never enhanced the experimental noise and it reduced it in
+one more case than \textit{lgf}.
+
+When interpreting the similarity scores as classification scores, we
+observed that all the methods could identify approximately 50\% of the
+pairs of biologicate pairs, after which their performance diverged
+(Figure~\ref{fig:normal}B). OneD achieved the highest area under the curve
+on this problem, even though it was not always above the others methods at
+every position of the graph.
+
+Using other metrics to compare matrices gave similar results
+(Supplementary Figures 6 and 7). OneD was always among the top scoring
+methods. In these conditions, Spearman correlation of contacts again
+appeared as as the worst comparison metric as it showed a lower
+performance for all the normalization methods.
+
+Taken togetheer, these results indicate that OneD performs as well as the
+best normalization methods even with normal karyotypes.
 
 \begin{figure}
-	\centerline{\includegraphics[width=.50\textwidth]{img/correlation_normal_figure4.pdf}}
-	\caption{
-		Results of the comparison between samples with normal karyotype. A Average difference and 95\% CI between each correction method (Y axis) and the raw data (brown dashed line) for the mm10 sets. B Corresponding ROC curves and AUCs. The introduced strategy does not under perform compared to the alternatives.
-	}\label{fig:normal}
+\centerline{\includegraphics[width=.50\textwidth]{img/correlation_normal_figure4.pdf}}
+\caption{
+Results of the comparison between samples with normal karyotype.  A.
+Average changes compared to raw on the mouse data set. The bars are as in
+B. ROC curves on the mouse data set. The legend is as in
+Figure~\ref{fig:aberrant}.}
+\label{fig:normal}
 \end{figure}
 
-\subsection{Computing resources}
 
-One of the main reasons for the broad usage of the iterative correction \citep{imakaev2012iterative} is the easy and fast implementation, moreover compared to existing explicit methods \citep{servant2012hitc}. Our proposal uses only the total number of contacts per bin instead the full matrix for the model estimation. Thus, it achieves similar computing times that the fastest approaches (Figure \ref{fig:times} A). Yet it scales with increasing resolutions (decreasing bin size) (Figure \ref{fig:times} B).
+
+\subsection{Speed}
+
+Finally, we compared the computational speed of the different
+normalization methods. One of the main reasons for the broad acceptance of
+\textit{vanilla} and \textit{ICE} as standards is the speed of the
+available implementation \citep{imakaev2012iterative}. This is even 
+more significant that current explicit methods \citep{servant2012hitc} are
+much slower in comparison.
+
+Unlike those, OneD corrects a single variable instead of the whole matrix.
+It uses only the total number of contacts per bin and thus estimates the
+model parameters much faster than previous explicit methods.
+Figure\ref{fig:times} shows the running times of the different methods on
+the samples described in Table~\ref{tab:samples}. The fastest method is
+\textit{vanilla} and the slowest is \textit{lgf}, with an over 100-fold
+span between the two.
+
+OneD is the second fastest method and it always ran in less than 1 min in
+the conditions of the benchmark. Interestingly, the running time of OneD
+is much more homogeneous than that of the other methods. The reason is
+that the size of the regression problem to be solved by the \texttt{mgcv}
+package is always the same at fixed reslution.
+
+Taken together, these results show that OneD is very competitive in terms
+of computational speed compared to existing methods.
 
 \begin{figure}
-	\centerline{\includegraphics[width=.35\textwidth]{img/times_sina_figure5.pdf}}
-	\caption{
-		Computing time (Y axis, log scale) of all the bias correction methods used. Each dot corresponds to one sample. The only method faster than ours under performs in all sample comparisons.
-	}\label{fig:times}
+\centerline{\includegraphics[width=.35\textwidth]{img/times_sina_figure5.pdf}}
+\caption{
+Computing time of the bias correction methods. Each dot corresponds to
+one sample. The only method faster than ours under performs in all sample
+comparisons. Note the logarithmic scale on the y-axis.}
+\label{fig:times}
 \end{figure}
+
+
+
+
+
+%% --------------- Discussion --------------- %%
 
 \section{Discussion and Conclusions}
+
+Here we introduced OneD, a fast computational method to normalize Hi-C
+matrices. OneD was developed ground up to address the need to normalize
+data collected on samples with aberrant karyotypes, but it applies
+seemlessly to the case of normal karyotypes. We showed that OneD performs
+significantly better than other methods when the cells present karyotypic
+aberrations (Figure~\ref{fig:aberrant}), and that it performs equall well
+as the best methods otherwise (Figure~\ref{fig:normal}). We also showed
+that OneD is on average faster than \textit{ice}, which makes it very
+competitive from the point of view of computational speed.
+
+The originality of OneD lies in that it projects all the biases onto a
+single variable: the total amount of contact per bin. This allows greater
+running speed, while preserving a good performance on samples with
+karyotypic aberrations. One of the reasons that OneD is better able to
+highlight the biological distinctions between samples is that it does not
+correct the copy number but enhances it (Figures~\ref{fig:totals} and
+\ref{fig:copy_number}).
+
+This raises the question whether variations of the copy number constitute
+a biological signal or an artifact. Note that in the presence of
+translocations, deletions and large scale rearrangements, correcting the
+copy number is equally faulty as not correcting it. Indeed, in this case
+the reference genome on which the matrix is drawn is incorrect and
+changing the values of the pixels cannot account for this information.
+
+Depending on the intention of the user, the effect of the copy number
+should either be kept or removed. This is why OneD leaves does not perform
+the correction by default, but allows the user to obtain a
+diploid-equivalent Hi-C map computed from a hidden Marko model. The
+resulting matrices have a near constant amount of contacts per bin, but
+the artifacts caused by the misfit between the genome of the sample and
+the reference genome are still present (for instance, the artifacts caused
+by large scale inversions are not changed in any way).
+
+Overall, OneD constitutes a safe choice to normalize Hi-C matrices. If the
+karyotype of the sample is aberrant, it enhances the biological variation.
+If not, it performs at least equally well as other methods with an
+advantage in terms of computational speed.
+
 
 
 \section*{Acknowledgements}
 
-We would like to thank all members of the four labs involved in the 4DGenome Synergy project for the fruitful discussions during project meetings. EV wants to acknowledge specially the members of Miguel Beato's lab for their insights during lab meetings.
+We would like to thank the members of the 4DGenome Synergy project for the
+fruitful discussions during project meetings. EV wants to acknowledge
+the members of Miguel Beato's laboratory for their insights during lab
+meetings.
 
 \section*{Funding}
 
 This work was supported by the Spanish Ministry of Economy and
 Competitiveness, ‘Centro de Excelencia Severo Ochoa 2013-2017’,
-SEV-2012-0208, ERC Synergy Grant 609989 (GF) and...
+SEV-2012-0208, ERC Synergy Grant 609989 and...
+
 \vspace*{-12pt}
 
 \bibliographystyle{natbib}
