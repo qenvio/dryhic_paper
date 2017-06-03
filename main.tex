@@ -16,7 +16,7 @@ abnormal karyotypes}
 \author[Vidal \textit{et~al}.]{Enrique Vidal\,$^{\text{\sfb 1,2}*}$,
 François le Dily\,$^{\text{\sfb 1,2}}$, Javier Quilez\,$^{\text{\sfb
 1,2}}$, Ralph Stadhouders\,$^{\text{\sfb 1,2}}$, Yasmina
-Cuartero\,$^{\text{\sfb 1,2}}$,Miguel Beato\,$^{\text{\sfb 1,2}}$ and
+Cuartero\,$^{\text{\sfb 1,2}}$, Miguel Beato\,$^{\text{\sfb 1,2}}$ and
 Guillaume Fillion\,$^{\text{\sfb 1,2}}$}
 
 \address{$^{\text{\sf 1}}$Gene Regulation, Stem Cells and Cancer Program,
@@ -206,7 +206,7 @@ lines obtained from COSMIC database \citep{forbes2010cosmic}.
 {\begin{tabular}{ccccccc}
   \toprule
   \textbf{Sample ID} & \textbf{Cell type} & \textbf{Application} &
-  \textbf{RE} & \textbf{Sequencing core} & \textbf{Set} &
+  \textbf{RE} & \textbf{Sequencing core} & \textbf{Set(s)} &
   \textbf{Source} \\
   \midrule
 dc3a1e069\_51720e9cf & T47D & \textit{in situ} Hi-C &
@@ -286,6 +286,7 @@ values (not shown).
 
 
 \subsection{Comparison of Hi-C matrices}
+\label{sec:comp}
 
 There is no universally accepted standard to compare Hi-C matrices. The
 simplest metric is the Spearman correlation applied to intra-chromosomal
@@ -310,9 +311,8 @@ we first computed all pairwise combinations between experiments and then
 classified the comparisons according to the characteristics of each pair
 (cell type, protocol, batch, and treatment).
 
-We benchmark \textbf{\textit{oned}}, against methods
-\textbf{\textit{vanilla}}, \textbf{\textit{ice}}
-\citep{imakaev2012iterative}, \textbf{\textit{caib}}
+We benchmarked \textbf{\textit{oned}}, against \textbf{\textit{vanilla}},
+\textbf{\textit{ice}} \citep{imakaev2012iterative}, \textbf{\textit{caib}}
 \citep{wu2016computational} and \textbf{\textit{lgf}}
 \citep{hu2012hicnorm, servant2012hitc}. The first three methods correct
 biases implicitly, whereas the fourth method does it explicitly.
@@ -334,14 +334,15 @@ computed using \texttt{ROCR} package \citep{sing2005rocr}.
 
 \section{Results}
 
-\subsection{Bias correction}
+\subsection{Correction method}
 
-The principle of OneD is to model explicit Hi-C biases onto a single
+The principle of OneD is to explicitly model Hi-C biases on a single
 variable: the total amount of contacts for each bin of the matrix (see
-section~\ref{sec:model}). The reason for this choice of that the total
-amount of contacts is approximately proportional to the local copy number.
-For instance, a duplicated region in a diploid genome will show on average
-a 50\% increase in the number of contacts.
+\ref{sec:model}). The reason for this choice of that the total amount of
+contacts is approximately proportional to the local copy number. For
+instance, a duplicated region in a diploid genome will show on average a
+50\% increase in the number of contacts. Discontinuities of the amount of
+contacts thus correspond to changes of the copy number.
 
 \begin{figure}[!tp]
 \centerline{\includegraphics[width=.45\textwidth]{img/figure1.pdf}}
@@ -349,42 +350,43 @@ a 50\% increase in the number of contacts.
 sites per bin and the total number of contacts per bin in T47D. B. Total
 number of contacts per bin in chromosome 17 of T47D. Raw (brown) and
 corrected (blue) signals are shown. The region that corresponds to the
-first 20 Mbp of the chromosome is present in single copy, explaining that
-the signal is approximately half compared to the rest of the chromosome.
-Also notice that the raw signal is noisier than the corrected one.}
+first 20 Mbp of the chromosome is present in single copy in this clone of
+T47D, explaining that the signal is approximately half compared to the
+rest of the chromosome.  Also notice that the raw signal is noisier than
+the corrected one.}
 \label{fig:totals}
 \end{figure}
 
-Other biases will also affect the total amount of contacts, though not
-proportionately. Figure~\ref{fig:totals}A shows the relationship
-between the amount of contacts and the availability of retriction enzyme
-sites. Four clouds are visible. Each corresponds to a copy number
-between one and four. In all of them, the relationship flattens as the
-number of restriction sites increases. OneD thus fits a non-linear
-relationship between the total amount of contacts and the predictors of
+Other biases affect the total amount of contacts in a countinuous but not
+necessarily linear way. Figure~\ref{fig:totals}A shows the relationship
+between the amount of contacts and the number of retriction enzyme sites
+in T47D, a breast cancer cell line with aberrant and unstable karyotype.
+Four clouds are visible. Each corresponds to a copy number between one and
+four. In all of them, the relationship flattens as the number of
+restriction sites increases. For this reason, OneD fits a non-linear
+relationship between the total amount of contacts and the known sources of
 bias (by default the G+C content, the number of restriction sites and the
 mappability of the reads).
 
-The biases are estimated for each bin of the genome, and each cell of the
-matrix is corrected using equation (\ref{eq:xhat}). The corrected amount
-of contacts is still proportional to the copy number, but it is now less
-noisy. The correction thus represents a more stable and precise estimation
-of the copy number. Figure \ref{fig:totals}B shows the corrected number of
-contacts along chromosme 17 of a T47D sample. The corrected contacts have
-a narrower range than the raw contacts.
+The biases are estimated genome-wide and each cell of the matrix is then
+corrected using equation (\ref{eq:xhat}). Note that the corrected amount
+of contacts is still proportional to the copy number. The correction thus
+represents a more stable and precise estimation of the copy number.
+Figure~\ref{fig:totals}B shows the corrected number of contacts along
+chromosme 17 of a T47D. OneD greatly reduces the wiggling of the total
+amount of contacts.
 
 We tested the validity of this approach against the Catalogue Of Somatic
 Mutations In Cancer \citep[COSMIC,][]{forbes2010cosmic}. Figure
 \ref{fig:copy_number} shows the Pearson correlation between the corrected
 number of contacts and the copy number estimation for both T47D and K562
-cell lines. OneD achieves the highest correlations in both cases.
-Actually, it is the only method that increases the agreement with the
-external data. The other methods, including caICB, only make the
-normalized data more divergent than the raw counts.  Similar results were
-obtained using Spearman correlation (Supplementary Figure 2).
-
-Taken together, these results indicate that OneD is an efficient way to
-estimate the local copy number in order to correct for it.
+cell lines. Similar results were obtained using Spearman correlation
+(Supplementary Figure 2). All the methods except OneD decrease the
+agreement with the copy number because they partially correct this bias.
+In contrast, OneD enhances the conformity of the signal with the copy
+number. Not correcting for variable copy number at that stage may seem to
+defeat the purpose of a normalization method, but we will see below how
+this can lead to better performance.
 
 
 \begin{figure}
@@ -401,52 +403,84 @@ alternatives.  }\label{fig:copy_number}
 
 
 
-\subsection{Samples with aberrant karyotypes}
+\subsection{Aberrant karyotypes}
 
-Focusing on the Pearson correlation of observed over expected counts,
-methods based on the iterative correction (mainly \textit{ice} and
-\textit{caib} but also \textit{vanilla}) present the undesirable feature
-of higher correlations between unrelated samples than using raw data (top
-left panels of Figures \ref{fig:aberrant}A and \ref{fig:aberrant}C,
-Supplementary Figure 3). Among the comparisons of cells with the same
-type, \textit{oned} is the only method outperforming uncorrected data when
-comparing experiments using different protocols (top right panel of Figure
-\ref{fig:aberrant}A) and it is among the top performant when comparing
-experiments using the same protocol (rest of the panels in Figures
-\ref{fig:aberrant}A and \ref{fig:aberrant}C). Consequently, our proposal
-is the one that better discriminates unrelated samples form similar ones
-(as it can be seen in the ROC curves and AUCs of Figures
-\ref{fig:aberrant}B and D).
+We first benchmarked the performance of OneD on biological samples with an
+aberrant karyotype. A good normalization method should increase the
+similarity between biological replicates by reducing irrelevant
+experimental variation, such as batch effects, laboratory of origin and
+protocol variations. Similarly, a good normalization should decrease the
+similarity between samples that received a different treatment in order to
+enhance the biological differences.
 
-**
-In an attempt to further summarize the results, we reasoned that the
-correlation between unrelated samples (\textit{i.e} different cell types)
-should be lower than the correlation between related samples (\textit{i.e}
-same cell types), so we could re-interpret each correlation metric as a
-classifier score.
-**
+We assembled two Hi-C data sets obtained from T47D and K562, two cancer
+cell lines with aberrant karyotypes. In each set we spiked two
+samples from the other cell line (see Table~\ref{tab:samples}) in order to
+introduce biological variability. We measured the Pearson correlation of
+observed over expected counts to compare matrices before and after
+normalization by different methods (see \ref{sec:comp}). This gave an
+indication of the impact of a given normalization method. The results are
+summarized in Figure~\ref{fig:aberrant}.
 
-Complementary analysis using other metrics (Supplementary Figures 3, 4 and
-5) yielded similar results. Notably, Spearman correlation of contacts
-presents the worst performance for all scenarios and seems to be a poor
-choice as a metric to compare HiC matrices.
+The \textit{caib} and \textit{ice} methods increased the similarity
+between the different cell lines (Figures~\ref{fig:aberrant}A and
+\ref{fig:aberrant}C and Supplementary Figure~3). This is an undesirable
+effect, as it obscures the biological variability. In the same vein, these
+methods decreased the similarity between samples that received the same
+treatment (Figures~\ref{fig:aberrant}A), suggesting that the normalization
+process is detrimental to the biological signal in these two cases. The
+method \textit{vanilla} followed the same trend but to a lesser extent,
+consistent with the fact that it consists of a single \textit{ice}
+iteration.
+
+OneD was the only method to increase the similarity between experiments
+carried out on the same material but with a different protocol
+(Figure~\ref{fig:aberrant}A). In these conditions, \textit{lgf} was
+decreasing the similarity. Taken together, the results show that OneD
+enhanced biological variation while decreasing experimental variation. 
+
+An important application of normalization methods in experimental setups
+is to identify outliers. We thus investigated the capacity of the
+different methods to help identify the samples from the other cell type
+spiked in the data set. We interpreted the pairwise comparison scores as
+classifier scores and summarized the results with a ROC curve
+(Figures~\ref{fig:aberrant}B and D).
+
+All the methods, including the absence of normalizaton, succeeded in
+recognizing the T47D outliers among the K562 samples, but recognizing the
+K562 outliers among the T47D samples proved more challenging. OneD
+increased the discrimination power compared to the raw matrices, but all
+the other methods decreased it. Actually, they performed little better
+than random on this task.
+
+Using the other metrics described in \ref{sec:comp} yielded similar
+results (Supplementary Figures 3, 4 and 5). Note that Spearman correlation
+of contacts presented the worst performance for all scenarios, and it thus
+seems to be a poor choice as a metric to compare HiC matrices.
+
+Taken together, these results show that OneD enhances biological variation
+and reduces experimental noise on samples with an aberrant karyotype.
 
 
 \begin{figure}
-	\centerline{\includegraphics[width=.50\textwidth]{img/correlation_aberrant_figure3.pdf}}
-	\caption{
-    Results of the comparison between samples with aberrant karyotype.
-Left panels: Average difference and 95\% CI between each correction method
-(Y axis) and the raw data (brown dashed line) for T47D (A) and K562 (C)
-sets. Right panels: Corresponding ROC curves and AUCs for T47D (B) and
-K562 (D) sets. All results in this figure are based on Pearson
-correlations between the observed over expected counts. Our method
-increases reproducibility of similar samples while being able to
-discriminate different ones.  }\label{fig:aberrant}
+\centerline{\includegraphics[width=.50\textwidth]{img/correlation_aberrant_figure3.pdf}}
+\caption{
+Results of the comparison between samples with aberrant karyotype.  A and
+B. Average changes compared to raw on the T47D and K562 sets.  The bars
+represent 95\% confidence intervals centered on the mean difference of the
+correlation score between a given correction method and the raw data. The
+brown dashed line indicates the value of the average score on raw matrices
+(set to 0). C and D. ROC curves on the T47D and K562 sets. The areas under
+the curve are indicated in the bottom right corner. The color code is the
+same as panels A and B. The brown lines correspond to raw matrices.  All
+results in this figure are based on Pearson correlations between the
+observed over expected counts.  Our method increases reproducibility of
+similar samples while being able to discriminate different ones.}
+\label{fig:aberrant}
 \end{figure}
 
 
-\subsection{Samples with normal karyotypes}
+\subsection{Normal karyotypes}
 
 Regarding cells with diploid genomes, we confirmed that our bias
 correction strategy also achieves good results in terms separation between
