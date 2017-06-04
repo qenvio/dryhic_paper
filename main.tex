@@ -184,6 +184,28 @@ used to fit the model are the local G+C content, read mappability and the
 content and number of restriction sites. The model and the implementation
 can be easily extended with any user-provided genomic feature.
 
+\subsection{Copy number correction}
+
+Briefly, a hidden Markov model with emissions distributed as a Student's
+$t$ variable is fitted on the corrected total amount of contacts per bin.
+The model consists of 7 states that correspond to 1, 2, 3, 4, 5, 6 and 8
+copies of the target, for a total of 3 emission parameters (a single
+scaling parameter, a single standard deviation and a single degree of
+freedom for all the states) and 21 transition parameters. 
+
+The model is fitted with the Baum-Welch algorithm \citep{baum1966} until
+convergence, following the detail given by \cite{filion2010systematic}.
+The Viterbi path is then computed and corresponds to the inferred copy
+number of each bin ($c_i$).
+
+A correction equal to the square root of the copy number is then applied
+to the whole matrix. More specifically, each cell is updated to
+
+
+\begin{equation*}
+\hat{x}_{ij}^* = \frac{\hat{x}_{ij}}{\sqrt{c_ic_j}}.
+\end{equation*}
+
 \subsection{Data sources}
 
 To test the correction of biases, we gathered a set of
@@ -328,6 +350,7 @@ function of the \texttt{lme4} R package \citep{bates2015lme4}, where the
 fixed effect was the normalization method and the random effect was the
 chromosome. Receiver operating characteristic (ROC) curves were then
 computed using \texttt{ROCR} package \citep{sing2005rocr}.
+
 
 \end{methods}
 
@@ -544,23 +567,26 @@ Figure~\ref{fig:aberrant}.}
 Finally, we compared the computational speed of the different
 normalization methods. One of the main reasons for the broad acceptance of
 \textit{vanilla} and \textit{ICE} as standards is the speed of the
-available implementation \citep{imakaev2012iterative}. This is even 
-more significant that current explicit methods \citep{servant2012hitc} are
-much slower in comparison.
+available implementation \citep{imakaev2012iterative}. This is even more
+significant that current explicit methods \citep{servant2012hitc} are much
+slower in comparison.
 
-Unlike those, OneD corrects a single variable instead of the whole matrix.
-It uses only the total number of contacts per bin and thus estimates the
-model parameters much faster than previous explicit methods.
-Figure\ref{fig:times} shows the running times of the different methods on
-the samples described in Table~\ref{tab:samples}. The fastest method is
+Unlike the other methods, OneD corrects a single variable instead of the
+whole matrix. It uses only the total number of contacts per bin and thus
+estimates the model parameters much faster than previous explicit methods.
+We measured the running time of the different tools on a 3.3~GHz machine
+with 62 GB~RAM, always using the default paramters. Figure\ref{fig:times}
+shows the running times of the different methods on the samples described
+in Table~\ref{tab:samples} at 100 kbp resolution. The fastest method is
 \textit{vanilla} and the slowest is \textit{lgf}, with an over 100-fold
 span between the two.
 
 OneD is the second fastest method and it always ran in less than 1 min in
-the conditions of the benchmark. Interestingly, the running time of OneD
-is much more homogeneous than that of the other methods. The reason is
-that the size of the regression problem to be solved by the \texttt{mgcv}
-package is always the same at fixed reslution.
+the conditions of the benchmark. In all cases, the memory footprint was
+less than 300 MB. Interestingly, the running time of OneD is much more
+homogeneous than that of the other methods. The reason is that the size of
+the regression problem to be solved by the \texttt{mgcv} package is always
+the same at fixed reslution.
 
 Taken together, these results show that OneD is very competitive in terms
 of computational speed compared to existing methods.
