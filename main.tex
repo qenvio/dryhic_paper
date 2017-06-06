@@ -202,9 +202,10 @@ A correction equal to the square root of the copy number is then applied
 to the whole matrix. More specifically, each cell is updated to
 
 
-\begin{equation*}
+\begin{equation}
+\label{eq:cnvnorm}
 \hat{x}_{ij}^* = \frac{\hat{x}_{ij}}{\sqrt{c_ic_j}}
-\end{equation*}
+\end{equation}
 
 \subsection{Data sources}
 
@@ -562,6 +563,65 @@ Figure~\ref{fig:aberrant}.}
 
 
 
+\subsection{Copy number correction}
+
+Removing the explicit experimental biases enhancers the importance of the
+copy number in the signal (Figure~\ref{fig:copy_number}). The copy number
+is not an experimental bias, but it may be considered an additional source
+of bias to be remove. For this reason, OneD also allows the user to
+correct the copy number and output a matrix equivalent to that of a normal
+karyotype.
+
+For this application, OneD segments the linear signal of the total amount
+of contacts into piecewise homoegenous regions. This is carried out by a
+hidden Markov model whereby the averages of the states are constrained to
+be within a discrete factor of each other. This allows the model to detect
+regions with a number of copies equal to 1, 2, 3 \textit{etc}. With the
+inferred number of copies at hand, OneD then normalizes each cell of the
+matrix with equation (\ref{eq:cnvnorm}).
+
+Figure~\ref{fig:cnv_correction} shows the effect of this process on the
+final Hi-C matrix. Panel A indicates that different normalization methods
+will either enhancer or diminish the signal in regions with higher copy
+number. In this example, ICE overcompensates the original bias at the
+center of the picture and fades the signal alost entirely. Concomitantly,
+the signal at the bottom left of the matrix is enhanced to make appear a
+structure not visible in the raw data. On the contrary, \textit{lgf}
+strengthen the central region and the diagonal. OneD reduces the level of
+the central portion by a factor 2 approximately, but does otherwise not
+distort the main features of the region. This example shows that the copy
+number does not have a simple and predictable effect on the final matrix.
+Not taking it into account may open the door to some normalization
+artifacts. The result provided by OneD is not necessarily the right one
+(see Discussion), but at least it does not compensate copy number
+variations as a side effect of some other criteria.
+
+\begin{figure}
+\centerline{\includegraphics[width=.5\textwidth]
+  {img/figure_cnv_correction.pdf}}
+\caption{
+Copy number correction A. Detail of a Hi-C matrix normalized with
+different methods. The central portion has an increased copy number, which
+affects normalization. ICE fades it away, lgf enhances it and OneD reduces
+the signal by about half. B. Profile of the total amount of contacts after
+copy numer correction. The plot shows the same region as
+Figure\ref{fig:totals}B. The brown line represents the raw signal, the
+blue line represents the signal after bias correction, the black line
+represents the signal after bias and copy number correction.}
+\label{fig:cnv_correction}
+\end{figure}
+
+Figure~\ref{fig:cnv_correction}B shows the total sum of contacts after
+correction for the copy number with OneD. The signal that originally
+showed a sharp transition corresponding to the gain or loss of a large
+region, now shows a flat trend throughout the chromosome.
+
+In summary, OneD can be used to obtain a normalized matrix equivalent to
+that of a normal karyotype in cases that the effect of the copy number
+must be removed from the signal.
+
+
+
 \subsection{Speed}
 
 Finally, we compared the computational speed of the different
@@ -594,7 +654,8 @@ Taken together, these results show that OneD is very competitive in terms
 of computational speed compared to existing methods.
 
 \begin{figure}
-\centerline{\includegraphics[width=.5\textwidth]{img/times_figure5.pdf}}
+\centerline{\includegraphics[width=.5\textwidth]
+  {img/figure_benchmark_time.pdf}}
 \caption{
 Computing time of the bias correction methods. A. Total time for the entire genome at 100 kbp resolution. Each dot corresponds to
 one sample. The only method faster than ours under performs in all sample
