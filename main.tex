@@ -234,9 +234,14 @@ HindIII, MboI and NcoI).
 
 We also used array-based copy-number segmentation of the two cell
 lines obtained from COSMIC database \citep{forbes2010cosmic}.
- 
+
 \begin{table*}
-\processtable{Hi-C data sets used in this study. Quique you're here.
+\processtable{Hi-C data sets used in this study. Sample ID: Unique sample
+identifier. Cell type: Type of cell. Application: Hi-C protocol. RE: Restriction
+enzyme used for digestion. Sequencing core: Laboratory performing the experiment
+(CRG: Centre for Genomic Regulation; UMass: University of Massachusetts; Baylor: Baylor College of Medicine;
+UCSD: University of California San Diego; LICR: Ludwig Institue for Cancer Research). Set(s): Comparison set. Source: SRA, GEO
+or ENCODE raw data identifier.
 \label{tab:samples}}
 {\begin{tabular}{ccccccc}
   \toprule
@@ -283,15 +288,15 @@ b7fa2d8db\_73f11d923 & B-cell  & \textit{in situ} Hi-C &
 fc3e8b36a\_4bf044f18 & ES-cell & \textit{in situ} Hi-C &
   DpnII & CRG & mm10 & GSE96611 \\
 GSM987817 & B-cell  & dilution Hi-C &
-  HindIII & UCSC & mm10 & SRR543428-SRR543431 \\
+  HindIII & UCSD & mm10 & SRR543428-SRR543431 \\
 GSM987818 & B-cell  & dilution Hi-C &
-  HindIII & UCSC & mm10 & SRR543432-SRR543442 \\
+  HindIII & UCSD & mm10 & SRR543432-SRR543442 \\
 GSM862720 & ES-cell & dilution Hi-C &
-  HindIII & UCSC & mm10 & SRR443883-SRR443885 \\
+  HindIII & LICR & mm10 & SRR443883-SRR443885 \\
 GSM862721 & ES-cell & dilution Hi-C &
-  HindIII & UCSC & mm10 & SRR400251-SRR400256 \\
+  HindIII & LICR & mm10 & SRR400251-SRR400256 \\
 GSM862722 & ES-cell & dilution Hi-C &
-  NcoI    & UCSC & mm10 & SRR443886-SRR443888 \\
+  NcoI    & LICR & mm10 & SRR443886-SRR443888 \\
   \botrule
 \end{tabular}}{}
 \end{table*}
@@ -415,7 +420,7 @@ methods correct biases implicitly, whereas the fourth method does it
 explicitly. Figure \ref{fig:copy_number} shows the Pearson correlation
 between the corrected number of contacts and the copy number estimation
 for both T47D and K562 cell lines. Similar results were obtained using
-Spearman correlation (Supplementary Figure 2). All the methods except
+Spearman correlation (Supplementary Figure 1). All the methods except
 \textit{OneD} decrease the agreement between the signal and the copy
 number because they partially correct the discrepancy. In contrast,
 \textit{OneD} enhances the conformity of the signal with the copy number.
@@ -457,7 +462,7 @@ summarized in Figure~\ref{fig:aberrant}.
 
 The \textit{caICB} and \textit{ICE} methods increased the similarity
 between the different cell lines (Figures~\ref{fig:aberrant}A and
-\ref{fig:aberrant}B and Supplementary Figure~3). This is an undesirable
+\ref{fig:aberrant}B and Supplementary Figures~2 and 3). This is an undesirable
 effect, as it obscures the biological variability. In the same vein, these
 methods decreased the similarity between samples that received the same
 treatment (Figure~\ref{fig:aberrant}A), suggesting that the normalization
@@ -483,7 +488,7 @@ matrices, but all the other methods decreased it. Actually, they performed
 little better than random on this task.
 
 Using the other metrics described in \ref{sec:comp} yielded similar
-results (Supplementary Figures 3, 4 and 5). Note that Spearman correlation
+results (Supplementary Figures 5, 6 and 7). Note that Spearman correlation
 of contacts presented the worst performance for all scenarios, and it thus
 seems to be a poor choice as a metric to compare HiC matrices.
 
@@ -546,7 +551,7 @@ the curve on this problem, but with a small margin over the other methods
 except \textit{vanilla}.
 
 Using other metrics to compare matrices gave similar results
-(Supplementary Figures 6 and 7). \textit{OneD} was always among the top
+(Supplementary Figures 7 and 8). \textit{OneD} was always among the top
 scoring methods. In these conditions, Spearman correlation of contacts
 again appeared as the worst comparison metric because it showed a lower
 performance for all the normalization methods.
