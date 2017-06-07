@@ -16,8 +16,9 @@ abnormal karyotypes}
 \author[Vidal \textit{et~al}.]{Enrique Vidal\,$^{\text{\sfb 1,2}*}$,
 François le Dily\,$^{\text{\sfb 1,2}}$, Javier Quilez\,$^{\text{\sfb
 1,2}}$, Ralph Stadhouders\,$^{\text{\sfb 1,2}}$, Yasmina
-Cuartero\,$^{\text{\sfb 1,2}}$, Thomas Graf\,$^{\text{\sfb 1,2}}$, Miguel
-Beato\,$^{\text{\sfb 1,2}}$ and Guillaume J. Filion\,$^{\text{\sfb 1,2}}$}
+Cuartero\,$^{\text{\sfb 1,2}}$, Thomas Graf\,$^{\text{\sfb 1,2}}$, Marc A.
+Mart\'i Renom\,$^{\text{\sfb 1,2}}$, Miguel Beato\,$^{\text{\sfb 1,2}}$
+and Guillaume J. Filion\,$^{\text{\sfb 1,2}}$}
 
 \address{$^{\text{\sf 1}}$Gene Regulation, Stem Cells and Cancer Program,
 Centre for Genomic Regulation (CRG), The Barcelona Institute of Science
@@ -375,14 +376,13 @@ amount of contacts thus correspond to changes of the copy number.
 
 \begin{figure}
 \centerline{\includegraphics[width=.45\textwidth]{img/figure1.pdf}}
-\caption{A. Non linear relationship between the number of restriction
-sites per bin and the total number of contacts per bin in T47D. B. Total
-number of contacts per bin in chromosome 17 of T47D. Raw (brown) and
-corrected (blue) signals are shown. The region that corresponds to the
-first 20 Mbp of the chromosome is present in single copy in this clone of
-T47D, explaining that the signal is approximately half compared to the
-rest of the chromosome.  Also notice that the raw signal is noisier than
-the corrected one.}
+\caption{Total amount of contacts per bin. A. Non linear relationship
+between the number of restriction sites and the total number of
+contacts per bin in T47D. B. Total number of contacts per bin on
+chromosome 17 of T47D. Raw (brown) and corrected (blue) signals are shown.
+The long arm of chromosome 17 (the region corresponding to 20-40 Mbp) is
+present in four coipes, explaining that the signal is about twice higher
+than for the short arm.}
 \label{fig:totals}
 \end{figure}
 
@@ -427,12 +427,9 @@ performance.
 \begin{figure}[b]
 	\centerline{\includegraphics[width=.45\textwidth]
 {img/copy_number_figure2.pdf}}
-	\caption{
-Pearson correlation between total number of contacts per bin and
-independent copy number estimation (COSMIC) for each of the methods
-compared. Left panel T47D breast cancer cell line, right panel K562
-leukemia cell line. The new proposal (in blue) outperforms the rest of
-alternatives.}
+\caption{Pearson correlation between the total number of contacts per bin
+and an independent estimation of the copy number (COSMIC). Left panel
+T47D breast cancer cell line, right panel K562 leukemia cell line.}
 \label{fig:copy_number}
 \end{figure}
 
@@ -499,16 +496,15 @@ on samples with an aberrant karyotype.
 \centerline{\includegraphics[width=.50\textwidth]
   {img/correlation_aberrant_figure3.pdf}}
 \caption{
-Results of the comparison between samples with aberrant karyotype. A and
-B. Average changes compared to raw on the T47D and K562 sets. The bars
-represent 95\% confidence intervals centered on the mean difference of the
-correlation score between a given correction method and the raw data. The
-brown dashed line indicates the value of the average score on raw matrices
-(set to 0). C and D. ROC curves on the T47D and K562 sets. The areas under
-the curve are indicated in the bottom right corner. The color code is the
-same as panels A and B. The brown lines correspond to raw matrices. All
-results in this figure are based on Pearson correlations between the
-observed over expected counts.}
+Results of the comparison between samples with aberrant karyotypes. A and
+B. Average changes compared to the raw data on the T47D and K562 sets. The
+bars represent 95\% confidence intervals centered on the mean difference
+of the correlation score between a given correction method and the raw
+data. C and D. ROC curves on the T47D and K562 sets.  The areas under the
+curve are indicated in the bottom right corner. The color code is the same
+as panels A and B. The brown lines correspond to raw matrices. All results
+in this figure are based on Pearson correlations between the observed over
+expected counts.}
 \label{fig:aberrant}
 \end{figure}
 
@@ -562,9 +558,9 @@ as the best normalization methods, even with normal karyotypes.
 \centerline{\includegraphics[width=.50\textwidth]
   {img/correlation_normal_figure4.pdf}}
 \caption{
-Results of the comparison between samples with normal karyotype.  A.
-Average changes compared to raw on the mouse data set. The bars are as in
-B. ROC curves on the mouse data set. The legend is as in
+Results of the comparison between samples with normal karyotypes. A.
+Average changes compared to the raw data on the mouse data set.  B. ROC
+curves on the mouse data set. The legend is as in
 Figure~\ref{fig:aberrant}.}
 \label{fig:normal}
 \end{figure}
@@ -686,7 +682,7 @@ resolutions. Note the logarithmic scale on the y-axis on both panels.}
 
 Here we introduced \textit{OneD}, a fast computational method to normalize
 Hi-C matrices. \textit{OneD} was developed ground up to address the need
-to normalize data collected on samples with aberrant karyotypes, but it
+to normalize data from biological samples with aberrant karyotypes, but it
 applies seamlessly to the case of normal karyotypes. We showed that
 \textit{OneD} performs significantly better than other methods when the
 cells present karyotypic aberrations (Figure~\ref{fig:aberrant}), and that
@@ -700,31 +696,34 @@ onto a single variable: the total amount of contacts per bin. This allows
 greater running speed, while preserving a good performance on samples with
 karyotypic aberrations. One of the reasons that \textit{OneD} is better
 able to highlight the biological distinctions between samples is that it
-does only corrects the copy number if specifically requested by the user.
-Copy number variations treated as implicit biases have an
-opaque effects on the 
+only corrects the copy number if specifically requested by the user. The
+impact of copy number variations on normalization is rather opaque,
+especially if they are treated as implicit biases
+(Figure~\ref{fig:cnv_correction}). Treating them as explicit biases with
+optional removal seems to be an overall safer strategy.
 
 This raises the question whether variations of the copy number constitute
-a biological signal or an artifact. Note that in the presence of
-translocations, deletions and large scale rearrangements, correcting the
-copy number is equally faulty as not correcting it. Indeed, in this case
-the reference genome on which the matrix is drawn is incorrect and
-changing the values of the pixels cannot account for this information.
+a biological signal or an artifact. If the biological sample contains
+karytoypic aberrations, then its genome is grossly different the reference
+so there can be no correct way to normalize the Hi-C signal. The proper
+approach would be to use the actual genome of the biological sample as a
+reference to construct the contact map. However, this strategy is
+presently unfeasible because assembling mammalian genomes is still a hard
+problem.
 
 Depending on the intention of the user, the effect of the copy number
-should either be kept or removed. This is why \textit{OneD} does not perform
-the correction by default, but allows the user to obtain a
-diploid-equivalent Hi-C map computed from a hidden Markov model. The
+should either be kept or removed. This is why \textit{OneD} does not
+perform the correction by default, but allows the user to obtain a
+euploid-equivalent Hi-C map computed from a hidden Markov model. The
 resulting matrices have a near constant amount of contacts per bin, but
-the artifacts caused by the misfit between the genome of the sample and
+the artifacts caused by the mismatch between the genome of the sample and
 the reference genome are still present (for instance, the artifacts caused
 by large scale inversions are not changed in any way).
 
-Overall, \textit{OneD} constitutes a safe choice to normalize Hi-C matrices. If the
-karyotype of the sample is aberrant, it enhances the biological variation.
-If not, it performs at least equally well as other methods with an
-advantage in terms of computational speed.
-
+Overall, \textit{OneD} constitutes a safe choice to normalize Hi-C
+matrices. If the karyotype of the sample is aberrant, it enhances the
+biological variation.  If not, it performs at least equally well as other
+methods in terms of quality and of computational speed.
 
 
 \section*{Acknowledgements}
