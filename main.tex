@@ -111,7 +111,7 @@ of \cite{imakaev2012iterative}, whereby the total amount of contacts of
 every bin is imposed to be the same. \textit{ICE} is currently the most
 popular method, due in part to its speed.
 
-Neither of these strategies were designed with regard for cell types with
+Neither of these strategies were designed for cell types with
 karyotypic aberrations, most common in cancer cells. Hi-C is very
 sensitive to aneuploidy, copy number variations and translocations.
 Actually, these aberrations have so much influence on the outcome that the
@@ -145,7 +145,7 @@ The most common representation of Hi-C data is a contact matrix, obtained
 by slicing the genome in $n$ consecutive bins of fixed size (the
 resolution) and computing the number of contacts between each pair of
 bins. The values are stored in the cells of the contact matrix ($x_{ij}$),
-quantifying of the interaction between the tow loci at positions $i$ and
+quantifying of the interaction between the two loci at positions $i$ and
 $j$.
 
 Our approach is to model the tally of contacts for each bin, thus reducing
@@ -303,11 +303,11 @@ GSM862722 & ES-cell & dilution Hi-C &
 
 %\subsection{Data processing}
 
-All data were processed though a pipeline based on TADBit
+All data were processed through a pipeline based on TADbit
 \citep{serra2016structural}. Briefly, after controlling the quality of
-fastq files, paired-end reads were mapped in the corresponding reference
+FASTQ files, paired-end reads were mapped to the corresponding reference
 genome (hg38 and mm10) taking into account the restriction enzyme site.
-Non-informative contacts were removed applying the following TADBit
+Non-informative contacts were removed applying the following TADbit
 filters: self-circle, dangling-ends, error, extra dangling-end, duplicated
 and random-breaks. For more details, see the methods section of
 \cite{stadhouders2017transcription}. In addition, the pipeline is
@@ -435,7 +435,7 @@ performance.
 \begin{figure}[b]
 	\centerline{\includegraphics[width=.45\textwidth]
 {img/copy_number_figure2.pdf}}
-\caption{Pearson correlation between the total number of contacts per bin
+\caption{Pearson correlation between the corrected number of contacts per bin
 and an independent estimation of the copy number (COSMIC). Left panel
 T47D breast cancer cell line, right panel K562 leukemia cell line.}
 \label{fig:copy_number}
@@ -493,7 +493,7 @@ little better than random on this task.
 Using the other metrics described in \ref{sec:comp} yielded similar
 results (Supplementary Figures 5, 6 and 7). Note that Spearman correlation
 of contacts presented the worst performance for all scenarios, and it thus
-seems to be a poor choice as a metric to compare HiC matrices.
+seems to be a poor choice as a metric to compare Hi-C matrices.
 
 Taken together, these results show that correcting experimental biases
 with \textit{OneD} enhances the biological variation and reduces the noise
@@ -654,7 +654,7 @@ is \textit{LGF}, with an over 100-fold span between the two.
 
 \textit{OneD} is the second fastest method and it always ran in less than
 1 min in the conditions of the benchmark. We occasionally encountered
-problems where \textit{ICE} ran faster than \textit{OneD} so it is fair to
+samples where \textit{ICE} ran faster than \textit{OneD} so it is fair to
 say that none of them has a definite speed advantage. Throughout this
 benchmark, the memory footprint of \textit{OneD} was less than 300 MB.
 Interestingly, the running time of \textit{OneD} is much more homogeneous
@@ -712,7 +712,7 @@ optional removal seems to be an overall safer strategy.
 
 This raises the question whether variations of the copy number constitute
 a biological signal or an artifact. If the biological sample contains
-karytoypic aberrations, then its genome is grossly different the reference
+karytoypic aberrations, then its genome is grossly different from the reference
 so there can be no correct way to normalize the Hi-C signal. The proper
 approach would be to use the actual genome of the biological sample as a
 reference to construct the contact map. However, this strategy is
