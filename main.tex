@@ -99,8 +99,8 @@ fragments. However, this does not guarantee that the method has no bias.
 On the contrary, local genome features such as the G+C content, the
 availability of restriction enzyme sites and the mappability of the
 sequencing reads have been shown to impact the results
-\citep{yaffe2011probabilistic}. In addition, general experimental biases
-such as batch effects exist. It is thus important to normalize Hi-C data in
+\citep{yaffe2011probabilistic}, in addition to general experimental biases
+such as batch effects. It is thus important to normalize Hi-C data in
 order to remove biases and artifacts, so that they are not confused with
 biological signal.
 
@@ -361,8 +361,9 @@ raw matrices to obtain a baseline. The differences with this baseline were
 estimated using a linear mixed model fitted with the \texttt{lmer}
 function of the \texttt{lme4} R package \citep{bates2015lme4}, where the
 fixed effect was the normalization method and the random effect was the
-%chromosome. Receiver operating characteristic (ROC) curves were then
-computed using \texttt{ROCR} package \citep{sing2005rocr}.
+chromosome. Receiver operating characteristic (ROC) curves were computed
+using \texttt{ROCR} package \citep{sing2005rocr}.
+
 
 
 \end{methods}
@@ -735,7 +736,7 @@ methods in terms of quality and of computational speed.
 \section*{Acknowledgements}
 
 We would like to thank the members of the 4DGenome Synergy project for the
-fruitful discussions during project meetings. EV wants to acknowledge
+fruitful discussions during project meetings. E.V. wants to acknowledge
 the members of Miguel Beato's laboratory for their insights during lab
 meetings.
 
