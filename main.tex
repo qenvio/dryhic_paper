@@ -17,7 +17,7 @@ abnormal karyotypes}
 François le Dily\,$^{\text{\sfb 1,2}}$, Javier Quilez\,$^{\text{\sfb
 1,2}}$, Ralph Stadhouders\,$^{\text{\sfb 1,2}}$, Yasmina
 Cuartero\,$^{\text{\sfb 1,2}}$, Thomas Graf\,$^{\text{\sfb 1,2}}$, Marc A.
-Mart\'i Renom\,$^{\text{\sfb 1,2,3,4}}$, Miguel Beato\,$^{\text{\sfb 1,2}}$
+Mart\'i-Renom\,$^{\text{\sfb 1,2,3,4}}$, Miguel Beato\,$^{\text{\sfb 1,2}}$
 and Guillaume J. Filion\,$^{\text{\sfb 1,2}}$}
 
 \address{$^{\text{\sf 1}}$Gene Regulation, Stem Cells and Cancer Program,
@@ -50,15 +50,14 @@ artifacts on the normalized maps are mostly unexplored. \\
 	\textbf{Results:}
 We observed that current normalization methods are not robust to the
 presence of large-scale copy number variations, potentially obscuring
-biological variations and enhancing batch effects. To address this issue,
+biological differences and enhancing batch effects. To address this issue,
 we developed an alternative approach designed to take into account
 chromosomal abnormalities. The method, called \textit{OneD}, increases
 reproducibility among replicates of Hi-C samples with abnormal karyotype,
-thus significantly outperforming previous methods.  In the absence of
-chromosomal aberrations, \textit{OneD} fared equally well as
-state-of-the-art methods, making it a safe choice for Hi-C normalization.
-\textit{OneD} is fast and scales well in terms of computing resources for
-resolutions up to 1 kbp. \\
+outperforming previous methods significantly. On normal karyotypes,
+\textit{OneD} fared equally well as state-of-the-art methods, making it a
+safe choice for Hi-C normalization.  \textit{OneD} is fast and scales well
+in terms of computing resources for resolutions up to 1 kbp.  \\
 \textbf{Availability:} \textit{OneD} is implemented as an R package
 available at \href{http://www.github.com/qenvio/dryhic}
 {http://www.github.com/qenvio/dryhic}. \\
@@ -84,9 +83,9 @@ their activity \citep{rowley2016three, dekker20163d, pezic2017more}. In
 mammals, this organization plays a key role in guiding enhancer-promoter
 contacts \citep{de2013topology}, in V(D)J recombination
 \citep{choi2014ctcf} and in X chromosome inactivation \citep{galupa2015x}.
-One of the most significant breakthroughs towards this insight was the
-development of the high throughput chromosomal conformation capture
-technology (Hi-C), assaying chromosomal contacts at a genome-wide scale
+A significant breakthrough towards this insight was the development of
+the high throughput chromosomal conformation capture technology (Hi-C),
+assaying chromosomal contacts at a genome-wide scale
 \citep{lieberman2009comprehensive}. Nowadays, exploring the spatial
 organization of chromatin has become a priority in many fields and Hi-C
 has become part of the standard molecular biology toolbox
@@ -119,8 +118,8 @@ popular method, due in part to its speed.
 Neither of these strategies were designed for cell types with karyotypic
 aberrations, most common in cancer. Yet, Hi-C is very sensitive to
 aneuploidy, copy number variations and translocations.  Actually, these
-aberrations have so much influence on the outcome that the artifacts can
-be used to re-assemble the target genome \citep{korbel2013genome}. An
+aberrations have so much influence on the outcome that they can be used as
+signatureto re-assemble the target genome \citep{korbel2013genome}. An
 additional complication is that karyotypic aberrations are not
 experimental biases, so it is unclear whether they should be corrected at
 all or be considered part of the biological signal.
@@ -154,7 +153,7 @@ The most common representation of Hi-C data is a contact matrix, obtained
 by slicing the genome in $n$ consecutive bins of fixed size (the
 resolution) and computing the number of contacts between each pair of
 bins. The values are stored in the cells of the contact matrix ($x_{ij}$),
-quantifying of the interaction between the two loci at positions $i$ and
+quantifying the interaction between the two loci at positions $i$ and
 $j$.
 
 Our approach is to model the tally of contacts for each bin, thus reducing
@@ -184,7 +183,7 @@ $\{f_k(\cdot)\}$ are estimated jointly with the negative binomial
 dispersion parameter $\theta$ using the \texttt{mgcv} package
 \citep{wood2011fast} of the R software \citep{coreteam2014r}.
 
-Once the parameters of the model are estimated, estimated means
+Once the parameters of the model are determined, the estimated means
 $\{\lambda_i\}$ are rescaled to obtain a correction vector
 $\{\lambda_i'\}$ that can be used to compute the corrected counts
 ($\hat{x}_{ij}$).
@@ -197,22 +196,24 @@ $\{\lambda_i'\}$ that can be used to compute the corrected counts
 \end{align}
 
 In line with previous methods
-\citep{yaffe2011probabilistic,hu2012hicnorm}, the features
-used to fit the model are the local G+C content, read mappability and the 
-content and number of restriction sites. The model and the implementation
-can be easily extended with any user-provided genomic feature.
+\citep{yaffe2011probabilistic,hu2012hicnorm}, the default features
+used to fit the model are the local G+C content, the read mappability and
+the content and number of restriction sites. The model and the
+implementation can be modifed or extended with any user-provided genomic
+features.
 
 \subsection{Copy number correction}
+\label{sec:hmm}
 
 Briefly, a hidden Markov model with emissions distributed as a Student's
-$t$ variable is fitted on the corrected total amount of contacts per bin.
-The model consists of 7 states that correspond to 1, 2, 3, 4, 5, 6 and 8
-copies of the target, for a total of 3 emission parameters (a single
-scaling parameter, a single standard deviation and a single degree of
-freedom for all the states) and 21 transition parameters. 
+$t$ variable is fitted on the corrected total amount of contacts per bin
+($\lambda_i'$). The model consists of 7 states that correspond to 1, 2,
+3, 4, 5, 6 and 8 copies of the target, for a total of 3 emission
+parameters (a single scaling parameter, a single standard deviation and a
+single degree of freedom for all the states) and 21 transition parameters. 
 
 The model is fitted with the Baum-Welch algorithm \citep{baum1966} until
-convergence, following a previously described protocol
+convergence, following a previously described implementation
 \citep{filion2010systematic}.  The Viterbi path is then computed and
 corresponds to the inferred copy number of each bin ($c_i$).
 
@@ -222,7 +223,7 @@ to the whole matrix. More specifically, each cell is updated to
 
 \begin{equation}
 \label{eq:cnvnorm}
-\hat{x}_{ij}^* = \frac{\hat{x}_{ij}}{\sqrt{c_ic_j}}
+\hat{x}_{ij}^* = \frac{\hat{x}_{ij}}{\sqrt{c_ic_j}}.
 \end{equation}
 
 \subsection{Data sources}
@@ -233,17 +234,16 @@ stadhouders2017transcription, lin2012global, dixon2012topological} and
 unpublished Hi-C data of different cell types and organisms
 (Table \ref{tab:samples}).
 
-We used several experiments comprising T47D breast cancer cell
-lines (7 samples), K562 leukemia cell lines (4 samples), both with
-aberrant karyotypes, and mouse primary B (6 samples ) and ES (7 samples)
-cells, both with normal diploid karyotypes. The experiments were carried
-out in different laboratories, following either the original Hi-C protocol
-\citep{lieberman2009comprehensive} or the newer \textit{in situ} version
-\citep{rao20143d}, and using different restriction enzymes (DpnII,
-HindIII, MboI and NcoI).
-
-We also used array-based copy-number segmentation of the two cell
-lines obtained from the COSMIC database \citep{forbes2010cosmic}.
+We used several experiments comprising T47D breast cancer cell lines (7
+samples), K562 leukemia cell lines (4 samples), both with aberrant
+karyotypes; and mouse primary B cells (6 samples ) and ES cells (7
+samples), both with normal diploid karyotypes. The experiments were
+carried out in different laboratories, following either the original Hi-C
+protocol \citep{lieberman2009comprehensive} or the newer \textit{in situ}
+version \citep{rao20143d}, and using different restriction enzymes (DpnII,
+HindIII, MboI and NcoI). We also used array-based copy-number
+segmentation of the two cell lines obtained from the COSMIC database
+\citep{forbes2010cosmic}.
 
 \begin{table*}
 \processtable{Hi-C data sets used in this study. Sample ID: Unique sample
@@ -321,8 +321,9 @@ All data were processed through a pipeline based on TADbit
 FASTQ files, paired-end reads were mapped to the corresponding reference
 genome (hg38 and mm10) taking into account the restriction enzyme site.
 Non-informative contacts were removed applying the following TADbit
-filters: self-circle, dangling-ends, error, extra dangling-end, duplicated
-and random-breaks. For more details, see the methods section of
+filters: \texttt{self-circle}, \texttt{dangling-ends}, \texttt{error},
+\texttt{extra-dangling-ends}, \texttt{duplicated} and
+\texttt{random-breaks}. For more details, see the methods section of
 \cite{stadhouders2017transcription}. In addition, the pipeline is
 available from the supplementary material published by
 \cite{quilez2017managing}.
@@ -348,7 +349,7 @@ is to measure the similarity of observed over expected contacts via the
 Pearson correlation up to a given distance range. Compared to the first,
 this metric gives more weight to changes occurring away from the diagonal.
 The third option is to compute a correlation per distance stratum and then
-obtain a stratum-adjusted correlation coefficient (SCC) as defined in
+obtain a stratum-adjusted correlation coefficient (SCC) as defined by
 \cite{yang2017hicrep}. Finally, the last option, proposed by
 \cite{yan2017hicspector} is to measure the Pearson correlation between the
 last eigenvectors of the Laplacian of the Hi-C matrix. This approach
@@ -370,8 +371,7 @@ estimated using a linear mixed model fitted with the \texttt{lmer}
 function of the \texttt{lme4} R package \citep{bates2015lme4}, where the
 fixed effect was the normalization method and the random effect was the
 chromosome. Receiver operating characteristic (ROC) curves were computed
-using \texttt{ROCR} package \citep{sing2005rocr}.
-
+using the \texttt{ROCR} package \citep{sing2005rocr}.
 
 
 \end{methods}
@@ -411,7 +411,7 @@ than for the short arm.}
 Experimental biases affect the total amount of contacts in a continuous
 but not necessarily linear way. Figure~\ref{fig:totals}A shows the
 relationship between the amount of contacts and the number of restriction
-enzyme sites in T47D, a breast cancer cell line with aberrant and unstable
+enzyme sites in T47D, a breast cancer cell line with an aberrant
 karyotype.  Four clouds are visible. Each corresponds to sequences present
 in one to four copies. In all of them, the relationship flattens as the
 number of restriction sites increases. To capture this
@@ -425,7 +425,7 @@ matrix is then corrected using equation (\ref{eq:xhat}). Note that the
 corrected amount of contacts is still proportional to the copy number.
 Figure~\ref{fig:totals}B shows the corrected number of contacts along
 chromosome 17 of T47D. \textit{OneD} greatly reduces the wiggling of the
-total amount of contacts.
+total amount of contacts (blue line).
 
 % Marc's comment here was regarding lack of motivation and explanation for
 % the copy number comparison. I've rescued some text from an older
@@ -446,13 +446,14 @@ technique such as array-based copy-number segmentation). We tested the
 validity of this approach against the Catalogue Of Somatic Mutations In
 Cancer \citep[COSMIC,][]{forbes2010cosmic}. Figure \ref{fig:copy_number}
 shows the Pearson correlation between the corrected number of contacts and
-the copy number estimation for both T47D and K562 cell lines. Similar
-results were obtained using Spearman correlation (Supplementary Figure 1).
-All the methods except \textit{OneD} decrease the agreement between the
-signal and the copy number because they partially correct the discrepancy.
-In contrast, \textit{OneD} enhances the conformity of the signal with the
-copy number.  Not correcting for variable copy number at that stage may
-seem counter-intuitive, but the tests below will show this leads to better
+the copy number estimation for T47D and K562 (a leukemia cell line with an
+aberrant karyotype). Similar results were obtained using Spearman
+correlation (Supplementary Figure 1).  All the methods except
+\textit{OneD} decreased the agreement between the signal and the copy
+number because they partially corrected the discrepancy. In contrast,
+\textit{OneD} enhanced the conformity of the signal with the copy number.
+Not correcting for variable copy number at that stage may seem
+counter-intuitive, but the tests below will show this leads to better
 performance.
 
 
@@ -473,26 +474,25 @@ T47D breast cancer cell line, right panel K562 leukemia cell line.}
 We first benchmarked the performance of our approach on biological
 samples with an aberrant karyotype. A good normalization method should
 increase the similarity between biological replicates by reducing
-irrelevant experimental variation, such as batch effects, laboratory of
+irrelevant experimental variance, such as batch effects, laboratory of
 origin and protocol variations. Similarly, a good normalization should
-decrease the similarity between samples that received a different
-treatment to enhance the biological differences.
+decrease the similarity between different samples to enhance the
+biological differences.
 
-We assembled two Hi-C data sets obtained from T47D and K562, two cancer
-cell lines with aberrant karyotypes. In each set we spiked two samples
-from the other cell line (Table~\ref{tab:samples}) to
-introduce biological variability. We compared matrices before and after
-normalization by different methods using the Pearson correlation of
-observed over expected counts (see \ref{sec:comp}). This gave an
-indication of the impact of a given normalization method. The results are
-summarized in Figure~\ref{fig:aberrant}.
+We assembled two Hi-C data sets obtained from T47D and K562 cells.  In
+each set we spiked two samples from the other cell line
+(Table~\ref{tab:samples}) to introduce biological variability. We compared
+matrices before and after normalization by different methods using the
+Pearson correlation of observed over expected counts (see \ref{sec:comp}).
+This gave an indication of the impact of a given normalization method. The
+results are summarized in Figure~\ref{fig:aberrant}.
 
 The \textit{caICB} and \textit{ICE} methods increased the similarity
 between the different cell lines (Figures~\ref{fig:aberrant}A and
 \ref{fig:aberrant}B and Supplementary Figures~2 and 3). This is an
-undesirable effect, as it obscures the biological variability. In the same
-vein, these methods decreased the similarity between samples that received
-the same treatment (Figure~\ref{fig:aberrant}A), suggesting that the
+undesirable effect, as it obscures the biological variability. Likewise,
+these methods decreased the similarity between samples that received the
+same treatment (Figure~\ref{fig:aberrant}A), suggesting that the
 normalization process is detrimental to the biological signal in these two
 cases. The method \textit{vanilla} followed the same trend but to a lesser
 extent, consistent with the fact that it consists of a single \textit{ICE}
@@ -514,7 +514,7 @@ Actually, they performed little better than random on this task. Using the
 other metrics described in \ref{sec:comp} yielded similar results
 (Supplementary Figures 5, 6 and 7). Note that Spearman correlation of
 contacts presented the worst performance for all scenarios, and it thus
-seems to be a poor choice as a metric to compare Hi-C matrices.
+seems to be a poor choice for a metric to compare Hi-C matrices.
 
 Taken together, these results show that correcting experimental biases
 with \textit{OneD} enhances the biological variation and reduces the noise
@@ -541,10 +541,10 @@ expected counts.}
 
 \subsection{Normal karyotypes}
 
-Does the performance of \textit{OneD} for aberrant karyotypes come at the
-cost of decreased performance for normal karyotypes? To address this
+Does the performance of \textit{OneD} on aberrant karyotypes come at the
+cost of decreased performance on normal karyotypes? To address this
 question, we assembled another data set comprised of mouse B cells and
-embryonic stem (ES) cells, both with a normal karyotype The cell types
+embryonic stem (ES) cells, both with a normal karyotype. The cell types
 were pooled in almost equal proportions (see Table~\ref{tab:samples}) and
 the same tests as above were performed.
 
@@ -556,7 +556,7 @@ were the same. The effect was stronger when comparing identical cell
 types, but the same trend appeared when comparing different cell types,
 indicating that these methods may enhance or reduce biological variation,
 depending on the context. Once more, \textit{vanilla} followed the same
-trend as \textit{ICE} to a lesser extent. The \textit{LGF} method
+trend as \textit{ICE} but to a lesser extent. The \textit{LGF} method
 increased the similarity when comparing the same cells with different
 experimental protocols, and had little to no effect in the other cases.
 This indicates that \textit{LGF} is a safe choice in this case.
@@ -564,7 +564,7 @@ This indicates that \textit{LGF} is a safe choice in this case.
 \textit{OneD} decreased the similarity between different cell types when
 using the same protocol and increased it between identical cell types when
 using different protocols. In the other two cases, it had little effect.
-In summary, \textit{OneD} never enhanced the experimental noise and it
+In summary, \textit{OneD} never enhanced the experimental noise and even
 reduced it in one more case than \textit{LGF}.
 
 When interpreting the similarity scores as classification scores, we
@@ -573,8 +573,8 @@ biological pairs, after which their performance diverged
 (Figure~\ref{fig:normal}B). \textit{OneD} achieved the highest area under
 the curve on this problem, but with a small margin over the other methods
 except \textit{vanilla}. Using other metrics to compare matrices gave
-similar results (Supplementary Figures 7 and 8). \textit{OneD} was always
-among the top scoring methods. In these conditions, Spearman correlation
+similar results: \textit{OneD} was always among the top scoring methods
+(Supplementary Figures 7 and 8). In these conditions, Spearman correlation
 of contacts again appeared as the worst comparison metric because it
 showed a lower performance for all the normalization methods.
 
@@ -599,30 +599,28 @@ Figure~\ref{fig:aberrant}.}
 Removing the explicit experimental biases enhances the importance of the
 copy number in the signal (Figure~\ref{fig:copy_number}). The copy number
 is not an experimental bias, but it may be considered an additional source
-of bias to be remove. For this reason, \textit{OneD} also allows the user
-to correct the copy number and output a euploid-equivalent matrix. To do
+of bias to be removed. For this reason, \textit{OneD} also allows the user
+to correct the copy number and output an euploid-equivalent matrix. To do
 so, \textit{OneD} segments the linear signal of the total amount of
-contacts into piecewise homoegenous regions. This is carried out by a
+contacts into piecewise homogeneous regions. This is carried out by a
 hidden Markov model whereby the averages of the states are constrained to
-be within a discrete factor of each other. This allows the model to detect
-regions with a number of copies equal to 1, 2, 3 \textit{etc}. With the
-inferred number of copies at hand, \textit{OneD} then normalizes each cell
-of the matrix with equation (\ref{eq:cnvnorm}).
+be an integer number, up to a scaling factor (see \ref{sec:hmm}). This
+allows the model to detect regions with a number of copies equal to 1, 2,
+3 \textit{etc}. With the inferred number of copies at hand, \textit{OneD}
+then normalizes each cell of the matrix with equation (\ref{eq:cnvnorm}).
 
 Different normalization methods can either enhance or diminish the signal
 in regions with higher copy number (Figure~\ref{fig:cnv_correction}). In
-this example, \textit{ICE} overcompensates the original bias at the center
-of the picture and fades the signal almost entirely. Concomitantly, the
-signal at the bottom left of the matrix is enhanced and shows a structure
-that is not visible in the raw data. On the contrary, \textit{LGF}
-strengthen the central region and the diagonal. \textit{OneD} reduces the
-level of the central portion by a factor 2 approximately, but does not
-otherwise distort the main features of the region. This example shows that
-the copy number does not have a simple and predictable effect on the final
-matrix. Not taking it into account may open the door to some normalization
-artifacts. The result provided by \textit{OneD} is not necessarily the
-right one (see Discussion), but at least it does not correct copy number
-variations as a side effect of some other criteria.
+this example, \textit{ICE} overcompensated the original bias at the center
+of the picture and faded the signal almost entirely. Concomitantly, the
+signal at the bottom left of the matrix was enhanced and showed a
+structure that was not visible in the raw data. On the contrary,
+\textit{LGF} strengthened the central region and the diagonal.
+\textit{OneD} reduced the level of the central portion by a factor 2
+approximately, but did not otherwise distort the main features of the
+region. This example shows that the copy number does not have a simple and
+predictable effect on the final matrix. Not taking it into account may
+open the door to some normalization artifacts.
 
 \begin{figure}
 \centerline{\includegraphics[width=.5\textwidth]
@@ -643,17 +641,19 @@ Figure~\ref{fig:cnv_correction}B shows the total sum of contacts after
 correction for the copy number with \textit{OneD}. The region around
 72.5-75.0 Mbp showed an elevated amount of contacts in the raw data. After
 copy number correction, the signal is brought to the same level as the
-flanking regions.
+flanking regions. The result provided by \textit{OneD} is not necessarily
+the right one (see Discussion), but at least it does not correct copy
+number variations as a side effect of some other criteria.
 
-In summary, \textit{OneD} can be used to obtain a euploid-equivalent
-normalized matrix in cases that the effect of the copy number must be
+In summary, \textit{OneD} can be used to obtain an euploid-equivalent
+normalized matrix in cases where the effect of the copy number must be
 removed from the signal.
 
 \subsection{Speed}
 
 Finally, we compared the computational speed of the different
 normalization methods. \textit{vanilla} and \textit{ICE} have broad
-acceptance for their conceptual simplicity, easy use and speed
+acceptance for their conceptual simplicity, ease of use and speed
 \citep{imakaev2012iterative}. This is even more significant as current
 explicit methods \citep{servant2012hitc} are much slower in comparison.
 
@@ -663,24 +663,21 @@ than previous explicit methods. We measured the running time of the
 different tools on a 3.3~GHz machine with 62 GB~RAM, always using the
 default parameters. Figure~\ref{fig:times}A shows the running times of the
 different methods on the samples described in Table~\ref{tab:samples} at
-100 kbp resolution. The fastest method is \textit{vanilla} and the slowest
-is \textit{LGF}, with an over 100-fold span between the two.
+100 kbp resolution. The fastest method was \textit{vanilla} and the
+slowest is \textit{LGF}, with an over 100-fold span between the two.
 
-\textit{OneD} is the second fastest method and it always ran in less than
-1 min in the conditions of the benchmark. We occasionally encountered
-samples where \textit{ICE} ran faster than \textit{OneD} so it is fair to
-say that none of them has a definite speed advantage. Throughout this
-benchmark, the memory footprint of \textit{OneD} was less than 300 MB.
-Interestingly, the running time of \textit{OneD} is much more homogeneous
-than that of the other methods. The reason is that the size of the
-regression problem to be solved by the \texttt{mgcv} package is always the
-same at fixed resolution.
+\textit{OneD} was the second fastest method and it always ran in less than
+1~min in the conditions of the benchmark. Throughout this benchmark, the
+memory footprint of \textit{OneD} was less than 300 MB.  Interestingly,
+the running time of \textit{OneD} was much more homogeneous than that of
+the other methods. The reason is that the size of the regression problem
+to be solved by the \texttt{mgcv} package is always the same at fixed
+resolution.
 
 We also performed a benchmark on a smaller data set at increasing
 resolution (Figure~\ref{fig:times}B). On this benchmark, \textit{ICE} ran
 slightly faster than \textit{OneD}, and the the rank of the methods
-remained the same at all resolutions. The running time of \textit{OneD}
-remained close to that of \textit{ICE}. Taken together, these results show
+remained the same at all resolutions. Taken together, these results show
 that \textit{OneD} is competitive in terms of computational speed compared
 to existing methods.
 
@@ -710,7 +707,7 @@ to normalize data from biological samples with aberrant karyotypes, but it
 applies seamlessly to the case of normal karyotypes. We showed that
 \textit{OneD} performs significantly better than other methods when the
 cells present karyotypic aberrations (Figure~\ref{fig:aberrant}), and that
-it performs equally well as the best methods otherwise
+it performs equally well as the best methods on euploid genomes
 (Figure~\ref{fig:normal}). We also showed that \textit{OneD} is
 approximately as fast as \textit{ICE}, which makes it competitive from the
 point of view of computational speed.
@@ -728,7 +725,7 @@ optional removal seems to be an overall safer strategy.
 
 This raises the question whether variations of the copy number constitute
 a biological signal or an artifact. If the biological sample contains
-karytoypic aberrations, then its genome is grossly different then the
+karytoypic aberrations, then its genome is grossly different from the
 reference genome, which makes signal correction very challenging. The
 proper approach would be to use the actual genome of the biological sample
 as a reference to construct the contact map. However, this strategy is
@@ -744,10 +741,10 @@ the artifacts caused by the mismatch between the genome of the sample and
 the reference genome are still present (for instance, the artifacts caused
 by large scale inversions are not changed in any way).
 
-Overall, \textit{OneD} constitutes a safe choice to normalize Hi-C
-matrices. If the karyotype of the sample is aberrant, it enhances the
-biological variation.  If not, it performs at least equally well as other
-methods in terms of quality and of computational speed.
+Overall, \textit{OneD} constitutes a novel computational approach to
+normalize Hi-C matrices. If the karyotype of the sample is aberrant, it
+enhances the biological variation.  If not, it performs at least equally
+well as other methods in terms of quality and of computational speed.
 
 
 \section*{Acknowledgements}
@@ -762,9 +759,9 @@ meetings.
 Conceptualization, E.V.; Methodology, E.V. and G.F.; Software, E.V. and
 G.F.; Formal Analysis, E.V.; Investigation, E.V., F.D., Y.C. and R.S.;
 Resources, M.B.; Data curation, J.Q., Writing – Original Draft, E.V. and
-G.F., Writing – Review \& Editing, F.D. J.Q., R.S., Y.C, T.G., M.M. and
-M.B.; Visualization, E.V.; Supervision, G.F. and M.B., Project
-Administration, M.B.; Funding Acquisition, M.B., T.G., M.M. and G.F.
+G.F., Writing – Review \& Editing, F.D. J.Q., R.S., Y.C, T.G., M.A.M-R.
+and M.B.; Visualization, E.V.; Supervision, G.F. and M.B., Project
+Administration, M.B.; Funding Acquisition, M.B., T.G., M.A.M-R. and G.F.
 
 \section*{Funding}
 
