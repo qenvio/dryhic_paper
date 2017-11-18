@@ -1,46 +1,46 @@
-This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2016)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: manuscript_nar.aux
 The style file: natbib.bst
 Database file #1: references.bib
-You've used 38 entries,
+You've used 41 entries,
             2401 wiz_defined-function locations,
-            763 strings with 12625 characters,
-and the built_in function-call counts, 20550 in all, are:
-= -- 1999
-> -- 1195
-< -- 21
-+ -- 373
-- -- 340
-* -- 1946
-:= -- 3445
-add.period$ -- 205
-call.type$ -- 38
-change.case$ -- 237
-chr.to.int$ -- 38
-cite$ -- 38
-duplicate$ -- 864
-empty$ -- 1262
-format.name$ -- 398
-if$ -- 4098
+            779 strings with 13436 characters,
+and the built_in function-call counts, 22239 in all, are:
+= -- 2152
+> -- 1315
+< -- 22
++ -- 413
+- -- 375
+* -- 2120
+:= -- 3738
+add.period$ -- 222
+call.type$ -- 41
+change.case$ -- 256
+chr.to.int$ -- 41
+cite$ -- 41
+duplicate$ -- 927
+empty$ -- 1358
+format.name$ -- 438
+if$ -- 4423
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 37
-newline$ -- 193
-num.names$ -- 152
-pop$ -- 250
+missing$ -- 40
+newline$ -- 208
+num.names$ -- 164
+pop$ -- 268
 preamble$ -- 1
-purify$ -- 238
+purify$ -- 257
 quote$ -- 0
-skip$ -- 610
+skip$ -- 652
 stack$ -- 0
-substring$ -- 1317
-swap$ -- 237
+substring$ -- 1419
+swap$ -- 251
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 342
+type$ -- 369
 warning$ -- 0
-while$ -- 175
+while$ -- 188
 width$ -- 0
-write$ -- 494
+write$ -- 533
