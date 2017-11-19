@@ -95,13 +95,6 @@ Hu, M.  {\em et~al.} (2012).
 \newblock {HiCNorm: removing biases in Hi-C data via Poisson regression}.
 \newblock {\em Bioinformatics\/}, {\bf 28}(23), 3131--3133.
 
-\bibitem[Hughes {\em et~al.}(2014)Hughes, Roberts, McGowan, Hay, Giannoulatou,
-  Lynch, De~Gobbi, Taylor, Gibbons, and Higgs]{hughes2014analysis}
-Hughes, J.~R.  {\em et~al.} (2014).
-\newblock Analysis of hundreds of cis-regulatory landscapes at high resolution
-  in a single, high-throughput experiment.
-\newblock {\em Nature genetics\/}, {\bf 46}(2), 205--212.
-
 \bibitem[Imakaev {\em et~al.}(2012)Imakaev, Fudenberg, McCord, Naumova,
   Goloborodko, Lajoie, Dekker, and Mirny]{imakaev2012iterative}
 Imakaev, M.  {\em et~al.} (2012).

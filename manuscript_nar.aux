@@ -69,21 +69,21 @@
 \@writefile{toc}{\contentsline {subsection}{Aberrant karyotypes}{4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Removing biases from Hi-C on aberrant karyotypes. A and B. Average changes compared to the raw data on the T47D and K562 data sets. The bars represent 95\% confidence intervals centered on the mean difference of the reproducibility score between a given correction method and the raw data. C and D. ROC curves on the T47D and K562 sets. The areas under the curve are indicated in the bottom right corner. The color code is the same as in panels A and B.}}{4}}
 \newlabel{fig:aberrant}{{2}{4}}
-\@writefile{toc}{\contentsline {subsection}{Normal karyotypes}{4}}
 \citation{jager2015capture}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Removing biases from Hi-C on normal karyotypes. A. Average changes compared to the raw data on the mouse data set. B. ROC curves on the mouse data set. The legend and color code are as in Figure\nobreakspace  {}2\hbox {}.}}{5}}
 \newlabel{fig:normal}{{3}{5}}
+\@writefile{toc}{\contentsline {subsection}{Normal karyotypes}{5}}
 \@writefile{toc}{\contentsline {subsection}{Copy number correction}{5}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Copy number correction. A. Removing biases from Hi-C on breast cancer cells. The reproducibility score between samples from the same breast cancer cell type was computed after normalization. The vertical bar shows the reproducibility score of the raw data. Shown are comparisons for different (top) or identical (bottom) experimental conditions. B. Detail of a Hi-C matrix normalized with different methods. The central portion has an increased copy number, which affects normalization. \textit  {ICE} fades it away, \textit  {LGF} enhances it and \textit  {OneD} reduces the signal by about half.}}{5}}
 \newlabel{fig:cnv_correction}{{4}{5}}
-\@writefile{toc}{\contentsline {subsection}{Capture Hi-C}{5}}
 \citation{imakaev2012iterative}
 \citation{servant2012hitc}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Bias removal on Capture Hi-C data A. Performance on the Capture Hi-C data. Two replicates centered on a 6\nobreakspace  {}Mbp domain on chromosome 6 in T47D cells were normalized by the indicated tools and their reproducibility score was computed. B. Performance on virtual Capture Hi-C data. Two Hi-C experiments were post-processed to produce an output similar to the Capture Hi-C experiment depicted in panel A. The signal outside the domain on chromosome 6 was removed and the data were normalized (capt), or the data were normalized before removing the signal oustside the domain on chromosome 6 (full). Four matrices per method were generated and the reproducibility score between the pairs from different replicates were computed. Note that the scores are identical for the raw data because in this case the matrices of the same replicate are identical.}}{6}}
 \newlabel{fig:chic}{{5}{6}}
-\@writefile{toc}{\contentsline {subsection}{Speed}{6}}
+\@writefile{toc}{\contentsline {subsection}{Capture Hi-C}{6}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Computing time of the bias correction methods. A. Total time to process samples listed in Supplementary Table\nobreakspace  {}1 at 100\nobreakspace  {}kbp resolution. Each dot corresponds to a sample. B. Total time to process sample HIC070 at the indicated bin size and sequencing depths. Note the logarithmic scale on the y-axis on both panels.}}{6}}
 \newlabel{fig:times}{{6}{6}}
+\@writefile{toc}{\contentsline {subsection}{Speed}{6}}
 \@writefile{toc}{\contentsline {section}{DISCUSSION}{7}}
 \@writefile{toc}{\contentsline {section}{CONCLUSION}{7}}
 \@writefile{toc}{\contentsline {section}{ACKNOWLEDGEMENTS}{7}}
@@ -106,31 +106,30 @@
 \bibcite{forbes2010cosmic}{{13}{2010}{{Forbes {\em  et~al.}}}{{Forbes, Bindal, Bamford, Cole, Kok, Beare, Jia, Shepherd, Leung, Menzies, {\em  et~al.}}}}
 \bibcite{galupa2015x}{{14}{2015}{{Galupa and Heard}}{{Galupa and Heard}}}
 \bibcite{hu2012hicnorm}{{15}{2012}{{Hu {\em  et~al.}}}{{Hu, Deng, Selvaraj, Qin, Ren, and Liu}}}
-\bibcite{hughes2014analysis}{{16}{2014}{{Hughes {\em  et~al.}}}{{Hughes, Roberts, McGowan, Hay, Giannoulatou, Lynch, De~Gobbi, Taylor, Gibbons, and Higgs}}}
-\bibcite{imakaev2012iterative}{{17}{2012}{{Imakaev {\em  et~al.}}}{{Imakaev, Fudenberg, McCord, Naumova, Goloborodko, Lajoie, Dekker, and Mirny}}}
-\bibcite{jager2015capture}{{18}{2015}{{J{\"a}ger {\em  et~al.}}}{{J{\"a}ger, Migliorini, Henrion, Kandaswamy, Speedy, Heindl, Whiffin, Carnicer, Broome, Dryden, {\em  et~al.}}}}
-\bibcite{knight2013fast}{{19}{2013}{{Knight and Ruiz}}{{Knight and Ruiz}}}
-\bibcite{korbel2013genome}{{20}{2013}{{Korbel and Lee}}{{Korbel and Lee}}}
-\bibcite{ledily2014distinct}{{21}{2014}{{Le~Dily {\em  et~al.}}}{{Le~Dily, Ba{\`u}, Pohl, Vicent, Serra, Soronellas, Castellano, Wright, Ballare, Filion, {\em  et~al.}}}}
-\bibcite{lieberman2009comprehensive}{{22}{2009}{{Lieberman-Aiden {\em  et~al.}}}{{Lieberman-Aiden, Van~Berkum, Williams, Imakaev, Ragoczy, Telling, Amit, Lajoie, Sabo, Dorschner, {\em  et~al.}}}}
-\bibcite{lin2012global}{{23}{2012}{{Lin {\em  et~al.}}}{{Lin, Benner, Mansson, Heinz, Miyazaki, Miyazaki, Chandra, Bossen, Glass, and Murre}}}
-\bibcite{pezic2017more}{{24}{2017}{{Pezic {\em  et~al.}}}{{Pezic, Weeks, and Hadjur}}}
-\bibcite{quilez2017managing}{{25}{2017}{{Quilez {\em  et~al.}}}{{Quilez, Vidal, Le~Dily, Serra, Cuartero, Stadhouders, Filion, Graf, Marti-Renom, and Beato}}}
-\bibcite{coreteam2014r}{{26}{2017}{{R Core Team}}{{R Core Team}}}
-\bibcite{rao20143d}{{27}{2014}{{Rao {\em  et~al.}}}{{Rao, Huntley, Durand, Stamenova, Bochkov, Robinson, Sanborn, Machol, Omer, Lander, {\em  et~al.}}}}
-\bibcite{rowley2016three}{{28}{2016}{{Rowley and Corces}}{{Rowley and Corces}}}
-\bibcite{schmitt2016genome}{{29}{2016}{{Schmitt {\em  et~al.}}}{{Schmitt, Hu, and Ren}}}
-\bibcite{serra2016structural}{{30}{2016}{{Serra {\em  et~al.}}}{{Serra, Ba{\`u}, Filion, and Marti-Renom}}}
-\bibcite{servant2012hitc}{{31}{2012}{{Servant {\em  et~al.}}}{{Servant, Lajoie, Nora, Giorgetti, Chen, Heard, Dekker, and Barillot}}}
-\bibcite{simonis2006nuclear}{{32}{2006}{{Simonis {\em  et~al.}}}{{Simonis, Klous, Splinter, Moshkin, Willemsen, De~Wit, Van~Steensel, and De~Laat}}}
-\bibcite{sing2005rocr}{{33}{2005}{{Sing {\em  et~al.}}}{{Sing, Sander, Beerenwinkel, and Lengauer}}}
-\bibcite{stadhouders2017transcription}{{34}{2017}{{Stadhouders {\em  et~al.}}}{{Stadhouders, Vidal, Serra, Di~Stefano, Le~Dily, Quilez, Gomez, Collombet, Berenguer, Cuartero, {\em  et~al.}}}}
-\bibcite{von2007tutorial}{{35}{2007}{{Von~Luxburg}}{{Von~Luxburg}}}
-\bibcite{wood2003thin}{{36}{2003}{{Wood}}{{Wood}}}
-\bibcite{wood2011fast}{{37}{2011}{{Wood}}{{Wood}}}
-\bibcite{wu2016computational}{{38}{2016}{{Wu and Michor}}{{Wu and Michor}}}
-\bibcite{yaffe2011probabilistic}{{39}{2011}{{Yaffe and Tanay}}{{Yaffe and Tanay}}}
-\bibcite{yan2017hicspector}{{40}{2017}{{Yan {\em  et~al.}}}{{Yan, Gurkan~Yardimci, Yan, Noble, and Gerstein}}}
-\bibcite{yang2017hicrep}{{41}{2017}{{Yang {\em  et~al.}}}{{Yang, Zhang, Yardimci, Hardison, Noble, Yue, and Li}}}
+\bibcite{imakaev2012iterative}{{16}{2012}{{Imakaev {\em  et~al.}}}{{Imakaev, Fudenberg, McCord, Naumova, Goloborodko, Lajoie, Dekker, and Mirny}}}
+\bibcite{jager2015capture}{{17}{2015}{{J{\"a}ger {\em  et~al.}}}{{J{\"a}ger, Migliorini, Henrion, Kandaswamy, Speedy, Heindl, Whiffin, Carnicer, Broome, Dryden, {\em  et~al.}}}}
+\bibcite{knight2013fast}{{18}{2013}{{Knight and Ruiz}}{{Knight and Ruiz}}}
+\bibcite{korbel2013genome}{{19}{2013}{{Korbel and Lee}}{{Korbel and Lee}}}
+\bibcite{ledily2014distinct}{{20}{2014}{{Le~Dily {\em  et~al.}}}{{Le~Dily, Ba{\`u}, Pohl, Vicent, Serra, Soronellas, Castellano, Wright, Ballare, Filion, {\em  et~al.}}}}
+\bibcite{lieberman2009comprehensive}{{21}{2009}{{Lieberman-Aiden {\em  et~al.}}}{{Lieberman-Aiden, Van~Berkum, Williams, Imakaev, Ragoczy, Telling, Amit, Lajoie, Sabo, Dorschner, {\em  et~al.}}}}
+\bibcite{lin2012global}{{22}{2012}{{Lin {\em  et~al.}}}{{Lin, Benner, Mansson, Heinz, Miyazaki, Miyazaki, Chandra, Bossen, Glass, and Murre}}}
+\bibcite{pezic2017more}{{23}{2017}{{Pezic {\em  et~al.}}}{{Pezic, Weeks, and Hadjur}}}
+\bibcite{quilez2017managing}{{24}{2017}{{Quilez {\em  et~al.}}}{{Quilez, Vidal, Le~Dily, Serra, Cuartero, Stadhouders, Filion, Graf, Marti-Renom, and Beato}}}
+\bibcite{coreteam2014r}{{25}{2017}{{R Core Team}}{{R Core Team}}}
+\bibcite{rao20143d}{{26}{2014}{{Rao {\em  et~al.}}}{{Rao, Huntley, Durand, Stamenova, Bochkov, Robinson, Sanborn, Machol, Omer, Lander, {\em  et~al.}}}}
+\bibcite{rowley2016three}{{27}{2016}{{Rowley and Corces}}{{Rowley and Corces}}}
+\bibcite{schmitt2016genome}{{28}{2016}{{Schmitt {\em  et~al.}}}{{Schmitt, Hu, and Ren}}}
+\bibcite{serra2016structural}{{29}{2016}{{Serra {\em  et~al.}}}{{Serra, Ba{\`u}, Filion, and Marti-Renom}}}
+\bibcite{servant2012hitc}{{30}{2012}{{Servant {\em  et~al.}}}{{Servant, Lajoie, Nora, Giorgetti, Chen, Heard, Dekker, and Barillot}}}
+\bibcite{simonis2006nuclear}{{31}{2006}{{Simonis {\em  et~al.}}}{{Simonis, Klous, Splinter, Moshkin, Willemsen, De~Wit, Van~Steensel, and De~Laat}}}
+\bibcite{sing2005rocr}{{32}{2005}{{Sing {\em  et~al.}}}{{Sing, Sander, Beerenwinkel, and Lengauer}}}
+\bibcite{stadhouders2017transcription}{{33}{2017}{{Stadhouders {\em  et~al.}}}{{Stadhouders, Vidal, Serra, Di~Stefano, Le~Dily, Quilez, Gomez, Collombet, Berenguer, Cuartero, {\em  et~al.}}}}
+\bibcite{von2007tutorial}{{34}{2007}{{Von~Luxburg}}{{Von~Luxburg}}}
+\bibcite{wood2003thin}{{35}{2003}{{Wood}}{{Wood}}}
+\bibcite{wood2011fast}{{36}{2011}{{Wood}}{{Wood}}}
+\bibcite{wu2016computational}{{37}{2016}{{Wu and Michor}}{{Wu and Michor}}}
+\bibcite{yaffe2011probabilistic}{{38}{2011}{{Yaffe and Tanay}}{{Yaffe and Tanay}}}
+\bibcite{yan2017hicspector}{{39}{2017}{{Yan {\em  et~al.}}}{{Yan, Gurkan~Yardimci, Yan, Noble, and Gerstein}}}
+\bibcite{yang2017hicrep}{{40}{2017}{{Yang {\em  et~al.}}}{{Yang, Zhang, Yardimci, Hardison, Noble, Yue, and Li}}}
 \global\@namedef{@lastpage}{8}
 \@writefile{toc}{\contentsline {section}{\numberline {\relax }REFERENCES}{8}}

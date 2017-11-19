@@ -21,7 +21,7 @@ Javier Quilez\,$^{1,2}$,
 Ralph Stadhouders\,$^{1,2}$,
 Yasmina Cuartero\,$^{1,2,3}$,
 Thomas Graf\,$^{1,2}$,
-Marc A.  Mart\'i-Renom\,$^{1,2,3,4}$,
+Marc A.  Marti-Renom\,$^{1,2,3,4}$,
 Miguel Beato\,$^{1,2}$,
 and Guillaume J. Filion\,$^{1,2}$%
 \footnote{To whom correspondence should be addressed.
@@ -71,7 +71,7 @@ reproducibility among replicates of Hi-C samples with abnormal karyotype,
 outperforming previous methods significantly. On normal karyotypes,
 \textit{OneD} fared equally well as state-of-the-art methods, making it a
 safe choice for Hi-C normalization.  \textit{OneD} is fast and scales well
-in terms of computing resources for resolutions up to 1~kbp.
+in terms of computing resources for resolutions up to 2~kbp.
 %\textit{OneD} is implemented as an R package
 %available at http://www.github.com/qenvio/dryhic.
 \end{abstract}
@@ -145,7 +145,7 @@ normalized data is more reproducible between replicates and across
 different protocols. Importantly, \textit{OneD} is also efficient when
 cells have a normal karyotype, where it performs as well as the best
 normalization methods. Finally, the implementation is as fast as
-\textit{ICE} and it scales up to 1~kbp resolution with reasonable
+\textit{ICE} and it scales up to 5~kbp resolution with reasonable
 computing resources.
 
 
@@ -210,7 +210,7 @@ features.
 
 Briefly, a hidden Markov model with emissions distributed as a Student's
 $t$ variable is fitted on the corrected total amount of contacts per bin
-($\lambda_i'$). The model consists of 8 states that correspond to 1, 2, 3,
+($\hat{t}_i = \sum_j^n{\hat{x}_{ij}}$). The model consists of 8 states that correspond to 1, 2, 3,
 4, 5, 6, 7, and `8 or more' copies of the target, for a total of 4
 emission parameters (a single position parameter for states 1-7, a
 position parameter for state `8 or more', a single standard deviation for
@@ -239,14 +239,16 @@ stadhouders2017transcription, lin2012global, dixon2012topological} and
 unpublished Hi-C data of different cell types and organisms
 (Supplementary Table~1).
 
-We used several experiments comprising T47D breast cancer cell lines (7
-samples), K562 leukemia cell lines (4 samples), both with aberrant
-karyotypes; and mouse primary B cells (6 samples ) and ES cells (7
-samples), both with normal diploid karyotypes. The experiments were
+We used several experiments comprising T47D breast cancer cell lines (6
+samples), K562 leukemia cell lines (8 samples), both with aberrant
+karyotypes; mouse primary B cells (6 samples) and ES cells (7
+samples), both with normal diploid karyotypes; GM12878 B-lymphoblastoid cells
+(58 samples), with diploid karyotype; BT474, MCF10, MCF-7 and SKBR3 breast cell
+lines (1 sample each). The experiments were
 carried out in different laboratories, following either the original Hi-C
 protocol \citep{lieberman2009comprehensive} or the newer \textit{in situ}
 version \citep{rao20143d}, and using different restriction enzymes (DpnII,
-HindIII, MboI and NcoI). We also used array-based copy-number
+HindIII, MspI, MboI and NcoI). We also used array-based copy-number
 segmentation of the two cell lines obtained from the COSMIC database
 \citep{forbes2010cosmic}.
 
@@ -342,7 +344,7 @@ available from the Supplementary Material published by
 We developed the routines contained in the \texttt{dryhic} R package
 (available at http://www.github.com/qenvio/dryhic) to efficiently create
 sparse representations of contact matrices and further apply
-\textit{vanilla}, \textit{ICE} and \textit{oneD} corrections.
+\textit{vanilla}, \textit{ICE}, \textit{KR} and \textit{oneD} corrections.
 \texttt{HiTC} \citep{servant2012hitc} and \texttt{HiCapp}
 \citep{wu2016computational} were used to carry out the \textit{LGF} and
 \textit{caICB} corrections respectively. All the results are based on a
@@ -383,10 +385,11 @@ eigenvectors of the Laplacian of the Hi-C matrix. This approach borrows
 the concepts of spectral clustering \citep{von2007tutorial} and amounts to
 comparing high level features of the matrix.
 
-We defined three data sets to measure experimental reproducibility after
+We defined five data sets to measure experimental reproducibility after
 normalization: The first contained the samples from T47D plus two samples
 from K562, the second contained the samples from K562 plus two samples
-from T47D, the third contained all the mouse samples (see Supplementary
+from T47D, the third contained all the mouse samples, the fourth contained all
+GM12878 samples, the fifth contained one sample of each breast cells (see Supplementary
 Table~1 for details). Given a set of experiments and a metric, we first
 computed all pairwise combinations between experiments and then classified
 the comparisons according to the characteristics of each pair (cell type,
@@ -398,7 +401,8 @@ estimated using a linear mixed model fitted with the \texttt{lmer}
 function of the \texttt{lme4} R package \citep{bates2015lme4}, where the
 fixed effect was the normalization method and the random effect was the
 chromosome. Receiver operating characteristic (ROC) curves were computed
-using the \texttt{ROCR} package \citep{sing2005rocr}.
+using the \texttt{ROCR} package \citep{sing2005rocr} for the three first sets
+(those including samples of different cell types).
 
 
 \section{RESULTS}
@@ -467,7 +471,7 @@ number correction (\textit{OneD+CN}) against \textit{vanilla},
 \citep{knight2013fast}, \textit{caICB} \citep{wu2016computational} and the
 Local Genomic Features method \citep[\textit{LGF},][]{hu2012hicnorm,
 servant2012hitc}. The first four methods correct biases implicitly,
-whereas the fourth method does it explicitly.
+whereas the fifth method does it explicitly.
 
 We used four metrics to compare Hi-C matrices (see Materials and Methods).
 For consistency and concision, the results based on the reproducibility
@@ -548,7 +552,8 @@ exclusively the biological signal. However, the difference was most marked
 for \textit{OneD} and \textit{caICB}. On the K562 data set
 (figure~\ref{fig:aberrant}B), both methods increased the reproducibility
 between identical cell types but not between different cell types
-Figures~\ref{fig:aberrant}B), which is the desired behavior of a
+%Figures~\ref{fig:aberrant}B)
+, which is the desired behavior of a
 correction method. On both data sets, \textit{OneD+CN}, \textit{ICE} and
 \textit{KR} gave inferior results, while \textit{raw+CN} (copy number
 correction alone), \textit{LGF} and \textit{vanilla} were not competitive.
@@ -560,7 +565,7 @@ is to identify outliers. We thus investigated the capacity of the
 different methods to help identify the samples from the other cell type
 spiked in the data set. We interpreted the pairwise comparison scores as
 classifier scores and summarized the results with a ROC curve
-(Figures~\ref{fig:aberrant}C and D). \textit{OneD} had the larest area
+(Figures~\ref{fig:aberrant}C and D). \textit{OneD} had the largest area
 under the curve in both tests, and the corresponding ROC curve was above
 the others throughout. Using other metrics to compare Hi-C matrices
 yielded similar results (Supplementary Figures~4, 5 and 6).
@@ -604,6 +609,11 @@ curve on this problem, but with a small margin over \textit{KR} and
 lines. Using other metrics to compare matrices gave similar results
 (Supplementary Figures~8, 9 and 10).
 
+We took advantage of the wide range of protocols used in the GM12878 set to
+further investigate the performance of each method. The differences between
+methods were minor and \textit{OneD} showed the greatest improvement in
+reporducibility (Supplementary Figure~11).
+
 Taken together, these results indicate that \textit{OneD} performs as well
 as the best normalization methods, even with normal karyotypes.
 
@@ -625,7 +635,7 @@ performance of \textit{OneD}. A possible limitation in Hi-C is the absence
 of ground truth. We thus used simulations to generate matrices with
 defined karyotypic aberrations (see Materials and Methods) and tested the
 capacity of the correction methods to distinguish different cell types
-(Supplementary Figure~11). On this test, \textit{LGF} and \textit{OneD}
+(Supplementary Figure~12). On this test, \textit{LGF} and \textit{OneD}
 performed best. In comparison, \textit{OneD+CN} performed less well,
 suggesting that correcting the copy number attenuates the biological
 signal. This is corroborated by the fact that the copy number correction
@@ -759,9 +769,9 @@ on all the samples shown in Supplementary Figure~1 at 100~kbp resolution.
 The fastest method was \textit{vanilla} and the slowest \textit{LGF}, with
 an over 100-fold span between the two.
 
-\textit{OneD} was the third fastest method and it always ran in less than
+On average, \textit{OneD} was the second fastest method and it always ran in less than
 1~min in the conditions of the benchmark. The copy number correction
-increased the running time, but it remained unert 1~min in general.
+increased the running time, but it remained under 1~min in general.
 Throughout this benchmark, the memory footprint of \textit{OneD} was less
 than 300 MB.  Interestingly, the running time of \textit{OneD} was much
 more homogeneous than that of the other methods. The reason is that the
@@ -789,8 +799,8 @@ of speed, \textit{i.e.} the matrix-balacing methods.
 Figure~\ref{fig:times}B shows that the running time of \textit{OneD} does
 not depend on the sequencing depth. Strikingly, \textit{OneD} also gives
 nearly identical results at very different sequencing depths
-(Supplementary Figure~12). \textit{vanilla} was the overall fastest method
-and \textit{OneD} was usually the faster than \textit{ICE} and \textit{KR}
+(Supplementary Figure~13). \textit{vanilla} was the overall fastest method
+and \textit{OneD} was usually faster than \textit{ICE} and \textit{KR}
 at high but not at low sequencing depth. At low resolution (100~kbp) the
 speed advantage of \textit{OneD} appeared from low sequencing depth, but
 at high resolution reslution (5~kbp) it appeared only at high sequening
