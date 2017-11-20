@@ -693,10 +693,10 @@ euploid-equivalent normalized matrix.
 
 \subsection{Capture Hi-C}
 
-Matrix-balancing methods (here \textit{ICE}, \textit{vanilla} and the
-\textit{KR} algorithm) are specifically tailored for Hi-C because it is
-the dominant 3C-derived technology. As a consequence, their performance is
-typically lower when they are used for variants such as and Capture Hi-C
+Matrix-balancing methods (here \textit{ICE}, \textit{vanilla} and
+\textit{KR}) are specifically tailored for Hi-C because it is the dominant
+3C-derived technology. As a consequence, their performance is typically
+lower when they are used for variants such as Capture Hi-C
 \citep{jager2015capture}. In this case, the contacts with one or more
 regions of interest are enriched through direct purification, essentially
 erasing all the other contacts from the Hi-C matrix. The lack of
@@ -712,8 +712,8 @@ found that the reproducibility score between replicates was higher after
 normalization with \textit{OneD} than with matrix-balancing methods
 (figure~\ref{fig:chic}A). The performance of \textit{OneD} was only
 slightly lower than the raw data, suggesting that it barely disturbs the
-biological signal. Other tools were not included beause they either
-crashed (\textit{caICB}) or had prohibitive run time (\textit{LGF}).
+biological signal. Other tools were not included beause they had
+prohibitive run time.
 
 \begin{figure}
 \centerline{\includegraphics[width=.49\textwidth]
