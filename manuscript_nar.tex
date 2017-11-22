@@ -373,7 +373,7 @@ types.
 
 There is no universally accepted standard to compare Hi-C matrices. The
 simplest metric is the Spearman correlation applied to intra-chromosomal
-contacts up to a given distance (5 Mb in what follows). The second option
+contacts up to a given distance (5 Mbp in what follows). The second option
 is to measure the similarity of observed over expected contacts via the
 Pearson correlation up to a given distance range. Compared to the first,
 this metric gives more weight to changes occurring away from the diagonal.
@@ -424,12 +424,13 @@ the copy number.
 \caption{Modeling biases from the contact profile. A. Non linear
 relationship between the number of restriction sites and the total number
 of contacts per bin in T47D. B. Total number of contacts per bin on
-chromosome 17 of T47D. The brown line represents the raw signal, the blue
-line represents the signal after bias correction, the black line
-represents the signal after bias and copy number (CN) correction. The long
-arm of chromosome 17 (the region corresponding to 20-80 Mbp) is present in
-four copies, explaining that the signal is about twice higher than for the
-short arm.}
+chromosome 17 of T47D. The purple line represents the raw signal, the dark blue
+line represents the signal after OneD bias correction, the light blue line
+represents the signal after OneD bias and copy number (CN) correction and
+the orange line represents the signal after ICE bias correction. The long arm
+of chromosome 17 (the region corresponding to 20-80 Mbp) is present in
+four copies, explaining that the signal is about twice higher than for
+the short arm.}
 \label{fig:totals}
 \end{figure}
 
@@ -523,7 +524,7 @@ biological differences.
 We collected multiple Hi-C data sets obtained from T47D and K562 cells,
 both with aberrant karyotypes. The first pool, referred to as the T47D data
 set contained six T47D samples and two K562 samples, the second, refered
-to as the K562 data set contained eight T47D samples and two T47D samples.
+to as the K562 data set contained eight K562 samples and two T47D samples.
 We compared matrices before and after normalization by different methods
 (see Materials and Methods, distributions shown in Supplementary Figures~2
 and 3). This gave an indication of the impact of a given normalization
@@ -539,9 +540,13 @@ Figure~\ref{fig:aberrant}.
 Average changes compared to the raw data on the T47D and K562 data sets.
 The bars represent 95\% confidence intervals centered on the mean
 difference of the reproducibility score between a given correction method
-and the raw data. C and D. ROC curves on the T47D and K562 sets. The areas
-under the curve are indicated in the bottom right corner. The color code
-is the same as in panels A and B.}
+and the raw data. Upper left panels: Different cell type samples
+processed using different protocols. Upper right panels: Same cell
+type samples processed using different protocols. Lower left panels:
+Same cell type samples processed using the same protocol. C and D. ROC
+curves on the T47D and K562 sets. The areas under the curve are
+indicated in the bottom right corner. The color code is the same as in
+panels A and B.}
 \label{fig:aberrant}
 \end{figure}
 
@@ -601,7 +606,7 @@ similar results (Supplementary Figures~8, 9 and 10).
 
 As above, we used the reproducibility score for classification and
 compared the tools with a ROC curve (Figure~\ref{fig:normal}B). The
-performance of the all tools were high and less variable than for
+performance of all the tools were high and less variable than for
 aneuploid cell lines. \textit{OneD} achieved the highest area under the
 curve on this problem, but with a small margin over \textit{KR} and
 \textit{ICE}. The performance of \textit{OneD+CN} was the same as that of
@@ -621,9 +626,13 @@ as the best normalization methods, even with normal karyotypes.
 \centerline{\includegraphics[width=.49\textwidth]
   {nar_figures/figure_3.eps}}
 \caption{Removing biases from Hi-C on normal karyotypes. A. Average
-changes compared to the raw data on the mouse data set.  B. ROC curves on
-the mouse data set. The legend and color code are as in
-Figure~\ref{fig:aberrant}.}
+  changes compared to the raw data on the mouse data set.
+  Upper left panel: Different cell type samples
+processed using different protocols. Upper right panel: Same cell
+type samples processed using different protocols. Lower left panel:
+Same cell type samples processed using the same protocol. Lower right panel:
+Different cell type samples processed using the same protocol. B. ROC curves on
+the mouse data set. The legend and color code are as in Figure~\ref{fig:aberrant}.}
 \label{fig:normal}
 \end{figure}
 
