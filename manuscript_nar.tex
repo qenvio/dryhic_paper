@@ -109,19 +109,19 @@ Several methods have been proposed to remove biases in Hi-C experiments
 \citep{schmitt2016genome}. The first strategy is to model biases
 explicitly from a defined set of local genomic features, such as the G+C
 content. This approach is used in the method of
-\cite{yaffe2011probabilistic} and in Hicnorm by \cite{hu2012hicnorm}. The
-second strategy is to implicitly correct unknown biases by enforcing some
-regularity condition on the data. This approach is used in the
+\citet{yaffe2011probabilistic} and in HiCNorm by \citet{hu2012hicnorm}.
+The second strategy is to implicitly correct unknown biases by enforcing
+some regularity condition on the data. This approach is used in the
 Iterative Correction and Eigenvector decomposition method (\textit{ICE})
-of \cite{imakaev2012iterative}, whereby the total amount of contacts of
+of \citet{imakaev2012iterative}, whereby the total amount of contacts of
 every bin is imposed to be the same. \textit{ICE} is currently the most
 popular method, due in part to its speed.
 
 Neither of these strategies were designed for cell types with karyotypic
 aberrations, most common in cancer. Yet, Hi-C is very sensitive to
-aneuploidy, copy number variations and translocations.  Actually, these
+aneuploidy, copy number variations and translocations. Actually, these
 aberrations have so much influence on the outcome that they can be used as
-signature to re-assemble the target genome \citep{korbel2013genome}. An
+signatures to re-assemble the target genome \citep{korbel2013genome}. An
 additional complication is that karyotypic aberrations are not
 experimental biases, so it is unclear whether they should be corrected at
 all or be considered part of the biological signal.
@@ -134,7 +134,7 @@ all or be considered part of the biological signal.
 
 So far, the only attempt to address the issue was the chromosome-adjusted
 Iterative Correction Bias method (\textit{caICB}) of
-\cite{wu2016computational}. However, \textit{caICB} applies a uniform
+\citet{wu2016computational}. However, \textit{caICB} applies a uniform
 chromosome-wide copy number correction, effectively excluding the numerous
 cases of partial aneuploidy and regional copy number variations.
 
@@ -160,40 +160,42 @@ bins. The values are stored in the cells of the contact matrix ($x_{ij}$),
 quantifying the interaction between the two loci at positions $i$ and
 $j$.
 
-Our approach is to model the tally of contacts for each bin, thus reducing
-the matrix to a one dimension score (hence the name \textit{OneD}). We
-assume that the total number of contacts per bin ($t_{i}$) can be
-approximated by a negative binomial distribution. This choice is sensible
-because the amount of contacts is a discrete variable and because the
-negative binomial distribution allows for overdispersion. We further
-assume that the explicit sources of bias have independent contributions to
-the mean of the distribution for a given bin ($\lambda_i$).
+Our approach is to model the total number of contacts for each bin, thus
+reducing the matrix to a one-dimension score (hence the name
+\textit{OneD}) referred to as the `contact profile'. We assume that the
+total number of contacts per bin $t_{i}$ can be approximated by a
+negative binomial distribution. This choice is sensible because the amount
+of contacts is a discrete variable and because the negative binomial
+distribution allows for overdispersion. We further assume that the
+explicit sources of bias have independent contributions to the mean of the
+distribution for a given bin $\lambda_i$.
 
 Given that this relationship might not be linear (see for instance
-Figure~\ref{fig:totals}A), we allowed a smooth representation
-using thin plate penalized regression splines \citep{wood2003thin} in a
-generalized additive model \citep{wood2011fast}. The model can be
+Figure~\ref{fig:totals}A), we allowed a smooth representation using thin
+plate penalized regression splines \citep{wood2003thin} in a generalized
+additive model \citep{wood2011fast}. Thin plate regression splines are
+`isotropic' because rotation of the covariate co-ordinate system does not
+change the result of smoothing and `low rank' because they have far fewer
+coefficients than there are data points to smooth. The model can be
 parametrized as
-
-\begin{align*}
-t_i = \sum_j^n{x_{ij}} &\sim  NB(\lambda_i, \theta) \\
-\log(\lambda_i) &\propto \sum_{k}{f_k(z_k)}
-\end{align*}
-
-\noindent
+\begin{gather*}
+t_i = \sum_{j=1}^n{x_{ij}} \sim  NB(\lambda_i, \theta) \text{ and} \\
+\log(\lambda_i) \propto \sum_{k}{f_k(z_{k,i})},
+\end{gather*}
 where $x_{ij}$ is the raw number of contacts between bins $i$ and $j$, and
-$z_k$ is the additive bias of genomic feature $k$. The smooth functions
-$\{f_k(\cdot)\}$ are estimated jointly with the negative binomial
-dispersion parameter $\theta$ using the the default arguments of the
-\texttt{mgcv::s} and \texttt{mgcv::nb} functions \citep{wood2011fast} of the R
-software \citep{coreteam2014r}.
+$z_{k,i}$ is the additive bias of genomic feature $k$ in bin $i$.
+
+The smooth functions $\{f_k(\cdot)\}$ are estimated through the thin plate
+spline penalty, jointly with the negative binomial dispersion parameter
+$\theta$ using the the default arguments of the \texttt{mgcv::s} and
+\texttt{mgcv::nb} functions \citep{wood2011fast} of the R software
+\citep{coreteam2014r}.
 
 
 Once the parameters of the model are determined, the estimated means
 $\{\lambda_i\}$ are rescaled to obtain a correction vector
 $\{\lambda_i'\}$ that can be used to compute the corrected counts
-($\hat{x}_{ij}$).
-
+$\hat{x}_{ij}$.
 \begin{align}
 \notag
 \lambda_i' &= \frac{\lambda_i}{\sum_j^n{\lambda_j}/n} \\
@@ -202,31 +204,30 @@ $\{\lambda_i'\}$ that can be used to compute the corrected counts
 \end{align}
 
 In line with previous methods
-\citep{yaffe2011probabilistic,hu2012hicnorm}, the default features
-used to fit the model are the local G+C content, the read mappability and
-the number of restriction sites. The model and the
-implementation can be modified or extended with any user-provided genomic
-features.
+\citep{yaffe2011probabilistic,hu2012hicnorm}, the default features used to
+fit the model are the local G+C content, the read mappability and the
+number of restriction sites. The model and the implementation can be
+modified or extended with any user-provided genomic features.
 
 \subsection{Copy number correction}
 
 Briefly, a hidden Markov model with emissions distributed as a Student's
 $t$ variable is fitted on the corrected total amount of contacts per bin
-($\hat{t}_i = \sum_j^n{\hat{x}_{ij}}$). The model consists of 8 states that correspond to 1, 2, 3,
-4, 5, 6, 7, and `8 or more' copies of the target, for a total of 4
-emission parameters (a single position parameter for states 1-7, a
-position parameter for state `8 or more', a single standard deviation for
-all the states and a single degree of freedom for all the states) and 56
-transition parameters. 
+$\hat{t}_i = \sum_{j=1}^n{\hat{x}_{ij}}$. The model consists of 8
+states that correspond to 1, 2, 3, 4, 5, 6, 7, and `8 or more' copies of
+the target bin, for a total of 4 emission parameters (a single position
+parameter for states 1-7, a position parameter for state `8 or more', a
+single standard deviation for all the states and a single degree of
+freedom for all the states) and 56 transition parameters. 
 
 The model is fitted with the Baum-Welch algorithm \citep{baum1966} until
 convergence, following a previously described implementation
 \citep{filion2010systematic}.  The Viterbi path is then computed and
-corresponds to the inferred copy number of each bin ($c_i$).
+corresponds to the inferred copy number of each bin $c_i$.
 
 A correction equal to the square root of the copy number is then applied
-to the whole matrix. More specifically, each cell is updated to
-
+to the whole matrix. More specifically, the entry at position $(i,j)$ is
+updated to
 \begin{equation}
 \label{eq:cnvnorm}
 \hat{x}_{ij}^* = \frac{\hat{x}_{ij}}{\sqrt{c_ic_j}}.
@@ -235,113 +236,44 @@ to the whole matrix. More specifically, each cell is updated to
 
 \subsection{Data sources}
 
-To test the correction of biases, we gathered a set of
-published \citep[][BioRxiv: https://doi.org/10.1101/132456]{ledily2014distinct, encode2012integrated, rao20143d,
-lin2012global, dixon2012topological} and
-unpublished Hi-C data of different cell types and organisms
-(Supplementary Table~1).
+We gathered a set of published Hi-C data \citep[][BioRxiv:
+https://doi.org/10.1101/132456]{ledily2014distinct, encode2012integrated,
+rao20143d, lin2012global, dixon2012topological} and unpublished data of
+different cell types and organisms (Supplementary Table~1).
 
-We used several experiments comprising T47D breast cancer cell lines (6
-samples), K562 leukemia cell lines (8 samples), both with aberrant
-karyotypes; mouse primary B cells (6 samples) and ES cells (7
-samples), both with normal diploid karyotypes; GM12878 B-lymphoblastoid cells
-(58 samples), with diploid karyotype; BT474, MCF10, MCF-7 and SKBR3 breast cell
-lines (1 sample each). The experiments were
-carried out in different laboratories, following either the original Hi-C
-protocol \citep{lieberman2009comprehensive} or the newer \textit{in situ}
-version \citep{rao20143d}, and using different restriction enzymes (DpnII,
-HindIII, MspI, MboI and NcoI). We also used array-based copy-number
-segmentation of the two cell lines obtained from the COSMIC database
-\citep{forbes2010cosmic}.
+The Hi-C experiments were performed in T47D breast cancer cell lines
+(aberrant karyotype, six samples), K562 leukemia cell lines (aberrant
+karyotype, eight samples), mouse primary B cells (normal karyotyp, six
+samples) ES cells (normal karotype, seven samples), GM12878
+B-lymphoblastoid cells (normal karyotype, fifty eight samples), BT474
+breast cancer cell line (aberrant karyotype, one sample), MCF10 breast
+cancer cell line (aberrant karyotype, one sample), MCF-7 cancer cell line
+(aberrant karyotype, one sample) and SKBR3 breast cell lines (aberrant
+karyotype, one sample).
 
+The experiments were carried out in different laboratories, following
+either the original Hi-C protocol \citep{lieberman2009comprehensive} or
+the newer \textit{in situ} version \citep{rao20143d}, and using different
+restriction enzymes (DpnII, HindIII, MspI, MboI and NcoI). In the figures,
+``same protocol'' means same laboratory, same Hi-C protocol and same
+restriction enzyme, and ``different protocol'' means that any of the three
+is different.
 
-%\begin{landscape}
-%
-%\begin{table*}
-%\label{tab:samples}
-%{\begin{tabular}{ccccccc}
-%  \hline
-%  \textbf{Sample ID} & \textbf{Cell type} & \textbf{Application} &
-%  \textbf{RE} & \textbf{Sequencing core} & \textbf{Set(s)} &
-%  \textbf{Source} \\
-%  \hline
-%dc3a1e069\_51720e9cf & T47D & \textit{in situ} Hi-C &
-%  DpnII & CRG & T47D, K562 & NA \\
-%b1913e6c1\_51720e9cf & T47D & \textit{in situ} Hi-C &
-%  DpnII & CRG & T47D & NA \\
-%dc3a1e069\_ec92aa0bb & T47D & \textit{in situ} Hi-C &
-%  DpnII & CRG & T47D, K562 & NA \\
-%HindIII\_T0 & T47D & dilution Hi-C &
-%  HindIII & CRG & T47D & SRR1054341 \\
-%NcoI\_T0    & T47D & dilution Hi-C &
-%  NcoI      & CRG & T47D & SRR1054343 \\
-%ENCLB758KFU & T47D & dilution Hi-C &
-%  HindIII   & UMass & T47D & ENCLB758KFU \\
-%ENCLB183QHG & T47D & dilution Hi-C &
-%  HindIII   & UMass & T47D & ENCLB183QHG \\
-%HIC069  & K562 & \textit{in situ} Hi-C &
-%  MboI & Baylor & T47D, K562 &    SRR1658693 \\
-%HIC070  & K562 & \textit{in situ} Hi-C &
-%  MboI & Baylor & T47D, K562 &    SRR1658694 \\
-%HIC071  & K562 & \textit{in situ} Hi-C &
-%  MboI & Baylor & K562 & SRR1658695,SRR1658696 \\
-%HIC074  & K562 & \textit{in situ} Hi-C &
-%  MboI & Baylor & K562 & SRR1658701,SRR1658702 \\
-%b7fa2d8db\_bfac48760 & B cell  & \textit{in situ} Hi-C &
-%  DpnII & CRG & mm10 & GSE96611 \\
-%fc3e8b36a\_7bf1bf374 & ES cell & \textit{in situ} Hi-C &
-%  DpnII & CRG & mm10 & GSE96611 \\
-%b7fa2d8db\_7284b867a & B cell  & \textit{in situ} Hi-C &
-%  DpnII & CRG & mm10 & GSE96611 \\
-%fc3e8b36a\_38bfd1b33 & ES cell & \textit{in situ} Hi-C &
-%  DpnII & CRG & mm10 & GSE96611 \\
-%b7fa2d8db\_58e812fc2 & B cell  & \textit{in situ} Hi-C &
-%  DpnII & CRG & mm10 & GSE96611 \\
-%fc3e8b36a\_c990a254e & ES cell & \textit{in situ} Hi-C &
-%  DpnII & CRG & mm10 & GSE96611 \\
-%b7fa2d8db\_73f11d923 & B cell  & \textit{in situ} Hi-C &
-%  DpnII & CRG & mm10 & GSE96611 \\
-%fc3e8b36a\_4bf044f18 & ES cell & \textit{in situ} Hi-C &
-%  DpnII & CRG & mm10 & GSE96611 \\
-%GSM987817 & B cell  & dilution Hi-C &
-%  HindIII & UCSD & mm10 & SRR543428-SRR543431 \\
-%GSM987818 & B cell  & dilution Hi-C &
-%  HindIII & UCSD & mm10 & SRR543432-SRR543442 \\
-%GSM862720 & ES cell & dilution Hi-C &
-%  HindIII & LICR & mm10 & SRR443883-SRR443885 \\
-%GSM862721 & ES cell & dilution Hi-C &
-%  HindIII & LICR & mm10 & SRR400251-SRR400256 \\
-%GSM862722 & ES cell & dilution Hi-C &
-%  NcoI    & LICR & mm10 & SRR443886-SRR443888 \\
-%  \hline
-%\end{tabular}}{}
-%\caption{Hi-C data sets used in this study. Sample ID: Unique sample
-%identifier in the respective projects. Cell type: source of the biological
-%sample. Application: Hi-C protocol. RE: Restriction enzyme used for the
-%digestion. Sequencing core: Laboratory performing the experiment (CRG:
-%Centre for Genomic Regulation; UMass: University of Massachusetts; Baylor:
-%Baylor College of Medicine; UCSD: University of California San Diego;
-%LICR: Ludwig Institue for Cancer Research). Set(s): Sets in which the
-%sample was included (see text for detail).  Source: SRA, GEO or ENCODE raw
-%data identifier.}
-%\end{table*}
-%
-%\end{landscape}
+We also used array-based copy-number segmentation of the two cell lines
+obtained from the COSMIC database \citep{forbes2010cosmic} as an external
+reference for validation.
 
-
-%\subsection{Data processing}
 
 All data were processed through a pipeline based on TADbit
 \citep{serra2016structural}. Briefly, after controlling the quality of
 FASTQ files, paired-end reads were mapped to the corresponding reference
-genome (hg38 and mm10) taking into account the restriction enzyme site.
+genome (hg38 or mm10) taking into account the restriction enzyme site.
 Non-informative contacts were removed applying the following TADbit
 filters: \texttt{self-circle}, \texttt{dangling-ends}, \texttt{error},
 \texttt{extra-dangling-ends}, \texttt{duplicated} and
-\texttt{random-breaks}. For more details, see the methods section of
-(BioRxiv: https://doi.org/10.1101/132456). In addition, the pipeline is
-available from the Supplementary Material published by
-\cite{quilez2017managing}.
+\texttt{random-breaks} (for more details see BioRxiv:
+https://doi.org/10.1101/132456). In addition, the pipeline is available
+from the Supplementary Material published by \citet{quilez2017managing}.
 
 We developed the routines contained in the \texttt{dryhic} R package
 (available at http://www.github.com/qenvio/dryhic) to efficiently create
@@ -349,28 +281,27 @@ sparse representations of contact matrices and further apply
 \textit{vanilla}, \textit{ICE}, \textit{KR} and \textit{oneD} corrections.
 \texttt{HiTC} \citep{servant2012hitc} and \texttt{HiCapp}
 \citep{wu2016computational} were used to carry out the \textit{LGF} and
-\textit{caICB} corrections respectively. All the results are based on a
-resolution of 100~Kbp, but we found no major differences at different
-resolutions (not shown).
+\textit{caICB} corrections respectively. When not specified, the
+resolution of the analysis is 100~Kbp.
 
 \subsection{Simulations}
 
 
 Simulations were based on altering four experimental Hi-C samples obtained
 from diploid mouse cell lines (b7fa2d8db\_bfac48760, fc3e8b36a\_7bf1bf374,
-GSM987817 and GSM862720), either B cell or ES cell, and from either
-CRG or UCSC. The simulation strategy was the following: First we selected
-uniformly at random the amount of copy number break points (from 3 to 10).
-We then placed the break points along chromosomes 18 and 19 uniformly at
-random. Next, we assigned a copy number (2, 3, 4 or 10 with equal
-probability) to each segment delimited by the break points. We computed
-the outer product of this simulated copy number profile and multiplied it
-element-wise with the original contact matrices of chromosomes 18 and 19.
-The resulting matrices were used as input for correction methods. For each
-simulation (100 in total), we measured the pairwise reproducibility score
-defined by \citet{yan2017hicspector} and computed the average for pairs
-from the same cell type minus the average for pairs from different cell
-types.
+GSM987817 and GSM862720, see Supplementary Table~1), that were performed
+in either B cells or ES cells, and from either CRG or UCSC. The simulation
+strategy was the following: First we selected uniformly at random the
+amount of copy number break points (from 3 to 10). We then placed the
+break points along chromosomes 18 and 19 uniformly at random. Next, we
+assigned a copy number (2, 3, 4 or 10 with equal probability) to each
+segment delimited by the break points. We computed the outer product of
+this simulated copy number profile and multiplied it element-wise with the
+original contact matrices of chromosomes 18 and 19. The resulting matrices
+were used as input for correction methods. For each simulation (100 in
+total), we measured the pairwise reproducibility score defined by
+\citet{yan2017hicspector} and computed the average for pairs from the same
+cell type minus the average for pairs from different cell types.
 
 \subsection{Comparison of Hi-C matrices}
 
@@ -382,7 +313,7 @@ Pearson correlation up to a given distance range. Compared to the first,
 this metric gives more weight to changes occurring away from the diagonal.
 The third option is to compute a correlation per distance stratum and then
 obtain a stratum-adjusted correlation coefficient (SCC) as defined by
-\cite{yang2017hicrep}. Finally, the ``reproducibility score'' proposed by
+\citet{yang2017hicrep}. Finally, the ``reproducibility score'' proposed by
 \citet{yan2017hicspector} sums the distances between the leading twenty
 eigenvectors of the Laplacian of the Hi-C matrix. This approach borrows
 the concepts of spectral clustering \citep{von2007tutorial} and amounts to
@@ -391,25 +322,24 @@ comparing high level features of the matrix.
 We defined five data sets to measure experimental reproducibility after
 normalization: The first contained the samples from T47D plus two samples
 from K562, the second contained the samples from K562 plus two samples
-from T47D, the third contained all the mouse samples, the fourth contained all
-GM12878 samples, the fifth contained one sample of each breast cells (see Supplementary
-Table~1 for details). Given a set of experiments and a metric, we first
-computed all pairwise combinations between experiments and then classified
-the comparisons according to the characteristics of each pair (cell type,
-protocol, batch and treatment).
+from T47D, the third contained all the mouse samples, the fourth contained
+all the GM12878 samples and the fifth contained one sample of each breast
+cancer cells (see Supplementary Table~1 for details). Given a set of
+experiments and a metric, we first computed all pairwise combinations
+between experiments and then classified the comparisons according to the
+characteristics of each pair (cell type, protocol, batch and treatment).
 
 To measure the gain or loss of similarity upon normalization, we compared
 raw matrices to obtain a baseline. The differences with this baseline were
 estimated using a linear mixed model fitted with the \texttt{lmer}
 function of the \texttt{lme4} R package \citep{bates2015lme4}, where the
 fixed effect was the normalization method and the random effect was the
-chromosome. To test the ability of the different methods to separate samples
-from different cell origin we generated receiver operating characteristic (ROC) curves
-using the similarity metric (e.g. reproducibility score) as the classifier score
-and the relative cell type (i.e. same or different cell type) as the binary
-classification. ROC curves were computed using the \texttt{ROCR} package
-\citep{sing2005rocr} for the three first sets (those including samples of
-different cell types).
+chromosome. To test the ability of the different methods to separate
+samples from different cell origin we generated receiver operating
+characteristic (ROC) curves using the similarity metric (e.g.
+reproducibility score) as the classifier score and the relative cell type
+(i.e. same \textit{vs} different) as the binary classification. ROC curves
+were computed using the \texttt{ROCR} package \citep{sing2005rocr}.
 
 \section{RESULTS}
 
