@@ -1,0 +1,242 @@
+\begin{thebibliography}{10}
+
+\bibitem{rowley2016three}
+Rowley, M.~J. and Corces, V.~G. (2016)
+{The three-dimensional genome: principles and roles of long-distance
+  interactions}.
+{\em Current opinion in cell biology,} {\bf 40}, 8--14.
+
+\bibitem{dekker20163d}
+Dekker, J. and Mirny, L. (2016)
+{The 3D genome as moderator of chromosomal communication}.
+{\em Cell,} {\bf 164}(6), 1110--1121.
+
+\bibitem{pezic2017more}
+Pezic, D., Weeks, S.~L., and Hadjur, S. (2017)
+{More to cohesin than meets the eye: complex diversity for fine-tuning of
+  function}.
+{\em Current Opinion in Genetics \& Development,} {\bf 43}, 93--100.
+
+\bibitem{de2013topology}
+De~Laat, W. and Duboule, D. (2013)
+{Topology of mammalian developmental enhancers and their regulatory
+  landscapes}.
+{\em Nature,} {\bf 502}(7472), 499--506.
+
+\bibitem{choi2014ctcf}
+Choi, N.~M. and Feeney, A.~J. (2014)
+{CTCF and ncRNA regulate the three-dimensional structure of antigen receptor
+  loci to facilitate V (D) J recombination}.
+{\em Frontiers in immunology,} {\bf 5}, 49.
+
+\bibitem{galupa2015x}
+Galupa, R. and Heard, E. (2015)
+{X-chromosome inactivation: new insights into cis and trans regulation}.
+{\em Current opinion in genetics \& development,} {\bf 31}, 57--66.
+
+\bibitem{lieberman2009comprehensive}
+Lieberman-Aiden, E., Van~Berkum, N.~L., Williams, L., Imakaev, M., Ragoczy, T.,
+  Telling, A., Amit, I., Lajoie, B.~R., Sabo, P.~J., Dorschner, M.~O., et al.
+  (2009)
+{Comprehensive mapping of long-range interactions reveals folding principles of
+  the human genome}.
+{\em science,} {\bf 326}(5950), 289--293.
+
+\bibitem{dekker2013exploring}
+Dekker, J., Marti-Renom, M.~A., and Mirny, L.~A. (2013)
+{Exploring the three-dimensional organization of genomes: interpreting
+  chromatin interaction data}.
+{\em Nature Reviews Genetics,} {\bf 14}(6), 390--403.
+
+\bibitem{dekker2002capturing}
+Dekker, J., Rippe, K., Dekker, M., and Kleckner, N. (2002)
+{Capturing chromosome conformation}.
+{\em science,} {\bf 295}(5558), 1306--1311.
+
+\bibitem{simonis2006nuclear}
+Simonis, M., Klous, P., Splinter, E., Moshkin, Y., Willemsen, R., De~Wit, E.,
+  Van~Steensel, B., and De~Laat, W. (2006)
+{Nuclear organization of active and inactive chromatin domains uncovered by
+  chromosome conformation capture--on-chip (4C)}.
+{\em Nature genetics,} {\bf 38}(11), 1348--1354.
+
+\bibitem{dostie2006chromosome}
+Dostie, J., Richmond, T.~A., Arnaout, R.~A., Selzer, R.~R., Lee, W.~L., Honan,
+  T.~A., Rubio, E.~D., Krumm, A., Lamb, J., Nusbaum, C., et al. (2006)
+{Chromosome Conformation Capture Carbon Copy (5C): a massively parallel
+  solution for mapping interactions between genomic elements}.
+{\em Genome research,} {\bf 16}(10), 1299--1309.
+
+\bibitem{de2012decade}
+de~Wit, E. and de~Laat, W. (2012)
+{A decade of 3C technologies: insights into nuclear organization}.
+{\em Genes \& development,} {\bf 26}(1), 11--24.
+
+\bibitem{yaffe2011probabilistic}
+Yaffe, E. and Tanay, A. (2011)
+{Probabilistic modeling of Hi-C contact maps eliminates systematic biases to
+  characterize global chromosomal architecture}.
+{\em Nature genetics,} {\bf 43}(11), 1059--1065.
+
+\bibitem{schmitt2016genome}
+Schmitt, A.~D., Hu, M., and Ren, B. (2016)
+{Genome-wide mapping and analysis of chromosome architecture}.
+{\em Nature Reviews Molecular Cell Biology,}.
+
+\bibitem{hu2012hicnorm}
+Hu, M., Deng, K., Selvaraj, S., Qin, Z., Ren, B., and Liu, J.~S. (2012)
+{HiCNorm: removing biases in Hi-C data via Poisson regression}.
+{\em Bioinformatics,} {\bf 28}(23), 3131--3133.
+
+\bibitem{imakaev2012iterative}
+Imakaev, M., Fudenberg, G., McCord, R.~P., Naumova, N., Goloborodko, A.,
+  Lajoie, B.~R., Dekker, J., and Mirny, L.~A. (2012)
+{Iterative correction of Hi-C data reveals hallmarks of chromosome
+  organization}.
+{\em Nature methods,} {\bf 9}(10), 999--1003.
+
+\bibitem{korbel2013genome}
+Korbel, J.~O. and Lee, C. (2013)
+{Genome assembly and haplotyping with Hi-C}.
+{\em Nature biotechnology,} {\bf 31}(12), 1099.
+
+\bibitem{wu2016computational}
+Wu, H.-J. and Michor, F. (2016)
+{A computational strategy to adjust for copy number in tumor Hi-C data}.
+{\em Bioinformatics,} p. btw540.
+
+\bibitem{wood2003thin}
+Wood, S.~N. (2003)
+{Thin plate regression splines}.
+{\em Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology),} {\bf 65}(1), 95--114.
+
+\bibitem{wood2011fast}
+Wood, S.~N. (2011)
+{Fast stable restricted maximum likelihood and marginal likelihood estimation
+  of semiparametric generalized linear models}.
+{\em Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology),} {\bf 73}(1), 3--36.
+
+\bibitem{coreteam2014r}
+{R Core Team}
+{R: A Language and Environment for Statistical Computing}
+R Foundation for Statistical Computing Vienna, Austria (2017).
+
+\bibitem{baum1966}
+Baum, L.~E. and Petrie, T. (12, 1966)
+{Statistical Inference for Probabilistic Functions of Finite State Markov
+  Chains}.
+{\em The Annals of Mathematical Statistics,} {\bf 37}(6), 1554--1563.
+
+\bibitem{filion2010systematic}
+Filion, G.~J., van Bemmel, J.~G., Braunschweig, U., Talhout, W., Kind, J.,
+  Ward, L.~D., Brugman, W., de~Castro, I.~J., Kerkhoven, R.~M., Bussemaker,
+  H.~J., et al. (2010)
+{Systematic protein location mapping reveals five principal chromatin types in
+  Drosophila cells}.
+{\em Cell,} {\bf 143}(2), 212--224.
+
+\bibitem{ledily2014distinct}
+Le~Dily, F., Ba{\`u}, D., Pohl, A., Vicent, G.~P., Serra, F., Soronellas, D.,
+  Castellano, G., Wright, R.~H., Ballare, C., Filion, G., et al. (2014)
+{Distinct structural transitions of chromatin topological domains correlate
+  with coordinated hormone-induced gene regulation}.
+{\em Genes \& development,} {\bf 28}(19), 2151--2162.
+
+\bibitem{encode2012integrated}
+{ENCODE Project Consortium} (2012)
+{An integrated encyclopedia of DNA elements in the human genome}.
+{\em Nature,} {\bf 489}(7414), 57--74.
+
+\bibitem{rao20143d}
+Rao, S.~S., Huntley, M.~H., Durand, N.~C., Stamenova, E.~K., Bochkov, I.~D.,
+  Robinson, J.~T., Sanborn, A.~L., Machol, I., Omer, A.~D., Lander, E.~S., et
+  al. (2014)
+{A 3D map of the human genome at kilobase resolution reveals principles of
+  chromatin looping}.
+{\em Cell,} {\bf 159}(7), 1665--1680.
+
+\bibitem{lin2012global}
+Lin, Y.~C., Benner, C., Mansson, R., Heinz, S., Miyazaki, K., Miyazaki, M.,
+  Chandra, V., Bossen, C., Glass, C.~K., and Murre, C. (2012)
+{Global changes in the nuclear positioning of genes and intra-and interdomain
+  genomic interactions that orchestrate B cell fate}.
+{\em Nature immunology,} {\bf 13}(12), 1196--1204.
+
+\bibitem{dixon2012topological}
+Dixon, J.~R., Selvaraj, S., Yue, F., Kim, A., Li, Y., Shen, Y., Hu, M., Liu,
+  J.~S., and Ren, B. (2012)
+{Topological domains in mammalian genomes identified by analysis of chromatin
+  interactions}.
+{\em Nature,} {\bf 485}(7398), 376--380.
+
+\bibitem{forbes2010cosmic}
+Forbes, S.~A., Bindal, N., Bamford, S., Cole, C., Kok, C.~Y., Beare, D., Jia,
+  M., Shepherd, R., Leung, K., Menzies, A., et al. (2010)
+{COSMIC: mining complete cancer genomes in the Catalogue of Somatic Mutations
+  in Cancer}.
+{\em Nucleic acids research,} p. gkq929.
+
+\bibitem{serra2016structural}
+Serra, F., Ba{\`u}, D., Goodstadt, M., Castillo, D., Filion, G.~J., and
+  Marti-Renom, M.~A. (2017)
+Automatic analysis and 3D-modelling of Hi-C data using TADbit reveals
+  structural features of the fly chromatin colors.
+{\em PLoS computational biology,} {\bf 13}(7), e1005665.
+
+\bibitem{quilez2017managing}
+Quilez, J., Vidal, E., Dily, F.~L., Serra, F., Cuartero, Y., Stadhouders, R.,
+  Graf, T., Marti-Renom, M.~A., Beato, M., and Filion, G. (2017)
+Parallel sequencing lives, or what makes large sequencing projects successful.
+{\em GigaScience,}.
+
+\bibitem{servant2012hitc}
+Servant, N., Lajoie, B.~R., Nora, E.~P., Giorgetti, L., Chen, C.-J., Heard, E.,
+  Dekker, J., and Barillot, E. (2012)
+{HiTC: exploration of high-throughput ‘C’experiments}.
+{\em Bioinformatics,} {\bf 28}(21), 2843--2844.
+
+\bibitem{yan2017hicspector}
+Yan, K.~K., Gurkan~Yardimci, G., Yan, C., Noble, W.~S., and Gerstein, M. (Mar,
+  2017)
+{{{H}i{C}-{S}pector: {A} matrix library for spectral and reproducibility
+  analysis of {H}i-{C} contact maps}}.
+{\em Bioinformatics,}.
+
+\bibitem{yang2017hicrep}
+Yang, T., Zhang, F., Yardimci, G.~G., Hardison, R.~C., Noble, W.~S., Yue, F.,
+  and Li, Q. (2017)
+{HiCRep: assessing the reproducibility of Hi-C data using a stratum-adjusted
+  correlation coefficient}.
+{\em bioRxiv,} p. 101386.
+
+\bibitem{von2007tutorial}
+Von~Luxburg, U. (2007)
+{A tutorial on spectral clustering}.
+{\em Statistics and computing,} {\bf 17}(4), 395--416.
+
+\bibitem{bates2015lme4}
+Bates, D., M{\"a}chler, M., Bolker, B., and Walker, S. (2015)
+{Fitting Linear Mixed-Effects Models Using {lme4}}.
+{\em Journal of Statistical Software,} {\bf 67}(1), 1--48.
+
+\bibitem{sing2005rocr}
+Sing, T., Sander, O., Beerenwinkel, N., and Lengauer, T. (2005)
+{ROCR: visualizing classifier performance in R}.
+{\em Bioinformatics,} {\bf 21}(20), 7881.
+
+\bibitem{knight2013fast}
+Knight, P.~A. and Ruiz, D. (2013)
+A fast algorithm for matrix balancing.
+{\em IMA Journal of Numerical Analysis,} {\bf 33}(3), 1029--1047.
+
+\bibitem{jager2015capture}
+J{\"a}ger, R., Migliorini, G., Henrion, M., Kandaswamy, R., Speedy, H.~E.,
+  Heindl, A., Whiffin, N., Carnicer, M.~J., Broome, L., Dryden, N., et al.
+  (2015)
+Capture Hi-C identifies the chromatin interactome of colorectal cancer risk
+  loci.
+{\em Nature communications,} {\bf 6}.
+
+\end{thebibliography}

@@ -1,0 +1,1104 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.25)  24 NOV 2017 16:26
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**manuscript_nar_changes.tex
+(./manuscript_nar_changes.tex
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
+(./NAR.cls
+Document Class: NAR 2007/03/23 v1.4b Standard LaTeX document class
+(./fleqn.clo
+File: fleqn.clo 1998/08/17 v1.1c Standard LaTeX option (flush left equations)
+\mathindent=\dimen102
+) (./crop.sty
+Package: crop 2001/11/16 v1.6 cropmarks (mf)
+\CROP@width=\dimen103
+\CROP@height=\dimen104
+\CROP@index=\count79
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 95.
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count80
+))
+\CROP@offset=\count81
+Package crop Info: Local config file crop.cfg used on input line 346.
+
+(/usr/share/texlive/texmf-dist/tex/xelatex/xetexconfig/crop.cfg))
+Package crop Info: using pdf(la)tex graphics driver on input line 76.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2015/03/17 v1.2c Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/03/03 v2.15a AMS math features
+\@mathmargin=\skip41
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks16
+\ex@=\dimen105
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen106
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count82
+LaTeX Info: Redefining \frac on input line 199.
+\uproot@=\count83
+\leftroot@=\count84
+LaTeX Info: Redefining \overline on input line 297.
+\classnum@=\count85
+\DOTSCASE@=\count86
+LaTeX Info: Redefining \ldots on input line 394.
+LaTeX Info: Redefining \dots on input line 397.
+LaTeX Info: Redefining \cdots on input line 518.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen107
+LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
+\macc@depth=\count87
+\c@MaxMatrixCols=\count88
+\dotsspace@=\muskip10
+\c@parentequation=\count89
+\dspbrk@lvl=\count90
+\tag@help=\toks17
+\row@=\count91
+\column@=\count92
+\maxfields@=\count93
+\andhelp@=\toks18
+\eqnshift@=\dimen108
+\alignsep@=\dimen109
+\tagshift@=\dimen110
+\tagwidth@=\dimen111
+\totwidth@=\dimen112
+\lineht@=\dimen113
+\@envbody=\toks19
+\multlinegap=\skip42
+\multlinetaggap=\skip43
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2735.
+LaTeX Info: Redefining \] on input line 2736.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/base/latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count94
+\float@exts=\toks21
+\float@box=\box28
+\@float@everytoks=\toks22
+\@floatcapt=\box29
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks23
+)
+\Gin@req@height=\dimen114
+\Gin@req@width=\dimen115
+)
+\epsfxsize=\dimen116
+\epsfysize=\dimen117
+)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen118
+\WF@size=\dimen119
+\c@WF@wrappedlines=\count95
+\WF@box=\box30
+\WF@everypar=\toks24
+Package: wrapfig 2003/01/31  v 3.6
+)
+(/usr/share/texlive/texmf-dist/tex/latex/sttools/stfloats.sty
+Package: stfloats 2016/02/08 v2.0 Improve float mechanism and baselineskip sett
+ings
+\@dblbotnum=\count96
+\c@dblbotnumber=\count97
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2015/08/19 v1.8n multicolumn formatting (FMi)
+\c@tracingmulticols=\count98
+\mult@box=\box31
+\multicol@leftmargin=\dimen120
+\c@unbalance=\count99
+\c@collectmore=\count100
+\doublecol@number=\count101
+\multicoltolerance=\count102
+\multicolpretolerance=\count103
+\full@width=\dimen121
+\page@free=\dimen122
+\premulticols=\dimen123
+\postmulticols=\dimen124
+\multicolsep=\skip44
+\multicolbaselineskip=\skip45
+\partial@page=\box32
+\last@line=\box33
+\maxbalancingoverflow=\dimen125
+\mult@rightbox=\box34
+\mult@grightbox=\box35
+\mult@gfirstbox=\box36
+\mult@firstbox=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\@tempa=\box50
+\@tempa=\box51
+\@tempa=\box52
+\@tempa=\box53
+\@tempa=\box54
+\c@columnbadness=\count104
+\c@finalcolumnbadness=\count105
+\last@try=\dimen126
+\multicolovershoot=\dimen127
+\multicolundershoot=\dimen128
+\mult@nat@firstbox=\box55
+\colbreak@box=\box56
+\mc@col@check@num=\count106
+)
+(/usr/share/texlive/texmf-dist/tex/latex/rotating/rotating.sty
+Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count107
+\rotFPtop=\skip46
+\rotFPbot=\skip47
+\rot@float@box=\box57
+\rot@mess@toks=\toks25
+)
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen129
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/dcolumn.sty
+Package: dcolumn 2014/10/28 v1.06 decimal alignment package (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen130
+\extrarowheight=\dimen131
+\NC@list=\toks26
+\extratabsurround=\skip48
+\backup@length=\skip49
+))
+(/usr/share/texlive/texmf-dist/tex/latex/boxedminipage/boxedminipage.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty
+Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
+)
+(/usr/share/texlive/texmf-dist/tex/latex/soul/soul.sty
+Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
+\SOUL@word=\toks27
+\SOUL@lasttoken=\toks28
+\SOUL@cmds=\toks29
+\SOUL@buffer=\toks30
+\SOUL@token=\toks31
+\SOUL@spaceskip=\skip50
+\SOUL@ttwidth=\dimen132
+\SOUL@uldp=\dimen133
+\SOUL@ulht=\dimen134
+)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+) (./times.sty
+Package: times 2000/01/12 PSNFSS-v8.1 Times font as default roman (SPQR) 
+)
+\jnameskip=\skip51
+\titleskip=\dimen135
+\ruleskip=\dimen136
+\ruleht=\dimen137
+\droplines=\count108
+\dropsep=\dimen138
+\capvskip=\skip52
+\caphskip=\skip53
+\capwd=\dimen139
+\droplinewd=\dimen140
+\c@part=\count109
+\c@section=\count110
+\c@subsection=\count111
+\c@subsubsection=\count112
+\c@paragraph=\count113
+\c@subparagraph=\count114
+\labelwidthi=\dimen141
+\labelwidthii=\dimen142
+\labelwidthiii=\dimen143
+\labelwidthiv=\dimen144
+\topsepi=\skip54
+\topsepii=\skip55
+\topsepiii=\skip56
+\topsepiv=\skip57
+\itemsepi=\skip58
+\itemsepii=\skip59
+\itemsepiii=\skip60
+\itemsepiv=\skip61
+\labelsepi=\dimen145
+\labelsepii=\dimen146
+\labelsepiii=\dimen147
+\labelsepiv=\dimen148
+\parsepi=\dimen149
+\parsepii=\dimen150
+\parsepiii=\dimen151
+\parsepiv=\dimen152
+\rightmargini=\dimen153
+\rightmarginii=\dimen154
+\rightmarginiii=\dimen155
+\rightmarginiv=\dimen156
+\itemindenti=\dimen157
+\itemindentii=\dimen158
+\itemindentiii=\dimen159
+\itemindentiv=\dimen160
+\labelleftmargin=\dimen161
+\c@figure=\count115
+\c@table=\count116
+\abovecaptionskip=\skip62
+\belowcaptionskip=\skip63
+\figurewidth=\dimen162
+\figureheight=\dimen163
+\dwidth=\dimen164
+\dheight=\dimen165
+\ncolumns=\count117
+\nrows=\count118
+\tablewd=\dimen166
+\tablewidth=\dimen167
+\captionwd=\dimen168
+\tempbox=\box58
+\tableleftskip=\skip64
+\tablerightskip=\skip65
+\tablecapleftskip=\skip66
+\tablecaprightskip=\skip67
+\tablefootleftskip=\skip68
+\tablefootrightskip=\skip69
+\footnumskip=\dimen169
+\bibindent=\dimen170
+\maxbibwd=\dimen171
+
+(./NAR-natbib.sty
+Package: NAR-natbib 2000/07/24 7.0a (PWD)
+\bibhang=\skip70
+\bibsep=\skip71
+LaTeX Info: Redefining \cite on input line 509.
+\c@NAT@ctr=\count119
+)
+\hours=\count120
+\minutes=\count121
+\grid@sidemargin=\dimen172
+\grid@wd=\dimen173
+\grid@ht=\dimen174
+\grid@linewd=\dimen175
+\grid@topofline=\dimen176
+LaTeX Info: Redefining \textso on input line 1856.
+\currfontsize=\dimen177
+ (/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2015/03/04 v2.20.2
+\thm@style=\toks32
+\thm@bodyfont=\toks33
+\thm@headfont=\toks34
+\thm@notefont=\toks35
+\thm@headpunct=\toks36
+\thm@preskip=\skip72
+\thm@postskip=\skip73
+\thm@headsep=\skip74
+\dth@everypar=\toks37
+)
+\@indexfile=\write3
+\openout3 = `manuscript_nar_changes.idx'.
+
+
+Writing index file manuscript_nar_changes.idx
+) (/usr/share/texlive/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box59
+\UL@hyphenbox=\box60
+\UL@skip=\skip75
+\UL@hook=\toks38
+\UL@height=\dimen178
+\UL@pe=\count122
+\UL@pixel=\dimen179
+\ULC@box=\box61
+Package: ulem 2012/05/18
+\ULdepth=\dimen180
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2016/01/03 v1.1b Standard LaTeX Color (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 143.
+)
+(./manuscript_nar_changes.aux)
+\openout1 = `manuscript_nar_changes.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 34.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count123
+\scratchdimen=\dimen181
+\scratchbox=\box62
+\nofMPsegments=\count124
+\nofMParguments=\count125
+\everyMPshowfont=\toks39
+\MPscratchCnt=\count126
+\MPscratchDim=\dimen182
+\MPnumerator=\count127
+\makeMPintoPDFobject=\count128
+\everyMPtoPDFconversion=\toks40
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+
+LaTeX Font Warning: Font shape `OT1/cmss/b/n' undefined
+(Font)              using `OT1/cmss/m/n' instead on input line 88.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <20> not available
+(Font)              size <20.74> substituted on input line 88.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/b/n' in size <20> not available
+(Font)              size <20.74> substituted on input line 88.
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 88.
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 88.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+lasy on input line 88.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+
+LaTeX Font Warning: Font shape `OT1/cmss/n/n' undefined
+(Font)              using `OT1/cmss/m/n' instead on input line 88.
+
+
+Overfull \hbox (267.0pt too wide) in paragraph at lines 88--88
+[][] 
+ []
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/b/it' undefined
+(Font)              using `OT1/cmss/b/n' instead on input line 105.
+
+
+Underfull \hbox (badness 1163) in paragraph at lines 90--114
+\OT1/cmss/b/it/10 The three-dimensional conformation of genomes is an
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 90--114
+\OT1/cmss/b/it/10 in cancer cell lines, which typically harbor large-scale
+ []
+
+
+Underfull \hbox (badness 1845) in paragraph at lines 90--114
+\OT1/cmss/b/it/10 We observed that current normalization methods are
+ []
+
+
+Underfull \hbox (badness 1552) in paragraph at lines 118--131
+\OT1/ptm/m/n/10 this organization plays a key role in guiding enhancer-
+ []
+
+
+Underfull \hbox (badness 2865) in paragraph at lines 118--131
+\OT1/ptm/m/n/10 towards this insight was the development of the high
+ []
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 132--142
+\OT1/ptm/m/n/10 (9, 10, 11, 12), Hi-C interrogates all possible pairwise
+ []
+
+
+Underfull \hbox (badness 1596) in paragraph at lines 132--142
+\OT1/ptm/m/n/10 interactions between restriction fragments. However, this
+ []
+
+
+Underfull \hbox (badness 1226) in paragraph at lines 143--154
+\OT1/ptm/m/n/10 to implicitly correct unknown biases by enforcing some
+ []
+
+
+Underfull \hbox (badness 3989) in paragraph at lines 155--163
+\OT1/ptm/m/n/10 and translocations. Actually, these aberrations have so
+ []
+
+
+Underfull \hbox (badness 1776) in paragraph at lines 155--163
+\OT1/ptm/m/n/10 much influence on the outcome that they can be used
+ []
+
+
+Underfull \hbox (badness 1348) in paragraph at lines 155--163
+\OT1/ptm/m/n/10 as []signature to []re-assemble the target genome (17). An
+ []
+
+
+Underfull \hbox (badness 7415) in paragraph at lines 170--175
+\OT1/ptm/m/n/10 chromosome-adjusted Iterative Correction Bias method
+ []
+
+
+Underfull \hbox (badness 6001) in paragraph at lines 170--175
+\OT1/ptm/m/n/10 (\OT1/ptm/m/it/10 caICB\OT1/ptm/m/n/10 ) of (18). However, \OT1
+/ptm/m/it/10 caICB \OT1/ptm/m/n/10 applies a uniform
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 170--175
+\OT1/ptm/m/n/10 chromosome-wide copy number correction, effectively
+ []
+
+
+Underfull \hbox (badness 1297) in paragraph at lines 170--175
+\OT1/ptm/m/n/10 excluding the numerous cases of partial aneuploidy and
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 176.
+LaTeX Font Info:    Calculating math sizes for size <7.5> on input line 176.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <7.5> not available
+(Font)              size <7> substituted on input line 176.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <3.75> not available
+(Font)              size <5> substituted on input line 176.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <7.5> not available
+(Font)              size <7> substituted on input line 176.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.75> not available
+(Font)              size <5> substituted on input line 176.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <7.5> not available
+(Font)              size <7> substituted on input line 176.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.75> not available
+(Font)              size <5> substituted on input line 176.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <7.5> not available
+(Font)              size <7> substituted on input line 176.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <3.75> not available
+(Font)              size <5> substituted on input line 176.
+
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 176.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <7.5> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 176.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <7.5> not available
+(Font)              size <7> substituted on input line 176.
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+
+]
+Underfull \hbox (badness 3281) in paragraph at lines 176--185
+[]\OT1/ptm/m/n/10 Here we propose \OT1/ptm/m/it/10 OneD\OT1/ptm/m/n/10 , a meth
+od to correct local
+ []
+
+
+Underfull \hbox (badness 2772) in paragraph at lines 176--185
+\OT1/ptm/m/n/10 chromosomal abnormalities in Hi-C experiments. \OT1/ptm/m/it/10
+ OneD
+ []
+
+
+Underfull \hbox (badness 1253) in paragraph at lines 201--209
+\OT1/ptm/m/n/10 distribution. This choice is sensible because the amount
+ []
+
+
+Underfull \hbox (badness 6094) in paragraph at lines 210--215
+\OT1/ptm/m/n/10 using thin plate penalized regression splines (19) in
+ []
+
+
+Underfull \hbox (badness 2828) in paragraph at lines 210--215
+\OT1/ptm/m/n/10 a generalized additive model (20). The model can be
+ []
+
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 226.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 241.
+
+Underfull \hbox (badness 2401) in paragraph at lines 264--268
+[]\OT1/ptm/m/n/10 The model is fitted with the Baum-Welch algorithm
+ []
+
+
+Underfull \hbox (badness 1325) in paragraph at lines 264--268
+\OT1/ptm/m/n/10 (22) until convergence, following a previously described
+ []
+
+
+Underfull \hbox (badness 2376) in paragraph at lines 280--284
+\OT1/ptm/m/n/10 and unpublished Hi-C data of different cell types and
+ []
+
+
+Underfull \hbox (badness 1406) in paragraph at lines 285--298
+[]\OT1/ptm/m/n/10 We used several experiments comprising T47D breast
+ []
+
+
+Underfull \hbox (badness 1292) in paragraph at lines 650--661
+[]\OT1/ptm/m/n/10 All data were processed through a pipeline based on
+ []
+
+
+Underfull \hbox (badness 5504) in paragraph at lines 650--661
+\OT1/ptm/m/n/10 TADbit ([]30[]). Briefly, after controlling the quality of
+ []
+
+
+Underfull \hbox (badness 7576) in paragraph at lines 650--661
+\OT1/ptm/m/n/10 FASTQ files, paired-end reads were mapped to the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 650--661
+\OT1/ptm/m/n/10 corresponding reference genome (hg38 and mm10)
+ []
+
+
+Underfull \hbox (badness 4366) in paragraph at lines 650--661
+\OT1/ptm/m/n/10 taking into account the restriction enzyme site. Non-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 650--661
+\OT1/ptm/m/n/10 TADbit filters: \OT1/pcr/m/n/10 self-circle\OT1/ptm/m/n/10 , \O
+T1/pcr/m/n/10 dangling-ends\OT1/ptm/m/n/10 ,
+ []
+
+
+Underfull \hbox (badness 4531) in paragraph at lines 650--661
+\OT1/pcr/m/n/10 error\OT1/ptm/m/n/10 , \OT1/pcr/m/n/10 extra-dangling-ends\OT1/
+ptm/m/n/10 , \OT1/pcr/m/n/10 duplicated \OT1/ptm/m/n/10 and
+ []
+
+
+Underfull \hbox (badness 1609) in paragraph at lines 650--661
+\OT1/ptm/m/n/10 of ([]BioRxiv: https://doi.org/10.1101/132456[]). In addition,
+ []
+
+[2]
+Underfull \hbox (badness 4805) in paragraph at lines 690--691
+\OT1/ptm/m/n/10 Simulations were based on altering four experimental
+ []
+
+
+Underfull \hbox (badness 3895) in paragraph at lines 690--691
+\OT1/ptm/m/n/10 Hi-C samples obtained from diploid mouse cell lines
+ []
+
+
+Underfull \hbox (badness 1112) in paragraph at lines 690--691
+\OT1/ptm/m/n/10 (b7fa2d8db[]bfac48760, fc3e8b36a[]7bf1bf374, GSM987817
+ []
+
+
+Underfull \hbox (badness 4569) in paragraph at lines 711--721
+[]\OT1/ptm/m/n/10 We defined []five []data sets to measure experimental
+ []
+
+
+Underfull \hbox (badness 4886) in paragraph at lines 711--721
+\OT1/ptm/m/n/10 and then classified the comparisons according to the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 722--734
+[]\OT1/ptm/m/n/10 To measure the gain or loss of similarity upon
+ []
+
+
+Underfull \hbox (badness 3514) in paragraph at lines 722--734
+\OT1/ptm/m/n/10 normalization, we compared raw matrices to obtain a
+ []
+
+
+Underfull \hbox (badness 1552) in paragraph at lines 722--734
+\OT1/ptm/m/n/10 receiver []operating characteristic (ROC) curves []using the
+ []
+
+
+Underfull \hbox (badness 1242) in paragraph at lines 739--747
+\OT1/ptm/m/n/10 is approximately proportional to the local copy number.
+ []
+
+Package epstopdf Info: Source file: <nar_figures/figure_1.eps>
+(epstopdf)                    date: 2017-11-20 17:47:01
+(epstopdf)                    size: 315744 bytes
+(epstopdf)             Output file: <nar_figures/figure_1-eps-converted-to.pdf>
+
+(epstopdf)                    date: 2017-11-22 11:57:38
+(epstopdf)                    size: 78157 bytes
+(epstopdf)             Command: <repstopdf --outfile=nar_figures/figure_1-eps-c
+onverted-to.pdf nar_figures/figure_1.eps>
+(epstopdf)             \includegraphics on input line 752.
+Package epstopdf Info: Output file is already uptodate.
+<nar_figures/figure_1-eps-converted-to.pdf, id=28, 636.3775pt x 289.08pt>
+File: nar_figures/figure_1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use nar_figures/figure_1-eps-converted-to.pdf>
+Package pdftex.def Info: nar_figures/figure_1-eps-converted-to.pdf used on inpu
+t line 752.
+(pdftex.def)             Requested size: 251.86282pt x 114.4081pt.
+
+Underfull \hbox (badness 3312) in paragraph at lines 762--762
+[]\OT1/ptm/b/n/8 Figure 1. []\OT1/ptm/m/n/8 Modeling biases from the contact pr
+ofile[]. A. Non linear
+ []
+
+
+Underfull \hbox (badness 5217) in paragraph at lines 767--777
+[]\OT1/ptm/m/n/10 Experimental biases affect the []contact profile []in a
+ []
+
+[3 <./nar_figures/figure_1-eps-converted-to.pdf>]
+Underfull \hbox (badness 2856) in paragraph at lines 778--786
+\OT1/ptm/m/n/10 to the copy number. []In cancer cell lines, the contact
+ []
+
+
+Underfull \hbox (badness 1168) in paragraph at lines 803--810
+\OT1/ptm/m/n/10 (16), []the [][]\OT1/ptm/m/it/10 KR[] []\OT1/ptm/m/n/10 algorit
+hm (38), []\OT1/ptm/m/it/10 caICB \OT1/ptm/m/n/10 (18) and the Local
+ []
+
+
+Underfull \hbox (badness 1521) in paragraph at lines 884--891
+\OT1/ptm/m/n/10 We first benchmarked the performance of our approach
+ []
+
+
+Underfull \hbox (badness 2285) in paragraph at lines 884--891
+\OT1/ptm/m/n/10 biological replicates by reducing irrelevant experimental
+ []
+
+Package epstopdf Info: Source file: <nar_figures/figure_2.eps>
+(epstopdf)                    date: 2017-11-20 17:47:01
+(epstopdf)                    size: 112194 bytes
+(epstopdf)             Output file: <nar_figures/figure_2-eps-converted-to.pdf>
+
+(epstopdf)                    date: 2017-11-22 11:57:38
+(epstopdf)                    size: 28989 bytes
+(epstopdf)             Command: <repstopdf --outfile=nar_figures/figure_2-eps-c
+onverted-to.pdf nar_figures/figure_2.eps>
+(epstopdf)             \includegraphics on input line 915.
+Package epstopdf Info: Output file is already uptodate.
+<nar_figures/figure_2-eps-converted-to.pdf, id=42, 636.3775pt x 578.16pt>
+File: nar_figures/figure_2-eps-converted-to.pdf Graphic file (type pdf)
+
+<use nar_figures/figure_2-eps-converted-to.pdf>
+Package pdftex.def Info: nar_figures/figure_2-eps-converted-to.pdf used on inpu
+t line 915.
+(pdftex.def)             Requested size: 251.86282pt x 228.81621pt.
+
+Underfull \hbox (badness 7168) in paragraph at lines 955--974
+[]\OT1/ptm/m/n/10 An important application of normalization methods
+ []
+
+
+Underfull \hbox (badness 2334) in paragraph at lines 955--974
+\OT1/ptm/m/n/10 in experimental setups is to identify outliers. We thus
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4 <./nar_figures/figure_2-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 1053--1065
+[]\OT1/ptm/m/n/10 As above, we used the reproducibility score for
+ []
+
+Package epstopdf Info: Source file: <nar_figures/figure_3.eps>
+(epstopdf)                    date: 2017-11-20 17:47:01
+(epstopdf)                    size: 89554 bytes
+(epstopdf)             Output file: <nar_figures/figure_3-eps-converted-to.pdf>
+
+(epstopdf)                    date: 2017-11-22 11:57:39
+(epstopdf)                    size: 21542 bytes
+(epstopdf)             Command: <repstopdf --outfile=nar_figures/figure_3-eps-c
+onverted-to.pdf nar_figures/figure_3.eps>
+(epstopdf)             \includegraphics on input line 1083.
+Package epstopdf Info: Output file is already uptodate.
+<nar_figures/figure_3-eps-converted-to.pdf, id=57, 636.3775pt x 289.08pt>
+File: nar_figures/figure_3-eps-converted-to.pdf Graphic file (type pdf)
+
+<use nar_figures/figure_3-eps-converted-to.pdf>
+Package pdftex.def Info: nar_figures/figure_3-eps-converted-to.pdf used on inpu
+t line 1083.
+(pdftex.def)             Requested size: 251.86282pt x 114.4081pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 1466) in paragraph at lines 1102--1124
+\OT1/ptm/m/n/10 to generate matrices with defined karyotypic aberrations
+ []
+
+
+Underfull \hbox (badness 1365) in paragraph at lines 1102--1124
+\OT1/ptm/m/n/10 (see Materials and Methods) and tested the capacity of
+ []
+
+
+Underfull \hbox (badness 1242) in paragraph at lines 1137--1146
+[]\OT1/ptm/m/n/10 To test this idea, we collected a Hi-C data set from
+ []
+
+
+Underfull \hbox (badness 5245) in paragraph at lines 1137--1146
+\OT1/ptm/m/n/10 score between identical cell types after normalization
+ []
+
+
+Underfull \hbox (badness 3907) in paragraph at lines 1137--1146
+\OT1/ptm/m/n/10 with the different tools. In this case, we found that
+ []
+
+Package epstopdf Info: Source file: <nar_figures/figure_4.eps>
+(epstopdf)                    date: 2017-11-20 17:47:01
+(epstopdf)                    size: 146627 bytes
+(epstopdf)             Output file: <nar_figures/figure_4-eps-converted-to.pdf>
+
+(epstopdf)                    date: 2017-11-22 11:57:39
+(epstopdf)                    size: 40151 bytes
+(epstopdf)             Command: <repstopdf --outfile=nar_figures/figure_4-eps-c
+onverted-to.pdf nar_figures/figure_4.eps>
+(epstopdf)             \includegraphics on input line 1149.
+Package epstopdf Info: Output file is already uptodate.
+<nar_figures/figure_4-eps-converted-to.pdf, id=58, 636.3775pt x 289.08pt>
+File: nar_figures/figure_4-eps-converted-to.pdf Graphic file (type pdf)
+
+<use nar_figures/figure_4-eps-converted-to.pdf>
+Package pdftex.def Info: nar_figures/figure_4-eps-converted-to.pdf used on inpu
+t line 1149.
+(pdftex.def)             Requested size: 251.86282pt x 114.4081pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1164--1175
+\OT1/ptm/m/n/10 equivalent representations of samples from aberrant
+ []
+
+
+Underfull \hbox (badness 2653) in paragraph at lines 1164--1175
+\OT1/ptm/m/n/10 the original bias []and faded the signal almost entirely.
+ []
+
+[5 <./nar_figures/figure_3-eps-converted-to.pdf> <./nar_figures/figure_4-eps-co
+nverted-to.pdf>]
+Underfull \hbox (badness 5217) in paragraph at lines 1226--1240
+[]\OT1/ptm/m/n/10 We reasoned that [][]\OT1/ptm/m/it/10 OneD[] []\OT1/ptm/m/n/1
+0 should handle such cases
+ []
+
+Package epstopdf Info: Source file: <nar_figures/figure_5.eps>
+(epstopdf)                    date: 2017-11-20 17:47:01
+(epstopdf)                    size: 13241 bytes
+(epstopdf)             Output file: <nar_figures/figure_5-eps-converted-to.pdf>
+
+(epstopdf)                    date: 2017-11-22 11:57:39
+(epstopdf)                    size: 14411 bytes
+(epstopdf)             Command: <repstopdf --outfile=nar_figures/figure_5-eps-c
+onverted-to.pdf nar_figures/figure_5.eps>
+(epstopdf)             \includegraphics on input line 1243.
+Package epstopdf Info: Output file is already uptodate.
+<nar_figures/figure_5-eps-converted-to.pdf, id=87, 636.3775pt x 289.08pt>
+File: nar_figures/figure_5-eps-converted-to.pdf Graphic file (type pdf)
+
+<use nar_figures/figure_5-eps-converted-to.pdf>
+Package pdftex.def Info: nar_figures/figure_5-eps-converted-to.pdf used on inpu
+t line 1243.
+(pdftex.def)             Requested size: 251.86282pt x 114.4081pt.
+
+Underfull \hbox (badness 1253) in paragraph at lines 1274--1283
+\OT1/ptm/m/n/10 the highest reproducibility score between replicates with
+ []
+
+
+Underfull \hbox (badness 1769) in paragraph at lines 1305--1313
+\OT1/ptm/m/n/10 it always ran in less than 1 min in the conditions of
+ []
+
+
+Underfull \hbox (badness 1694) in paragraph at lines 1305--1313
+\OT1/ptm/m/n/10 running time, but it remained under 1 min in general.
+ []
+
+Package epstopdf Info: Source file: <nar_figures/figure_6.eps>
+(epstopdf)                    date: 2017-11-20 17:47:01
+(epstopdf)                    size: 47997 bytes
+(epstopdf)             Output file: <nar_figures/figure_6-eps-converted-to.pdf>
+
+(epstopdf)                    date: 2017-11-22 11:57:40
+(epstopdf)                    size: 66397 bytes
+(epstopdf)             Command: <repstopdf --outfile=nar_figures/figure_6-eps-c
+onverted-to.pdf nar_figures/figure_6.eps>
+(epstopdf)             \includegraphics on input line 1316.
+Package epstopdf Info: Output file is already uptodate.
+<nar_figures/figure_6-eps-converted-to.pdf, id=88, 794.97pt x 361.35pt>
+File: nar_figures/figure_6-eps-converted-to.pdf Graphic file (type pdf)
+
+<use nar_figures/figure_6-eps-converted-to.pdf>
+Package pdftex.def Info: nar_figures/figure_6-eps-converted-to.pdf used on inpu
+t line 1316.
+(pdftex.def)             Requested size: 251.86282pt x 114.48198pt.
+
+Underfull \hbox (badness 1558) in paragraph at lines 1326--1346
+\OT1/ptm/m/n/10 Table 1) at different bin sizes while downsampling the
+ []
+
+[6 <./nar_figures/figure_5-eps-converted-to.pdf>]
+Underfull \hbox (badness 1360) in paragraph at lines 1400--1408
+\OT1/ptm/m/n/10 genome is grossly different from the reference genome,
+ []
+
+
+Underfull \hbox (badness 2126) in paragraph at lines 1400--1408
+\OT1/ptm/m/n/10 this strategy is presently unfeasible because assembling
+ []
+
+
+Underfull \hbox (badness 2662) in paragraph at lines 1437--1446
+\OT1/ptm/m/n/10 Research Council under the European Union's Seventh
+ []
+
+
+Underfull \hbox (badness 7099) in paragraph at lines 1437--1446
+\OT1/ptm/m/n/10 agreement 609989 (4DGenome). The content of this
+ []
+
+[7 <./nar_figures/figure_6-eps-converted-to.pdf>] (./manuscript_nar_changes.bbl
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 7.
+
+Underfull \hbox (badness 3861) in paragraph at lines 21--25
+[]\OT1/ptm/m/n/8 De Laat, W. and Duboule, D. (2013) Topology of mammalian
+ []
+
+
+Underfull \hbox (badness 2818) in paragraph at lines 21--25
+\OT1/ptm/m/n/8 developmental enhancers and their regulatory landscapes. \OT1/pt
+m/m/it/8 Nature,
+ []
+
+
+Underfull \hbox (badness 1158) in paragraph at lines 33--36
+[]\OT1/ptm/m/n/8 Galupa, R. and Heard, E. (2015) X-chromosome inactivation: new
+
+ []
+
+
+Underfull \hbox (badness 1242) in paragraph at lines 87--90
+[]\OT1/ptm/m/n/8 Hu, M., Deng, K., Selvaraj, S., Qin, Z., Ren, B., and Liu, J. 
+S.
+ []
+
+
+Underfull \hbox (badness 1297) in paragraph at lines 115--120
+\OT1/ptm/m/n/8 marginal likelihood estimation of semiparametric generalized lin
+ear
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Missing character: There is no â in font ptmr7t!
+Missing character: There is no € in font ptmr7t!
+Missing character: There is no ˜ in font ptmr7t!
+Missing character: There is no â in font ptmr7t!
+Missing character: There is no € in font ptmr7t!
+Missing character: There is no ™ in font ptmr7t!
+) [8]
+(./manuscript_nar_changes.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 1.25pt have occurred.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 4333 strings out of 493029
+ 56686 string characters out of 6136234
+ 142707 words of memory out of 5000000
+ 7704 multiletter control sequences out of 15000+600000
+ 28945 words of font info for 78 fonts, out of 8000000 for 9000
+ 1150 hyphenation exceptions out of 8191
+ 38i,19n,34p,1011b,343s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ss17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
+s/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on manuscript_nar_changes.pdf (8 pages, 464944 bytes).
+PDF statistics:
+ 182 PDF objects out of 1000 (max. 8388607)
+ 123 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+
