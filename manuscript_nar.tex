@@ -71,7 +71,7 @@ reproducibility among replicates of Hi-C samples with abnormal karyotype,
 outperforming previous methods significantly. On normal karyotypes,
 \textit{OneD} fared equally well as state-of-the-art methods, making it a
 safe choice for Hi-C normalization.  \textit{OneD} is fast and scales well
-in terms of computing resources for resolutions up to 5~kbp.
+in terms of computing resources for resolutions up to 5~Kbp.
 %\textit{OneD} is implemented as an R package
 %available at http://www.github.com/qenvio/dryhic.
 \end{abstract}
@@ -145,7 +145,7 @@ normalized data is more reproducible between replicates and across
 different protocols. Importantly, \textit{OneD} is also efficient when
 cells have a normal karyotype, where it performs as well as the best
 normalization methods. Finally, the implementation is as fast as
-\textit{ICE} and it scales up to 5~kbp resolution with reasonable
+\textit{ICE} and it scales up to 5~Kbp resolution with reasonable
 computing resources.
 
 
@@ -184,8 +184,10 @@ t_i = \sum_j^n{x_{ij}} &\sim  NB(\lambda_i, \theta) \\
 where $x_{ij}$ is the raw number of contacts between bins $i$ and $j$, and
 $z_k$ is the additive bias of genomic feature $k$. The smooth functions
 $\{f_k(\cdot)\}$ are estimated jointly with the negative binomial
-dispersion parameter $\theta$ using the \texttt{mgcv} package
-\citep{wood2011fast} of the R software \citep{coreteam2014r}.
+dispersion parameter $\theta$ using the the default arguments of the
+\texttt{mgcv::s} and \texttt{mgcv::nb} functions \citep{wood2011fast} of the R
+software \citep{coreteam2014r}.
+
 
 Once the parameters of the model are determined, the estimated means
 $\{\lambda_i\}$ are rescaled to obtain a correction vector
@@ -202,8 +204,8 @@ $\{\lambda_i'\}$ that can be used to compute the corrected counts
 In line with previous methods
 \citep{yaffe2011probabilistic,hu2012hicnorm}, the default features
 used to fit the model are the local G+C content, the read mappability and
-the content and number of restriction sites. The model and the
-implementation can be modifed or extended with any user-provided genomic
+the number of restriction sites. The model and the
+implementation can be modified or extended with any user-provided genomic
 features.
 
 \subsection{Copy number correction}
@@ -348,15 +350,16 @@ sparse representations of contact matrices and further apply
 \texttt{HiTC} \citep{servant2012hitc} and \texttt{HiCapp}
 \citep{wu2016computational} were used to carry out the \textit{LGF} and
 \textit{caICB} corrections respectively. All the results are based on a
-resolution of 100~kbp, but we found no major differences at different
+resolution of 100~Kbp, but we found no major differences at different
 resolutions (not shown).
 
 \subsection{Simulations}
 
 
 Simulations were based on altering four experimental Hi-C samples obtained
-from diploid mouse cell lines (either B cell or ES cell, and from either
-CRG or UCSC). The simulation strategy was the following: First we selected
+from diploid mouse cell lines (b7fa2d8db\_bfac48760, fc3e8b36a\_7bf1bf374,
+GSM987817 and GSM862720), either B cell or ES cell, and from either
+CRG or UCSC. The simulation strategy was the following: First we selected
 uniformly at random the amount of copy number break points (from 3 to 10).
 We then placed the break points along chromosomes 18 and 19 uniformly at
 random. Next, we assigned a copy number (2, 3, 4 or 10 with equal
@@ -400,10 +403,13 @@ raw matrices to obtain a baseline. The differences with this baseline were
 estimated using a linear mixed model fitted with the \texttt{lmer}
 function of the \texttt{lme4} R package \citep{bates2015lme4}, where the
 fixed effect was the normalization method and the random effect was the
-chromosome. Receiver operating characteristic (ROC) curves were computed
-using the \texttt{ROCR} package \citep{sing2005rocr} for the three first sets
-(those including samples of different cell types).
-
+chromosome. To test the ability of the different methods to separate samples
+from different cell origin we generated receiver operating characteristic (ROC) curves
+using the similarity metric (e.g. reproducibility score) as the classifier score
+and the relative cell type (i.e. same or different cell type) as the binary
+classification. ROC curves were computed using the \texttt{ROCR} package
+\citep{sing2005rocr} for the three first sets (those including samples of
+different cell types).
 
 \section{RESULTS}
 
@@ -460,7 +466,7 @@ for the copy number. In this case, a hidden Markov model is fitted on the
 corrected contact profile in order to infer the local copy number. Each
 cell of the Hi-C matrix is then further corrected using equation
 (\ref{eq:cnvnorm}), \textit{i.e.} it is divided by the square root of the
-inferred copy number. In essence, this approach flatens the contact
+inferred copy number. In essence, this approach flattens the contact
 profile so that it is no longer proportional to the local copy number. The
 light blue line in figure~\ref{fig:totals}B shows the result of this
 process. After this correction, the contact profile fluctuates around a
@@ -523,7 +529,7 @@ biological differences.
 
 We collected multiple Hi-C data sets obtained from T47D and K562 cells,
 both with aberrant karyotypes. The first pool, referred to as the T47D data
-set contained six T47D samples and two K562 samples, the second, refered
+set contained six T47D samples and two K562 samples, the second, referred
 to as the K562 data set contained eight K562 samples and two T47D samples.
 We compared matrices before and after normalization by different methods
 (see Materials and Methods, distributions shown in Supplementary Figures~2
@@ -531,7 +537,7 @@ and 3). This gave an indication of the impact of a given normalization
 method on the biological variation (differences between samples from T47D
 and K562) and on the technical variation (differences among samples from
 the same cell type). The results are summarized in
-Figure~\ref{fig:aberrant}.
+Figure~\ref{fig:aberrant} and Supplementary Table~3.
 
 \begin{figure}
 \centerline{\includegraphics[width=.49\textwidth]
@@ -588,7 +594,7 @@ Does the performance of \textit{OneD} on aberrant karyotypes come at the
 cost of decreased performance on normal karyotypes? To address this
 question, we collected data from mouse B cells and embryonic stem (ES)
 cells, both with a normal karyotype. The cell types were pooled in almost
-equal proportions (see Supplementary Table~1) and we performe the same
+equal proportions (see Supplementary Table~1) and we performed the same
 tests as above using the same metrics (distributions shown in
 Supplementary Figure~7)
 
@@ -597,12 +603,12 @@ affected (Figure~\ref{fig:normal}A). All the methods increased the
 reproducibility between identical cell types (except one, see below), but
 only when the experimental conditions were different. This means that all
 the methods were able to remove some technical biases. \textit{ICE} and
-\textit{KR} showed the stongest increase in reproducibility, but
+\textit{KR} showed the strongest increase in reproducibility, but
 \textit{OneD}, \textit{OneD+CN}, and \textit{caICB} had competitive
 performance. \textit{vanilla} and \textit{LGF} were less competitive, and
 \textit{raw+CN} (copy number correction alone) performed poorly, because
 it is equivalent to no normalization on diploid cells. Other metrics gave
-similar results (Supplementary Figures~8, 9 and 10).
+similar results (Supplementary Figures~8, 9 and 10, Supplementary Table~3).
 
 As above, we used the reproducibility score for classification and
 compared the tools with a ROC curve (Figure~\ref{fig:normal}B). The
@@ -610,14 +616,14 @@ performance of all the tools were high and less variable than for
 aneuploid cell lines. \textit{OneD} achieved the highest area under the
 curve on this problem, but with a small margin over \textit{KR} and
 \textit{ICE}. The performance of \textit{OneD+CN} was the same as that of
-\textit{OneD} because copy numer correction has no effect on diploid cell
+\textit{OneD} because copy number correction has no effect on diploid cell
 lines. Using other metrics to compare matrices gave similar results
 (Supplementary Figures~8, 9 and 10).
 
 We took advantage of the wide range of protocols used in the GM12878 set to
 further investigate the performance of each method. The differences between
 methods were minor and \textit{OneD} showed the greatest improvement in
-reporducibility (Supplementary Figure~11).
+reproducibility (Supplementary Figure~11).
 
 Taken together, these results indicate that \textit{OneD} performs as well
 as the best normalization methods, even with normal karyotypes.
@@ -659,7 +665,7 @@ feature that is considered irrelevant in order to highlight other
 biological differences.
 
 To test this idea, we collected a Hi-C data set from breast cancer cell
-lines and measured the reproducibility score bewteen identical cell types
+lines and measured the reproducibility score between identical cell types
 after normalization with the different tools. In this case, we found that
 \textit{OneD+CN} outperformed \textit{OneD} and gave the highest overall
 reproducibility (Figure~\ref{fig:cnv_correction}A). Even though the
@@ -695,6 +701,14 @@ structure that was not visible in the raw data. On the contrary,
 approximately, but did not otherwise distort the main features of the
 region.
 
+Besides matrix correction, copy number estimation could have a potential stand-alone
+utility. For instance, we applied \textit{OneD+CN} to a T47D sample
+(dc3a1e069\_51720e9cf) at 10 Kbp and compared the correlation with the
+array-based copy number. The correlation increased from .80 for the raw totals,
+to .88 for the \textit{OneD} corrected totals to .92 for the estimated CN. We
+provide the table of the estimated start and end points as Supplementary Table~
+2.
+
 In summary, \textit{OneD+CN} can improve the reproducibility of samples
 with unstable karyotypes, and it can be used to obtain an
 euploid-equivalent normalized matrix.
@@ -715,13 +729,13 @@ particularly challenging.
 We reasoned that \textit{OneD} should handle such cases gracefully,
 because the signal is formally equivalent to an aberrant karyotype where
 most of the genome is present in zero copy. We thus evaluated the
-performance of \textit{OneD} on a Capture Hi-C data set at 5~kbp
+performance of \textit{OneD} on a Capture Hi-C data set at 5~Kbp
 resolution centered on a 6~Mbp domain of chromosome 6 in T47D cells. We
 found that the reproducibility score between replicates was higher after
 normalization with \textit{OneD} than with matrix-balancing methods
 (figure~\ref{fig:chic}A). The performance of \textit{OneD} was only
 slightly lower than the raw data, suggesting that it barely disturbs the
-biological signal. Other tools were not included beause they either
+biological signal. Other tools were not included beaus they either
 crashed (\textit{caICB}) or had prohibitive run time (\textit{LGF}).
 
 \begin{figure}
@@ -735,7 +749,7 @@ data. Two Hi-C experiments were post-processed to produce an output
 similar to the Capture Hi-C experiment depicted in panel A. The signal
 outside the domain on chromosome 6 was removed and the data were
 normalized (capt), or the data were normalized before removing the signal
-oustside the domain on chromosome 6 (full). Four matrices per method were
+outside the domain on chromosome 6 (full). Four matrices per method were
 generated and the reproducibility score between the pairs from different
 replicates were computed. Note that the scores are identical for the raw
 data because in this case the matrices of the same replicate are
@@ -752,7 +766,7 @@ of the input data. Here we found that \textit{OneD} significantly
 outperformed the other methods: it featured the highest reproducibility
 score between replicates with practically no influence from the shape of
 the data (figure~\ref{fig:chic}B). Also, in this case, \textit{OneD}
-enhanced the reproducibility bewteen replicates compared to the raw data.
+enhanced the reproducibility between replicates compared to the raw data.
 This confirms the view that capture methods are a natural framework for
 the statistical model underlying \textit{OneD}. In comparison,
 matrix-balancing methods showed lower reproducibility between replicates,
@@ -774,7 +788,7 @@ thus estimates the model parameters much faster than previous explicit
 methods. We measured the running time of the different tools on a 3.3~GHz
 machine with 62 GB~RAM, always using the default parameters.
 Figure~\ref{fig:times}A shows the running times of the different methods
-on all the samples shown in Supplementary Figure~1 at 100~kbp resolution.
+on all the samples shown in Supplementary Figure~1 at 100~Kbp resolution.
 The fastest method was \textit{vanilla} and the slowest \textit{LGF}, with
 an over 100-fold span between the two.
 
@@ -791,7 +805,7 @@ is always the same at fixed resolution.
 \centerline{\includegraphics[width=.49\textwidth]
   {nar_figures/figure_6.eps}}
 \caption{Computing time of the bias correction methods. A. Total time to
-process samples listed in Supplementary Table~1 at 100~kbp resolution.
+process samples listed in Supplementary Table~1 at 100~Kbp resolution.
 Each dot corresponds to a sample. B. Total time to process sample HIC070
 at the indicated bin size and sequencing depths. Note the logarithmic
 scale on the y-axis on both panels.}
@@ -804,15 +818,15 @@ benchmark on the sample with highest sequencing depth in the data set
 (HIC070, see Supplementary Table~1) at different bin sizes while
 downsampling the contact matrices to mimic lower resolutions. On this
 test, we included only the methods competing with \textit{OneD} in terms
-of speed, \textit{i.e.} the matrix-balacing methods.
+of speed, \textit{i.e.} the matrix-balancing methods.
 Figure~\ref{fig:times}B shows that the running time of \textit{OneD} does
 not depend on the sequencing depth. Strikingly, \textit{OneD} also gives
 nearly identical results at very different sequencing depths
 (Supplementary Figure~13). \textit{vanilla} was the overall fastest method
 and \textit{OneD} was usually faster than \textit{ICE} and \textit{KR}
-at high but not at low sequencing depth. At low resolution (100~kbp) the
+at high but not at low sequencing depth. At low resolution (100~Kbp) the
 speed advantage of \textit{OneD} appeared from low sequencing depth, but
-at high resolution reslution (5~kbp) it appeared only at high sequening
+at high resolution resolution (5~Kbp) it appeared only at high sequencing
 depth.
 
 Taken together, these results show that \textit{OneD} is competitive in
