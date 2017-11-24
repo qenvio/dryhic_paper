@@ -716,10 +716,10 @@ euploid-equivalent normalized matrix.
 
 \subsection{Capture Hi-C}
 
-Matrix-balancing methods (here \textit{ICE}, \textit{vanilla} and the
-\textit{KR} algorithm) are specifically tailored for Hi-C because it is
-the dominant 3C-derived technology. As a consequence, their performance is
-typically lower when they are used for variants such as and Capture Hi-C
+Matrix-balancing methods (here \textit{ICE}, \textit{vanilla} and
+\textit{KR}) are specifically tailored for Hi-C because it is the dominant
+3C-derived technology. As a consequence, their performance is typically
+lower when they are used for variants such as Capture Hi-C
 \citep{jager2015capture}. In this case, the contacts with one or more
 regions of interest are enriched through direct purification, essentially
 erasing all the other contacts from the Hi-C matrix. The lack of
@@ -735,8 +735,8 @@ found that the reproducibility score between replicates was higher after
 normalization with \textit{OneD} than with matrix-balancing methods
 (figure~\ref{fig:chic}A). The performance of \textit{OneD} was only
 slightly lower than the raw data, suggesting that it barely disturbs the
-biological signal. Other tools were not included beaus they either
-crashed (\textit{caICB}) or had prohibitive run time (\textit{LGF}).
+biological signal. Other tools were not included beause they had
+prohibitive run time.
 
 \begin{figure}
 \centerline{\includegraphics[width=.49\textwidth]
@@ -848,19 +848,19 @@ it performs equally well as the best methods on euploid genomes
 approximately as fast as \textit{ICE} (Figure~\ref{fig:times}), which
 makes it competitive from the point of view of computational speed.
 
-The originality of \textit{OneD} lies in the estimation of the explicit
-biases and the copy number from a single variable: the contact profile.
-This allows greater running speed, while preserving a good performance on
-samples with karyotypic aberrations. One of the reasons why \textit{OneD}
-is able to better highlight the biological distinctions between samples is
-that it only corrects the copy number if specifically requested by the
-user. The impact of copy number variations on normalization is rather
-opaque, especially if they are treated as implicit biases
-(Figure~\ref{fig:cnv_correction}B). Treating them as explicit biases with
-optional removal seems to be an overall safer strategy. In homogeneous
-data sets, correcting for the copy number can blur the biological signal,
-but when karyotypes are variable or unstable, it may increase the
-reproducibility (Figure~\ref{fig:cnv_correction}A).
+The originality of \textit{OneD} lies in the estimation from a single
+variable of the explicit biases with a Negative Binomial model and of the
+copy number. This allows greater running speed, while preserving a good
+performance on samples with karyotypic aberrations. One of the reasons why
+\textit{OneD} is able to better highlight the biological distinctions
+between samples is that it only corrects the copy number if specifically
+requested by the user. The impact of copy number variations on
+normalization is rather opaque, especially if they are treated as implicit
+biases (Figure~\ref{fig:cnv_correction}B). Treating them as explicit
+biases with optional removal seems to be an overall safer strategy. In
+homogeneous data sets, correcting for the copy number can blur the
+biological signal, but when karyotypes are variable or unstable, it may
+increase the reproducibility (Figure~\ref{fig:cnv_correction}A).
 
 This raises the question whether variations of the copy number constitute
 a biological signal or an artifact. If the biological sample contains
