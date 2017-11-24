@@ -1,0 +1,27 @@
+Dear Madan Babu,
+ 
+Please consider the revised version of our manuscript titled “OneD: increasing reproducibility of Hi-C samples
+with abnormal karyotypes” for publication as a Method in Nucleic Acids Research.
+
+We would like to thank the reviewers for their useful and insightful comments. We have exauhustively address them and the manuscript has improved considerably.
+
+In particular, we have increased more than three fold the number of samples considered, we have included simulations to 
+
+Hi-C is one of the most influential technological advances of the decade in biology. The development of this technique started a profound revolution in the fields of epigenetic and transcription. It is now clear that genomes have a spatial organization that needs to be taken into consideration to address the key problems of biology such as transcription factor binding, gene regulation, epigenetic mechanisms, DNA repair etc.
+ 
+As Hi-C gained in popularity, many aspects were scrutinized to establish the limit of the technique, but surprisingly little attention was brought to karyotypic aberrations. Most cellular models in culture and cancer samples exhibit some large scale type of aberration affecting the Hi-C signal. When working with such samples, biologists usually have no choice but to ignore the problem and hope that normalization will make it disappear.
+ 
+Our own experience was that popular normalization methods did not address the issue. In the search for an appropriate solution, we came across the method caICB but soon realized that it did not fix the major issues in our most common samples. We, therefore, tackled the problem of karyotypic aberration from scratch.
+ 
+We converged to a surprisingly simple solution that had a definite advantage in terms of quality and speed. The idea was to project the biases on a single variable, hence the name OneD. From there, we could separate experimental biases from copy number variations, and address each issue separately. This strategy goes beyond the state-of-the-art as shown in the manuscript.
+ 
+The manuscript is targeted to users of the Hi-C technique, but it is written to be attractive to researchers working with high-throughput genomic data. The technical detail is mostly in supplementary figures, in order to highlight the main ideas of the method, so that they can inspire practitioners with similar problems. Overall, we believe that the readers of Nucleic Acids Research are the ideal audience for this work.
+ 
+The manuscript has been uploaded to bioRxiv (https://doi.org/10.1101/148254). Your colleague Alan Kimmel has read it and advised us to address the submission to you directly.
+ 
+All the authors have read and supported the conclusions of the manuscript. There is no conflict of interest.
+ 
+ 
+                            Barcelona, November 2017
+
+Enrique Vidal and Guillaume Filion
