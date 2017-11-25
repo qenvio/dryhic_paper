@@ -382,19 +382,19 @@ fits a non-linear model between the total amount of contacts and the known
 sources of bias (by default the G+C content, the number of restriction
 sites and the mappability of the reads).
 
-The experimental biases are estimated genome-wide and each cell of the
+The experimental biases are estimated genome-wide and each entry of the
 Hi-C matrix is then corrected using equation (\ref{eq:xhat}). Note that
 the corrected contact profile is still proportional to the copy number.
 In cancer cell lines, the contact profile corrected by \textit{OneD} is
 highly correlated to the copy number estimated from an external source
 (Supplementary Figure~1). Figure~\ref{fig:totals}B shows the corrected
-contact profile along chromosome 17 of T47D. \textit{OneD} greatly reduces
-the wiggling of the contact profile (dark blue line).
+contact profile along chromosome 17 of T47D, where \textit{OneD} greatly
+reduces the fluctuations (dark blue line).
 
 Optionally, \textit{OneD} allows the user to also correct the Hi-C signal
 for the copy number. In this case, a hidden Markov model is fitted on the
 corrected contact profile in order to infer the local copy number. Each
-cell of the Hi-C matrix is then further corrected using equation
+entry of the Hi-C matrix is then further corrected using equation
 (\ref{eq:cnvnorm}), \textit{i.e.} it is divided by the square root of the
 inferred copy number. In essence, this approach flattens the contact
 profile so that it is no longer proportional to the local copy number. The
