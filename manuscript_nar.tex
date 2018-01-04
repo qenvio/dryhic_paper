@@ -165,10 +165,12 @@ reducing the matrix to a one-dimension score (hence the name
 \textit{OneD}) referred to as the `contact profile'. We assume that the
 total number of contacts per bin $t_{i}$ can be approximated by a
 negative binomial distribution. This choice is sensible because the amount
-of contacts is a discrete variable and because the negative binomial
-distribution allows for overdispersion. We further assume that the
-explicit sources of bias have independent contributions to the mean of the
-distribution for a given bin $\lambda_i$.
+of contacts is a discrete variable that often presents a variance higher
+than the mean \citep{carty2017integrated} (a phenomenon known as
+overdispersion), and because the negative binomial distribution allows
+for overdispersion \citep{love2014moderated}. We further assume that
+the explicit sources of bias have independent contributions to the mean
+of the distribution for a given bin $\lambda_i$.
 
 Given that this relationship might not be linear (see for instance
 Figure~\ref{fig:totals}A), we allowed a smooth representation using thin
@@ -278,7 +280,7 @@ from the Supplementary Material published by \citet{quilez2017managing}.
 We developed the routines contained in the \texttt{dryhic} R package
 (available at http://www.github.com/qenvio/dryhic) to efficiently create
 sparse representations of contact matrices and further apply
-\textit{vanilla}, \textit{ICE}, \textit{KR} and \textit{oneD} corrections.
+\textit{vanilla} (a single iteration of ICE), \textit{ICE}, \textit{KR} and \textit{oneD} corrections.
 \texttt{HiTC} \citep{servant2012hitc} and \texttt{HiCapp}
 \citep{wu2016computational} were used to carry out the \textit{LGF} and
 \textit{caICB} corrections respectively. When not specified, the
