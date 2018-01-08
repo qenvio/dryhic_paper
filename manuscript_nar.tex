@@ -109,13 +109,13 @@ Several methods have been proposed to remove biases in Hi-C experiments
 \citep{schmitt2016genome}. The first strategy is to model biases
 explicitly from a defined set of local genomic features, such as the G+C
 content. This approach is used in the method of
-\citet{yaffe2011probabilistic} and in HiCNorm by \citet{hu2012hicnorm}.
+\cite{yaffe2011probabilistic} and in HiCNorm by \cite{hu2012hicnorm}.
 The second strategy is to implicitly correct unknown biases by enforcing
 some regularity condition on the data. This approach is used in the
 Iterative Correction and Eigenvector decomposition method (\textit{ICE})
-of \citet{imakaev2012iterative}, whereby the total amount of contacts of
+of \cite{imakaev2012iterative}, whereby the total amount of contacts of
 every bin is imposed to be the same. \textit{ICE} is currently the most
-popular method, due in part to its speed.
+popular method, due in part to its speed and simplicity.
 
 Neither of these strategies were designed for cell types with karyotypic
 aberrations, most common in cancer. Yet, Hi-C is very sensitive to
@@ -134,7 +134,7 @@ all or be considered part of the biological signal.
 
 So far, the only attempt to address the issue was the chromosome-adjusted
 Iterative Correction Bias method (\textit{caICB}) of
-\citet{wu2016computational}. However, \textit{caICB} applies a uniform
+\cite{wu2016computational}. However, \textit{caICB} applies a uniform
 chromosome-wide copy number correction, effectively excluding the numerous
 cases of partial aneuploidy and regional copy number variations.
 
@@ -157,8 +157,8 @@ The most common representation of Hi-C data is a contact matrix, obtained
 by slicing the genome in $n$ consecutive bins of fixed size (the
 resolution) and computing the number of contacts between each pair of
 bins. The values are stored in the cells of the contact matrix ($x_{ij}$),
-quantifying the interaction between the two loci at positions $i$ and
-$j$.
+quantifying the interaction frequency between the two loci at positions
+$i$ and $j$.
 
 Our approach is to model the total number of contacts for each bin, thus
 reducing the matrix to a one-dimension score (hence the name
@@ -245,7 +245,7 @@ different cell types and organisms (Supplementary Table~1).
 
 The Hi-C experiments were performed in T47D breast cancer cell lines
 (aberrant karyotype, six samples), K562 leukemia cell lines (aberrant
-karyotype, eight samples), mouse primary B cells (normal karyotyp, six
+karyotype, eight samples), mouse primary B cells (normal karyotype, six
 samples) ES cells (normal karotype, seven samples), GM12878
 B-lymphoblastoid cells (normal karyotype, fifty eight samples), BT474
 breast cancer cell line (aberrant karyotype, one sample), MCF10 breast
@@ -275,7 +275,7 @@ filters: \texttt{self-circle}, \texttt{dangling-ends}, \texttt{error},
 \texttt{extra-dangling-ends}, \texttt{duplicated} and
 \texttt{random-breaks} (for more details see BioRxiv:
 https://doi.org/10.1101/132456). In addition, the pipeline is available
-from the Supplementary Material published by \citet{quilez2017managing}.
+from the Supplementary Material published by \cite{quilez2017managing}.
 
 We developed the routines contained in the \texttt{dryhic} R package
 (available at http://www.github.com/qenvio/dryhic) to efficiently create
@@ -292,7 +292,7 @@ resolution of the analysis is 100~Kbp.
 Simulations were based on altering four experimental Hi-C samples obtained
 from diploid mouse cell lines (b7fa2d8db\_bfac48760, fc3e8b36a\_7bf1bf374,
 GSM987817 and GSM862720, see Supplementary Table~1), that were performed
-in either B cells or ES cells, and from either CRG or UCSC. The simulation
+in either B cells or ES cells, and from either CRG or UCSD. The simulation
 strategy was the following: First we selected uniformly at random the
 amount of copy number break points (from 3 to 10). We then placed the
 break points along chromosomes 18 and 19 uniformly at random. Next, we
@@ -302,7 +302,7 @@ this simulated copy number profile and multiplied it element-wise with the
 original contact matrices of chromosomes 18 and 19. The resulting matrices
 were used as input for correction methods. For each simulation (100 in
 total), we measured the pairwise reproducibility score defined by
-\citet{yan2017hicspector} and computed the average for pairs from the same
+\cite{yan2017hicspector} and computed the average for pairs from the same
 cell type minus the average for pairs from different cell types.
 
 \subsection{Comparison of Hi-C matrices}
@@ -315,8 +315,8 @@ Pearson correlation up to a given distance range. Compared to the first,
 this metric gives more weight to changes occurring away from the diagonal.
 The third option is to compute a correlation per distance stratum and then
 obtain a stratum-adjusted correlation coefficient (SCC) as defined by
-\citet{yang2017hicrep}. Finally, the ``reproducibility score'' proposed by
-\citet{yan2017hicspector} sums the distances between the leading twenty
+\cite{yang2017hicrep}. Finally, the ``reproducibility score'' proposed by
+\cite{yan2017hicspector} sums the distances between the leading twenty
 eigenvectors of the Laplacian of the Hi-C matrix. This approach borrows
 the concepts of spectral clustering \citep{von2007tutorial} and amounts to
 comparing high level features of the matrix.
@@ -368,7 +368,7 @@ represents the signal after OneD bias and copy number (CN) correction and
 the orange line represents the signal after ICE bias correction. The long arm
 of chromosome 17 (the region corresponding to 20-80 Mbp) is present in
 four copies, explaining that the signal is about twice higher than for
-the short arm.}
+the short arm. Both figures present data at 100~Kbp resolution}
 \label{fig:totals}
 \end{figure}
 
@@ -414,7 +414,7 @@ whereas the fifth method does it explicitly.
 
 We used four metrics to compare Hi-C matrices (see Materials and Methods).
 For consistency and concision, the results based on the reproducibility
-score of \citet{yan2017hicspector} are shown in the main figures, and the
+score of \cite{yan2017hicspector} are shown in the main figures, and the
 results based on the other metrics are shown in the Supplementary
 Material.
 
@@ -603,7 +603,7 @@ after normalization with the different tools. In this case, we found that
 reproducibility (Figure~\ref{fig:cnv_correction}A). Even though the
 variability is high in this case, this suggests that the karyotypes of
 these cells have diverged, so that the copy number correction performed by
-\textit{OneD} increased the reproducibility between samples from the same
+\textit{OneD+CN} increased the reproducibility between samples from the same
 cell type.
 
 \begin{figure}
@@ -629,7 +629,7 @@ original bias and faded the signal almost entirely. Concomitantly, the
 signal at the bottom left of the matrix was enhanced and showed a
 structure that was not visible in the raw data. On the contrary,
 \textit{LGF} strengthened the central region and the diagonal.
-\textit{OneD} reduced the level of the central portion by a factor 2
+\textit{OneD+CN} reduced the level of the central portion by a factor 2
 approximately, but did not otherwise distort the main features of the
 region.
 
@@ -665,10 +665,10 @@ performance of \textit{OneD} on a Capture Hi-C data set at 5~Kbp
 resolution centered on a 6~Mbp domain of chromosome 6 in T47D cells. We
 found that the reproducibility score between replicates was higher after
 normalization with \textit{OneD} than with matrix-balancing methods
-(figure~\ref{fig:chic}A). The performance of \textit{OneD} was only
-slightly lower than the raw data, suggesting that it barely disturbs the
-biological signal. Other tools were not included beause they had
-prohibitive run time.
+(figure~\ref{fig:chic}A and Supplementary Figure~13). The performance
+of \textit{OneD} was only slightly lower than the raw data, suggesting
+that it barely disturbs the biological signal. Other tools were not
+included beause they had prohibitive run time.
 
 \begin{figure}
 \centerline{\includegraphics[width=.49\textwidth]
@@ -720,7 +720,7 @@ thus estimates the model parameters much faster than previous explicit
 methods. We measured the running time of the different tools on a 3.3~GHz
 machine with 62 GB~RAM, always using the default parameters.
 Figure~\ref{fig:times}A shows the running times of the different methods
-on all the samples shown in Supplementary Figure~1 at 100~Kbp resolution.
+on all the samples shown in Supplementary Table~1 at 100~Kbp resolution.
 The fastest method was \textit{vanilla} and the slowest \textit{LGF}, with
 an over 100-fold span between the two.
 
@@ -748,13 +748,13 @@ To better understand these results, we also investigated the influence of
 bin size and sequencing depth on the running time. We performed a
 benchmark on the sample with highest sequencing depth in the data set
 (HIC070, see Supplementary Table~1) at different bin sizes while
-downsampling the contact matrices to mimic lower resolutions. On this
+downsampling the contact matrices to mimic lower depths. On this
 test, we included only the methods competing with \textit{OneD} in terms
 of speed, \textit{i.e.} the matrix-balancing methods.
 Figure~\ref{fig:times}B shows that the running time of \textit{OneD} does
 not depend on the sequencing depth. Strikingly, \textit{OneD} also gives
 nearly identical results at very different sequencing depths
-(Supplementary Figure~13). \textit{vanilla} was the overall fastest method
+(Supplementary Figure~14). \textit{vanilla} was the overall fastest method
 and \textit{OneD} was usually faster than \textit{ICE} and \textit{KR}
 at high but not at low sequencing depth. At low resolution (100~Kbp) the
 speed advantage of \textit{OneD} appeared from low sequencing depth, but
