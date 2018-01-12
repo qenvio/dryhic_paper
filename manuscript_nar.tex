@@ -1,9 +1,9 @@
 \documentclass[a4,center,fleqn]{NAR}
 
 % Enter dates of publication
-\copyrightyear{2017}
+\copyrightyear{2018}
 \pubdate{** ***** ****}
-\pubyear{2017}
+\pubyear{2018}
 \jvolume{**}
 \jissue{**}
 
@@ -72,8 +72,8 @@ outperforming previous methods significantly. On normal karyotypes,
 \textit{OneD} fared equally well as state-of-the-art methods, making it a
 safe choice for Hi-C normalization.  \textit{OneD} is fast and scales well
 in terms of computing resources for resolutions up to 5~Kbp.
-%\textit{OneD} is implemented as an R package
-%available at http://www.github.com/qenvio/dryhic.
+\textit{OneD} is implemented as an R package available at
+http://www.github.com/qenvio/dryhic.
 \end{abstract}
 
 
@@ -282,7 +282,7 @@ We developed the routines contained in the \texttt{dryhic} R package
 sparse representations of contact matrices and further apply
 \textit{vanilla} (a single iteration of ICE), \textit{ICE}, \textit{KR} and \textit{oneD} corrections.
 \texttt{HiTC} \citep{servant2012hitc} and \texttt{HiCapp}
-\citep{wu2016computational} were used to carry out the \textit{LGF} and
+\citep{wu2016computational} were used to carry out the \textit{HiCNorm} and
 \textit{caICB} corrections respectively. When not specified, the
 resolution of the analysis is 100~Kbp.
 
@@ -362,13 +362,15 @@ the copy number.
 \caption{Modeling biases from the contact profile. A. Non linear
 relationship between the number of restriction sites and the total number
 of contacts per bin in T47D. B. Total number of contacts per bin on
-chromosome 17 of T47D. The purple line represents the raw signal, the dark blue
+chromosome 9 of T47D. The purple line represents the raw signal, the dark blue
 line represents the signal after OneD bias correction, the light blue line
 represents the signal after OneD bias and copy number (CN) correction and
-the orange line represents the signal after ICE bias correction. The long arm
-of chromosome 17 (the region corresponding to 20-80 Mbp) is present in
-four copies, explaining that the signal is about twice higher than for
-the short arm. Both figures present data at 100~Kbp resolution}
+the orange line represents the signal after ICE bias correction. The grey
+line represents the copy number estimation by independent CNV array and it
+has been scaled to match the figure ranges. Some regions of the long arm of
+chromosome 9 (the region corresponding to 60-140 Mbp) are present in four
+copies, explaining that the signal is about twice higher than for the short
+arm. Both figures present data at 100~Kbp resolution}
 \label{fig:totals}
 \end{figure}
 
@@ -408,7 +410,7 @@ In what follows, we benchmarked \textit{OneD} and \textit{OneD} with copy
 number correction (\textit{OneD+CN}) against \textit{vanilla},
 \textit{ICE} \citep{imakaev2012iterative}, the \textit{KR} algorithm
 \citep{knight2013fast}, \textit{caICB} \citep{wu2016computational} and the
-Local Genomic Features method \citep[\textit{LGF},][]{hu2012hicnorm,
+Local Genomic Features method \citep[\textit{HiCNorm},][]{hu2012hicnorm,
 servant2012hitc}. The first four methods correct biases implicitly,
 whereas the fifth method does it explicitly.
 
@@ -499,7 +501,7 @@ between identical cell types but not between different cell types
 , which is the desired behavior of a
 correction method. On both data sets, \textit{OneD+CN}, \textit{ICE} and
 \textit{KR} gave inferior results, while \textit{raw+CN} (copy number
-correction alone), \textit{LGF} and \textit{vanilla} were not competitive.
+correction alone), \textit{HiCNorm} and \textit{vanilla} were not competitive.
 The conclusions were unchanged when using other metrics to compare Hi-C
 matrices (Supplementary Figures~4, 5 and 6).
 
@@ -537,7 +539,7 @@ only when the experimental conditions were different. This means that all
 the methods were able to remove some technical biases. \textit{ICE} and
 \textit{KR} showed the strongest increase in reproducibility, but
 \textit{OneD}, \textit{OneD+CN}, and \textit{caICB} had competitive
-performance. \textit{vanilla} and \textit{LGF} were less competitive, and
+performance. \textit{vanilla} and \textit{HiCNorm} were less competitive, and
 \textit{raw+CN} (copy number correction alone) performed poorly, because
 it is equivalent to no normalization on diploid cells. Other metrics gave
 similar results (Supplementary Figures~8, 9 and 10, Supplementary Table~3).
@@ -582,7 +584,7 @@ performance of \textit{OneD}. A possible limitation in Hi-C is the absence
 of ground truth. We thus used simulations to generate matrices with
 defined karyotypic aberrations (see Materials and Methods) and tested the
 capacity of the correction methods to distinguish different cell types
-(Supplementary Figure~12). On this test, \textit{LGF} and \textit{OneD}
+(Supplementary Figure~12). On this test, \textit{HiCNorm} and \textit{OneD}
 performed best. In comparison, \textit{OneD+CN} performed less well,
 suggesting that correcting the copy number attenuates the biological
 signal. This is corroborated by the fact that the copy number correction
@@ -616,7 +618,7 @@ shows the reproducibility score of the raw data. Shown are comparisons for
 different (top) or identical (bottom) experimental conditions. B. Detail
 of a Hi-C matrix normalized with different methods. The central portion
 has an increased copy number, which affects normalization. \textit{ICE}
-fades it away, \textit{LGF} enhances it and \textit{OneD} reduces the
+fades it away, \textit{HiCNorm} enhances it and \textit{OneD} reduces the
 signal by about half.}
 \label{fig:cnv_correction}
 \end{figure}
@@ -628,7 +630,7 @@ center of the matrix is duplicated. \textit{ICE} overcompensated the
 original bias and faded the signal almost entirely. Concomitantly, the
 signal at the bottom left of the matrix was enhanced and showed a
 structure that was not visible in the raw data. On the contrary,
-\textit{LGF} strengthened the central region and the diagonal.
+\textit{HiCNorm} strengthened the central region and the diagonal.
 \textit{OneD+CN} reduced the level of the central portion by a factor 2
 approximately, but did not otherwise distort the main features of the
 region.
@@ -721,7 +723,7 @@ methods. We measured the running time of the different tools on a 3.3~GHz
 machine with 62 GB~RAM, always using the default parameters.
 Figure~\ref{fig:times}A shows the running times of the different methods
 on all the samples shown in Supplementary Table~1 at 100~Kbp resolution.
-The fastest method was \textit{vanilla} and the slowest \textit{LGF}, with
+The fastest method was \textit{vanilla} and the slowest \textit{HiCNorm}, with
 an over 100-fold span between the two.
 
 On average, \textit{OneD} was the second fastest method and it always ran in less than
