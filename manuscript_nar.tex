@@ -584,7 +584,7 @@ performance of \textit{OneD}. A possible limitation in Hi-C is the absence
 of ground truth. We thus used simulations to generate matrices with
 defined karyotypic aberrations (see Materials and Methods) and tested the
 capacity of the correction methods to distinguish different cell types
-(Supplementary Figure~12). On this test, \textit{HiCNorm} and \textit{OneD}
+(Supplementary Figures~12 and 13). On this test, \textit{HiCNorm} and \textit{OneD}
 performed best. In comparison, \textit{OneD+CN} performed less well,
 suggesting that correcting the copy number attenuates the biological
 signal. This is corroborated by the fact that the copy number correction
@@ -667,7 +667,7 @@ performance of \textit{OneD} on a Capture Hi-C data set at 5~Kbp
 resolution centered on a 6~Mbp domain of chromosome 6 in T47D cells. We
 found that the reproducibility score between replicates was higher after
 normalization with \textit{OneD} than with matrix-balancing methods
-(figure~\ref{fig:chic}A and Supplementary Figure~13). The performance
+(figure~\ref{fig:chic}A and Supplementary Figure~14). The performance
 of \textit{OneD} was only slightly lower than the raw data, suggesting
 that it barely disturbs the biological signal. Other tools were not
 included beause they had prohibitive run time.
@@ -756,7 +756,7 @@ of speed, \textit{i.e.} the matrix-balancing methods.
 Figure~\ref{fig:times}B shows that the running time of \textit{OneD} does
 not depend on the sequencing depth. Strikingly, \textit{OneD} also gives
 nearly identical results at very different sequencing depths
-(Supplementary Figure~14). \textit{vanilla} was the overall fastest method
+(Supplementary Figure~15). \textit{vanilla} was the overall fastest method
 and \textit{OneD} was usually faster than \textit{ICE} and \textit{KR}
 at high but not at low sequencing depth. At low resolution (100~Kbp) the
 speed advantage of \textit{OneD} appeared from low sequencing depth, but
