@@ -105,6 +105,19 @@ Wu, H.-J. and Michor, F. (2016)
 {A computational strategy to adjust for copy number in tumor Hi-C data}.
 {\em Bioinformatics,} p. btw540.
 
+\bibitem{carty2017integrated}
+Carty, M., Zamparo, L., Sahin, M., Gonz{\'a}lez, A., Pelossof, R., Elemento,
+  O., and Leslie, C.~S. (2017)
+An integrated model for detecting significant chromatin interactions from
+  high-resolution Hi-C data.
+{\em Nature Communications,} {\bf 8}.
+
+\bibitem{love2014moderated}
+Love, M.~I., Huber, W., and Anders, S. (2014)
+Moderated estimation of fold change and dispersion for RNA-seq data with
+  DESeq2.
+{\em Genome biology,} {\bf 15}(12), 550.
+
 \bibitem{wood2003thin}
 Wood, S.~N. (2003)
 {Thin plate regression splines}.
@@ -136,6 +149,14 @@ Filion, G.~J., van Bemmel, J.~G., Braunschweig, U., Talhout, W., Kind, J.,
 {Systematic protein location mapping reveals five principal chromatin types in
   Drosophila cells}.
 {\em Cell,} {\bf 143}(2), 212--224.
+
+\bibitem{stadhouders2018transcription}
+Stadhouders, R., Vidal, E., Serra, F., Di~Stefano, B., Le~Dily, F., Quilez, J.,
+  Gomez, A., Collombet, S., Berenguer, C., Cuartero, Y., Hecht, J., Filion,
+  G.~J., Beato, M., Marti-Renom, M.~A., and Graf, T. (2018)
+Transcription factors orchestrate dynamic interplay between genome topology and
+  gene regulation during cell reprogramming.
+{\em Nature Genetics,}.
 
 \bibitem{ledily2014distinct}
 Le~Dily, F., Ba{\`u}, D., Pohl, A., Vicent, G.~P., Serra, F., Soronellas, D.,
@@ -205,11 +226,11 @@ Yan, K.~K., Gurkan~Yardimci, G., Yan, C., Noble, W.~S., and Gerstein, M. (Mar,
 {\em Bioinformatics,}.
 
 \bibitem{yang2017hicrep}
-Yang, T., Zhang, F., Yardimci, G.~G., Hardison, R.~C., Noble, W.~S., Yue, F.,
-  and Li, Q. (2017)
-{HiCRep: assessing the reproducibility of Hi-C data using a stratum-adjusted
-  correlation coefficient}.
-{\em bioRxiv,} p. 101386.
+Yang, T., Zhang, F., Yardımcı, G.~G., Song, F., Hardison, R.~C., Noble,
+  W.~S., Yue, F., and Li, Q. (November, 2017)
+{HiCRep}: assessing the reproducibility of {Hi}-{C} data using a
+  stratum-adjusted correlation coefficient.
+{\em Genome Research,} {\bf 27}(11), 1939--1949.
 
 \bibitem{von2007tutorial}
 Von~Luxburg, U. (2007)

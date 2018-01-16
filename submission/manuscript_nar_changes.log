@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.10.28)  26 NOV 2017 01:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.25)  16 JAN 2018 17:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **manuscript_nar_changes.tex
 (./manuscript_nar_changes.tex
 LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 38 language(s) loaded.
+Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (./NAR.cls
 Document Class: NAR 2007/03/23 v1.4b Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/fleqn.clo
@@ -393,19 +393,19 @@ Package: ulem 2012/05/18
 (./manuscript_nar_changes.aux)
 \openout1 = `manuscript_nar_changes.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 34.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 42.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -471,139 +471,133 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package crop Info: requested driver: `' on input line 34.
-Package crop Info: detected driver: `pdftex' on input line 34.
-Package crop Info: using `pdftex' graphics driver on input line 34.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 88.
+Package crop Info: requested driver: `' on input line 42.
+Package crop Info: detected driver: `pdftex' on input line 42.
+Package crop Info: using `pdftex' graphics driver on input line 42.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 82.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 88.
+LaTeX Font Info:    Try loading font information for U+msa on input line 82.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 88.
+LaTeX Font Info:    Try loading font information for U+msb on input line 82.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 88.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 82.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 
 LaTeX Font Warning: Font shape `OT1/phv/n/n' undefined
-(Font)              using `OT1/phv/m/n' instead on input line 88.
+(Font)              using `OT1/phv/m/n' instead on input line 82.
 
 
-Overfull \hbox (267.0pt too wide) in paragraph at lines 88--88
+Overfull \hbox (267.0pt too wide) in paragraph at lines 82--82
 [][] 
  []
 
 LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <10> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 105.
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 99.
 
-Underfull \hbox (badness 1735) in paragraph at lines 90--114
+Underfull \hbox (badness 1735) in paragraph at lines 84--110
 \OT1/phv/b/n/10 The advent of the Hi-C technology enabled an
  []
 
 
-Underfull \hbox (badness 6944) in paragraph at lines 90--114
+Underfull \hbox (badness 6944) in paragraph at lines 84--110
 \OT1/phv/b/n/10 unprecedented progress in our understanding
  []
 
 
-Underfull \hbox (badness 1275) in paragraph at lines 90--114
+Underfull \hbox (badness 1275) in paragraph at lines 84--110
 \OT1/phv/b/n/10 of genome structures. However, Hi-C is subject
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--114
+Underfull \hbox (badness 10000) in paragraph at lines 84--110
 \OT1/phv/b/n/10 to systematic biases that can compromise
  []
 
 
-Underfull \hbox (badness 1383) in paragraph at lines 90--114
+Underfull \hbox (badness 1383) in paragraph at lines 84--110
 \OT1/phv/b/n/10 experiments are performed in cancer cell lines,
  []
 
 
-Underfull \hbox (badness 1701) in paragraph at lines 90--114
+Underfull \hbox (badness 1701) in paragraph at lines 84--110
 \OT1/phv/b/n/10 which typically harbor large-scale copy number
  []
 
 
-Underfull \hbox (badness 5504) in paragraph at lines 90--114
+Underfull \hbox (badness 5504) in paragraph at lines 84--110
 \OT1/phv/b/n/10 artifacts on the normalized maps are mostly
  []
 
 
-Underfull \hbox (badness 6526) in paragraph at lines 90--114
+Underfull \hbox (badness 6526) in paragraph at lines 84--110
 \OT1/phv/b/n/10 methods are not robust to the presence of
  []
 
 
-Underfull \hbox (badness 4859) in paragraph at lines 90--114
+Underfull \hbox (badness 4859) in paragraph at lines 84--110
 \OT1/phv/b/n/10 large-scale copy number variations, potentially
  []
 
 
-Underfull \hbox (badness 2653) in paragraph at lines 90--114
+Underfull \hbox (badness 2653) in paragraph at lines 84--110
 \OT1/phv/b/n/10 obscuring biological differences and enhancing
  []
 
 
-Underfull \hbox (badness 3386) in paragraph at lines 90--114
+Underfull \hbox (badness 3386) in paragraph at lines 84--110
 \OT1/phv/b/n/10 an alternative approach designed to take into
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--114
+Underfull \hbox (badness 10000) in paragraph at lines 84--110
 \OT1/phv/b/n/10 called \OT1/phv/b/sl/10 OneD\OT1/phv/b/n/10 , increases reprodu
 cibility among
  []
 
 
-Underfull \hbox (badness 1688) in paragraph at lines 90--114
-\OT1/phv/b/n/10 normal karyotypes, \OT1/phv/b/sl/10 OneD \OT1/phv/b/n/10 fared 
-equally well as
- []
-
-
-Underfull \hbox (badness 1552) in paragraph at lines 118--131
+Underfull \hbox (badness 1552) in paragraph at lines 114--127
 \OT1/ptm/m/n/10 this organization plays a key role in guiding enhancer-
  []
 
 
-Underfull \hbox (badness 2865) in paragraph at lines 118--131
+Underfull \hbox (badness 2865) in paragraph at lines 114--127
 \OT1/ptm/m/n/10 towards this insight was the development of the high
  []
 
 
-Underfull \hbox (badness 1803) in paragraph at lines 132--142
+Underfull \hbox (badness 1803) in paragraph at lines 128--138
 \OT1/ptm/m/n/10 (9, 10, 11, 12), Hi-C interrogates all possible pairwise
  []
 
 
-Underfull \hbox (badness 1596) in paragraph at lines 132--142
+Underfull \hbox (badness 1596) in paragraph at lines 128--138
 \OT1/ptm/m/n/10 interactions between restriction fragments. However, this
  []
 
 
-Underfull \hbox (badness 1226) in paragraph at lines 143--154
+Underfull \hbox (badness 1226) in paragraph at lines 139--150
 \OT1/ptm/m/n/10 to implicitly correct unknown biases by enforcing some
  []
 
 
-Underfull \hbox (badness 3989) in paragraph at lines 155--163
+Underfull \hbox (badness 3989) in paragraph at lines 151--159
 \OT1/ptm/m/n/10 and translocations. Actually, these aberrations have so
  []
 
 
-Underfull \hbox (badness 1776) in paragraph at lines 155--163
+Underfull \hbox (badness 1776) in paragraph at lines 151--159
 \OT1/ptm/m/n/10 much influence on the outcome that they can be used
  []
 
@@ -611,430 +605,461 @@ Underfull \hbox (badness 1776) in paragraph at lines 155--163
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 170.
-LaTeX Font Info:    Calculating math sizes for size <7.5> on input line 170.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 166.
+LaTeX Font Info:    Calculating math sizes for size <7.5> on input line 166.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 170.
+(Font)              size <7> substituted on input line 166.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <3.75> not available
-(Font)              size <5> substituted on input line 170.
+(Font)              size <5> substituted on input line 166.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <7.5> not available
-(Font)              size <7> substituted on input line 170.
+(Font)              size <7> substituted on input line 166.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.75> not available
-(Font)              size <5> substituted on input line 170.
+(Font)              size <5> substituted on input line 166.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 170.
+(Font)              size <7> substituted on input line 166.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.75> not available
-(Font)              size <5> substituted on input line 170.
+(Font)              size <5> substituted on input line 166.
 
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 170.
+(Font)              size <7> substituted on input line 166.
 
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <3.75> not available
-(Font)              size <5> substituted on input line 170.
+(Font)              size <5> substituted on input line 166.
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 170.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 166.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <7.5> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 170.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 166.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 170.
+(Font)              size <7> substituted on input line 166.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-Underfull \hbox (badness 7415) in paragraph at lines 170--175
+Underfull \hbox (badness 7415) in paragraph at lines 166--171
 \OT1/ptm/m/n/10 chromosome-adjusted Iterative Correction Bias method
  []
 
 
-Underfull \hbox (badness 6001) in paragraph at lines 170--175
+Underfull \hbox (badness 6001) in paragraph at lines 166--171
 \OT1/ptm/m/n/10 (\OT1/ptm/m/it/10 caICB\OT1/ptm/m/n/10 ) of (18). However, \OT1
 /ptm/m/it/10 caICB \OT1/ptm/m/n/10 applies a uniform
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 170--175
+Underfull \hbox (badness 10000) in paragraph at lines 166--171
 \OT1/ptm/m/n/10 chromosome-wide copy number correction, effectively
  []
 
 
-Underfull \hbox (badness 1297) in paragraph at lines 170--175
+Underfull \hbox (badness 1297) in paragraph at lines 166--171
 \OT1/ptm/m/n/10 excluding the numerous cases of partial aneuploidy and
  []
 
 
-Underfull \hbox (badness 3281) in paragraph at lines 176--185
+Underfull \hbox (badness 3281) in paragraph at lines 172--181
 []\OT1/ptm/m/n/10 Here we propose \OT1/ptm/m/it/10 OneD\OT1/ptm/m/n/10 , a meth
 od to correct local
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 176--185
+Underfull \hbox (badness 2772) in paragraph at lines 172--181
 \OT1/ptm/m/n/10 chromosomal abnormalities in Hi-C experiments. \OT1/ptm/m/it/10
  OneD
  []
 
 
-Underfull \hbox (badness 2351) in paragraph at lines 211--220
-\OT1/ptm/m/n/10 using thin plate penalized regression splines (19) in a
+Underfull \hbox (badness 2351) in paragraph at lines 206--214
+\OT1/ptm/m/n/10 using thin plate penalized regression splines ([]21[]) in a
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 241.
-
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 223.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 260.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 237.
 
-Underfull \hbox (badness 2401) in paragraph at lines 282--286
+Underfull \hbox (badness 2401) in paragraph at lines 256--260
 []\OT1/ptm/m/n/10 The model is fitted with the Baum-Welch algorithm
  []
 
 
-Underfull \hbox (badness 1325) in paragraph at lines 282--286
-\OT1/ptm/m/n/10 (22) until convergence, following a previously described
+Underfull \hbox (badness 1325) in paragraph at lines 256--260
+\OT1/ptm/m/n/10 ([]24[]) until convergence, following a previously described
  []
 
 
-Underfull \hbox (badness 2261) in paragraph at lines 304--318
-\OT1/ptm/m/n/10 leukemia cell lines ([]aberrant karyotype, eight []samples),
+Underfull \hbox (badness 2261) in paragraph at lines 277--286
+\OT1/ptm/m/n/10 leukemia cell lines (aberrant karyotype, eight samples),
  []
 
 
-Underfull \hbox (badness 2277) in paragraph at lines 304--318
-\OT1/ptm/m/n/10 mouse primary B cells ([]normal karyotyp, six samples)
+Underfull \hbox (badness 1406) in paragraph at lines 277--286
+\OT1/ptm/m/n/10 mouse primary B cells (normal []karyotype[], six samples)
  []
 
 
-Underfull \hbox (badness 2165) in paragraph at lines 304--318
+Underfull \hbox (badness 2165) in paragraph at lines 277--286
 \OT1/ptm/m/n/10 BT474 breast cancer cell line (aberrant karyotype, one
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 616--627
+Underfull \hbox (badness 10000) in paragraph at lines 300--311
 \OT1/ptm/m/n/10 enzyme site. Non-informative contacts were removed
  []
 
 
-Underfull \hbox (badness 3428) in paragraph at lines 616--627
+Underfull \hbox (badness 3428) in paragraph at lines 300--311
 \OT1/ptm/m/n/10 applying the following TADbit filters: \OT1/pcr/m/n/10 self-cir
 cle\OT1/ptm/m/n/10 ,
  []
 
 
-Underfull \hbox (badness 7203) in paragraph at lines 616--627
+Underfull \hbox (badness 7203) in paragraph at lines 300--311
 \OT1/pcr/m/n/10 dangling-ends\OT1/ptm/m/n/10 , \OT1/pcr/m/n/10 error\OT1/ptm/m/
 n/10 , \OT1/pcr/m/n/10 extra-dangling-ends\OT1/ptm/m/n/10 ,
  []
 
 
-Underfull \hbox (badness 2012) in paragraph at lines 616--627
-\OT1/pcr/m/n/10 duplicated \OT1/ptm/m/n/10 and \OT1/pcr/m/n/10 random-breaks []
-\OT1/ptm/m/n/10 (for more details
+Underfull \hbox (badness 2012) in paragraph at lines 300--311
+\OT1/pcr/m/n/10 duplicated \OT1/ptm/m/n/10 and \OT1/pcr/m/n/10 random-breaks \O
+T1/ptm/m/n/10 (for more details
  []
 
 
-Underfull \hbox (badness 1281) in paragraph at lines 616--627
-\OT1/ptm/m/n/10 see BioRxiv: https://doi.org/10.1101/132456[]). In addition,
- []
-
-
-Underfull \hbox (badness 4805) in paragraph at lines 659--660
+Underfull \hbox (badness 4805) in paragraph at lines 324--340
 \OT1/ptm/m/n/10 Simulations were based on altering four experimental
  []
 
 
-Underfull \hbox (badness 3895) in paragraph at lines 659--660
+Underfull \hbox (badness 3895) in paragraph at lines 324--340
 \OT1/ptm/m/n/10 Hi-C samples obtained from diploid mouse cell lines
  []
 
 
-Underfull \hbox (badness 1112) in paragraph at lines 659--660
+Underfull \hbox (badness 1112) in paragraph at lines 324--340
 \OT1/ptm/m/n/10 (b7fa2d8db[]bfac48760, fc3e8b36a[]7bf1bf374, GSM987817
  []
 
 
-Underfull \hbox (badness 4569) in paragraph at lines 680--690
-[]\OT1/ptm/m/n/10 We defined []five []data sets to measure experimental
+Underfull \hbox (badness 4569) in paragraph at lines 357--366
+[]\OT1/ptm/m/n/10 We defined five data sets to measure experimental
  []
 
 
-Underfull \hbox (badness 1365) in paragraph at lines 680--690
-\OT1/ptm/m/n/10 Table 1 []for details). Given a set of experiments and a
+Underfull \hbox (badness 1365) in paragraph at lines 357--366
+\OT1/ptm/m/n/10 Table 1 for details). Given a set of experiments and a
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 691--702
+Underfull \hbox (badness 10000) in paragraph at lines 367--378
 []\OT1/ptm/m/n/10 To measure the gain or loss of similarity upon
  []
 
 
-Underfull \hbox (badness 3514) in paragraph at lines 691--702
+Underfull \hbox (badness 3514) in paragraph at lines 367--378
 \OT1/ptm/m/n/10 normalization, we compared raw matrices to obtain a
  []
 
 
-Underfull \hbox (badness 1552) in paragraph at lines 691--702
-\OT1/ptm/m/n/10 receiver []operating characteristic (ROC) curves []using the
+Underfull \hbox (badness 1552) in paragraph at lines 367--378
+\OT1/ptm/m/n/10 receiver operating characteristic (ROC) curves using the
  []
 
 
-Underfull \hbox (badness 1242) in paragraph at lines 707--715
+Underfull \hbox (badness 1242) in paragraph at lines 383--391
 \OT1/ptm/m/n/10 is approximately proportional to the local copy number.
  []
 
 Package epstopdf Info: Source file: <figure_1.eps>
-(epstopdf)                    date: 2017-11-26 00:53:58
-(epstopdf)                    size: 315744 bytes
+(epstopdf)                    date: 2018-01-16 17:05:32
+(epstopdf)                    size: 344893 bytes
 (epstopdf)             Output file: <figure_1-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-11-26 00:58:32
-(epstopdf)                    size: 78157 bytes
+(epstopdf)                    date: 2018-01-16 17:10:06
+(epstopdf)                    size: 84847 bytes
 (epstopdf)             Command: <repstopdf --outfile=figure_1-eps-converted-to.
 pdf figure_1.eps>
-(epstopdf)             \includegraphics on input line 717.
+(epstopdf)             \includegraphics on input line 394.
 Package epstopdf Info: Output file is already uptodate.
 <figure_1-eps-converted-to.pdf, id=27, 636.3775pt x 289.08pt>
 File: figure_1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figure_1-eps-converted-to.pdf>
-Package pdftex.def Info: figure_1-eps-converted-to.pdf used on input line 717.
+Package pdftex.def Info: figure_1-eps-converted-to.pdf used on input line 394.
 (pdftex.def)             Requested size: 251.86282pt x 114.4081pt.
 
-Underfull \hbox (badness 3312) in paragraph at lines 727--727
-[]\OT1/ptm/b/n/8 Figure 1. []\OT1/ptm/m/n/8 Modeling biases from the contact pr
-ofile[]. A. Non linear
+Underfull \hbox (badness 3312) in paragraph at lines 406--406
+[]\OT1/ptm/b/n/8 Figure 1. \OT1/ptm/m/n/8 Modeling biases from the contact prof
+ile. A. Non linear
  []
 
 
-Underfull \hbox (badness 5217) in paragraph at lines 732--742
-[]\OT1/ptm/m/n/10 Experimental biases affect the []contact profile []in a
+Underfull \hbox (badness 5217) in paragraph at lines 411--421
+[]\OT1/ptm/m/n/10 Experimental biases affect the contact profile in a
+ []
+
+
+Underfull \hbox (badness 2856) in paragraph at lines 422--430
+\OT1/ptm/m/n/10 to the copy number. In cancer cell lines, the contact
  []
 
 [3]
-Underfull \hbox (badness 2856) in paragraph at lines 743--753
-\OT1/ptm/m/n/10 to the copy number. []In cancer cell lines, the contact
+Underfull \hbox (badness 1168) in paragraph at lines 442--448
+\OT1/ptm/m/n/10 (16), the \OT1/ptm/m/it/10 KR \OT1/ptm/m/n/10 algorithm ([]41[]
+), \OT1/ptm/m/it/10 caICB \OT1/ptm/m/n/10 (18) and the Local
  []
 
 
-Underfull \hbox (badness 1168) in paragraph at lines 770--777
-\OT1/ptm/m/n/10 (16), []the [][]\OT1/ptm/m/it/10 KR[] []\OT1/ptm/m/n/10 algorit
-hm (38), []\OT1/ptm/m/it/10 caICB \OT1/ptm/m/n/10 (18) and the Local
+Underfull \hbox (badness 1173) in paragraph at lines 449--454
+[]\OT1/ptm/m/n/10 We used four metrics to compare Hi-C matrices (see
  []
 
 
-Underfull \hbox (badness 1521) in paragraph at lines 851--858
+Underfull \hbox (badness 1521) in paragraph at lines 488--495
 \OT1/ptm/m/n/10 We first benchmarked the performance of our approach
  []
 
 
-Underfull \hbox (badness 2285) in paragraph at lines 851--858
+Underfull \hbox (badness 2285) in paragraph at lines 488--495
 \OT1/ptm/m/n/10 biological replicates by reducing irrelevant experimental
  []
 
 Package epstopdf Info: Source file: <figure_2.eps>
-(epstopdf)                    date: 2017-11-26 00:53:58
-(epstopdf)                    size: 112194 bytes
+(epstopdf)                    date: 2018-01-16 17:05:32
+(epstopdf)                    size: 112198 bytes
 (epstopdf)             Output file: <figure_2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-11-26 00:58:32
-(epstopdf)                    size: 28989 bytes
+(epstopdf)                    date: 2018-01-16 17:10:07
+(epstopdf)                    size: 28901 bytes
 (epstopdf)             Command: <repstopdf --outfile=figure_2-eps-converted-to.
 pdf figure_2.eps>
-(epstopdf)             \includegraphics on input line 881.
+(epstopdf)             \includegraphics on input line 510.
 Package epstopdf Info: Output file is already uptodate.
 <figure_2-eps-converted-to.pdf, id=31, 636.3775pt x 578.16pt>
 File: figure_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figure_2-eps-converted-to.pdf>
-Package pdftex.def Info: figure_2-eps-converted-to.pdf used on input line 881.
+Package pdftex.def Info: figure_2-eps-converted-to.pdf used on input line 510.
 (pdftex.def)             Requested size: 251.86282pt x 228.81621pt.
- [4 <./figure_1-eps-converted-to.pdf> <./figure_2-eps-converted-to.pdf>]
-Underfull \hbox (badness 7168) in paragraph at lines 921--940
+
+Underfull \hbox (badness 7168) in paragraph at lines 540--549
 []\OT1/ptm/m/n/10 An important application of normalization methods
  []
 
 
-Underfull \hbox (badness 2334) in paragraph at lines 921--940
+Underfull \hbox (badness 2334) in paragraph at lines 540--549
 \OT1/ptm/m/n/10 in experimental setups is to identify outliers. We thus
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1019--1031
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4 <./figure_1-eps-converted-to.pdf> <./figure_2-eps-converted-to.pdf>]
+Underfull \hbox (badness 1748) in paragraph at lines 567--578
+\OT1/ptm/m/n/10 less competitive, and \OT1/ptm/m/it/10 raw+CN \OT1/ptm/m/n/10 (
+copy number correction
+ []
+
+
+Underfull \hbox (badness 1496) in paragraph at lines 567--578
+\OT1/ptm/m/n/10 alone) performed poorly, because it is equivalent to no
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 579--588
 []\OT1/ptm/m/n/10 As above, we used the reproducibility score for
  []
 
 Package epstopdf Info: Source file: <figure_3.eps>
-(epstopdf)                    date: 2017-11-26 00:53:58
-(epstopdf)                    size: 89554 bytes
+(epstopdf)                    date: 2018-01-16 17:05:32
+(epstopdf)                    size: 89496 bytes
 (epstopdf)             Output file: <figure_3-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-11-26 00:58:32
-(epstopdf)                    size: 21542 bytes
+(epstopdf)                    date: 2018-01-16 17:10:07
+(epstopdf)                    size: 21435 bytes
 (epstopdf)             Command: <repstopdf --outfile=figure_3-eps-converted-to.
 pdf figure_3.eps>
-(epstopdf)             \includegraphics on input line 1048.
+(epstopdf)             \includegraphics on input line 599.
 Package epstopdf Info: Output file is already uptodate.
 <figure_3-eps-converted-to.pdf, id=56, 636.3775pt x 289.08pt>
 File: figure_3-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figure_3-eps-converted-to.pdf>
-Package pdftex.def Info: figure_3-eps-converted-to.pdf used on input line 1048.
-
+Package pdftex.def Info: figure_3-eps-converted-to.pdf used on input line 599.
 (pdftex.def)             Requested size: 251.86282pt x 114.4081pt.
 
-Underfull \hbox (badness 1466) in paragraph at lines 1067--1089
-\OT1/ptm/m/n/10 to generate matrices with defined karyotypic aberrations
+Underfull \hbox (badness 1648) in paragraph at lines 614--625
+\OT1/ptm/m/n/10 lowers the performance of \OT1/ptm/m/it/10 OneD\OT1/ptm/m/n/10 
+. A possible limitation
  []
 
 
-Underfull \hbox (badness 1365) in paragraph at lines 1067--1089
-\OT1/ptm/m/n/10 (see Materials and Methods) and tested the capacity of
+Underfull \hbox (badness 1565) in paragraph at lines 614--625
+\OT1/ptm/m/n/10 in Hi-C is the absence of ground truth. We thus used
  []
 
 
-Underfull \hbox (badness 1242) in paragraph at lines 1102--1111
+Underfull \hbox (badness 1152) in paragraph at lines 614--625
+\OT1/ptm/m/n/10 simulations to generate matrices with defined karyotypic
+ []
+
+
+Underfull \hbox (badness 1983) in paragraph at lines 614--625
+\OT1/ptm/m/n/10 aberrations (see Materials and Methods) and tested the
+ []
+
+
+Underfull \hbox (badness 1655) in paragraph at lines 614--625
+\OT1/ptm/m/n/10 cell types (Supplementary []Figures[] 12 []and 13[]). On this
+ []
+
+
+Underfull \hbox (badness 1242) in paragraph at lines 633--642
 []\OT1/ptm/m/n/10 To test this idea, we collected a Hi-C data set from
  []
 
 
-Underfull \hbox (badness 5245) in paragraph at lines 1102--1111
+Underfull \hbox (badness 5245) in paragraph at lines 633--642
 \OT1/ptm/m/n/10 score between identical cell types after normalization
  []
 
 
-Underfull \hbox (badness 3907) in paragraph at lines 1102--1111
+Underfull \hbox (badness 3907) in paragraph at lines 633--642
 \OT1/ptm/m/n/10 with the different tools. In this case, we found that
  []
 
+
+Underfull \hbox (badness 1097) in paragraph at lines 633--642
+\OT1/ptm/m/n/10 cells have diverged, so that the copy number correction
+ []
+
+
+Underfull \hbox (badness 6047) in paragraph at lines 633--642
+\OT1/ptm/m/n/10 performed by \OT1/ptm/m/it/10 OneD[]+CN[] \OT1/ptm/m/n/10 incre
+ased the reproducibility
+ []
+
 Package epstopdf Info: Source file: <figure_4.eps>
-(epstopdf)                    date: 2017-11-26 00:53:58
-(epstopdf)                    size: 146627 bytes
+(epstopdf)                    date: 2018-01-16 17:05:32
+(epstopdf)                    size: 146652 bytes
 (epstopdf)             Output file: <figure_4-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-11-26 00:58:32
-(epstopdf)                    size: 40151 bytes
+(epstopdf)                    date: 2018-01-16 17:10:08
+(epstopdf)                    size: 40202 bytes
 (epstopdf)             Command: <repstopdf --outfile=figure_4-eps-converted-to.
 pdf figure_4.eps>
-(epstopdf)             \includegraphics on input line 1113.
+(epstopdf)             \includegraphics on input line 645.
 Package epstopdf Info: Output file is already uptodate.
 <figure_4-eps-converted-to.pdf, id=57, 636.3775pt x 289.08pt>
 File: figure_4-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figure_4-eps-converted-to.pdf>
-Package pdftex.def Info: figure_4-eps-converted-to.pdf used on input line 1113.
-
+Package pdftex.def Info: figure_4-eps-converted-to.pdf used on input line 645.
 (pdftex.def)             Requested size: 251.86282pt x 114.4081pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1128--1139
+Underfull \hbox (badness 10000) in paragraph at lines 659--670
 \OT1/ptm/m/n/10 equivalent representations of samples from aberrant
  []
 
 
-Underfull \hbox (badness 2653) in paragraph at lines 1128--1139
-\OT1/ptm/m/n/10 the original bias []and faded the signal almost entirely.
+Underfull \hbox (badness 2653) in paragraph at lines 659--670
+\OT1/ptm/m/n/10 the original bias and faded the signal almost entirely.
  []
 
 [5 <./figure_3-eps-converted-to.pdf>]
-Underfull \hbox (badness 5217) in paragraph at lines 1190--1204
-[]\OT1/ptm/m/n/10 We reasoned that [][]\OT1/ptm/m/it/10 OneD[] []\OT1/ptm/m/n/1
-0 should handle such cases
+Underfull \hbox (badness 5217) in paragraph at lines 696--707
+[]\OT1/ptm/m/n/10 We reasoned that \OT1/ptm/m/it/10 OneD \OT1/ptm/m/n/10 should
+ handle such cases
  []
 
 Package epstopdf Info: Source file: <figure_5.eps>
-(epstopdf)                    date: 2017-11-26 00:53:58
+(epstopdf)                    date: 2018-01-16 17:05:32
 (epstopdf)                    size: 13241 bytes
 (epstopdf)             Output file: <figure_5-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-11-26 00:58:33
+(epstopdf)                    date: 2018-01-16 17:10:08
 (epstopdf)                    size: 14411 bytes
 (epstopdf)             Command: <repstopdf --outfile=figure_5-eps-converted-to.
 pdf figure_5.eps>
-(epstopdf)             \includegraphics on input line 1206.
+(epstopdf)             \includegraphics on input line 710.
 Package epstopdf Info: Output file is already uptodate.
 <figure_5-eps-converted-to.pdf, id=72, 636.3775pt x 289.08pt>
 File: figure_5-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figure_5-eps-converted-to.pdf>
-Package pdftex.def Info: figure_5-eps-converted-to.pdf used on input line 1206.
-
+Package pdftex.def Info: figure_5-eps-converted-to.pdf used on input line 710.
 (pdftex.def)             Requested size: 251.86282pt x 114.4081pt.
 
-Underfull \hbox (badness 1253) in paragraph at lines 1237--1246
-\OT1/ptm/m/n/10 the highest reproducibility score between replicates with
+Underfull \hbox (badness 1546) in paragraph at lines 727--741
+\OT1/ptm/m/n/10 outperformed the other methods: it featured the highest
  []
 
 
-Underfull \hbox (badness 1769) in paragraph at lines 1268--1276
+Underfull \hbox (badness 1769) in paragraph at lines 762--770
 \OT1/ptm/m/n/10 it always ran in less than 1 min in the conditions of
  []
 
 
-Underfull \hbox (badness 1694) in paragraph at lines 1268--1276
+Underfull \hbox (badness 1694) in paragraph at lines 762--770
 \OT1/ptm/m/n/10 running time, but it remained under 1 min in general.
  []
 
-[6 <./figure_4-eps-converted-to.pdf> <./figure_5-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figure_6.eps>
-(epstopdf)                    date: 2017-11-26 00:53:58
+(epstopdf)                    date: 2017-11-27 10:19:16
 (epstopdf)                    size: 47997 bytes
 (epstopdf)             Output file: <figure_6-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-11-26 00:58:33
+(epstopdf)                    date: 2017-11-27 10:19:16
 (epstopdf)                    size: 66397 bytes
 (epstopdf)             Command: <repstopdf --outfile=figure_6-eps-converted-to.
 pdf figure_6.eps>
-(epstopdf)             \includegraphics on input line 1278.
+(epstopdf)             \includegraphics on input line 773.
 Package epstopdf Info: Output file is already uptodate.
-
-<figure_6-eps-converted-to.pdf, id=101, 794.97pt x 361.35pt>
+<figure_6-eps-converted-to.pdf, id=73, 794.97pt x 361.35pt>
 File: figure_6-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figure_6-eps-converted-to.pdf>
-Package pdftex.def Info: figure_6-eps-converted-to.pdf used on input line 1278.
-
+Package pdftex.def Info: figure_6-eps-converted-to.pdf used on input line 773.
 (pdftex.def)             Requested size: 251.86282pt x 114.48198pt.
 
-Underfull \hbox (badness 1558) in paragraph at lines 1288--1308
+Underfull \hbox (badness 1558) in paragraph at lines 782--798
 \OT1/ptm/m/n/10 Table 1) at different bin sizes while downsampling the
  []
 
-
-Underfull \hbox (badness 1360) in paragraph at lines 1362--1370
+[6 <./figure_4-eps-converted-to.pdf> <./figure_5-eps-converted-to.pdf>]
+Underfull \hbox (badness 1360) in paragraph at lines 840--848
 \OT1/ptm/m/n/10 genome is grossly different from the reference genome,
  []
 
 
-Underfull \hbox (badness 2126) in paragraph at lines 1362--1370
+Underfull \hbox (badness 2126) in paragraph at lines 840--848
 \OT1/ptm/m/n/10 this strategy is presently unfeasible because assembling
  []
 
 
-Underfull \hbox (badness 2662) in paragraph at lines 1399--1408
+Underfull \hbox (badness 2662) in paragraph at lines 877--886
 \OT1/ptm/m/n/10 Research Council under the European Union's Seventh
  []
 
 
-Underfull \hbox (badness 7099) in paragraph at lines 1399--1408
+Underfull \hbox (badness 7099) in paragraph at lines 877--886
 \OT1/ptm/m/n/10 agreement 609989 (4DGenome). The content of this
  []
 
@@ -1065,7 +1090,12 @@ S.
  []
 
 
-Underfull \hbox (badness 1297) in paragraph at lines 115--120
+Underfull \hbox (badness 2626) in paragraph at lines 109--114
+\OT1/ptm/m/n/8 O., and Leslie, C. S. (2017) An integrated model for detecting
+ []
+
+
+Underfull \hbox (badness 1297) in paragraph at lines 128--133
 \OT1/ptm/m/n/8 marginal likelihood estimation of semiparametric generalized lin
 ear
  []
@@ -1080,8 +1110,16 @@ Missing character: There is no ˜ in font ptmr7t!
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no ™ in font ptmr7t!
-)
-[9
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ± in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ± in font ptmr7t!
+
+Underfull \hbox (badness 1762) in paragraph at lines 229--234
+\OT1/ptm/m/n/8 W. S., Yue, F., and Li, Q. (November, 2017) HiCRep: assessing
+ []
+
+) [9
 
 ] (./manuscript_nar_changes.aux)
 
@@ -1093,13 +1131,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 4412 strings out of 494222
- 57710 string characters out of 6160606
- 134556 words of memory out of 5000000
- 7578 multiletter control sequences out of 15000+600000
+ 4416 strings out of 493029
+ 57788 string characters out of 6136234
+ 139605 words of memory out of 5000000
+ 7777 multiletter control sequences out of 15000+600000
  38412 words of font info for 87 fonts, out of 8000000 for 9000
- 430 hyphenation exceptions out of 8191
- 38i,19n,34p,1011b,341s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 1150 hyphenation exceptions out of 8191
+ 38i,19n,34p,1099b,341s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
@@ -1117,7 +1155,7 @@ ts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on manuscript_nar_changes.pdf (9 pages, 445330 bytes).
+Output written on manuscript_nar_changes.pdf (9 pages, 452862 bytes).
 PDF statistics:
  181 PDF objects out of 1000 (max. 8388607)
  122 compressed objects within 2 object streams

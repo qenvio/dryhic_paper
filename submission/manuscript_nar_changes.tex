@@ -1,12 +1,20 @@
 \documentclass[a4,center,fleqn]{NAR}
 %DIF LATEXDIFF DIFFERENCE FILE
-%DIF DEL /tmp/tmp_old_KTqGCf.tex   Sat Nov 25 23:25:33 2017
-%DIF ADD /tmp/tmp_new_XYQfFB.tex   Sat Nov 25 23:25:33 2017
+%DIF DEL /tmp/tmp_old_d5Q2aq.tex   Tue Jan 16 16:49:30 2018
+%DIF ADD /tmp/tmp_new_He72ZD.tex   Tue Jan 16 16:49:30 2018
 
 % Enter dates of publication
-\copyrightyear{2017}
+%DIF 4c4
+%DIF < \copyrightyear{2017}
+%DIF -------
+\copyrightyear{2018} %DIF > 
+%DIF -------
 \pubdate{** ***** ****}
-\pubyear{2017}
+%DIF 6c6
+%DIF < \pubyear{2017}
+%DIF -------
+\pubyear{2018} %DIF > 
+%DIF -------
 \jvolume{**}
 \jissue{**}
 
@@ -43,26 +51,13 @@ Javier Quilez\,$^{1,2}$,
 Ralph Stadhouders\,$^{1,2}$,
 Yasmina Cuartero\,$^{1,2,3}$,
 Thomas Graf\,$^{1,2}$,
-Marc A.  \DIFdelbegin \DIFdel{Mart\'i-Renom}\DIFdelend \DIFaddbegin \DIFadd{Marti-Renom}\DIFaddend \,$^{1,2,3,4}$,
+Marc A.  Marti-Renom\,$^{1,2,3,4}$,
 Miguel Beato\,$^{1,2}$,
 and Guillaume J. Filion\,$^{1,2}$%
 \footnote{To whom correspondence should be addressed.
 Tel: +34 93 316 01 15; Fax: +34 93 316 00 99; Email: enrique.vidal@crg.eu}}
 
-\DIFdelbegin %DIFDELCMD < \address{%
-%DIFDELCMD < $^{1}$Gene Regulation, Stem Cells and Cancer Program, Centre for
-%DIFDELCMD < Genomic Regulation (CRG), The Barcelona Institute of Science and
-%DIFDELCMD < Technology (BIST), Dr. Aiguader 88, 08003, Barcelona, Spain
-%DIFDELCMD < and
-%DIFDELCMD < $^{2}$Universitat Pompeu Fabra (UPF), Barcelona, Spain
-%DIFDELCMD < and
-%DIFDELCMD < $^{3}$CNAG-CRG, Centre for Genomic Regulation (CRG), Barcelona
-%DIFDELCMD < Institute of Science and Technology (BIST), Baldiri i Reixac 4, 08028
-%DIFDELCMD < Barcelona, Spain
-%DIFDELCMD < and
-%DIFDELCMD < $^{4}$ICREA, Pg. Lluís Companys 23, 08010 Barcelona, Spain}
-%DIFDELCMD < %%%
-\DIFdelend \DIFaddbegin \address{%
+\address{%
 $^{1}$Gene Regulation, Stem Cells and Cancer Program, Centre for
 Genomic Regulation (CRG), The Barcelona Institute of Science and
 Technology (BIST), Dr. Aiguader 88, 08003, Barcelona, Spain
@@ -74,7 +69,6 @@ Institute of Science and Technology (BIST), Baldiri i Reixac 4, 08028
 Barcelona, Spain
 and
 $^{4}$ICREA, Pg. Llu\'is Companys 23, 08010 Barcelona, Spain}
-\DIFaddend 
 
 % Affiliation must include:
 % Department name, institution name, full road and district address,
@@ -107,10 +101,12 @@ reproducibility among replicates of Hi-C samples with abnormal karyotype,
 outperforming previous methods significantly. On normal karyotypes,
 \textit{OneD} fared equally well as state-of-the-art methods, making it a
 safe choice for Hi-C normalization.  \textit{OneD} is fast and scales well
-in terms of computing resources for resolutions up to \DIFdelbegin \DIFdel{1 kbp}\DIFdelend \DIFaddbegin \DIFadd{5~Kbp}\DIFaddend .
-%\textit{OneD} is implemented as an R package
-%available at http://www.github.com/qenvio/dryhic.
-\end{abstract}
+in terms of computing resources for resolutions up to 5~Kbp.
+%DIF < \textit{OneD} is implemented as an R package
+%DIF < available at http://www.github.com/qenvio/dryhic.
+\DIFaddbegin \DIFadd{The }\textit{\DIFadd{OneD}} \DIFadd{R package and the data used here are
+available at http://www.github.com/qenvio/dryhic.
+}\DIFaddend \end{abstract}
 
 
 \section{Introduction}
@@ -144,19 +140,19 @@ Several methods have been proposed to remove biases in Hi-C experiments
 (14). The first strategy is to model biases
 explicitly from a defined set of local genomic features, such as the G+C
 content. This approach is used in the method of
-(13) and in \DIFdelbegin \DIFdel{Hicnorm }\DIFdelend \DIFaddbegin \DIFadd{HiCNorm }\DIFaddend by (15).
+(13) and in HiCNorm by (15).
 The second strategy is to implicitly correct unknown biases by enforcing
 some regularity condition on the data. This approach is used in the
 Iterative Correction and Eigenvector decomposition method (\textit{ICE})
 of (16), whereby the total amount of contacts of
 every bin is imposed to be the same. \textit{ICE} is currently the most
-popular method, due in part to its speed.
+popular method, due in part to its speed \DIFaddbegin \DIFadd{and simplicity}\DIFaddend .
 
 Neither of these strategies were designed for cell types with karyotypic
 aberrations, most common in cancer. Yet, Hi-C is very sensitive to
 aneuploidy, copy number variations and translocations. Actually, these
 aberrations have so much influence on the outcome that they can be used as
-\DIFdelbegin \DIFdel{signatureto }\DIFdelend \DIFaddbegin \DIFadd{signatures to }\DIFaddend re-assemble the target genome (17). An
+signatures to re-assemble the target genome (17). An
 additional complication is that karyotypic aberrations are not
 experimental biases, so it is unclear whether they should be corrected at
 all or be considered part of the biological signal.
@@ -180,79 +176,60 @@ normalized data is more reproducible between replicates and across
 different protocols. Importantly, \textit{OneD} is also efficient when
 cells have a normal karyotype, where it performs as well as the best
 normalization methods. Finally, the implementation is as fast as
-\textit{ICE} and it scales up to \DIFdelbegin \DIFdel{1~kbp }\DIFdelend \DIFaddbegin \DIFadd{5~Kbp }\DIFaddend resolution with reasonable
+\textit{ICE} and it scales up to 5~Kbp resolution with reasonable
 computing resources.
 
 
 \section{MATERIALS AND METHODS}
 
 \subsection{Model}
-\DIFdelbegin %DIFDELCMD < \label{sec:model}
-%DIFDELCMD < %%%
-\DIFdelend 
 
 The most common representation of Hi-C data is a contact matrix, obtained
 by slicing the genome in $n$ consecutive bins of fixed size (the
 resolution) and computing the number of contacts between each pair of
 bins. The values are stored in the cells of the contact matrix ($x_{ij}$),
-quantifying the interaction between the two loci at positions $i$ and
-$j$.
+quantifying the interaction \DIFaddbegin \DIFadd{frequency }\DIFaddend between the two loci at positions
+$i$ and $j$.
 
-Our approach is to model the \DIFdelbegin \DIFdel{tally }\DIFdelend \DIFaddbegin \DIFadd{total number }\DIFaddend of contacts for each bin, thus
-reducing the matrix to a \DIFdelbegin \DIFdel{one dimension }\DIFdelend \DIFaddbegin \DIFadd{one-dimension }\DIFaddend score (hence the name
-\textit{OneD}) \DIFaddbegin \DIFadd{referred to as the `contact profile'}\DIFaddend . We assume that the
-total number of contacts per bin \DIFdelbegin \DIFdel{(}\DIFdelend $t_{i}$ \DIFdelbegin \DIFdel{) }\DIFdelend can be approximated by a
+Our approach is to model the total number of contacts for each bin, thus
+reducing the matrix to a one-dimension score (hence the name
+\textit{OneD}) referred to as the `contact profile'. We assume that the
+total number of contacts per bin $t_{i}$ can be approximated by a
 negative binomial distribution. This choice is sensible because the amount
-of contacts is a discrete variable and because the negative binomial
-distribution allows for overdispersion. We further assume that the
-explicit sources of bias have independent contributions to the mean of the
-distribution for a given bin \DIFdelbegin \DIFdel{(}\DIFdelend $\lambda_i$\DIFdelbegin \DIFdel{)}\DIFdelend .
+of contacts is a discrete variable \DIFaddbegin \DIFadd{that often presents a variance higher
+than the mean (19) (a phenomenon known as
+overdispersion), }\DIFaddend and because the negative binomial distribution allows
+for overdispersion \DIFaddbegin \DIFadd{(20)}\DIFaddend . We further assume that
+the explicit sources of bias have independent contributions to the mean
+of the distribution for a given bin $\lambda_i$.
 
 Given that this relationship might not be linear (see for instance
 Figure~\ref{fig:totals}A), we allowed a smooth representation using thin
-plate penalized regression splines (19) in a generalized
-additive model (20). \DIFaddbegin \DIFadd{Thin plate regression splines are
+plate penalized regression splines (\DIFdelbegin \DIFdel{19}\DIFdelend \DIFaddbegin \DIFadd{21}\DIFaddend ) in a generalized
+additive model (\DIFdelbegin \DIFdel{20}\DIFdelend \DIFaddbegin \DIFadd{22}\DIFaddend ). Thin plate regression splines are
 `isotropic' because rotation of the covariate co-ordinate system does not
 change the result of smoothing and `low rank' because they have far fewer
-coefficients than there are data points to smooth. }\DIFaddend The model can be
+coefficients than there are data points to smooth. The model can be
 parametrized as
-\DIFdelbegin %DIFDELCMD < 
+\begin{gather*}
+t_i = \sum_{j=1}^n{x_{ij}} \sim  NB(\lambda_i, \theta) \text{ and} \\
+\log(\lambda_i) \propto \sum_{k}{f_k(z_{k,i})},
+\end{gather*}
+where $x_{ij}$ is the raw number of contacts between bins $i$ and $j$, and
+$z_{k,i}$ is the additive bias of genomic feature $k$ in bin $i$.
 
-%DIFDELCMD < %%%
-\begin{eqnarray*}
-\DIFdel{t_i = \sum_j^n{x_{ij}} }&\DIFdel{\sim  NB(\lambda_i, \theta) }\\
-\DIFdel{\log(\lambda_i) }&\DIFdel{\propto \sum_{k}{f_k(z_k)}
-}\end{eqnarray*}
-%DIFAUXCMD
-%DIFDELCMD < 
-
-%DIFDELCMD < \noindent
-%DIFDELCMD < %%%
-\DIFdelend \DIFaddbegin \begin{gather*}
-\DIFadd{t_i = \sum_{j=1}^n{x_{ij}} \sim  NB(\lambda_i, \theta) \text{ and} }\\
-\DIFadd{\log(\lambda_i) \propto \sum_{k}{f_k(z_{k,i})},
-}\end{gather*}
-\DIFaddend where $x_{ij}$ is the raw number of contacts between bins $i$ and $j$, and
-\DIFdelbegin \DIFdel{$z_k$ }\DIFdelend \DIFaddbegin \DIFadd{$z_{k,i}$ }\DIFaddend is the additive bias of genomic feature $k$ \DIFdelbegin \DIFdel{. }\DIFdelend \DIFaddbegin \DIFadd{in bin $i$.
-}
-
-\DIFaddend The smooth functions $\{f_k(\cdot)\}$ are estimated \DIFaddbegin \DIFadd{through the thin plate
-spline penalty, }\DIFaddend jointly with the negative binomial dispersion parameter
-$\theta$ using the \DIFaddbegin \DIFadd{the default arguments of the }\DIFaddend \texttt{mgcv\DIFaddbegin \DIFadd{::s}\DIFaddend } \DIFdelbegin \DIFdel{package
-}\DIFdelend \DIFaddbegin \DIFadd{and
-}\texttt{\DIFadd{mgcv::nb}} \DIFadd{functions }\DIFaddend (20) of the R software
-(21).
+The smooth functions $\{f_k(\cdot)\}$ are estimated through the thin plate
+spline penalty, jointly with the negative binomial dispersion parameter
+$\theta$ using the the default arguments of the \texttt{mgcv::s} and
+\texttt{mgcv::nb} functions (\DIFdelbegin \DIFdel{20}\DIFdelend \DIFaddbegin \DIFadd{22}\DIFaddend ) of the R software
+(\DIFdelbegin \DIFdel{21}\DIFdelend \DIFaddbegin \DIFadd{23}\DIFaddend ).
 
 
 Once the parameters of the model are determined, the estimated means
 $\{\lambda_i\}$ are rescaled to obtain a correction vector
 $\{\lambda_i'\}$ that can be used to compute the corrected counts
-\DIFdelbegin \DIFdel{(}\DIFdelend $\hat{x}_{ij}$\DIFdelbegin \DIFdel{).
-}%DIFDELCMD < 
-
-%DIFDELCMD < %%%
-\DIFdelend \DIFaddbegin \DIFadd{.
-}\DIFaddend \begin{align}
+$\hat{x}_{ij}$.
+\begin{align}
 \notag
 \lambda_i' &= \frac{\lambda_i}{\sum_j^n{\lambda_j}/n} \\
 \label{eq:xhat}
@@ -262,35 +239,29 @@ $\{\lambda_i'\}$ that can be used to compute the corrected counts
 In line with previous methods
 (13, 15), the default features used to
 fit the model are the local G+C content, the read mappability and the
-\DIFdelbegin \DIFdel{content and }\DIFdelend number of restriction sites. The model and the implementation can be
-\DIFdelbegin \DIFdel{modifed }\DIFdelend \DIFaddbegin \DIFadd{modified }\DIFaddend or extended with any user-provided genomic features.
+number of restriction sites. The model and the implementation can be
+modified or extended with any user-provided genomic features.
 
 \subsection{Copy number correction}
-\DIFdelbegin %DIFDELCMD < \label{sec:hmm}
-%DIFDELCMD < %%%
-\DIFdelend 
 
 Briefly, a hidden Markov model with emissions distributed as a Student's
 $t$ variable is fitted on the corrected total amount of contacts per bin
-\DIFdelbegin \DIFdel{($\lambda_i'$)}\DIFdelend \DIFaddbegin \DIFadd{$\hat{t}_i = \sum_{j=1}^n{\hat{x}_{ij}}$}\DIFaddend . The model consists of \DIFdelbegin \DIFdel{7 }\DIFdelend \DIFaddbegin \DIFadd{8
-}\DIFaddend states that correspond to 1, 2, 3, 4, 5, 6\DIFdelbegin \DIFdel{and }\DIFdelend \DIFaddbegin \DIFadd{, 7, and `}\DIFaddend 8 \DIFaddbegin \DIFadd{or more' }\DIFaddend copies of
-the target \DIFaddbegin \DIFadd{bin}\DIFaddend , for a total of \DIFdelbegin \DIFdel{3 }\DIFdelend \DIFaddbegin \DIFadd{4 }\DIFaddend emission parameters (a single \DIFdelbegin \DIFdel{scaling parameter , a }\DIFdelend \DIFaddbegin \DIFadd{position
+$\hat{t}_i = \sum_{j=1}^n{\hat{x}_{ij}}$. The model consists of 8
+states that correspond to 1, 2, 3, 4, 5, 6, 7, and `8 or more' copies of
+the target bin, for a total of 4 emission parameters (a single position
 parameter for states 1-7, a position parameter for state `8 or more', a
-}\DIFaddend single standard deviation \DIFaddbegin \DIFadd{for all the states }\DIFaddend and a single degree of
-freedom for all the states) and \DIFdelbegin \DIFdel{21 }\DIFdelend \DIFaddbegin \DIFadd{56 }\DIFaddend transition parameters. 
+single standard deviation for all the states and a single degree of
+freedom for all the states) and 56 transition parameters. 
 
-The model is fitted with the Baum-Welch algorithm (22) until
+The model is fitted with the Baum-Welch algorithm (\DIFdelbegin \DIFdel{22}\DIFdelend \DIFaddbegin \DIFadd{24}\DIFaddend ) until
 convergence, following a previously described implementation
-(23).  The Viterbi path is then computed and
-corresponds to the inferred copy number of each bin \DIFdelbegin \DIFdel{(}\DIFdelend $c_i$\DIFdelbegin \DIFdel{)}\DIFdelend .
+(\DIFdelbegin \DIFdel{23}\DIFdelend \DIFaddbegin \DIFadd{25}\DIFaddend ).  The Viterbi path is then computed and
+corresponds to the inferred copy number of each bin $c_i$.
 
 A correction equal to the square root of the copy number is then applied
-to the whole matrix. More specifically, \DIFdelbegin \DIFdel{each cell }\DIFdelend \DIFaddbegin \DIFadd{the entry at position $(i,j)$ }\DIFaddend is
+to the whole matrix. More specifically, the entry at position $(i,j)$ is
 updated to
-\DIFdelbegin %DIFDELCMD < 
-
-%DIFDELCMD < %%%
-\DIFdelend \begin{equation}
+\begin{equation}
 \label{eq:cnvnorm}
 \hat{x}_{ij}^* = \frac{\hat{x}_{ij}}{\sqrt{c_ic_j}}.
 \end{equation}
@@ -298,354 +269,63 @@ updated to
 
 \subsection{Data sources}
 
-\DIFdelbegin \DIFdel{To test the correction of biases, we }\DIFdelend \DIFaddbegin \DIFadd{We }\DIFaddend gathered a set of published \DIFaddbegin \DIFadd{Hi-C data }\DIFaddend (24, 25, 26, 27, 28\DIFdelbegin \DIFdel{, 29}\DIFdelend ) and unpublished \DIFdelbegin \DIFdel{Hi-C }\DIFdelend data of
-different cell types and organisms (\DIFdelbegin \DIFdel{Table \ref{tab:samples}}\DIFdelend \DIFaddbegin \DIFadd{Supplementary Table~1}\DIFaddend ).
+We gathered a set of published Hi-C data
+(\DIFdelbegin \DIFdel{24, 25, }\DIFdelend 26, 27, 28\DIFaddbegin \DIFadd{, 29, 30, 31}\DIFaddend )
+and unpublished data of different cell types and organisms (Supplementary
+Table~1).
 
-\DIFdelbegin \DIFdel{We used several experiments comprising }\DIFdelend \DIFaddbegin \DIFadd{The Hi-C experiments were performed in }\DIFaddend T47D breast cancer cell lines
-(\DIFdelbegin \DIFdel{7
-}\DIFdelend \DIFaddbegin \DIFadd{aberrant karyotype, six }\DIFaddend samples), K562 leukemia cell lines (\DIFdelbegin \DIFdel{4 }\DIFdelend \DIFaddbegin \DIFadd{aberrant
-karyotype, eight }\DIFaddend samples), \DIFdelbegin \DIFdel{both with aberrant
-karyotypes; and }\DIFdelend mouse primary B cells (\DIFdelbegin \DIFdel{6 samples) and }\DIFdelend \DIFaddbegin \DIFadd{normal karyotyp, six
-samples) }\DIFaddend ES cells (\DIFdelbegin \DIFdel{7
-}\DIFdelend \DIFaddbegin \DIFadd{normal karotype, seven }\DIFaddend samples), \DIFdelbegin \DIFdel{both with normal diploid karyotypes.
-}\DIFdelend \DIFaddbegin \DIFadd{GM12878
+The Hi-C experiments were performed in T47D breast cancer cell lines
+(aberrant karyotype, six samples), K562 leukemia cell lines (aberrant
+karyotype, eight samples), mouse primary B cells (normal \DIFdelbegin \DIFdel{karyotyp}\DIFdelend \DIFaddbegin \DIFadd{karyotype}\DIFaddend , six
+samples) ES cells (normal karotype, seven samples), GM12878
 B-lymphoblastoid cells (normal karyotype, fifty eight samples), BT474
 breast cancer cell line (aberrant karyotype, one sample), MCF10 breast
 cancer cell line (aberrant karyotype, one sample), MCF-7 cancer cell line
 (aberrant karyotype, one sample) and SKBR3 breast cell lines (aberrant
 karyotype, one sample).
-}
 
-\DIFaddend The experiments were carried out in different laboratories, following
+The experiments were carried out in different laboratories, following
 either the original Hi-C protocol (7) or
-the newer \textit{in situ} version (26), and using different
-restriction enzymes (DpnII, HindIII, \DIFaddbegin \DIFadd{MspI, }\DIFaddend MboI and NcoI). \DIFaddbegin \DIFadd{In the figures,
+the newer \textit{in situ} version (\DIFdelbegin \DIFdel{26}\DIFdelend \DIFaddbegin \DIFadd{29}\DIFaddend ), and using different
+restriction enzymes (DpnII, HindIII, MspI, MboI and NcoI). In the figures,
 ``same protocol'' means same laboratory, same Hi-C protocol and same
 restriction enzyme, and ``different protocol'' means that any of the three
 is different.
-}
 
-\DIFaddend We also used array-based copy-number segmentation of the two cell lines
-obtained from the COSMIC database (\DIFdelbegin \DIFdel{30) }\DIFdelend \DIFaddbegin \DIFadd{29) as an external
-reference for validation}\DIFaddend .
+We also used array-based copy-number segmentation of the two cell lines
+obtained from the COSMIC database (\DIFdelbegin \DIFdel{29}\DIFdelend \DIFaddbegin \DIFadd{32}\DIFaddend ) as an external
+reference for validation.
 
 
-%DIF < \begin{landscape}
-\DIFdelbegin %DIFDELCMD < 
-
-%DIFDELCMD < \begin{table*}
-%DIFDELCMD < \label{tab:samples}
-%DIFDELCMD < {\begin{tabular}{ccccccc}
-%DIFDELCMD <   \hline
-%DIFDELCMD <   %%%
-\textbf{\DIFdelFL{Sample ID}} %DIFAUXCMD
-%DIFDELCMD < & %%%
-\textbf{\DIFdelFL{Cell type}} %DIFAUXCMD
-%DIFDELCMD < & %%%
-\textbf{\DIFdelFL{Application}} %DIFAUXCMD
-%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\textbf{\DIFdelFL{RE}} %DIFAUXCMD
-%DIFDELCMD < & %%%
-\textbf{\DIFdelFL{Sequencing core}} %DIFAUXCMD
-%DIFDELCMD < & %%%
-\textbf{\DIFdelFL{Set(s)}} %DIFAUXCMD
-%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\textbf{\DIFdelFL{Source}} %DIFAUXCMD
-%DIFDELCMD < \\
-%DIFDELCMD <   \hline
-%DIFDELCMD < %%%
-\DIFdelFL{dc3a1e069\_51720e9cf }%DIFDELCMD < & %%%
-\DIFdelFL{T47D }%DIFDELCMD < & %%%
-\textit{\DIFdelFL{in situ}} %DIFAUXCMD
-\DIFdelFL{Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{DpnII }%DIFDELCMD < & %%%
-\DIFdelFL{CRG }%DIFDELCMD < & %%%
-\DIFdelFL{T47D, K562 }%DIFDELCMD < & %%%
-\DIFdelFL{NA }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{b1913e6c1\_51720e9cf }%DIFDELCMD < & %%%
-\DIFdelFL{T47D }%DIFDELCMD < & %%%
-\textit{\DIFdelFL{in situ}} %DIFAUXCMD
-\DIFdelFL{Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{DpnII }%DIFDELCMD < & %%%
-\DIFdelFL{CRG }%DIFDELCMD < & %%%
-\DIFdelFL{T47D }%DIFDELCMD < & %%%
-\DIFdelFL{NA }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{dc3a1e069\_ec92aa0bb }%DIFDELCMD < & %%%
-\DIFdelFL{T47D }%DIFDELCMD < & %%%
-\textit{\DIFdelFL{in situ}} %DIFAUXCMD
-\DIFdelFL{Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{DpnII }%DIFDELCMD < & %%%
-\DIFdelFL{CRG }%DIFDELCMD < & %%%
-\DIFdelFL{T47D, K562 }%DIFDELCMD < & %%%
-\DIFdelFL{NA }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{HindIII\_T0 }%DIFDELCMD < & %%%
-\DIFdelFL{T47D }%DIFDELCMD < & %%%
-\DIFdelFL{dilution Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{HindIII }%DIFDELCMD < & %%%
-\DIFdelFL{CRG }%DIFDELCMD < & %%%
-\DIFdelFL{T47D }%DIFDELCMD < & %%%
-\DIFdelFL{SRR1054341 }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{NcoI\_T0    }%DIFDELCMD < & %%%
-\DIFdelFL{T47D }%DIFDELCMD < & %%%
-\DIFdelFL{dilution Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{NcoI      }%DIFDELCMD < & %%%
-\DIFdelFL{CRG }%DIFDELCMD < & %%%
-\DIFdelFL{T47D }%DIFDELCMD < & %%%
-\DIFdelFL{SRR1054343 }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{ENCLB758KFU }%DIFDELCMD < & %%%
-\DIFdelFL{T47D }%DIFDELCMD < & %%%
-\DIFdelFL{dilution Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{HindIII   }%DIFDELCMD < & %%%
-\DIFdelFL{UMass }%DIFDELCMD < & %%%
-\DIFdelFL{T47D }%DIFDELCMD < & %%%
-\DIFdelFL{ENCLB758KFU }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{ENCLB183QHG }%DIFDELCMD < & %%%
-\DIFdelFL{T47D }%DIFDELCMD < & %%%
-\DIFdelFL{dilution Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{HindIII   }%DIFDELCMD < & %%%
-\DIFdelFL{UMass }%DIFDELCMD < & %%%
-\DIFdelFL{T47D }%DIFDELCMD < & %%%
-\DIFdelFL{ENCLB183QHG }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{HIC069  }%DIFDELCMD < & %%%
-\DIFdelFL{K562 }%DIFDELCMD < & %%%
-\textit{\DIFdelFL{in situ}} %DIFAUXCMD
-\DIFdelFL{Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{MboI }%DIFDELCMD < & %%%
-\DIFdelFL{Baylor }%DIFDELCMD < & %%%
-\DIFdelFL{T47D, K562 }%DIFDELCMD < &    %%%
-\DIFdelFL{SRR1658693 }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{HIC070  }%DIFDELCMD < & %%%
-\DIFdelFL{K562 }%DIFDELCMD < & %%%
-\textit{\DIFdelFL{in situ}} %DIFAUXCMD
-\DIFdelFL{Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{MboI }%DIFDELCMD < & %%%
-\DIFdelFL{Baylor }%DIFDELCMD < & %%%
-\DIFdelFL{T47D, K562 }%DIFDELCMD < &    %%%
-\DIFdelFL{SRR1658694 }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{HIC071  }%DIFDELCMD < & %%%
-\DIFdelFL{K562 }%DIFDELCMD < & %%%
-\textit{\DIFdelFL{in situ}} %DIFAUXCMD
-\DIFdelFL{Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{MboI }%DIFDELCMD < & %%%
-\DIFdelFL{Baylor }%DIFDELCMD < & %%%
-\DIFdelFL{K562 }%DIFDELCMD < & %%%
-\DIFdelFL{SRR1658695,SRR1658696 }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{HIC074  }%DIFDELCMD < & %%%
-\DIFdelFL{K562 }%DIFDELCMD < & %%%
-\textit{\DIFdelFL{in situ}} %DIFAUXCMD
-\DIFdelFL{Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{MboI }%DIFDELCMD < & %%%
-\DIFdelFL{Baylor }%DIFDELCMD < & %%%
-\DIFdelFL{K562 }%DIFDELCMD < & %%%
-\DIFdelFL{SRR1658701,SRR1658702 }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{b7fa2d8db\_bfac48760 }%DIFDELCMD < & %%%
-\DIFdelFL{B cell  }%DIFDELCMD < & %%%
-\textit{\DIFdelFL{in situ}} %DIFAUXCMD
-\DIFdelFL{Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{DpnII }%DIFDELCMD < & %%%
-\DIFdelFL{CRG }%DIFDELCMD < & %%%
-\DIFdelFL{mm10 }%DIFDELCMD < & %%%
-\DIFdelFL{GSE96611 }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{fc3e8b36a\_7bf1bf374 }%DIFDELCMD < & %%%
-\DIFdelFL{ES cell }%DIFDELCMD < & %%%
-\textit{\DIFdelFL{in situ}} %DIFAUXCMD
-\DIFdelFL{Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{DpnII }%DIFDELCMD < & %%%
-\DIFdelFL{CRG }%DIFDELCMD < & %%%
-\DIFdelFL{mm10 }%DIFDELCMD < & %%%
-\DIFdelFL{GSE96611 }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{b7fa2d8db\_7284b867a }%DIFDELCMD < & %%%
-\DIFdelFL{B cell  }%DIFDELCMD < & %%%
-\textit{\DIFdelFL{in situ}} %DIFAUXCMD
-\DIFdelFL{Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{DpnII }%DIFDELCMD < & %%%
-\DIFdelFL{CRG }%DIFDELCMD < & %%%
-\DIFdelFL{mm10 }%DIFDELCMD < & %%%
-\DIFdelFL{GSE96611 }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{fc3e8b36a\_38bfd1b33 }%DIFDELCMD < & %%%
-\DIFdelFL{ES cell }%DIFDELCMD < & %%%
-\textit{\DIFdelFL{in situ}} %DIFAUXCMD
-\DIFdelFL{Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{DpnII }%DIFDELCMD < & %%%
-\DIFdelFL{CRG }%DIFDELCMD < & %%%
-\DIFdelFL{mm10 }%DIFDELCMD < & %%%
-\DIFdelFL{GSE96611 }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{b7fa2d8db\_58e812fc2 }%DIFDELCMD < & %%%
-\DIFdelFL{B cell  }%DIFDELCMD < & %%%
-\textit{\DIFdelFL{in situ}} %DIFAUXCMD
-\DIFdelFL{Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{DpnII }%DIFDELCMD < & %%%
-\DIFdelFL{CRG }%DIFDELCMD < & %%%
-\DIFdelFL{mm10 }%DIFDELCMD < & %%%
-\DIFdelFL{GSE96611 }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{fc3e8b36a\_c990a254e }%DIFDELCMD < & %%%
-\DIFdelFL{ES cell }%DIFDELCMD < & %%%
-\textit{\DIFdelFL{in situ}} %DIFAUXCMD
-\DIFdelFL{Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{DpnII }%DIFDELCMD < & %%%
-\DIFdelFL{CRG }%DIFDELCMD < & %%%
-\DIFdelFL{mm10 }%DIFDELCMD < & %%%
-\DIFdelFL{GSE96611 }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{b7fa2d8db\_73f11d923 }%DIFDELCMD < & %%%
-\DIFdelFL{B cell  }%DIFDELCMD < & %%%
-\textit{\DIFdelFL{in situ}} %DIFAUXCMD
-\DIFdelFL{Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{DpnII }%DIFDELCMD < & %%%
-\DIFdelFL{CRG }%DIFDELCMD < & %%%
-\DIFdelFL{mm10 }%DIFDELCMD < & %%%
-\DIFdelFL{GSE96611 }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{fc3e8b36a\_4bf044f18 }%DIFDELCMD < & %%%
-\DIFdelFL{ES cell }%DIFDELCMD < & %%%
-\textit{\DIFdelFL{in situ}} %DIFAUXCMD
-\DIFdelFL{Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{DpnII }%DIFDELCMD < & %%%
-\DIFdelFL{CRG }%DIFDELCMD < & %%%
-\DIFdelFL{mm10 }%DIFDELCMD < & %%%
-\DIFdelFL{GSE96611 }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{GSM987817 }%DIFDELCMD < & %%%
-\DIFdelFL{B cell  }%DIFDELCMD < & %%%
-\DIFdelFL{dilution Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{HindIII }%DIFDELCMD < & %%%
-\DIFdelFL{UCSD }%DIFDELCMD < & %%%
-\DIFdelFL{mm10 }%DIFDELCMD < & %%%
-\DIFdelFL{SRR543428-SRR543431 }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{GSM987818 }%DIFDELCMD < & %%%
-\DIFdelFL{B cell  }%DIFDELCMD < & %%%
-\DIFdelFL{dilution Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{HindIII }%DIFDELCMD < & %%%
-\DIFdelFL{UCSD }%DIFDELCMD < & %%%
-\DIFdelFL{mm10 }%DIFDELCMD < & %%%
-\DIFdelFL{SRR543432-SRR543442 }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{GSM862720 }%DIFDELCMD < & %%%
-\DIFdelFL{ES cell }%DIFDELCMD < & %%%
-\DIFdelFL{dilution Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{HindIII }%DIFDELCMD < & %%%
-\DIFdelFL{LICR }%DIFDELCMD < & %%%
-\DIFdelFL{mm10 }%DIFDELCMD < & %%%
-\DIFdelFL{SRR443883-SRR443885 }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{GSM862721 }%DIFDELCMD < & %%%
-\DIFdelFL{ES cell }%DIFDELCMD < & %%%
-\DIFdelFL{dilution Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{HindIII }%DIFDELCMD < & %%%
-\DIFdelFL{LICR }%DIFDELCMD < & %%%
-\DIFdelFL{mm10 }%DIFDELCMD < & %%%
-\DIFdelFL{SRR400251-SRR400256 }%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{GSM862722 }%DIFDELCMD < & %%%
-\DIFdelFL{ES cell }%DIFDELCMD < & %%%
-\DIFdelFL{dilution Hi-C }%DIFDELCMD < &
-%DIFDELCMD <   %%%
-\DIFdelFL{NcoI    }%DIFDELCMD < & %%%
-\DIFdelFL{LICR }%DIFDELCMD < & %%%
-\DIFdelFL{mm10 }%DIFDELCMD < & %%%
-\DIFdelFL{SRR443886-SRR443888 }%DIFDELCMD < \\
-%DIFDELCMD <   \hline
-%DIFDELCMD < \end{tabular}}{}
-%DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-\DIFdelFL{Hi-C data sets used in this study. Sample ID: Unique sample
-identifier in the respective projects. Cell type: source of the biological
-sample. Application: Hi-C protocol. RE: Restriction enzyme used for the
-digestion. Sequencing core: Laboratory performing the experiment (CRG:
-Centre for Genomic Regulation; UMass: University of Massachusetts; Baylor:
-Baylor College of Medicine; UCSD: University of California San Diego;
-LICR: Ludwig Institue for Cancer Research). Set(s): Sets in which the
-sample was included (see text for detail).  Source: SRA, GEO or ENCODE raw
-data identifier.}}
-%DIFAUXCMD
-%DIFDELCMD < \end{table*}
-%DIFDELCMD < 
-
-%DIFDELCMD < %%%
-%DIF < \end{landscape}
-%DIFDELCMD < 
-
-%DIFDELCMD < %%%
-%DIF < \subsection{Data processing}
-%DIFDELCMD < 
-
-%DIFDELCMD < %%%
-\DIFdelend All data were processed through a pipeline based on TADbit
-(\DIFdelbegin \DIFdel{31}\DIFdelend \DIFaddbegin \DIFadd{30}\DIFaddend ). Briefly, after controlling the quality of
-FASTQ files, paired-end reads were mapped to the corresponding reference
-genome (hg38 \DIFdelbegin \DIFdel{and }\DIFdelend \DIFaddbegin \DIFadd{or }\DIFaddend mm10) taking into account the restriction enzyme site.
-Non-informative contacts were removed applying the following TADbit
-filters: \texttt{self-circle}, \texttt{dangling-ends}, \texttt{error},
-\texttt{extra-dangling-ends}, \texttt{duplicated} and
-\texttt{random-breaks} \DIFdelbegin \DIFdel{. For more details , see the methods section of
-(27}\DIFdelend \DIFaddbegin \DIFadd{(for more details see BioRxiv:
-https://doi.org/10.1101/132456}\DIFaddend ). In addition, the pipeline is available
-from the \DIFdelbegin \DIFdel{supplementary material }\DIFdelend \DIFaddbegin \DIFadd{Supplementary Material }\DIFaddend published by (\DIFdelbegin \DIFdel{32}\DIFdelend \DIFaddbegin \DIFadd{31}\DIFaddend ).
+All data were processed through a pipeline based on TADbit
+(\DIFdelbegin \DIFdel{30}\DIFdelend \DIFaddbegin \DIFadd{33}\DIFaddend ). Briefly, after controlling the quality of FASTQ
+files, paired-end reads were mapped to the corresponding reference genome (hg38
+or mm10) taking into account the restriction enzyme site.  Non-informative
+contacts were removed applying the following TADbit filters:
+\texttt{self-circle}, \texttt{dangling-ends}, \texttt{error},
+\texttt{extra-dangling-ends}, \texttt{duplicated} and \texttt{random-breaks}
+(for more details see \DIFdelbegin \DIFdel{BioRxiv:
+https://doi.org/10.1101/132456)}\DIFdelend \DIFaddbegin \DIFadd{(26))}\DIFaddend . In addition, the
+pipeline is available from the Supplementary Material published by
+(\DIFdelbegin \DIFdel{31}\DIFdelend \DIFaddbegin \DIFadd{34}\DIFaddend ).
 
 We developed the routines contained in the \texttt{dryhic} R package
 (available at http://www.github.com/qenvio/dryhic) to efficiently create
 sparse representations of contact matrices and further apply
-\textit{vanilla}, \textit{ICE}\DIFaddbegin \DIFadd{, }\textit{\DIFadd{KR}} \DIFaddend and \textit{oneD} corrections.
-\texttt{HiTC} (\DIFdelbegin \DIFdel{33}\DIFdelend \DIFaddbegin \DIFadd{32}\DIFaddend ) and \texttt{HiCapp}
-(18) were used to carry out the \textit{LGF} and
-\textit{caICB} corrections respectively. \DIFdelbegin \DIFdel{All the
-results are based on a
-resolution of
-}\DIFdelend \DIFaddbegin \DIFadd{When not specified, the
-resolution of the analysis is }\DIFaddend 100\DIFdelbegin \DIFdel{kbp, but we found no major differences at different
-resolutions (not shown) }\DIFdelend \DIFaddbegin \DIFadd{~Kbp.
-}
+\textit{vanilla} \DIFaddbegin \DIFadd{(a single iteration of ICE)}\DIFaddend , \textit{ICE}, \textit{KR} and \textit{oneD} corrections.
+\texttt{HiTC} (\DIFdelbegin \DIFdel{32}\DIFdelend \DIFaddbegin \DIFadd{35}\DIFaddend ) and \texttt{HiCapp}
+(18) were used to carry out the \textit{\DIFdelbegin \DIFdel{LGF}\DIFdelend \DIFaddbegin \DIFadd{HiCNorm}\DIFaddend } and
+\textit{caICB} corrections respectively. When not specified, the
+resolution of the analysis is 100~Kbp.
 
-\subsection{\DIFadd{Simulations}}
+\subsection{Simulations}
 
 
-\DIFadd{Simulations were based on altering four experimental Hi-C samples obtained
+Simulations were based on altering four experimental Hi-C samples obtained
 from diploid mouse cell lines (b7fa2d8db\_bfac48760, fc3e8b36a\_7bf1bf374,
 GSM987817 and GSM862720, see Supplementary Table~1), that were performed
-in either B cells or ES cells, and from either CRG or UCSC. The simulation
+in either B cells or ES cells, and from either CRG \DIFdelbegin \DIFdel{or UCSC}\DIFdelend \DIFaddbegin \DIFadd{(Center for Genomic
+Regulation) or UCSD (University of California San Diego)}\DIFaddend . The simulation
 strategy was the following: First we selected uniformly at random the
 amount of copy number break points (from 3 to 10). We then placed the
 break points along chromosomes 18 and 19 uniformly at random. Next, we
@@ -655,35 +335,31 @@ this simulated copy number profile and multiplied it element-wise with the
 original contact matrices of chromosomes 18 and 19. The resulting matrices
 were used as input for correction methods. For each simulation (100 in
 total), we measured the pairwise reproducibility score defined by
-(33) and computed the average for pairs from the same
-cell type minus the average for pairs from different cell types}\DIFaddend .
+(\DIFdelbegin \DIFdel{33}\DIFdelend \DIFaddbegin \DIFadd{36}\DIFaddend ) and computed the average for pairs from the same
+cell type minus the average for pairs from different cell types.
 
 \subsection{Comparison of Hi-C matrices}
-\DIFdelbegin %DIFDELCMD < \label{sec:comp}
-%DIFDELCMD < %%%
-\DIFdelend 
 
 There is no universally accepted standard to compare Hi-C matrices. The
 simplest metric is the Spearman correlation applied to intra-chromosomal
-contacts up to a given distance (5 \DIFdelbegin \DIFdel{Mb }\DIFdelend \DIFaddbegin \DIFadd{Mbp }\DIFaddend in what follows). The second option
+contacts up to a given distance (5 Mbp in what follows). The second option
 is to measure the similarity of observed over expected contacts via the
 Pearson correlation up to a given distance range. Compared to the first,
 this metric gives more weight to changes occurring away from the diagonal.
 The third option is to compute a correlation per distance stratum and then
 obtain a stratum-adjusted correlation coefficient (SCC) as defined by
-(34). Finally, the \DIFdelbegin \DIFdel{last option, }\DIFdelend \DIFaddbegin \DIFadd{``reproducibility score'' }\DIFaddend proposed by
-(\DIFdelbegin \DIFdel{35) is to measure the Pearson correlation between the last }\DIFdelend \DIFaddbegin \DIFadd{33) sums the distances between the leading twenty
-}\DIFaddend eigenvectors of the Laplacian of the Hi-C matrix. This approach borrows
-the concepts of spectral clustering (\DIFdelbegin \DIFdel{36}\DIFdelend \DIFaddbegin \DIFadd{35}\DIFaddend ) and amounts to
+(\DIFdelbegin \DIFdel{34}\DIFdelend \DIFaddbegin \DIFadd{37}\DIFaddend ). Finally, the ``reproducibility score'' proposed by
+(\DIFdelbegin \DIFdel{33}\DIFdelend \DIFaddbegin \DIFadd{36}\DIFaddend ) sums the distances between the leading twenty
+eigenvectors of the Laplacian of the Hi-C matrix. This approach borrows
+the concepts of spectral clustering (\DIFdelbegin \DIFdel{35}\DIFdelend \DIFaddbegin \DIFadd{38}\DIFaddend ) and amounts to
 comparing high level features of the matrix.
 
-We defined \DIFdelbegin \DIFdel{three }\DIFdelend \DIFaddbegin \DIFadd{five }\DIFaddend data sets to measure experimental reproducibility after
+We defined five data sets to measure experimental reproducibility after
 normalization: The first contained the samples from T47D plus two samples
 from K562, the second contained the samples from K562 plus two samples
-from T47D, the third contained all the mouse samples\DIFdelbegin \DIFdel{(see Table
-\ref{tab:samples} }\DIFdelend \DIFaddbegin \DIFadd{, the fourth contained
+from T47D, the third contained all the mouse samples, the fourth contained
 all the GM12878 samples and the fifth contained one sample of each breast
-cancer cells (see Supplementary Table~1 }\DIFaddend for details). Given a set of
+cancer cells (see Supplementary Table~1 for details). Given a set of
 experiments and a metric, we first computed all pairwise combinations
 between experiments and then classified the comparisons according to the
 characteristics of each pair (cell type, protocol, batch and treatment).
@@ -691,22 +367,22 @@ characteristics of each pair (cell type, protocol, batch and treatment).
 To measure the gain or loss of similarity upon normalization, we compared
 raw matrices to obtain a baseline. The differences with this baseline were
 estimated using a linear mixed model fitted with the \texttt{lmer}
-function of the \texttt{lme4} R package (\DIFdelbegin \DIFdel{37}\DIFdelend \DIFaddbegin \DIFadd{36}\DIFaddend ), where the
+function of the \texttt{lme4} R package (\DIFdelbegin \DIFdel{36}\DIFdelend \DIFaddbegin \DIFadd{39}\DIFaddend ), where the
 fixed effect was the normalization method and the random effect was the
-chromosome. \DIFdelbegin \DIFdel{Receiver }\DIFdelend \DIFaddbegin \DIFadd{To test the ability of the different methods to separate
-samples from different cell origin we generated receiver }\DIFaddend operating
-characteristic (ROC) curves \DIFaddbegin \DIFadd{using the similarity metric (e.g.
+chromosome. To test the ability of the different methods to separate
+samples from different cell origin we generated receiver operating
+characteristic (ROC) curves using the similarity metric (e.g.
 reproducibility score) as the classifier score and the relative cell type
-(i.e. same }\textit{\DIFadd{vs}} \DIFadd{different) as the binary classification. ROC curves
-}\DIFaddend were computed using the \texttt{ROCR} package (\DIFdelbegin \DIFdel{38}\DIFdelend \DIFaddbegin \DIFadd{37}\DIFaddend ).
+(i.e. same \textit{vs} different) as the binary classification. ROC curves
+were computed using the \texttt{ROCR} package (\DIFdelbegin \DIFdel{37}\DIFdelend \DIFaddbegin \DIFadd{40}\DIFaddend ).
 
 \section{RESULTS}
 
-\subsection{\DIFdelbegin \DIFdel{Experimental bias }\DIFdelend \DIFaddbegin \DIFadd{Bias }\DIFaddend correction \DIFaddbegin \DIFadd{in Hi-C experiments}\DIFaddend }
+\subsection{Bias correction in Hi-C experiments}
 
 The principle of \textit{OneD} is to explicitly model Hi-C biases on a
-single variable: the total amount of contacts for each bin of the matrix\DIFdelbegin \DIFdel{(see \ref{sec:model} for detail)}\DIFdelend \DIFaddbegin \DIFadd{,
-also referred to as the }\textit{\DIFadd{contact profile}}\DIFaddend . The reason for this
+single variable: the total amount of contacts for each bin of the matrix,
+also referred to as the \textit{contact profile}. The reason for this
 choice is that the total amount of contacts is approximately proportional
 to the local copy number. For instance, a duplicated region in a diploid
 genome will show on average a 50\% increase in the number of contacts.
@@ -714,22 +390,25 @@ Discontinuities of the amount of contacts thus correspond to changes of
 the copy number.
 
 \begin{figure}
-\centerline{\includegraphics[width=.49\textwidth]{figure_1.eps}}
-\caption{\DIFdelbeginFL \DIFdelFL{Total amount of contacts per bin}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Modeling biases from the contact profile}\DIFaddendFL . A. Non linear
+\centerline{\includegraphics[width=.49\textwidth]
+  {figure_1.eps}}
+\caption{Modeling biases from the contact profile. A. Non linear
 relationship between the number of restriction sites and the total number
 of contacts per bin in T47D. B. Total number of contacts per bin on
-chromosome 17 of T47D. The \DIFdelbeginFL \DIFdelFL{brown }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{purple }\DIFaddendFL line represents the raw signal, the \DIFaddbeginFL \DIFaddFL{dark }\DIFaddendFL blue
-line represents the signal after \DIFaddbeginFL \DIFaddFL{OneD }\DIFaddendFL bias correction, the \DIFdelbeginFL \DIFdelFL{black }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{light blue }\DIFaddendFL line
-represents the signal after \DIFaddbeginFL \DIFaddFL{OneD }\DIFaddendFL bias and copy number (CN) correction \DIFaddbeginFL \DIFaddFL{and
-the orange line represents the signal after ICE bias correction}\DIFaddendFL . The long arm
-of chromosome 17 (the region corresponding to 20-80 Mbp) is present in
-four copies, explaining that the signal is about twice higher than for
-the short arm.}
+chromosome \DIFdelbeginFL \DIFdelFL{17 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{9 }\DIFaddendFL of T47D. The purple line represents the raw signal, the dark blue
+line represents the signal after OneD bias correction, the light blue line
+represents the signal after OneD bias and copy number (CN) correction and
+the orange line represents the signal after ICE bias correction. The \DIFaddbeginFL \DIFaddFL{grey
+line represents the copy number estimation by independent CNV array and it
+has been scaled to match the figure ranges. Some regions of the }\DIFaddendFL long arm of
+chromosome \DIFdelbeginFL \DIFdelFL{17 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{9 }\DIFaddendFL (the region corresponding to \DIFdelbeginFL \DIFdelFL{20-80 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{60-140 }\DIFaddendFL Mbp) \DIFdelbeginFL \DIFdelFL{is }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{are }\DIFaddendFL present in four
+copies, explaining that the signal is about twice higher than for the short
+arm. \DIFaddbeginFL \DIFaddFL{Both figures present data at 100~Kbp resolution}\DIFaddendFL }
 \label{fig:totals}
 \end{figure}
 
 
-Experimental biases affect the \DIFdelbegin \DIFdel{total amount of contacts }\DIFdelend \DIFaddbegin \DIFadd{contact profile }\DIFaddend in a continuous but not
+Experimental biases affect the contact profile in a continuous but not
 necessarily linear way. Figure~\ref{fig:totals}A shows the relationship
 between the amount of contacts and the number of restriction enzyme sites
 in T47D, a breast cancer cell line with an aberrant karyotype.  Four
@@ -740,109 +419,67 @@ fits a non-linear model between the total amount of contacts and the known
 sources of bias (by default the G+C content, the number of restriction
 sites and the mappability of the reads).
 
-The experimental biases are estimated genome-wide and each \DIFdelbegin \DIFdel{cell of the
-}\DIFdelend \DIFaddbegin \DIFadd{entry of the
-Hi-C }\DIFaddend matrix is then corrected using equation (\ref{eq:xhat}). Note that
-the corrected \DIFdelbegin \DIFdel{amount of contacts }\DIFdelend \DIFaddbegin \DIFadd{contact profile }\DIFaddend is still proportional to the copy number.
-\DIFdelbegin \DIFdel{Figure~}\DIFdelend \DIFaddbegin \DIFadd{In cancer cell lines, the contact profile corrected by }\textit{\DIFadd{OneD}} \DIFadd{is
+The experimental biases are estimated genome-wide and each entry of the
+Hi-C matrix is then corrected using equation (\ref{eq:xhat}). Note that
+the corrected contact profile is still proportional to the copy number.
+In cancer cell lines, the contact profile corrected by \textit{OneD} is
 highly correlated to the copy number estimated from an external source
-(Supplementary Figure~1). Figure~}\DIFaddend \ref{fig:totals}B shows the corrected
-\DIFdelbegin \DIFdel{number of contacts }\DIFdelend \DIFaddbegin \DIFadd{contact profile }\DIFaddend along chromosome 17 of T47D\DIFdelbegin \DIFdel{. }\DIFdelend \DIFaddbegin \DIFadd{, where }\DIFaddend \textit{OneD} greatly
-reduces the \DIFdelbegin \DIFdel{wiggling of the total amount of contacts (blue line). }\DIFdelend \DIFaddbegin \DIFadd{fluctuations (dark blue line).
-}\DIFaddend 
+(Supplementary Figure~1). Figure~\ref{fig:totals}B shows the corrected
+contact profile along chromosome 17 of T47D, where \textit{OneD} greatly
+reduces the fluctuations (dark blue line).
 
-%DIF <  Marc's comment here was regarding lack of motivation and explanation for
-%DIF <  the copy number comparison. I've rescued some text from an older
-%DIF <  version. We should also comment here about CN being a bias or providing
-%DIF <  biological information, so to correct or not to correct for CN
-\DIFaddbegin \DIFadd{Optionally, }\textit{\DIFadd{OneD}} \DIFadd{allows the user to also correct the Hi-C signal
+Optionally, \textit{OneD} allows the user to also correct the Hi-C signal
 for the copy number. In this case, a hidden Markov model is fitted on the
 corrected contact profile in order to infer the local copy number. Each
 entry of the Hi-C matrix is then further corrected using equation
-(\ref{eq:cnvnorm}), }\textit{\DIFadd{i.e.}} \DIFadd{it is divided by the square root of the
+(\ref{eq:cnvnorm}), \textit{i.e.} it is divided by the square root of the
 inferred copy number. In essence, this approach flattens the contact
 profile so that it is no longer proportional to the local copy number. The
 light blue line in figure~\ref{fig:totals}B shows the result of this
 process. After this correction, the contact profile fluctuates around a
 genome-wide constant value.
-}\DIFaddend 
 
-In what follows, we benchmarked \textit{OneD} \DIFdelbegin \DIFdel{, }\DIFdelend \DIFaddbegin \DIFadd{and }\textit{\DIFadd{OneD}} \DIFadd{with copy
-number correction (}\textit{\DIFadd{OneD+CN}}\DIFadd{) }\DIFaddend against \textit{vanilla},
-\textit{ICE} (16), \DIFaddbegin \DIFadd{the }\textit{\DIFadd{KR}} \DIFadd{algorithm
-(38), }\DIFaddend \textit{caICB} (18) and the
-Local Genomic Features method (\textit{LGF}, 15, \DIFdelbegin \DIFdel{33}\DIFdelend \DIFaddbegin \DIFadd{32}\DIFaddend ). The first \DIFdelbegin \DIFdel{three
-}\DIFdelend \DIFaddbegin \DIFadd{four }\DIFaddend methods correct biases implicitly,
-whereas the \DIFdelbegin \DIFdel{fourth }\DIFdelend \DIFaddbegin \DIFadd{fifth }\DIFaddend method does it explicitly.
+In what follows, we benchmarked \textit{OneD} and \textit{OneD} with copy
+number correction (\textit{OneD+CN}) against \textit{vanilla},
+\textit{ICE} (16), the \textit{KR} algorithm
+(\DIFdelbegin \DIFdel{38}\DIFdelend \DIFaddbegin \DIFadd{41}\DIFaddend ), \textit{caICB} (18) and the
+Local Genomic Features method (\textit{\DIFdelbegin \DIFdel{LGF}\DIFdelend \DIFaddbegin \DIFadd{HiCNorm}\DIFaddend }, 15, \DIFdelbegin \DIFdel{32}\DIFdelend \DIFaddbegin \DIFadd{35}\DIFaddend ). The first four methods correct biases implicitly,
+whereas the fifth method does it explicitly.
 
-\DIFdelbegin \DIFdel{Given that our model is based on total number of contacts, we reasoned
-that a preliminary test would be to check if the corrected number of
-contacts per bin reflects the copy number (as measured by an independent
-technique such as array-based copy-number segmentation).
-We tested the
-validity of this approach against the Catalogue Of Somatic Mutations In
-Cancer (COSMIC, 30). Figure \ref{fig:copy_number}
-shows the Pearson correlation between the corrected number of contacts and
-the copy number estimation for T47D and K562 (a leukemia cell line with an
-aberrant karyotype) . Similar results were obtained using Spearman
-correlation (Supplementary Figure 1).  All the methods except
-}\textit{\DIFdel{OneD}} %DIFAUXCMD
-\DIFdel{decreased the agreement between the signal and the
-copy
-number because they partially corrected the discrepancy. In contrast,
-}\textit{\DIFdel{OneD}} %DIFAUXCMD
-\DIFdel{enhanced the conformity of the signal with the copy number.
-Not correcting for variable copy number at that stage may seem
-counter-intuitive, but the tests below will show this leads to better
-performance.
-}\DIFdelend \DIFaddbegin \DIFadd{We used four metrics to compare Hi-C matrices (see Materials and Methods).
+We used four metrics to compare Hi-C matrices (see Materials and Methods).
 For consistency and concision, the results based on the reproducibility
-score of (33) are shown in the main figures, and the
+score of (\DIFdelbegin \DIFdel{33}\DIFdelend \DIFaddbegin \DIFadd{36}\DIFaddend ) are shown in the main figures, and the
 results based on the other metrics are shown in the Supplementary
 Material.
-}\DIFaddend 
 
 
-\DIFdelbegin %DIFDELCMD < \begin{figure}
-%DIFDELCMD < 	\centerline{\includegraphics[width=.39\textwidth]
-%DIFDELCMD < {img/copy_number_figure2.eps}}
-%DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-\DIFdelFL{Pearson correlation between the total number of contacts per bin
-and an independent estimation of the copy number (COSMIC). Left panel
-T47D breast cancer cell line, right panel K562 leukemia cell line.}}
-%DIFAUXCMD
-%DIFDELCMD < \label{fig:copy_number}
-%DIFDELCMD < \end{figure}
-%DIFDELCMD < %%%
-\DIFdelend %DIF > Given that our model is based on the total number of contacts, we reasoned
-%DIF > that a preliminary test would be to check if the corrected number of
-%DIF > contacts per bin reflects the copy number (as measured by an independent
-%DIF > technique such as array-based copy-number segmentation). We tested the
-%DIF > validity of this approach against the Catalogue Of Somatic Mutations In
-%DIF > Cancer \citep[COSMIC,][]{forbes2010cosmic}. Figure \ref{fig:copy_number}
-%DIF > shows the Pearson correlation between the corrected number of contacts and
-%DIF > the copy number estimation for T47D and K562 (a leukemia cell line with an
-%DIF > aberrant karyotype). Similar results were obtained using Spearman
-%DIF > correlation (Supplementary Figure 1).  All the methods except
-%DIF > \textit{OneD} decreased the agreement between the signal and the copy
-%DIF > number because they partially corrected the discrepancy. In contrast,
-%DIF > \textit{OneD} enhanced the conformity of the signal with the copy number.
-%DIF > Not correcting for variable copy number at that stage may seem
-%DIF > counter-intuitive, but the tests below will show this leads to better
-%DIF > performance.
-%DIF > 
-%DIF > 
-%DIF > \begin{figure}
-%DIF > \centerline{\includegraphics[width=.39\textwidth]
-%DIF >   {nar_figures/figure_2.eps}}
-%DIF > \caption{Pearson correlation between the total number of contacts per bin
-%DIF > and an independent estimation of the copy number (COSMIC). Left panel
-%DIF > T47D breast cancer cell line, right panel K562 leukemia cell line.}
-%DIF > \label{fig:copy_number}
-%DIF > \end{figure}
-%DIF > 
+%Given that our model is based on the total number of contacts, we reasoned
+%that a preliminary test would be to check if the corrected number of
+%contacts per bin reflects the copy number (as measured by an independent
+%technique such as array-based copy-number segmentation). We tested the
+%validity of this approach against the Catalogue Of Somatic Mutations In
+%Cancer \citep[COSMIC,][]{forbes2010cosmic}. Figure \ref{fig:copy_number}
+%shows the Pearson correlation between the corrected number of contacts and
+%the copy number estimation for T47D and K562 (a leukemia cell line with an
+%aberrant karyotype). Similar results were obtained using Spearman
+%correlation (Supplementary Figure 1).  All the methods except
+%\textit{OneD} decreased the agreement between the signal and the copy
+%number because they partially corrected the discrepancy. In contrast,
+%\textit{OneD} enhanced the conformity of the signal with the copy number.
+%Not correcting for variable copy number at that stage may seem
+%counter-intuitive, but the tests below will show this leads to better
+%performance.
+%
+%
+%\begin{figure}
+%\centerline{\includegraphics[width=.39\textwidth]
+%  {figure_2.eps}}
+%\caption{Pearson correlation between the total number of contacts per bin
+%and an independent estimation of the copy number (COSMIC). Left panel
+%T47D breast cancer cell line, right panel K562 leukemia cell line.}
+%\label{fig:copy_number}
+%\end{figure}
+%
 
 
 
@@ -852,34 +489,26 @@ We first benchmarked the performance of our approach on biological
 samples with an aberrant karyotype. A good normalization method should
 increase the similarity between biological replicates by reducing
 irrelevant experimental variance, such as batch effects, laboratory of
-origin and protocol variations. \DIFdelbegin \DIFdel{Similarly}\DIFdelend \DIFaddbegin \DIFadd{Likewise}\DIFaddend , a good normalization should
-\DIFdelbegin \DIFdel{decrease the similarity }\DIFdelend \DIFaddbegin \DIFadd{increase the contrast }\DIFaddend between different samples to enhance the
+origin and protocol variations. Likewise, a good normalization should
+increase the contrast between different samples to enhance the
 biological differences.
 
-We \DIFdelbegin \DIFdel{assembled two }\DIFdelend \DIFaddbegin \DIFadd{collected multiple }\DIFaddend Hi-C data sets obtained from T47D and K562 cells\DIFdelbegin \DIFdel{.  In
-each set we spiked two }\DIFdelend \DIFaddbegin \DIFadd{,
+We collected multiple Hi-C data sets obtained from T47D and K562 cells,
 both with aberrant karyotypes. The first pool, referred to as the T47D data
 set contained six T47D samples and two K562 samples, the second, referred
-to as the K562 data set contained eight K562 samples and two T47D }\DIFaddend samples\DIFdelbegin \DIFdel{from the other cell line
-(Table~\ref{tab:samples}) to introduce biological variability}\DIFdelend .
+to as the K562 data set contained eight K562 samples and two T47D samples.
 We compared matrices before and after normalization by different methods
-\DIFdelbegin \DIFdel{using the
-Pearson correlation of observed over expected counts (see \ref{sec:comp}}\DIFdelend \DIFaddbegin \DIFadd{(see Materials and Methods, distributions shown in Supplementary Figures~2
-and 3}\DIFaddend ). This gave an indication of the impact of a given normalization
-method \DIFaddbegin \DIFadd{on the biological variation (differences between samples from T47D
+(see Materials and Methods, distributions shown in Supplementary Figures~2
+and 3). This gave an indication of the impact of a given normalization
+method on the biological variation (differences between samples from T47D
 and K562) and on the technical variation (differences among samples from
-the same cell type)}\DIFaddend . The results are summarized in
-Figure~\ref{fig:aberrant} \DIFdelbegin \DIFdel{.
-}\DIFdelend \DIFaddbegin \DIFadd{and Supplementary Table~3.
-}\DIFaddend 
+the same cell type). The results are summarized in
+Figure~\ref{fig:aberrant} and Supplementary Table~3.
 
-\DIFdelbegin \DIFdel{The }\textit{\DIFdel{caICB}} %DIFAUXCMD
-\DIFdel{and }\textit{\DIFdel{ICE}} %DIFAUXCMD
-\DIFdel{methods increased the similarity
-between the different cell
-lines }\DIFdelend \DIFaddbegin \begin{figure}
-\centerline{\includegraphics[width=.49\textwidth]{figure_2.eps}}
-\caption{\DIFaddFL{Removing biases from Hi-C on aberrant karyotypes. A and B.
+\begin{figure}
+\centerline{\includegraphics[width=.49\textwidth]
+  {figure_2.eps}}
+\caption{Removing biases from Hi-C on aberrant karyotypes. A and B.
 Average changes compared to the raw data on the T47D and K562 data sets.
 The bars represent 95\% confidence intervals centered on the mean
 difference of the reproducibility score between a given correction method
@@ -889,322 +518,197 @@ type samples processed using different protocols. Lower left panels:
 Same cell type samples processed using the same protocol. C and D. ROC
 curves on the T47D and K562 sets. The areas under the curve are
 indicated in the bottom right corner. The color code is the same as in
-panels A and B.}}
+panels A and B.}
 \label{fig:aberrant}
 \end{figure}
 
-\DIFadd{On the T47D data set, the methods that increased the reproducibility
+On the T47D data set, the methods that increased the reproducibility
 between identical cell types also increased it between different cell
-types }\DIFaddend (Figures~\ref{fig:aberrant}A\DIFdelbegin \DIFdel{and
-\ref{fig:aberrant}B and Supplementary Figures~2 }\DIFdelend \DIFaddbegin \DIFadd{), meaning that none of them enhanced
+types (Figures~\ref{fig:aberrant}A), meaning that none of them enhanced
 exclusively the biological signal. However, the difference was most marked
-for }\textit{\DIFadd{OneD}} \DIFaddend and \DIFdelbegin \DIFdel{3). This is an
-undesirable effect, as it obscures the biological variability. Likewise, these methods decreased the similarity between samples that received the same treatment (Figure~\ref{fig:aberrant}A), suggesting that the normalization process is detrimental to the biological signal in these two
-cases. The method }\textit{\DIFdel{vanilla}} %DIFAUXCMD
-\DIFdel{followed the same trend but to a lesser
-extent, consistent with the fact that it consists of a
-single }\DIFdelend \DIFaddbegin \textit{\DIFadd{caICB}}\DIFadd{. On the K562 data set
+for \textit{OneD} and \textit{caICB}. On the K562 data set
 (figure~\ref{fig:aberrant}B), both methods increased the reproducibility
 between identical cell types but not between different cell types
-%DIF > Figures~\ref{fig:aberrant}B)
+%Figures~\ref{fig:aberrant}B)
 , which is the desired behavior of a
-correction method. On both data sets, }\textit{\DIFadd{OneD+CN}}\DIFadd{, }\DIFaddend \textit{ICE} \DIFdelbegin \DIFdel{iteration.
-}\textit{\DIFdel{OneD}} %DIFAUXCMD
-\DIFdel{was the only method to increase the similarity
-between experiments carried out on the same material but with a different
-protocol (Figure~\ref{fig:aberrant}A}\DIFdelend \DIFaddbegin \DIFadd{and
-}\textit{\DIFadd{KR}} \DIFadd{gave inferior results, while }\textit{\DIFadd{raw+CN}} \DIFadd{(copy number
-correction alone), }\textit{\DIFadd{LGF}} \DIFadd{and }\textit{\DIFadd{vanilla}} \DIFadd{were not competitive.
+correction method. On both data sets, \textit{OneD+CN}, \textit{ICE} and
+\textit{KR} gave inferior results, while \textit{raw+CN} (copy number
+correction alone), \textit{\DIFdelbegin \DIFdel{LGF}\DIFdelend \DIFaddbegin \DIFadd{HiCNorm}\DIFaddend } and \textit{vanilla} were not competitive.
 The conclusions were unchanged when using other metrics to compare Hi-C
-matrices (Supplementary Figures~4, 5 and 6}\DIFaddend ).
+matrices (Supplementary Figures~4, 5 and 6).
 
 An important application of normalization methods in experimental setups
 is to identify outliers. We thus investigated the capacity of the
 different methods to help identify the samples from the other cell type
 spiked in the data set. We interpreted the pairwise comparison scores as
 classifier scores and summarized the results with a ROC curve
-(Figures~\ref{fig:aberrant}C and D). \DIFdelbegin \DIFdel{All the methods, including the absence of normalization, succeeded in identifying the T47D outliers among
-the K562 samples, but recognizing the K562 outliers among the T47D samples
-proved more challenging. }\DIFdelend \textit{OneD} \DIFdelbegin \DIFdel{increased the discrimination power
-compared to the raw matrices, but all the other methods decreased it.
-Actually, they performed little better than random on this task. Using the
-other metrics described in \ref{sec:comp} }\DIFdelend \DIFaddbegin \DIFadd{had the largest area
+(Figures~\ref{fig:aberrant}C and D). \textit{OneD} had the largest area
 under the curve in both tests, and the corresponding ROC curve was above
 the others throughout. Using other metrics to compare Hi-C matrices
-}\DIFaddend yielded similar results (Supplementary Figures\DIFdelbegin \DIFdel{5, 6 and 7).
-Note that Spearman correlation of
-contacts presented the worst performance for all scenarios, and it thus
-seems to be a poor choice for a metric to compare Hi-C matrices.
-}\DIFdelend \DIFaddbegin \DIFadd{~4, 5 and 6).
-}\DIFaddend 
+yielded similar results (Supplementary Figures~4, 5 and 6).
 
-Taken together, these results show that \DIFdelbegin \DIFdel{correcting experimental biases
-with }\DIFdelend \textit{OneD} enhances the
+Taken together, these results show that \textit{OneD} enhances the
 biological variation and reduces the noise on samples with an aberrant
 karyotype.
 
 
 
 
-\DIFdelbegin %DIFDELCMD < \begin{figure}
-%DIFDELCMD < \centerline{\includegraphics[width=.49\textwidth]
-%DIFDELCMD <   {img/correlation_aberrant_figure3.eps}}
-%DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-\DIFdelFL{Results of the comparison between samples with aberrant karyotypes. A and
-B. Average changes compared to the raw data on the T47D and K562 sets. The
-bars represent 95\% confidence intervals centered on the mean difference
-of the correlation score between a given correction method and the raw
-data. C and D. ROC curves on the T47D and K562 sets.  The areas under the
-curve are indicated in the bottom right corner. The color code is the same
-as panels A and B. The brown lines correspond to raw matrices. All results
-in this figure are based on Pearson correlations between the observed over
-expected counts.}}
-%DIFAUXCMD
-%DIFDELCMD < \label{fig:aberrant}
-%DIFDELCMD < \end{figure}
-%DIFDELCMD < 
-
-%DIFDELCMD < %%%
-\DIFdelend \subsection{Normal karyotypes}
+\subsection{Normal karyotypes}
 
 Does the performance of \textit{OneD} on aberrant karyotypes come at the
 cost of decreased performance on normal karyotypes? To address this
-question, we \DIFdelbegin \DIFdel{assembled another data set comprised of }\DIFdelend \DIFaddbegin \DIFadd{collected data from }\DIFaddend mouse B cells and embryonic stem (ES)
+question, we collected data from mouse B cells and embryonic stem (ES)
 cells, both with a normal karyotype. The cell types were pooled in almost
-equal proportions (see \DIFdelbegin \DIFdel{Table~\ref{tab:samples}) and }\DIFdelend \DIFaddbegin \DIFadd{Supplementary Table~1) and we performed }\DIFaddend the same
-tests as above \DIFdelbegin \DIFdel{were performed.
-}\DIFdelend \DIFaddbegin \DIFadd{using the same metrics (distributions shown in
+equal proportions (see Supplementary Table~1) and we performed the same
+tests as above using the same metrics (distributions shown in
 Supplementary Figure~7)
-}\DIFaddend 
 
-In \DIFdelbegin \DIFdel{these conditions, the experimental protocol had a strong effect on the
-impact of the different normalization methods }\DIFdelend \DIFaddbegin \DIFadd{this test, the reproducibility between different cell types was barely
-affected }\DIFaddend (Figure~\ref{fig:normal}A). \DIFdelbegin \DIFdel{For instance, }\textit{\DIFdel{caICB}} %DIFAUXCMD
-\DIFdel{and }\textit{\DIFdel{ICE}} %DIFAUXCMD
-\DIFdel{increased the
-similarity
-when the protocols were different, but decreased it when the protocols
-were the same. The effect was stronger when comparing }\DIFdelend \DIFaddbegin \DIFadd{All the methods increased the
-reproducibility between }\DIFaddend identical cell types \DIFdelbegin \DIFdel{, but the same trend appeared when comparing differentcell types,
-indicating that these methods may enhance or reduce biological variation,
-depending on the context. Once more, }\textit{\DIFdel{vanilla}} %DIFAUXCMD
-\DIFdel{followed the same
-trend as }\textit{\DIFdel{ICE}} %DIFAUXCMD
-\DIFdel{but to a lesser extent. The }\DIFdelend \DIFaddbegin \DIFadd{(except one, see below), but
+In this test, the reproducibility between different cell types was barely
+affected (Figure~\ref{fig:normal}A). All the methods increased the
+reproducibility between identical cell types (except one, see below), but
 only when the experimental conditions were different. This means that all
-the methods were able to remove some technical biases. }\DIFaddend \textit{\DIFdelbegin \DIFdel{LGF}\DIFdelend \DIFaddbegin \DIFadd{ICE}\DIFaddend } \DIFdelbegin \DIFdel{method
-increased the similarity when comparing the same cells with different
-experimental protocols, }\DIFdelend and
-\DIFdelbegin \DIFdel{had little to no effect in the other cases. This indicates that }\textit{\DIFdel{LGF}} %DIFAUXCMD
-\DIFdel{is a safe choice in this case.
-}%DIFDELCMD < 
-
-%DIFDELCMD < %%%
-\DIFdelend \DIFaddbegin \textit{\DIFadd{KR}} \DIFadd{showed the strongest increase in reproducibility, but
-}\DIFaddend \textit{OneD}\DIFdelbegin \DIFdel{decreased the similarity between different cell types when
-using the same protocol and
-increased it between identical cell types when
-using different protocols. In the other two cases, it had little effect. In summary, }\textit{\DIFdel{OneD}} %DIFAUXCMD
-\DIFdel{never enhanced the experimental noise and even
-reduced it in one more case than }\DIFdelend \DIFaddbegin \DIFadd{, }\textit{\DIFadd{OneD+CN}}\DIFadd{, and }\textit{\DIFadd{caICB}} \DIFadd{had competitive
-performance. }\textit{\DIFadd{vanilla}} \DIFadd{and }\DIFaddend \textit{LGF} \DIFaddbegin \DIFadd{were less competitive, and
-}\textit{\DIFadd{raw+CN}} \DIFadd{(copy number correction alone) performed poorly, because
+the methods were able to remove some technical biases. \textit{ICE} and
+\textit{KR} showed the strongest increase in reproducibility, but
+\textit{OneD}, \textit{OneD+CN}, and \textit{caICB} had competitive
+performance. \textit{vanilla} and \textit{\DIFdelbegin \DIFdel{LGF}\DIFdelend \DIFaddbegin \DIFadd{HiCNorm}\DIFaddend } were less competitive, and
+\textit{raw+CN} (copy number correction alone) performed poorly, because
 it is equivalent to no normalization on diploid cells. Other metrics gave
-similar results (Supplementary Figures~8, 9 and 10, Supplementary Table~3)}\DIFaddend .
+similar results (Supplementary Figures~8, 9 and 10, Supplementary Table~3).
 
-\DIFdelbegin \DIFdel{When interpreting the similarity scores as classification scores, we observed that all the methods could identify approximately 50\% of the biological pairs, after which their performance diverged
-}\DIFdelend \DIFaddbegin \DIFadd{As above, we used the reproducibility score for classification and
-compared the tools with a ROC curve }\DIFaddend (Figure~\ref{fig:normal}B). \DIFaddbegin \DIFadd{The
+As above, we used the reproducibility score for classification and
+compared the tools with a ROC curve (Figure~\ref{fig:normal}B). The
 performance of all the tools were high and less variable than for
-aneuploid cell lines. }\DIFaddend \textit{OneD} achieved the highest area under the
-curve on this problem, but with a small margin over \DIFdelbegin \DIFdel{the other methods
-except }\DIFdelend \DIFaddbegin \textit{\DIFadd{KR}} \DIFadd{and
-}\textit{\DIFadd{ICE}}\DIFadd{. The performance of }\textit{\DIFadd{OneD+CN}} \DIFadd{was the same as that of
-}\DIFaddend \textit{\DIFdelbegin \DIFdel{vanilla}\DIFdelend \DIFaddbegin \DIFadd{OneD}\DIFaddend } \DIFaddbegin \DIFadd{because copy number correction has no effect on diploid cell
-lines}\DIFaddend . Using other metrics to compare matrices gave similar results
-\DIFdelbegin \DIFdel{: }\textit{\DIFdel{OneD}} %DIFAUXCMD
-\DIFdel{was always among the top scoring methods
-}\DIFdelend (Supplementary Figures\DIFdelbegin \DIFdel{7 and }\DIFdelend \DIFaddbegin \DIFadd{~}\DIFaddend 8\DIFaddbegin \DIFadd{, 9 and 10).
-}
+aneuploid cell lines. \textit{OneD} achieved the highest area under the
+curve on this problem, but with a small margin over \textit{KR} and
+\textit{ICE}. The performance of \textit{OneD+CN} was the same as that of
+\textit{OneD} because copy number correction has no effect on diploid cell
+lines. Using other metrics to compare matrices gave similar results
+(Supplementary Figures~8, 9 and 10).
 
-\DIFadd{We took advantage of the wide range of protocols used in the GM12878 set to
+We took advantage of the wide range of protocols used in the GM12878 set to
 further investigate the performance of each method. The differences between
-methods were minor and }\textit{\DIFadd{OneD}} \DIFadd{showed the greatest improvement in
-reproducibility (Supplementary Figure~11}\DIFaddend ).
-\DIFdelbegin \DIFdel{In these conditions, Spearman correlation
-of contacts again appeared as the worst comparison metric because it
-showed a lower performance for all the normalization methods .
-}\DIFdelend 
+methods were minor and \textit{OneD} showed the greatest improvement in
+reproducibility (Supplementary Figure~11).
 
 Taken together, these results indicate that \textit{OneD} performs as well
 as the best normalization methods, even with normal karyotypes.
 
 \begin{figure}
-\DIFdelbeginFL %DIFDELCMD < \centerline{\includegraphics[width=.49\textwidth]
-%DIFDELCMD <   {img/correlation_normal_figure4.eps}}
-%DIFDELCMD < %%%
-\DIFdelendFL \centerline{\includegraphics[width=.49\textwidth]{figure_3.eps}}
- \caption{\DIFdelbeginFL \DIFdelFL{Results of the comparison between samples with }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Removing biases from Hi-C on }\DIFaddendFL normal karyotypes. A. Average
+\centerline{\includegraphics[width=.49\textwidth]
+  {figure_3.eps}}
+\caption{Removing biases from Hi-C on normal karyotypes. A. Average
   changes compared to the raw data on the mouse data set.
-  \DIFaddbeginFL \DIFaddFL{Upper left panel: Different cell type samples
+  Upper left panel: Different cell type samples
 processed using different protocols. Upper right panel: Same cell
 type samples processed using different protocols. Lower left panel:
 Same cell type samples processed using the same protocol. Lower right panel:
-Different cell type samples processed using the same protocol. }\DIFaddendFL B. ROC curves on
-the mouse data set. The legend \DIFdelbeginFL \DIFdelFL{is }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{and color code are }\DIFaddendFL as in Figure~\ref{fig:aberrant}.}
+Different cell type samples processed using the same protocol. B. ROC curves on
+the mouse data set. The legend and color code are as in Figure~\ref{fig:aberrant}.}
 \label{fig:normal}
 \end{figure}
 
 
 \subsection{Copy number correction}
 
-\DIFdelbegin \DIFdel{Removing the explicit experimental biases enhances the importance of the
-copy number in the signal (Figure~\ref{fig:copy_number}). The copy number
-is not an experimental bias, but it may be considered an additional source
-of bias to be removed. For this reason, }\DIFdelend \DIFaddbegin \DIFadd{The results so far suggest that the copy number correction lowers the
-performance of }\DIFaddend \textit{OneD}\DIFdelbegin \DIFdel{also allows the user
-to correct the copy number and output an euploid-equivalent matrix. To do
-so, }\DIFdelend \DIFaddbegin \DIFadd{. A possible limitation in Hi-C is the absence
+The results so far suggest that the copy number correction lowers the
+performance of \textit{OneD}. A possible limitation in Hi-C is the absence
 of ground truth. We thus used simulations to generate matrices with
 defined karyotypic aberrations (see Materials and Methods) and tested the
 capacity of the correction methods to distinguish different cell types
-(Supplementary Figure~12). On this test, }\textit{\DIFadd{LGF}} \DIFadd{and }\DIFaddend \textit{OneD}
-\DIFdelbegin \DIFdel{segments the linear signalof the total amount of
-contacts into piecewise homogeneous regions}\DIFdelend \DIFaddbegin \DIFadd{performed best. In comparison, }\textit{\DIFadd{OneD+CN}} \DIFadd{performed less well,
+(Supplementary \DIFdelbegin \DIFdel{Figure}\DIFdelend \DIFaddbegin \DIFadd{Figures}\DIFaddend ~12 \DIFaddbegin \DIFadd{and 13}\DIFaddend ). On this test, \textit{\DIFdelbegin \DIFdel{LGF}\DIFdelend \DIFaddbegin \DIFadd{HiCNorm}\DIFaddend } and \textit{OneD}
+performed best. In comparison, \textit{OneD+CN} performed less well,
 suggesting that correcting the copy number attenuates the biological
-signal}\DIFaddend . This is \DIFdelbegin \DIFdel{carried out by a
-hidden Markov model whereby the averages of the states are constrained to
-be an integer number , up to a scaling factor (see \ref{sec:hmm}). This
-allows the model to detect regions with a number of copies equal to 1, 2,
-3 }\textit{\DIFdel{etc}}%DIFAUXCMD
-\DIFdel{. With the inferred number of copies at hand, }\textit{\DIFdel{OneD}}
-%DIFAUXCMD
-\DIFdel{then normalizes each cell
-of the matrix with equation (\ref{eq:cnvnorm}). }\DIFdelend \DIFaddbegin \DIFadd{corroborated by the fact that the copy number correction
+signal. This is corroborated by the fact that the copy number correction
 alone has a lower performance than no correction at all. Thus, copy number
 correction can indeed have side effects that lower the biological signal.
-}\DIFaddend 
 
-\DIFdelbegin \DIFdel{Different normalization methods can either enhance or diminish the signal
-in regions with higher copy number }\DIFdelend \DIFaddbegin \DIFadd{However, those conclusions are based on data sets where the karyotype is
+However, those conclusions are based on data sets where the karyotype is
 uniform. One sometimes needs to compare samples from cells with different
 karyotype, for instance in cancer samples where the karyotypes may change
 through time. In such conditions, copy number correction can remove a
 feature that is considered irrelevant in order to highlight other
 biological differences.
-}
 
-\DIFadd{To test this idea, we collected a Hi-C data set from breast cancer cell
+To test this idea, we collected a Hi-C data set from breast cancer cell
 lines and measured the reproducibility score between identical cell types
 after normalization with the different tools. In this case, we found that
-}\textit{\DIFadd{OneD+CN}} \DIFadd{outperformed }\textit{\DIFadd{OneD}} \DIFadd{and gave the highest overall
-reproducibility }\DIFaddend (Figure~\ref{fig:cnv_correction}\DIFdelbegin \DIFdel{). In
-this example, }\textit{\DIFdel{ICE}} %DIFAUXCMD
-\DIFdel{overcompensated the original bias }\DIFdelend \DIFaddbegin \DIFadd{A). Even though the
+\textit{OneD+CN} outperformed \textit{OneD} and gave the highest overall
+reproducibility (Figure~\ref{fig:cnv_correction}A). Even though the
 variability is high in this case, this suggests that the karyotypes of
 these cells have diverged, so that the copy number correction performed by
-}\textit{\DIFadd{OneD}} \DIFadd{increased the reproducibility between samples from the same
+\textit{OneD\DIFaddbegin \DIFadd{+CN}\DIFaddend } increased the reproducibility between samples from the same
 cell type.
-}
 
 \begin{figure}
-\centerline{\includegraphics[width=.49\textwidth]{figure_4.eps}}
-\caption{\DIFaddFL{Copy number correction. A. Removing biases from Hi-C on breast
+\centerline{\includegraphics[width=.49\textwidth]
+  {figure_4.eps}}
+\caption{Copy number correction. A. Removing biases from Hi-C on breast
 cancer cells. The reproducibility score between samples from the same
 breast cancer cell type was computed after normalization. The vertical bar
 shows the reproducibility score of the raw data. Shown are comparisons for
 different (top) or identical (bottom) experimental conditions. B. Detail
 of a Hi-C matrix normalized with different methods. The central portion
-has an increased copy number, which affects normalization. }\textit{\DIFaddFL{ICE}}
-\DIFaddFL{fades it away, }\textit{\DIFaddFL{LGF}} \DIFaddFL{enhances it and }\textit{\DIFaddFL{OneD}} \DIFaddFL{reduces the
-signal by about half.}}
+has an increased copy number, which affects normalization. \textit{ICE}
+fades it away, \DIFdelbeginFL \textit{\DIFdelFL{LGF}} %DIFAUXCMD
+\DIFdelendFL \DIFaddbeginFL \textit{\DIFaddFL{HiCNorm}} \DIFaddendFL enhances it and \textit{OneD} reduces the
+signal by about half.}
 \label{fig:cnv_correction}
 \end{figure}
 
-\DIFadd{Copy number correction is also useful to give euploid-equivalent
+Copy number correction is also useful to give euploid-equivalent
 representations of samples from aberrant karyotypes.
-Figure~\ref{fig:cnv_correction}B shows an example where a region }\DIFaddend at the
-center of the \DIFdelbegin \DIFdel{picture }\DIFdelend \DIFaddbegin \DIFadd{matrix is duplicated. }\textit{\DIFadd{ICE}} \DIFadd{overcompensated the
-original bias }\DIFaddend and faded the signal almost entirely. Concomitantly, the
+Figure~\ref{fig:cnv_correction}B shows an example where a region at the
+center of the matrix is duplicated. \textit{ICE} overcompensated the
+original bias and faded the signal almost entirely. Concomitantly, the
 signal at the bottom left of the matrix was enhanced and showed a
 structure that was not visible in the raw data. On the contrary,
-\textit{LGF} strengthened the central region and the diagonal.
-\textit{OneD} reduced the level of the central portion by a factor 2
+\textit{\DIFdelbegin \DIFdel{LGF}\DIFdelend \DIFaddbegin \DIFadd{HiCNorm}\DIFaddend } strengthened the central region and the diagonal.
+\textit{OneD\DIFaddbegin \DIFadd{+CN}\DIFaddend } reduced the level of the central portion by a factor 2
 approximately, but did not otherwise distort the main features of the
 region.
-\DIFdelbegin \DIFdel{This example shows that the copy number does not have a simple and predictable effect on the final matrix. Not taking it into account may
-open the door to some normalization artifacts. }\DIFdelend 
 
-\DIFdelbegin %DIFDELCMD < \begin{figure}
-%DIFDELCMD < \centerline{\includegraphics[width=.49\textwidth]
-%DIFDELCMD <   {img/figure_cnv_correction.eps}}
-%DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-\DIFdelFL{Copy number correction A. Detail of a Hi-C matrix normalized with
-different methods. The central portion has an increased copy number, which
-affects normalization. }\textit{\DIFdelFL{ICE}} %DIFAUXCMD
-\DIFdelFL{fades it away, }\textit{\DIFdelFL{LGF}} %DIFAUXCMD
-\DIFdelFL{enhances
-it and }\textit{\DIFdelFL{OneD}} %DIFAUXCMD
-\DIFdelFL{reduces the signal by about half. B. Profile of the
-total amount of contacts after copy numer correction. The plot shows the
-same region as panel A. The brown line represents the raw signal, the blue
-line represents the signal after bias correction, the black line
-represents the signal after bias and copy number (CN) correction.}}
-%DIFAUXCMD
-%DIFDELCMD < \label{fig:cnv_correction}
-%DIFDELCMD < \end{figure}
-%DIFDELCMD < %%%
-\DIFdelend \DIFaddbegin \DIFadd{Besides matrix correction, copy number estimation could have a potential stand-alone
-utility. For instance, we applied }\textit{\DIFadd{OneD+CN}} \DIFadd{to a T47D sample
+Besides matrix correction, copy number estimation could have a potential stand-alone
+utility. For instance, we applied \textit{OneD+CN} to a T47D sample
 (dc3a1e069\_51720e9cf) at 10 Kbp and compared the correlation with the
 array-based copy number. The correlation increased from .80 for the raw totals,
-to .88 for the }\textit{\DIFadd{OneD}} \DIFadd{corrected totals to .92 for the estimated CN. We
+to .88 for the \textit{OneD} corrected totals to .92 for the estimated CN. We
 provide the table of the estimated start and end points as Supplementary Table~
 2.
-}\DIFaddend 
 
-\DIFdelbegin \DIFdel{Figure~\ref{fig:cnv_correction}B shows the total sum of contacts after
-correction for the copy number }\DIFdelend \DIFaddbegin \DIFadd{In summary, }\textit{\DIFadd{OneD+CN}} \DIFadd{can improve the reproducibility of samples
+In summary, \textit{OneD+CN} can improve the reproducibility of samples
 with unstable karyotypes, and it can be used to obtain an
 euploid-equivalent normalized matrix.
-}
 
 
-\subsection{\DIFadd{Capture Hi-C}}
+\subsection{Capture Hi-C}
 
-\DIFadd{Matrix-balancing methods (here }\textit{\DIFadd{ICE}}\DIFadd{, }\textit{\DIFadd{vanilla}} \DIFadd{and
-}\textit{\DIFadd{KR}}\DIFadd{) are specifically tailored for Hi-C because it is the dominant
+Matrix-balancing methods (here \textit{ICE}, \textit{vanilla} and
+\textit{KR}) are specifically tailored for Hi-C because it is the dominant
 3C-derived technology. As a consequence, their performance is typically
 lower when they are used for variants such as Capture Hi-C
-(39). In this case, the contacts with one or more
+(\DIFdelbegin \DIFdel{39}\DIFdelend \DIFaddbegin \DIFadd{42}\DIFaddend ). In this case, the contacts with one or more
 regions of interest are enriched through direct purification, essentially
 erasing all the other contacts from the Hi-C matrix. The lack of
 homogeneity of the signal in such technologies makes normalization
 particularly challenging.
-}
 
-\DIFadd{We reasoned that }\textit{\DIFadd{OneD}} \DIFadd{should handle such cases gracefully,
+We reasoned that \textit{OneD} should handle such cases gracefully,
 because the signal is formally equivalent to an aberrant karyotype where
 most of the genome is present in zero copy. We thus evaluated the
-performance of }\textit{\DIFadd{OneD}} \DIFadd{on a Capture Hi-C data set at 5~Kbp
+performance of \textit{OneD} on a Capture Hi-C data set at 5~Kbp
 resolution centered on a 6~Mbp domain of chromosome 6 in T47D cells. We
 found that the reproducibility score between replicates was higher after
-normalization }\DIFaddend with \textit{OneD} \DIFdelbegin \DIFdel{. The region around
-72.5-75.0 Mbp showed an elevated amount of contacts in }\DIFdelend \DIFaddbegin \DIFadd{than with matrix-balancing methods
-(figure~\ref{fig:chic}A). The performance of }\textit{\DIFadd{OneD}} \DIFadd{was only
-slightly lower than }\DIFaddend the raw data\DIFdelbegin \DIFdel{. After
-copy number correction, the signal is brought to the same level as the flanking regions. The result provided by }\DIFdelend \DIFaddbegin \DIFadd{, suggesting that it barely disturbs the
-biological signal. Other tools were not included beause they had
-prohibitive run time.
-}
+normalization with \textit{OneD} than with matrix-balancing methods
+(figure~\ref{fig:chic}A \DIFaddbegin \DIFadd{and Supplementary Figure~14}\DIFaddend ). The performance
+of \textit{OneD} was only slightly lower than the raw data, suggesting
+that it barely disturbs the biological signal. Other tools were not
+included beause they had prohibitive run time.
 
 \begin{figure}
-\centerline{\includegraphics[width=.49\textwidth]{figure_5.eps}}
-\caption{\DIFaddFL{Bias removal on Capture Hi-C data A. Performance on the Capture
+\centerline{\includegraphics[width=.49\textwidth]
+  {figure_5.eps}}
+\caption{Bias removal on Capture Hi-C data A. Performance on the Capture
 Hi-C data. Two replicates centered on a 6~Mbp domain on chromosome 6 in
 T47D cells were normalized by the indicated tools and their
 reproducibility score was computed. B. Performance on virtual Capture Hi-C
@@ -1216,121 +720,89 @@ outside the domain on chromosome 6 (full). Four matrices per method were
 generated and the reproducibility score between the pairs from different
 replicates were computed. Note that the scores are identical for the raw
 data because in this case the matrices of the same replicate are
-identical.}}
+identical.}
 \label{fig:chic}
 \end{figure}
 
-\DIFadd{To gain additional insight, we also set up a ``virtual Capture Hi-C'' data
+To gain additional insight, we also set up a ``virtual Capture Hi-C'' data
 set by removing the signal outside the same region of chromosome 6 from
 Hi-C experiments performed in the same cell type. In this setup, we could
 restrict the data and then normalize, or normalize and then restrict the
 data. This allowed us to probe how sensitive the methods are to the shape
-of the input data. Here we found that }\DIFaddend \textit{OneD} \DIFdelbegin \DIFdel{is not necessarily
-the right one (see Discussion), but at least it does not correct copy
-number variations as a side effect of some other criteria. }%DIFDELCMD < 
-
-%DIFDELCMD < %%%
-\DIFdel{In summary,
-}\DIFdelend \DIFaddbegin \DIFadd{significantly
+of the input data. Here we found that \textit{OneD} significantly
 outperformed the other methods: it featured the highest reproducibility
 score between replicates with practically no influence from the shape of
-the data (figure~\ref{fig:chic}B). Also, in this case, }\DIFaddend \textit{OneD}
-\DIFdelbegin \DIFdel{can be used to obtain an euploid-equivalent
-normalized matrix in cases where the effect of the copy number must be
-removed from the signal}\DIFdelend \DIFaddbegin \DIFadd{enhanced the reproducibility between replicates compared to the raw data.
+the data (figure~\ref{fig:chic}B). Also, in this case, \textit{OneD}
+enhanced the reproducibility between replicates compared to the raw data.
 This confirms the view that capture methods are a natural framework for
-the statistical model underlying }\textit{\DIFadd{OneD}}\DIFadd{. In comparison,
+the statistical model underlying \textit{OneD}. In comparison,
 matrix-balancing methods showed lower reproducibility between replicates,
 together with more variability due to the shape of the data.
-}
 
-\DIFadd{In conclusion, }\textit{\DIFadd{OneD}} \DIFadd{is suitable for removing experimental biases
-from data acquired with Capture Hi-C}\DIFaddend .
+In conclusion, \textit{OneD} is suitable for removing experimental biases
+from data acquired with Capture Hi-C.
 
 \subsection{Speed}
 
 Finally, we compared the computational speed of the different
-normalization methods. \textit{vanilla} and \textit{ICE} \DIFdelbegin \DIFdel{have broad
-acceptance for }\DIFdelend \DIFaddbegin \DIFadd{are broadly used
-because of }\DIFaddend their conceptual simplicity, ease of use and speed
+normalization methods. \textit{vanilla} and \textit{ICE} are broadly used
+because of their conceptual simplicity, ease of use and speed
 (16). This is even more significant as current
-explicit methods (\DIFdelbegin \DIFdel{33}\DIFdelend \DIFaddbegin \DIFadd{32}\DIFaddend ) are much slower in comparison.
+explicit methods (\DIFdelbegin \DIFdel{32}\DIFdelend \DIFaddbegin \DIFadd{35}\DIFaddend ) are much slower in comparison.
 
-\DIFdelbegin \DIFdel{Unlike the other methods, }\DIFdelend \textit{OneD} corrects a single variable instead of the whole matrix, and
+\textit{OneD} corrects a single variable instead of the whole matrix, and
 thus estimates the model parameters much faster than previous explicit
 methods. We measured the running time of the different tools on a 3.3~GHz
 machine with 62 GB~RAM, always using the default parameters.
 Figure~\ref{fig:times}A shows the running times of the different methods
-on \DIFdelbegin \DIFdel{the samples described in Table~\ref{tab:samples} }\DIFdelend \DIFaddbegin \DIFadd{all the samples shown in Supplementary Figure~1 }\DIFaddend at 100\DIFdelbegin \DIFdel{kbp }\DIFdelend \DIFaddbegin \DIFadd{~Kbp }\DIFaddend resolution.
-The fastest method was \textit{vanilla} and the slowest \DIFdelbegin \DIFdel{is }\DIFdelend \textit{LGF}, with
+on all the samples shown in Supplementary \DIFdelbegin \DIFdel{Figure}\DIFdelend \DIFaddbegin \DIFadd{Table}\DIFaddend ~1 at 100~Kbp resolution.
+The fastest method was \textit{vanilla} and the slowest \textit{\DIFdelbegin \DIFdel{LGF}\DIFdelend \DIFaddbegin \DIFadd{HiCNorm}\DIFaddend }, with
 an over 100-fold span between the two.
 
-\DIFaddbegin \DIFadd{On average, }\DIFaddend \textit{OneD} was the second fastest method and it always ran in less than
-1~min in the conditions of the benchmark. \DIFaddbegin \DIFadd{The copy number correction
+On average, \textit{OneD} was the second fastest method and it always ran in less than
+1~min in the conditions of the benchmark. The copy number correction
 increased the running time, but it remained under 1~min in general.
-}\DIFaddend Throughout this benchmark, the memory footprint of \textit{OneD} was less
+Throughout this benchmark, the memory footprint of \textit{OneD} was less
 than 300 MB.  Interestingly, the running time of \textit{OneD} was much
 more homogeneous than that of the other methods. The reason is that the
 size of the regression problem to be solved by the \texttt{mgcv} package
 is always the same at fixed resolution.
 
-\DIFdelbegin \DIFdel{We also }\DIFdelend \DIFaddbegin \begin{figure}
-\centerline{\includegraphics[width=.49\textwidth]{figure_6.eps}}
-\caption{\DIFaddFL{Computing time of the bias correction methods. A. Total time to
+\begin{figure}
+\centerline{\includegraphics[width=.49\textwidth]
+  {figure_6.eps}}
+\caption{Computing time of the bias correction methods. A. Total time to
 process samples listed in Supplementary Table~1 at 100~Kbp resolution.
 Each dot corresponds to a sample. B. Total time to process sample HIC070
 at the indicated bin size and sequencing depths. Note the logarithmic
-scale on the y-axis on both panels.}}
+scale on the y-axis on both panels.}
 \label{fig:times}
 \end{figure}
 
-\DIFadd{To better understand these results, we also investigated the influence of
-bin size and sequencing depth on the running time. We }\DIFaddend performed a
-benchmark on \DIFdelbegin \DIFdel{a smaller data set
-at increasing
-resolution (Figure~\ref{fig:times}B) }\DIFdelend \DIFaddbegin \DIFadd{the sample with highest sequencing depth in the data set
+To better understand these results, we also investigated the influence of
+bin size and sequencing depth on the running time. We performed a
+benchmark on the sample with highest sequencing depth in the data set
 (HIC070, see Supplementary Table~1) at different bin sizes while
-downsampling the contact matrices to mimic lower resolutions}\DIFaddend . On this
-\DIFdelbegin \DIFdel{benchmark, }\DIFdelend \DIFaddbegin \DIFadd{test, we included only the methods competing with }\textit{\DIFadd{OneD}} \DIFadd{in terms
-of speed, }\textit{\DIFadd{i.e.}} \DIFadd{the matrix-balancing methods.
-Figure~\ref{fig:times}B shows that the running time of }\textit{\DIFadd{OneD}} \DIFadd{does
-not depend on the sequencing depth. Strikingly, }\textit{\DIFadd{OneD}} \DIFadd{also gives
+downsampling the contact matrices to mimic lower \DIFdelbegin \DIFdel{resolutions}\DIFdelend \DIFaddbegin \DIFadd{depths}\DIFaddend . On this
+test, we included only the methods competing with \textit{OneD} in terms
+of speed, \textit{i.e.} the matrix-balancing methods.
+Figure~\ref{fig:times}B shows that the running time of \textit{OneD} does
+not depend on the sequencing depth. Strikingly, \textit{OneD} also gives
 nearly identical results at very different sequencing depths
-(Supplementary Figure~13). }\textit{\DIFadd{vanilla}} \DIFadd{was the overall fastest method
-and }\textit{\DIFadd{OneD}} \DIFadd{was usually faster than }\DIFaddend \textit{ICE} \DIFdelbegin \DIFdel{ran
-slightly faster than }\DIFdelend \DIFaddbegin \DIFadd{and }\textit{\DIFadd{KR}}
-\DIFadd{at high but not at low sequencing depth. At low resolution (100~Kbp) the
-speed advantage of }\DIFaddend \textit{OneD} \DIFdelbegin \DIFdel{, and the the rank of the methods
-remained the same at all resolutions. }\DIFdelend \DIFaddbegin \DIFadd{appeared from low sequencing depth, but
+(Supplementary Figure~\DIFdelbegin \DIFdel{13}\DIFdelend \DIFaddbegin \DIFadd{15}\DIFaddend ). \textit{vanilla} was the overall fastest method
+and \textit{OneD} was usually faster than \textit{ICE} and \textit{KR}
+at high but not at low sequencing depth. At low resolution (100~Kbp) the
+speed advantage of \textit{OneD} appeared from low sequencing depth, but
 at high resolution resolution (5~Kbp) it appeared only at high sequencing
 depth.
-}
 
-\DIFaddend Taken together, these results show that \textit{OneD} is competitive in
-terms of \DIFdelbegin \DIFdel{computational speedcompared
-to existing methods}\DIFdelend \DIFaddbegin \DIFadd{speed. It is particularly adapted to projects where the
-sequencing depth is high, as the running time is essentially not affected}\DIFaddend .
+Taken together, these results show that \textit{OneD} is competitive in
+terms of speed. It is particularly adapted to projects where the
+sequencing depth is high, as the running time is essentially not affected.
 
 
 
-\DIFdelbegin %DIFDELCMD < \begin{figure}
-%DIFDELCMD < \centerline{\includegraphics[width=.49\textwidth]
-%DIFDELCMD <   {img/figure_benchmark_time.eps}}
-%DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-\DIFdelFL{Computing time of the bias correction methods. A. Total time for the
-entire genome at 100 kbp resolution. Each dot corresponds to one sample.
-The only method faster than ours under performs in all sample comparisons.
-B. Time to correct a reduced genome (chr19-22) of one sample at different
-resolutions. Note the logarithmic scale on the y-axis on both panels.}}
-%DIFAUXCMD
-%DIFDELCMD < \label{fig:times}
-%DIFDELCMD < \end{figure}
-%DIFDELCMD < 
-
-%DIFDELCMD < %%%
-\DIFdelend \section{DISCUSSION}
+\section{DISCUSSION}
 
 Here we introduced \textit{OneD}, a fast computational method to normalize
 Hi-C matrices. \textit{OneD} was developed ground up to address the need
@@ -1340,23 +812,29 @@ applies seamlessly to the case of normal karyotypes. We showed that
 cells present karyotypic aberrations (Figure~\ref{fig:aberrant}), and that
 it performs equally well as the best methods on euploid genomes
 (Figure~\ref{fig:normal}). We also showed that \textit{OneD} is
-approximately as fast as \textit{ICE} \DIFaddbegin \DIFadd{(Figure~\ref{fig:times})}\DIFaddend , which
+approximately as fast as \textit{ICE} (Figure~\ref{fig:times}), which
 makes it competitive from the point of view of computational speed.
 
-The originality of \textit{OneD} lies in \DIFdelbegin \DIFdel{that it projects all the biases
-onto }\DIFdelend \DIFaddbegin \DIFadd{the estimation from }\DIFaddend a single
-variable \DIFdelbegin \DIFdel{: the total amount of contacts per bin}\DIFdelend \DIFaddbegin \DIFadd{of the explicit biases with a Negative Binomial model and of the
-copy number}\DIFaddend . This allows greater running speed, while preserving a good
+The originality of \textit{OneD} lies in the estimation from a single
+variable of the explicit biases with a Negative Binomial model and of the
+copy number. This allows greater running speed, while preserving a good
 performance on samples with karyotypic aberrations. One of the reasons why
 \textit{OneD} is able to better highlight the biological distinctions
 between samples is that it only corrects the copy number if specifically
 requested by the user. The impact of copy number variations on
 normalization is rather opaque, especially if they are treated as implicit
-biases (Figure~\ref{fig:cnv_correction}\DIFaddbegin \DIFadd{B}\DIFaddend ). Treating them as explicit
-biases with optional removal seems to be an overall safer strategy. \DIFaddbegin \DIFadd{In
+biases (Figure~\ref{fig:cnv_correction}B). Treating them as explicit
+biases with optional removal seems to be an overall safer strategy. In
 homogeneous data sets, correcting for the copy number can blur the
 biological signal, but when karyotypes are variable or unstable, it may
 increase the reproducibility (Figure~\ref{fig:cnv_correction}A).
+\DIFaddbegin \DIFadd{If the purpose is to remove the effect of copy number, then OneD+CN
+outperforms a karyotype correction method such as caICB because it allows
+for more flexible types of aberrations. On the other hand, if the purpose
+is to improve the reproducibility among samples of the same type,
+correcting the copy number removes part of the signal, and therefore blurs
+the distinction between experiments (Figures~\ref{fig:aberrant} and
+\ref{fig:normal}).
 }\DIFaddend 
 
 This raises the question whether variations of the copy number constitute
@@ -1409,16 +887,14 @@ liable for any use that may be made of the information contained therein.
 \subsubsection{Conflict of interest statement.} None declared.
 \newpage
 
-\DIFdelbegin %DIFDELCMD < \bibliographystyle{natbib}
-%DIFDELCMD < %%%
-\DIFdelend \DIFaddbegin \bibliographystyle{nar}
-\DIFaddend \bibliography{references}
+\bibliographystyle{nar}
+\bibliography{references}
 
 
 \DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
-\nocite{rowley2016three,dekker20163d,pezic2017more,de2013topology,choi2014ctcf,galupa2015x,lieberman2009comprehensive,dekker2013exploring,dekker2002capturing,simonis2006nuclear,dostie2006chromosome,de2012decade,yaffe2011probabilistic,schmitt2016genome,hu2012hicnorm,imakaev2012iterative,korbel2013genome,wu2016computational,wood2003thin,wood2011fast,coreteam2014r,baum1966,filion2010systematic,ledily2014distinct,encode2012integrated,rao20143d,stadhouders2017transcription,lin2012global,dixon2012topological,forbes2010cosmic,serra2016structural,quilez2017managing,servant2012hitc,yang2017hicrep,yan2017hicspector,von2007tutorial,bates2015lme4,sing2005rocr}
+\nocite{rowley2016three,dekker20163d,pezic2017more,de2013topology,choi2014ctcf,galupa2015x,lieberman2009comprehensive,dekker2013exploring,dekker2002capturing,simonis2006nuclear,dostie2006chromosome,de2012decade,yaffe2011probabilistic,schmitt2016genome,hu2012hicnorm,imakaev2012iterative,korbel2013genome,wu2016computational,wood2003thin,wood2011fast,coreteam2014r,baum1966,filion2010systematic,ledily2014distinct,encode2012integrated,rao20143d,lin2012global,dixon2012topological,forbes2010cosmic,serra2016structural,quilez2017managing,servant2012hitc,yan2017hicspector,yang2017hicrep,von2007tutorial,bates2015lme4,sing2005rocr,knight2013fast,jager2015capture}
  }\hspace{0pt}%DIFAUXCMD
 }\DIFdelend \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
-\nocite{rowley2016three,dekker20163d,pezic2017more,de2013topology,choi2014ctcf,galupa2015x,lieberman2009comprehensive,dekker2013exploring,dekker2002capturing,simonis2006nuclear,dostie2006chromosome,de2012decade,yaffe2011probabilistic,schmitt2016genome,hu2012hicnorm,imakaev2012iterative,korbel2013genome,wu2016computational,wood2003thin,wood2011fast,coreteam2014r,baum1966,filion2010systematic,ledily2014distinct,encode2012integrated,rao20143d,lin2012global,dixon2012topological,forbes2010cosmic,serra2016structural,quilez2017managing,servant2012hitc,yan2017hicspector,yang2017hicrep,von2007tutorial,bates2015lme4,sing2005rocr,knight2013fast,jager2015capture}
+\nocite{rowley2016three,dekker20163d,pezic2017more,de2013topology,choi2014ctcf,galupa2015x,lieberman2009comprehensive,dekker2013exploring,dekker2002capturing,simonis2006nuclear,dostie2006chromosome,de2012decade,yaffe2011probabilistic,schmitt2016genome,hu2012hicnorm,imakaev2012iterative,korbel2013genome,wu2016computational,carty2017integrated,love2014moderated,wood2003thin,wood2011fast,coreteam2014r,baum1966,filion2010systematic,stadhouders2018transcription,ledily2014distinct,encode2012integrated,rao20143d,lin2012global,dixon2012topological,forbes2010cosmic,serra2016structural,quilez2017managing,servant2012hitc,yan2017hicspector,yang2017hicrep,von2007tutorial,bates2015lme4,sing2005rocr,knight2013fast,jager2015capture}
  }\hspace{0pt}%DIFAUXCMD
 }\DIFaddend\end{document}
