@@ -238,10 +238,10 @@ updated to
 
 \subsection{Data sources}
 
-We gathered a set of published Hi-C data \citep[][BioRxiv:
-https://doi.org/10.1101/132456]{ledily2014distinct, encode2012integrated,
-rao20143d, lin2012global, dixon2012topological} and unpublished data of
-different cell types and organisms (Supplementary Table~1).
+We gathered a set of published Hi-C data
+\citep{stadhouders2018transcription,ledily2014distinct,encode2012integrated,rao20143d,lin2012global,dixon2012topological}
+and unpublished data of different cell types and organisms (Supplementary
+Table~1).
 
 The Hi-C experiments were performed in T47D breast cancer cell lines
 (aberrant karyotype, six samples), K562 leukemia cell lines (aberrant
@@ -267,15 +267,15 @@ reference for validation.
 
 
 All data were processed through a pipeline based on TADbit
-\citep{serra2016structural}. Briefly, after controlling the quality of
-FASTQ files, paired-end reads were mapped to the corresponding reference
-genome (hg38 or mm10) taking into account the restriction enzyme site.
-Non-informative contacts were removed applying the following TADbit
-filters: \texttt{self-circle}, \texttt{dangling-ends}, \texttt{error},
-\texttt{extra-dangling-ends}, \texttt{duplicated} and
-\texttt{random-breaks} (for more details see BioRxiv:
-https://doi.org/10.1101/132456). In addition, the pipeline is available
-from the Supplementary Material published by \cite{quilez2017managing}.
+\citep{serra2016structural}. Briefly, after controlling the quality of FASTQ
+files, paired-end reads were mapped to the corresponding reference genome (hg38
+or mm10) taking into account the restriction enzyme site.  Non-informative
+contacts were removed applying the following TADbit filters:
+\texttt{self-circle}, \texttt{dangling-ends}, \texttt{error},
+\texttt{extra-dangling-ends}, \texttt{duplicated} and \texttt{random-breaks}
+(for more details see \cite{stadhouders2018transcription}). In addition, the
+pipeline is available from the Supplementary Material published by
+\cite{quilez2017managing}.
 
 We developed the routines contained in the \texttt{dryhic} R package
 (available at http://www.github.com/qenvio/dryhic) to efficiently create
