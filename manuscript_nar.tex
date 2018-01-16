@@ -72,8 +72,8 @@ outperforming previous methods significantly. On normal karyotypes,
 \textit{OneD} fared equally well as state-of-the-art methods, making it a
 safe choice for Hi-C normalization.  \textit{OneD} is fast and scales well
 in terms of computing resources for resolutions up to 5~Kbp.
-\textit{OneD} is implemented as an R package available at
-http://www.github.com/qenvio/dryhic.
+The \textit{OneD} R package and the data used here are
+available at http://www.github.com/qenvio/dryhic.
 \end{abstract}
 
 
@@ -292,7 +292,8 @@ resolution of the analysis is 100~Kbp.
 Simulations were based on altering four experimental Hi-C samples obtained
 from diploid mouse cell lines (b7fa2d8db\_bfac48760, fc3e8b36a\_7bf1bf374,
 GSM987817 and GSM862720, see Supplementary Table~1), that were performed
-in either B cells or ES cells, and from either CRG or UCSD. The simulation
+in either B cells or ES cells, and from either CRG (Center for Genomic
+Regulation) or UCSD (University of California San Diego). The simulation
 strategy was the following: First we selected uniformly at random the
 amount of copy number break points (from 3 to 10). We then placed the
 break points along chromosomes 18 and 19 uniformly at random. Next, we
@@ -795,6 +796,13 @@ biases with optional removal seems to be an overall safer strategy. In
 homogeneous data sets, correcting for the copy number can blur the
 biological signal, but when karyotypes are variable or unstable, it may
 increase the reproducibility (Figure~\ref{fig:cnv_correction}A).
+If the purpose is to remove the effect of copy number, then OneD+CN
+outperforms a karyotype correction method such as caICB because it allows
+for more flexible types of aberrations. On the other hand, if the purpose
+is to improve the reproducibility among samples of the same type,
+correcting the copy number removes part of the signal, and therefore blurs
+the distinction between experiments (Figures~\ref{fig:aberrant} and
+\ref{fig:normal}).
 
 This raises the question whether variations of the copy number constitute
 a biological signal or an artifact. If the biological sample contains
